@@ -1,0 +1,34 @@
+{
+  "entity_candidates": [
+    {
+      "text": "Histopathology Images",
+      "label": "ENTITY",
+      "count": 3
+    },
+    {
+      "text": "Somatic Gene Mutation",
+      "label": "ENTITY",
+      "count": 3
+    },
+    {
+      "text": "Precision Oncology",
+      "label": "ENTITY",
+      "count": 3
+    },
+    {
+      "text": "Multimodal Fusion",
+      "label": "ENTITY",
+      "count": 3
+    },
+    {
+      "text": "Patient-Level Generalization",
+      "label": "ENTITY",
+      "count": 3
+    },
+    {
+      "text": "External Validation",
+      "label": "ENTITY",
+      "count": 3
+    }
+  ]
+}

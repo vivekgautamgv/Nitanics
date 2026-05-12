@@ -1,0 +1,279 @@
+{
+  "project": {
+    "name": "Gene Mutation Pathogenomics Research Map",
+    "unique_id": "gene-mutation-pathogenomics-research",
+    "summary": "This project maps a focused body of research around mutation prediction from pathology images, anchored by the supplied paper on multi-label gene mutation classification from histopathology. The central problem is clinically important and methodologically difficult: oncologists want mutation information because therapies depend on it, yet next-generation sequencing is expensive, slow, and not universally available. Histopathology slides already exist in routine care, so the field asks whether tumour morphology can reveal genomic state in a way that is operationally useful. The anchor paper contributes a specific and practical answer. Instead of collapsing each patient into a single vector, it trains at the image-patch level, preserving local variation and expanding the effective sample count from the scale of patients to the scale of tissue tiles. Frozen ResNet-50 features, XGBoost, and a MultiOutputClassifier are then used to predict thousands of non-constant gene labels while explicit class weighting pushes the system toward recall. Around that anchor contribution, the project connects landmark histopathology-only studies, large multicentre efforts such as DeepGEM, benchmark infrastructure such as PathGene, and multimodal oncology papers that suggest a higher performance ceiling. The graph emphasizes both promise and limitation: morphology clearly carries mutation-relevant signal, but robust patient-level and external validation remain the decisive next step before strong tile-level metrics can be interpreted as clinical readiness.",
+    "narrative_flow": [
+      "Mutation status matters clinically because precision oncology depends on molecular features that still often require sequencing to measure directly.",
+      "Histopathology slides already exist in standard workflows, so the field explores whether visible tumour morphology carries genomic signal that can be learned computationally.",
+      "The anchor paper argues that patient-level aggregation is the main structural bottleneck in tiny cohorts and replaces it with image-level training over pathology tiles.",
+      "Frozen ResNet-50 features, XGBoost, and MultiOutputClassifier provide a practical classical pipeline that becomes viable once sample density is expanded at the patch level.",
+      "Large-scale systems such as DeepGEM and benchmarks such as PathGene then define the next challenge: proving patient-level and external generalization beyond the anchor study."
+    ],
+    "tags": {
+      "domain": "Biomedical Research",
+      "subdomain": "Computational Pathology And Gene Mutation Prediction",
+      "base_tags": [
+        "gene-mutation",
+        "histopathology",
+        "pathogenomics",
+        "precision-oncology",
+        "multilabel-classification"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "source": "Histopathology Images",
+      "target": "Somatic Gene Mutation",
+      "relType": "SUPPORTS_INFERENCE",
+      "causalClassification": "ENABLES",
+      "description": "Histopathology images provide the visual substrate from which mutation-linked morphology is inferred, making tissue appearance the key non-genomic evidence source for computational mutation prediction pipelines across the anchor paper and its cited literature.",
+      "evidence": "The paper argues that subtle visual signatures of genetic events may be measurable in pathology images.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "ongoing"
+    },
+    {
+      "source": "Next-Generation Sequencing",
+      "target": "Precision Oncology",
+      "relType": "ENABLES",
+      "causalClassification": "ENABLES",
+      "description": "Next-generation sequencing enables precision oncology by measuring the mutation profiles that determine targeted therapy eligibility, resistance patterns, and broader molecular stratification within modern cancer treatment workflows.",
+      "evidence": "The paper frames sequencing as foundational for personalized therapy despite cost and access barriers.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "ongoing"
+    },
+    {
+      "source": "Histopathology Images",
+      "target": "Next-Generation Sequencing",
+      "relType": "COMPLEMENTS",
+      "causalClassification": "COMPETES_WITH",
+      "description": "Histopathology-based mutation inference is positioned as a complementary path to sequencing, offering a faster and lower-cost screening route in settings where full molecular testing may be delayed, limited, or used only for confirmation.",
+      "evidence": "The paper states that the goal is to make sequencing smarter and more targeted rather than simply replace it.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "TCGA LUAD/LUSC Cohort",
+      "target": "Image-Level Training",
+      "relType": "SUPPORTS",
+      "causalClassification": "ENABLES",
+      "description": "The TCGA LUAD and LUSC cohort supplies the paired histology and mutation data that make image-level training possible in the anchor paper, even though the cohort is very small at the patient level.",
+      "evidence": "The anchor study uses 12 TCGA lung cancer patients with paired image and mutation data.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2024"
+    },
+    {
+      "source": "Patient-Level Aggregation",
+      "target": "Image-Level Training",
+      "relType": "CONTRASTS_WITH",
+      "causalClassification": "CONTRADICTS",
+      "description": "Patient-level aggregation collapses heterogeneous tile features into one vector per patient, whereas image-level training preserves local morphological diversity and dramatically increases supervised sample count for gene-wise classification.",
+      "evidence": "The paper repeatedly contrasts patient-level averaging with patch-level supervision as the core methodological shift.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2024"
+    },
+    {
+      "source": "Image-Level Training",
+      "target": "XGBoost",
+      "relType": "ENABLES",
+      "causalClassification": "ENABLES",
+      "description": "Image-level training gives XGBoost enough labelled examples to learn usable splits in a high-dimensional feature space, converting a statistically weak small-cohort problem into one where classical machine learning becomes practically effective.",
+      "evidence": "The paper reports a 316-fold effective sample increase when training on tiles rather than patients.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2024"
+    },
+    {
+      "source": "ResNet-50",
+      "target": "XGBoost",
+      "relType": "PROVIDES_FEATURES",
+      "causalClassification": "ENABLES",
+      "description": "ResNet-50 provides the 2048-dimensional representations that make it possible for a downstream tree-based classifier to operate on pathology tiles without learning visual features from scratch in a tiny cohort.",
+      "evidence": "The anchor pipeline uses a frozen pre-trained ResNet-50 GAP representation as the classifier input.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2024"
+    },
+    {
+      "source": "MultiOutputClassifier",
+      "target": "XGBoost",
+      "relType": "PARALLELIZES",
+      "causalClassification": "ENABLES",
+      "description": "MultiOutputClassifier wraps XGBoost into a binary relevance structure so that thousands of gene mutation decisions can be trained in parallel, giving the approach linear scalability across the label space.",
+      "evidence": "The anchor paper trains one binary classifier per gene using a MultiOutputClassifier backed by XGBoost.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2024"
+    },
+    {
+      "source": "Class Imbalance Correction",
+      "target": "XGBoost",
+      "relType": "REGULATES",
+      "causalClassification": "REGULATES",
+      "description": "Class imbalance correction increases the effective weight of rare positive mutation labels so that XGBoost does not simply predict wild-type for nearly every gene-image pair in an extremely sparse label matrix.",
+      "evidence": "The paper uses a global scale_pos_weight near 9.77 to prioritize sensitivity.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2024"
+    },
+    {
+      "source": "Class Imbalance Correction",
+      "target": "Precision Oncology",
+      "relType": "SUPPORTS_SCREENING",
+      "causalClassification": "SUPPORTS",
+      "description": "Recall-focused imbalance handling supports precision oncology screening objectives because missing a true actionable mutation is clinically worse than sending an additional case for confirmatory testing.",
+      "evidence": "The paper explicitly frames the precision-recall trade-off as a clinical design decision.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "2024"
+    },
+    {
+      "source": "DeepGEM Collaboration",
+      "target": "Somatic Gene Mutation",
+      "relType": "PREDICTS",
+      "causalClassification": "SUPPORTS",
+      "description": "DeepGEM is cited as a strong lung-cancer mutation-prediction benchmark showing that histology-based mutation inference can succeed at large scale with robust deep learning and external evaluation.",
+      "evidence": "The anchor paper describes DeepGEM as a multicentre retrospective study with strong AUCs across gene targets.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "2024"
+    },
+    {
+      "source": "DeepGEM Collaboration",
+      "target": "Patient-Level Generalization",
+      "relType": "SUPPORTS",
+      "causalClassification": "SUPPORTS",
+      "description": "DeepGEM strengthens the case for patient-level generalization by demonstrating performance on larger and more diverse cohorts, highlighting what the anchor study still lacks despite promising internal metrics.",
+      "evidence": "The literature review positions DeepGEM as externally robust and multicentre in contrast to the small anchor cohort.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "2024"
+    },
+    {
+      "source": "PathGene Benchmark",
+      "target": "Patient-Level Generalization",
+      "relType": "ENABLES_VALIDATION",
+      "causalClassification": "ENABLES",
+      "description": "PathGene provides benchmark infrastructure for external and multicentre validation, making it a natural next step for testing whether the anchor paper generalizes beyond tile splits within the same patients.",
+      "evidence": "The future-work discussion explicitly names PathGene as a target for stronger validation.",
+      "evidenceStrength": "claimed",
+      "magnitude": "foundational",
+      "year": "2025"
+    },
+    {
+      "source": "Attention-Based MIL",
+      "target": "Patient-Level Generalization",
+      "relType": "IMPROVES",
+      "causalClassification": "SUPPORTS",
+      "description": "Attention-based MIL can improve patient-level generalization by learning which tiles actually carry mutation signal, reducing noise introduced when every patch inherits the full patient mutation vector regardless of local expression.",
+      "evidence": "The paper names attention-based MIL as a key future direction to replace the tile-label inheritance assumption.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Multimodal Fusion",
+      "target": "Somatic Gene Mutation",
+      "relType": "STRENGTHENS_PREDICTION",
+      "causalClassification": "SUPPORTS",
+      "description": "Multimodal fusion strengthens mutation prediction by integrating histology with molecular or clinical context, often improving performance, biological relevance, and robustness over unimodal systems in oncology tasks.",
+      "evidence": "The literature review summarizes several multimodal studies and reviews claiming better performance than unimodal methods.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Image-Level Training",
+      "target": "Patient-Level Generalization",
+      "relType": "DOES_NOT_GUARANTEE",
+      "causalClassification": "CONTRADICTS",
+      "description": "Image-level training can improve tile-level discrimination without guaranteeing new-patient generalization, because train and test may still contain tiles from the same patients and therefore share morphology the model has already seen.",
+      "evidence": "The anchor paper states that all 12 patients appear in both train and test under the random image-level split.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2024"
+    },
+    {
+      "source": "Patient-Level Aggregation",
+      "target": "XGBoost",
+      "relType": "LIMITS",
+      "causalClassification": "BLOCKS",
+      "description": "Patient-level aggregation limits XGBoost performance in tiny cohorts because the model receives too few effective examples after mean pooling removes the within-slide diversity that may carry mutation-specific signal.",
+      "evidence": "The paper argues that the bottleneck is the data structure created by aggregation rather than the classifier family itself.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "2024"
+    },
+    {
+      "source": "PathGene Benchmark",
+      "target": "Histopathology Images",
+      "relType": "ORGANIZES",
+      "causalClassification": "ENABLES",
+      "description": "PathGene organizes histopathology images together with mutation and exon labels into a benchmark suitable for standardized comparison of lung-cancer path-genomics systems across institutions.",
+      "evidence": "The paper cites PathGene as a multicentre lung cancer histopathology dataset with gene mutation calls.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "2025"
+    }
+  ],
+  "causal_chains": [
+    {
+      "name": "Clinical Need To Patch-Level Mutation Inference",
+      "description": "This chain tracks how clinical demand for mutation information under sequencing constraints motivates a pathology-based inference pipeline and culminates in patch-level training as a practical methodological response.",
+      "links": [
+        {
+          "source": "Precision Oncology",
+          "target": "Next-Generation Sequencing",
+          "explanation": "Precision oncology depends on molecular information, making sequencing the incumbent evidence source."
+        },
+        {
+          "source": "Next-Generation Sequencing",
+          "target": "Histopathology Images",
+          "explanation": "Sequencing constraints motivate interest in histopathology as a lower-cost, already-available modality."
+        },
+        {
+          "source": "Histopathology Images",
+          "target": "Image-Level Training",
+          "explanation": "Once pathology becomes the evidence source, patch-level supervision is proposed to extract more learnable signal from it."
+        },
+        {
+          "source": "Image-Level Training",
+          "target": "XGBoost",
+          "explanation": "Patch-level supervision provides enough samples for a classical classifier to operate effectively."
+        }
+      ]
+    },
+    {
+      "name": "Validation Gap And Next-Step Methods",
+      "description": "This chain captures how the anchor paper?s evaluation gap around new-patient generalization motivates benchmark validation and methodological extensions that can localize signal more faithfully.",
+      "links": [
+        {
+          "source": "Patient-Level Aggregation",
+          "target": "Image-Level Training",
+          "explanation": "The field shifts away from aggregation toward tile-level learning to recover signal density."
+        },
+        {
+          "source": "Image-Level Training",
+          "target": "Patient-Level Generalization",
+          "explanation": "Better tile-level training does not by itself solve new-patient validation."
+        },
+        {
+          "source": "Patient-Level Generalization",
+          "target": "PathGene Benchmark",
+          "explanation": "External benchmark datasets are needed to evaluate whether the system generalizes."
+        },
+        {
+          "source": "PathGene Benchmark",
+          "target": "Attention-Based MIL",
+          "explanation": "Stronger validation also motivates methods like MIL that can better align patient labels with informative regions."
+        }
+      ]
+    }
+  ]
+}

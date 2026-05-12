@@ -1,0 +1,227 @@
+{
+  "temporal_phases": [
+    { "index": 1, "label": "Historical Precedent", "period": "1988-2019" },
+    { "index": 2, "label": "The Arsenal Build", "period": "2019-2025" },
+    { "index": 3, "label": "Operation Epic Fury", "period": "February-March 2026" },
+    { "index": 4, "label": "The Invisible Siege", "period": "March 2026" },
+    { "index": 5, "label": "The Cascade", "period": "March 2026 onward" }
+  ],
+  "entities": [
+    {
+      "name": "Strait of Hormuz",
+      "aliases": ["Hormuz", "The Strait"],
+      "category": "Place",
+      "definition": "21-nautical-mile-wide waterway between Iran and Oman connecting the Persian Gulf to the open ocean, through which 20.5 million barrels of oil flow daily — one-fifth of global consumption — with only 6 miles of navigable shipping lanes, making it the world's most critical energy chokepoint with no viable substitute route.",
+      "role": "The physical chokepoint that concentrates global energy vulnerability into a single geographic point. The strait's stance is structural: it has no opinion, but its geometry dictates that one-fifth of global energy passes through a corridor visible from shore to shore. The mechanics: (1) two 2-mile shipping lanes plus a 2-mile buffer = 6 miles navigable, (2) approximately 100 vessels transit daily including supertankers carrying $200M cargo each, (3) shipping lanes run through contested Omani/Iranian waters under unratified UNCLOS rules, (4) the entire Persian Gulf has ONE exit — this is it. The vulnerability isn't the strait itself — it's the dependency: a global energy system engineered for efficiency with zero structural redundancy for its most critical chokepoint.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Iran",
+      "aliases": ["Islamic Republic of Iran", "Tehran"],
+      "category": "Place",
+      "definition": "Nation controlling the northern shore of the Strait of Hormuz that has developed a comprehensive asymmetric warfare doctrine — fast-attack boats, naval mines, coastal anti-ship missiles, and swarm tactics — specifically designed to close the strait not through conventional naval power but through creating sufficient uncertainty that insurance markets close it autonomously.",
+      "role": "The asymmetric challenger who turned geographic proximity into strategic leverage. Iran's stance is area denial: it doesn't need to defeat the US Fifth Fleet, it needs to make the strait too dangerous to transit. The mechanics evolved from lessons of defeat: (1) after losing half its navy in 8 hours in Operation Praying Mantis (1988), Iran abandoned conventional naval ambitions, (2) built the IRGC Navy with 1,500+ fast-attack boats for swarm warfare, (3) maintained 2,000-5,000 naval mines that can be laid from indistinguishable fishing boats, (4) deployed mobile coastal anti-ship missiles covering the entire strait. The key insight Iran grasped before anyone: the strait's real gatekeepers sit in Lloyd's of London, not the Pentagon. Create enough threat, and the insurance market closes the strait for you.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "IRGC Navy",
+      "aliases": ["IRGCN", "Islamic Revolutionary Guard Corps Navy"],
+      "category": "Organization",
+      "definition": "Iran's parallel naval force (distinct from the conventional IRIN) based at Bandar Abbas directly on the Strait of Hormuz, operating 1,500+ fast-attack craft including Heydar-110 class boats reaching 110 knots with anti-ship cruise missiles — designed for swarm warfare doctrine where dozens of expendable boats converge simultaneously on targets from multiple directions.",
+      "role": "The military instrument of Iran's asymmetric strait-denial doctrine. The IRGCN's stance is that conventional naval power is irrelevant in a 21-mile strait — swarm warfare turns geographic confinement from disadvantage to weapon. The mechanics: (1) 1,500+ fast boats each carrying missiles or torpedoes, each expendable, each a separate target for defensive systems, (2) Heydar-110 class reaches 110 knots with 300-750km range anti-ship cruise missiles, (3) doctrine specifically designed after the 1988 Praying Mantis defeat — don't fight the Americans on their terms, (4) even after 130 vessels hit and 100+ destroyed during Epic Fury, the asymmetric doctrine continued via mines and coastal missiles because the doctrine doesn't require ships. The IRGCN understood that sinking one tanker closes the strait more effectively than a thousand missiles — because the closure is actuarial, not physical.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Lloyd's of London",
+      "aliases": ["Lloyd's", "Lloyd's Syndicates"],
+      "category": "Organization",
+      "definition": "Maritime insurance marketplace operating since 1688 that underwrites 70-80% of the world's war risk business — whose actuarial decisions about risk pricing determine whether shipping lanes function as trade routes, making insurance underwriters, not military commanders, the true gatekeepers of the Strait of Hormuz.",
+      "role": "The invisible gatekeeper whose actuarial calculations actually close the strait. Lloyd's stance is pure risk assessment: when a waterway becomes uninsurable, it ceases to function regardless of physical access. The mechanics: (1) war risk premiums quadrupled overnight from 0.25% to 1% of hull value — $1.5M per transit per week for a supertanker, (2) Lloyd's writes 70-80% of global war risk, creating a near-monopoly on the permission to sail, (3) when Lloyd's prices a waterway as uninsurable, it ceases to function as a trade route regardless of whether any ship has been struck, (4) the most powerful navy in the world cannot overrule an actuarial calculation. Lloyd's is where Adam Smith's invisible hand closes markets entirely when risk exceeds a threshold.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "P&I Clubs",
+      "aliases": ["Protection and Indemnity Clubs", "Mutual Insurance Associations"],
+      "category": "Organization",
+      "definition": "Mutual insurance associations (Gard, Skuld, North-Standard, London P&I Club, Steamship Mutual) covering third-party liability for shipowners — whose collective cancellation of war risk extensions for Persian Gulf vessels made the decisive move that closed the strait commercially, since without P&I coverage no vessel can legally operate, load cargo, or enter ports.",
+      "role": "The decisive insurance mechanism that closed the strait more effectively than any weapon. P&I clubs' stance is binary: covered or not covered. The mechanics: (1) collectively cover the majority of global merchant shipping tonnage, (2) cancelled war risk extensions for all Persian Gulf vessels, (3) without P&I coverage a ship cannot legally operate — no port accepts it, no cargo owner loads it, no bank finances it, (4) the coverage withdrawal did what no missile could: made the strait commercially nonexistent. The critical asymmetry: Lloyd's prices risk, P&I clubs cancel coverage — together they transformed a military threat into a commercial impossibility.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Operation Epic Fury",
+      "aliases": ["Epic Fury"],
+      "category": "Event",
+      "definition": "US and Israeli military operation beginning February 28, 2026 that struck Iranian targets including 130 IRGC naval vessels (100+ destroyed) and every Soleimani-class corvette — rendering the IRGCN 'combat ineffective' in conventional terms while simultaneously triggering Iran's asymmetric playbook of mines, coastal missiles, and insurance-market disruption that achieved the functional closure the conventional navy never could.",
+      "role": "The catalytic event that transformed a theoretical threat into an actual strait closure. Epic Fury's stance was conventional military dominance — destroy Iran's naval capability. The mechanics: (1) dozens of targets struck across Iran, (2) IRGC Navy a primary objective, (3) by Day 16 CENTCOM reported 130 vessels hit, 100+ destroyed, every Soleimani-class corvette sunk, (4) assessed as 'combat ineffective.' But the operation triggered what it intended to prevent: the IRGC activated the asymmetric playbook — mines, coastal missiles, and the phone call to Lloyd's — because retaliation was already underway, removing the restraint that had held for forty years. Epic Fury destroyed Iran's conventional capability while activating the unconventional doctrine that actually closed the strait.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Operation Praying Mantis",
+      "aliases": ["Praying Mantis", "1988 Naval Engagement"],
+      "category": "Event",
+      "definition": "Largest American naval engagement since World War II, launched April 18, 1988 in retaliation for the USS Samuel B. Roberts mine strike — US forces sank the Iranian frigate Sahand, disabled Sabalan, destroyed the Joshan, and demolished two IRGC oil platform staging bases, destroying half Iran's operational navy in eight hours and teaching Iran the lesson that reshaped its entire doctrine toward asymmetric warfare.",
+      "role": "The formative defeat that created Iran's asymmetric doctrine. Praying Mantis taught two different lessons to two different militaries: (1) Washington learned that overwhelming force works in the Gulf, (2) Tehran learned never to fight Americans on their terms — adapt, go asymmetric, make the strait itself the weapon. The mechanics of transformation: Iran conducted an extensive internal review and concluded the answer was not a bigger navy but a different kind of force — one that turned the strait's geography from vulnerability into weapon. Conventional naval warfare in a confined 21-mile waterway favors the defender. Every subsequent Iranian investment — swarm boats, mines, coastal missiles — traces directly to the Praying Mantis lesson.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "USS Samuel B. Roberts",
+      "aliases": ["Samuel B. Roberts"],
+      "category": "Technology",
+      "definition": "US guided-missile frigate that struck an Iranian M-08 contact mine on April 14, 1988 while escorting reflagged Kuwaiti tankers during Operation Earnest Will — the mine strike ripped a 15-foot hull hole and broke the ship's keel, directly triggering Operation Praying Mantis and demonstrating that a mine costing thousands of dollars can threaten a vessel worth hundreds of millions.",
+      "role": "The physical proof that asymmetric mine warfare works. The Roberts incident demonstrated the core asymmetry: (1) a mine costing a few thousand dollars nearly sank a $200M+ warship, (2) serial numbers matched mines previously seized from an Iranian barge — attribution was clear but prevention was impossible, (3) the same tactic remained viable 38 years later because mines can be laid from indistinguishable fishing boats. The Roberts is the case study that validates Iran's entire asymmetric doctrine: you don't need to match American naval power if a single mine can stop the world's most expensive warships.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Naval Mines",
+      "aliases": ["Mine Warfare", "Contact Mines"],
+      "category": "Technology",
+      "definition": "Iran's estimated arsenal of 2,000-5,000 naval mines — including Soviet-era contact mines, Chinese EM-52 rocket-propelled rising mines, and domestic variants — that represent the most cost-effective asymmetric weapon for chokepoint denial: a mine costs thousands of dollars, the supertanker it destroys costs $150 million, and clearing mines takes weeks while laying them takes hours.",
+      "role": "The ultimate asymmetric weapon whose economics define the Hormuz calculus. Mines' stance is strategic patience — they wait. The mechanics: (1) cost a few thousand dollars vs. $150M supertanker + $200M cargo, (2) can be laid from fishing boats and dhows indistinguishable from civilian traffic, (3) laying takes hours, clearing takes weeks with slow specialized minesweepers that are themselves vulnerable, (4) a carrier strike group cannot inspect every fishing boat in the Persian Gulf, (5) the Samuel B. Roberts (1988) and the 2026 mine-laying both prove the tactic remains viable across decades. Mine clearance is the most time-consuming operation in naval warfare — the math is entirely in Iran's favor.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Swarm Warfare Doctrine",
+      "aliases": ["Swarm Tactics", "Area Denial Doctrine"],
+      "category": "Concept",
+      "definition": "IRGC naval doctrine developed after the 1988 Praying Mantis defeat, where dozens of fast boats converge simultaneously on targets from multiple directions — each expendable, each armed with missiles or torpedoes, each a separate tracking problem — optimized not for naval victory but for area denial in a confined 21-mile waterway where a single burning tanker closes the strait more effectively than a fleet engagement.",
+      "role": "The doctrinal innovation that turned defeat into advantage. Swarm warfare's stance is that conventional naval power is irrelevant in confined waters. The mechanics: (1) derived from post-Praying Mantis review — the answer was not a bigger navy but a different kind of force, (2) in open ocean a carrier strike group handles swarms, but in a 21-mile strait with civilian traffic and coastal geography the calculus changes, (3) the force is optimized for area denial, not naval battle, (4) one burning supertanker visible on satellite imagery closes the strait more effectively than a thousand missiles — because the closure is actuarial, not physical. The doctrine's genius: the IRGC understood that the strait's real gatekeepers sit in Lloyd's, not the Pentagon.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Coastal Anti-Ship Missiles",
+      "aliases": ["Mobile Coastal Batteries", "Shore-Based Missiles"],
+      "category": "Technology",
+      "definition": "Iran's mobile truck-launched anti-ship missile systems — Noor, Qader, Khalij-e-Fars (a ballistic anti-ship missile for moving vessels) — deployed along 1,500km of Iranian coastline behind ridgelines, covering the entire strait and deep into the Gulf of Oman, relocatable within minutes of firing so counterstrikes hit empty positions.",
+      "role": "The persistent threat layer that survives conventional military degradation. Coastal missiles' stance is shoot-and-move persistence. The mechanics: (1) range covers entire strait plus Gulf of Oman — ships that have already transited aren't safe, (2) mobile launchers hide behind ridgelines and dunes, (3) relocatable within minutes of firing — the position that existed five minutes ago is empty by counterstrike, (4) air power can degrade but not eliminate across 1,500km of coastline with natural concealment, (5) Epic Fury struck coastal installations but 'degraded' is not 'eliminated' — the question is never whether ALL missiles are destroyed, but whether ENOUGH survive to threaten a single tanker. The answer remains yes.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Insurance-Based Closure Mechanism",
+      "aliases": ["Actuarial Closure", "Insurance Weapon"],
+      "category": "System",
+      "definition": "The mechanism by which a military threat translates into commercial impossibility — Iran creates enough credible threat (mines, missiles, demonstrated willingness) that Lloyd's war risk premiums make transit economically prohibitive, then P&I clubs cancel coverage entirely, making ships legally unable to operate — closing the strait through the Western financial system's own risk-pricing infrastructure.",
+      "role": "The system that makes Iran's asymmetric strategy work without requiring military victory. The mechanism's stance is that the real battlefield is actuarial, not naval. The mechanics form a cascade: (1) IRGC creates credible threat through demonstrated attacks and mine-laying, (2) Lloyd's quadruples war risk premiums — $1.5M per transit per week, (3) P&I clubs cancel coverage entirely — ships legally cannot operate, (4) charterer rates spike 4x from $200K to $800K/day, (5) the cost propagates through refiner → distributor → gas station → consumer at every link. The IRGC grasped that the insurance market discriminates by flag — Chinese and Indian vessels got lower premiums, fracturing the anti-Iran coalition. The most powerful navy in the world cannot overrule an actuarial calculation.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "US Fifth Fleet",
+      "aliases": ["Fifth Fleet", "NAVCENT"],
+      "category": "Organization",
+      "definition": "US naval force headquartered at Naval Support Activity Bahrain responsible for maritime security across the Persian Gulf, Strait of Hormuz, Gulf of Oman, and Arabian Sea — the primary military instrument for protecting oil transit through the world's most critical chokepoint, yet unable to overrule insurance market decisions that actually determine whether ships sail.",
+      "role": "The conventional military force whose overwhelming power proved insufficient to keep the strait commercially open. The Fifth Fleet's stance is freedom of navigation and protection of oil transit routes. The mechanics: (1) carrier strike groups, destroyer squadrons, minesweepers, patrol craft, (2) successfully destroyed Iran's conventional navy during Epic Fury (130 vessels hit), (3) but could not prevent mine-laying from indistinguishable civilian vessels, (4) could not force insurance markets to cover Gulf transits, (5) could not inspect every fishing boat in the Persian Gulf. The fundamental lesson: military dominance in the strait is necessary but not sufficient — the real gatekeepers are in London insurance offices.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Saudi Arabia",
+      "aliases": ["The Kingdom", "Saudi"],
+      "category": "Place",
+      "definition": "World's largest oil exporter whose production and exports flow primarily through the Strait of Hormuz — with the East-West Petroline pipeline to Yanbu (5-7M barrels/day capacity) as only partial bypass, and whose Abqaiq processing complex (world's largest) was struck by 18 drones and 7 cruise missiles in September 2019, knocking 5.7 million barrels/day offline and demonstrating vulnerability of the kingdom's oil infrastructure.",
+      "role": "The largest single source of oil flowing through the chokepoint and the primary target of asymmetric probing. Saudi Arabia's stance is dependence on both the strait and US military protection. The mechanics of vulnerability: (1) Abqaiq processing center handles majority of Saudi crude — a single strike knocked 5.7M barrels/day offline (half of Saudi output, 5% of global supply), (2) the Petroline bypass to Yanbu covers only 5-7M of 20M daily Hormuz flows, (3) Saudi Arabia's oil infrastructure is concentrated and targetable, (4) the kingdom depends on the same US military umbrella that the petrodollar system created. Saudi Arabia is simultaneously the strait's largest beneficiary (oil revenues) and most vulnerable stakeholder (concentrated infrastructure, limited bypass).",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Japan",
+      "aliases": ["Japanese Economy"],
+      "category": "Place",
+      "definition": "World's third-largest economy with extreme energy vulnerability — 87% of total energy from imported fossil fuels, 90% of crude from the Middle East, virtually all transiting the Strait of Hormuz — holding 140 days of strategic petroleum reserves that buffer a crisis measured in weeks but cannot survive one measured in months.",
+      "role": "The most vulnerable major economy to Hormuz closure. Japan's stance is maximum dependency with limited mitigation. The mechanics: (1) 87% total energy from imported fossil fuels — among the highest of any major economy, (2) 90% of crude originates in the Middle East, virtually all through Hormuz, (3) 140 days of strategic reserves — adequate for weeks, inadequate for months, (4) below 90 days reserves, planners model rationing scenarios; below 60 days they implement them, (5) cannot absorb a shock the way China can (China's fossil fuels are only 20% of energy mix). Japan is the case study proving that strategic reserves are buffers, not solutions.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "China",
+      "aliases": ["People's Republic of China", "PRC"],
+      "category": "Place",
+      "definition": "Absorbs 37.7% of all oil flowing through the Strait of Hormuz — more than any other nation — but with lower proportional vulnerability than Japan or South Korea because fossil fuels account for only 20% of China's total energy mix, creating a strategic asymmetry where the largest Hormuz consumer has the most capacity to absorb a disruption.",
+      "role": "The largest consumer of Hormuz oil whose proportional resilience creates geopolitical leverage. China's stance during the closure was pragmatic: maintain quiet channels with Tehran. The mechanics: (1) absorbs 37.7% of Hormuz oil — the single largest share, (2) but fossil fuels are only 20% of total energy — China can absorb the shock better than Japan/South Korea, (3) the insurance market's selective pricing gave Chinese vessels lower premiums, creating incentive to maintain back-channel diplomacy with Iran, (4) Iran's strategy deliberately discriminated in China's favor — lower risk premiums for Chinese/Indian ships fractured the anti-Iran coalition. China's resilience turns its vulnerability into diplomatic leverage.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Oil Price Cascade",
+      "aliases": ["Price Cascade", "Rate Shock"],
+      "category": "Process",
+      "definition": "Multi-stage economic cascade triggered by Hormuz closure: Brent crude crossed $100 then reached $126 with a $40 geopolitical risk premium ($4 billion/day extracted from the global economy), supertanker charter rates quadrupled from $200K to $800K/day, and costs propagated through refiner → distributor → consumer at every link — all before actual supply shortfalls materialized.",
+      "role": "The economic transmission mechanism that distributes chokepoint risk globally. The cascade's stance is that fear is more expensive than scarcity — scarcity is calculable, fear is not. The mechanics: (1) $40/barrel risk premium × 100M barrels/day = $4B/day extracted from the global economy by uncertainty alone, (2) Goldman Sachs modeled $98 (quick reopen) to $200+ (worst case) — matching the IRGC's own declaration, (3) supertanker charter rates quadrupled adding $10-14M war risk per voyage, (4) each link adds a margin for uncertainty — by the time premiums reach consumers in Tokyo or Mumbai they've been multiplied at every handoff, (5) Dallas Fed assessment: stagflation — the worst macroeconomic outcome that central banks have no good tool to fight.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Strategic Petroleum Reserves",
+      "aliases": ["SPR", "Strategic Reserves"],
+      "category": "Resource",
+      "definition": "Emergency oil stockpiles held by 31 IEA member nations — 400 million barrels released in the largest coordinated drawdown in the IEA's 52-year history — that represent 20 days of Hormuz traffic and require 13 days from presidential order to market delivery, making them a slow weapon against a fast crisis that buys time but cannot substitute for the strait.",
+      "role": "The emergency buffer that proves the system's fragility rather than its resilience. SPR's stance is temporary relief. The mechanics: (1) 400M barrels released — largest in IEA history, larger than Libya 2011 or Russia-Ukraine 2022, (2) equals only 20 days of Hormuz flows — weeks of buffer, not months, (3) US SPR requires ~13 days from presidential order to market delivery through pipelines and refining, (4) Japan holds 140 days (adequate for weeks), South Korea 90 days (3 months), India and developing nations have minimal reserves. The reserves reveal the timeline: if the strait stays closed for a month they buy time; three months, a slower crisis; six months, they run out and the world enters territory no economic model has ever been tested against.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "International Energy Agency",
+      "aliases": ["IEA"],
+      "category": "Organization",
+      "definition": "Organization created in 1974 specifically because the 1973 OPEC embargo nearly toppled Western economies — activated the system it was built for during the 2026 Hormuz crisis by coordinating the largest strategic petroleum reserve release in its 52-year history (400 million barrels across 31 nations).",
+      "role": "The institutional response mechanism born from the same 1973 crisis that created the petrodollar system. The IEA's stance is coordinated energy security. The mechanics: (1) created in direct response to the 1973 OPEC embargo, (2) coordinates strategic reserve releases among 31 member nations, (3) activated the largest release in its history during the 2026 Hormuz crisis, (4) but the IEA system was designed for supply disruptions, not for insurance-driven closures — no reserve release can address the actuarial mechanism that actually closed the strait. The IEA represents the pattern: each crisis produces institutions designed to prevent the next one, but each institution proves insufficient when the next crisis arrives.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Bypass Pipeline Network",
+      "aliases": ["Petroline", "Alternative Routes"],
+      "category": "System",
+      "definition": "The only infrastructure alternatives to Hormuz transit — Saudi East-West Petroline to Yanbu (5-7M bbl/day), UAE Abu Dhabi pipeline to Fujairah (1.8M bbl/day), Iraq-Turkey Kirkuk-Ceyhan pipeline (~1.6M bbl/day intermittent) — totaling 8-9M barrels/day maximum against 20M barrels/day of regular Hormuz flows, leaving an unbridgeable 11-12M barrel/day gap.",
+      "role": "The proof that the chokepoint has no substitute. The bypass network's stance is partial mitigation at best. The mechanics: (1) total maximum bypass capacity: 8-9M barrels/day — generous estimate, (2) regular Hormuz flows: 20M barrels/day, (3) the gap: 11-12M barrels/day that have no pipeline, no alternative route, no substitute, (4) the Cape of Good Hope route adds 10-14 days to European and 7-10 days to Asian deliveries at quadrupled charter rates, (5) during the 2024 Red Sea Houthi crisis, just container rerouting doubled rates — Hormuz volumes dwarf that disruption. No combination of alternatives replaces the strait. That is what makes it a chokepoint.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Fertilizer Cascade",
+      "aliases": ["Food Crisis Thread", "Agricultural Cascade"],
+      "category": "Process",
+      "definition": "The hidden branch of the Hormuz crisis most analysts miss — one-third of global fertilizer trade transits the strait (Qatar nitrogen/urea, Saudi/UAE/Oman phosphates/potash), with New Orleans benchmark prices spiking 43% ($475 to $680/metric ton), propagating to food prices with a 3-6 month lag that transforms an energy crisis into a food crisis hitting the same vulnerable populations.",
+      "role": "The demonstration that Hormuz is simultaneously an energy crisis and a food crisis on a delayed timeline. The fertilizer cascade's stance is hidden interconnection. The mechanics: (1) one-third of global fertilizer trade transits Hormuz — a fact most analysts miss, (2) Qatar is a top global nitrogen fertilizer producer, (3) nitrogen prices spiked 43% at the New Orleans benchmark, (4) fertilizer price → food price with 3-6 month lag (planting to harvest), (5) countries importing the most fertilizer and least able to afford shocks — Egypt (60% wheat imports), Bangladesh, Sub-Saharan Africa, Philippines — face food insecurity. The energy cascade and food cascade are the same cascade, running through the same chokepoint, hitting the same populations without strategic reserves.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Selective Insurance Mechanism",
+      "aliases": ["Two-Tier Risk Pricing", "Flag-Based Discrimination"],
+      "category": "System",
+      "definition": "The geopolitical strategy Iran executed through actuarial tables — ships with American, British, or Israeli connections charged 3x standard war risk premiums while Chinese, Indian, and non-aligned vessels received lower premiums and Iranian guarantees of safe passage — using the Western financial system's own risk-pricing infrastructure to fracture the military coalition against Iran.",
+      "role": "The innovation that turned insurance from neutral market mechanism into geopolitical weapon. The selective mechanism's stance is divide and conquer through actuarial tables. The mechanics: (1) Iran couldn't militarily distinguish tankers by flag in combat, but insurance markets could and did, (2) ships with US/UK/Israeli connections charged 3x premiums, (3) Chinese vessels (37.7% of Hormuz flows) and Indian vessels (14.7%) got different treatment — lower premiums and Iranian safe-passage guarantees, (4) this created incentive for China and India to maintain quiet channels with Tehran rather than join Western coalition, (5) the IRGC achieved through risk pricing what no military operation could: fracturing the anti-Iran coalition using the West's own financial system.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Abqaiq-Khurais Attack",
+      "aliases": ["September 2019 Attack", "Aramco Strike"],
+      "category": "Event",
+      "definition": "September 14, 2019 drone and cruise missile attack on Saudi Aramco's Abqaiq and Khurais oil processing facilities — the world's largest oil processing complex — using 18 drones and 7 cruise missiles to knock 5.7 million barrels/day offline in a single strike (half of Saudi output, 5% of global supply), spiking oil 15% in one trading session.",
+      "role": "The reconnaissance strike that mapped the system's pressure points before the main assault. The Abqaiq attack's stance was proof of concept. The mechanics: (1) 18 drones + 7 cruise missiles = $50M+ damage to the world's largest oil processing complex, (2) 5.7M barrels/day knocked offline — half of Saudi output, 5% of global supply, (3) oil spiked 15% in a single trading session, (4) Houthis claimed it, US/UK/France/Germany attributed it to Iran, (5) the attack was not meant to start a war — it was reconnaissance: mapping pressure points, testing insurance market response, measuring price movements, observing US military reaction. The IRGC was studying the machine before deciding to break it.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "South Korea",
+      "aliases": ["Republic of Korea"],
+      "category": "Place",
+      "definition": "World's fifth-largest oil importer with 81% import dependence, 70% of crude from the Middle East, 95%+ routed through Hormuz, and approximately 90 days of strategic petroleum reserves — one of the largest LNG importers and petrochemical producers globally, facing a choice between economic contraction and energy rationing if the strait stays closed beyond three months.",
+      "role": "The second-most vulnerable major economy to Hormuz closure after Japan. South Korea's stance is critical dependency with limited alternatives. The mechanics: (1) 81% energy import dependence — nearly identical vulnerability profile to Japan, (2) 70% of crude from Middle East, 95%+ through Hormuz, (3) 90 days strategic reserves — 3 months maximum, then economic contraction or rationing, (4) massive petrochemical industry depends on Middle Eastern feedstocks, (5) LNG imports also affected by Hormuz. South Korea and Japan together represent the world's third and fourth largest economies running on a supply line through a 21-mile gap controlled by a country that has threatened closure at least a dozen times since 1979.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "India",
+      "aliases": ["Republic of India"],
+      "category": "Place",
+      "definition": "Nation importing 60% of its oil from the Middle East with less strategic reserve depth than Japan or South Korea and far more population to supply — benefiting from Iran's selective insurance pricing (lower premiums for Indian vessels) but facing acute energy vulnerability from Hormuz closure, alongside Bangladesh, Pakistan, and the Philippines as nations with minimal reserves and maximal vulnerability.",
+      "role": "The large developing economy caught between vulnerability and geopolitical opportunity. India's stance during the crisis was pragmatic non-alignment. The mechanics: (1) 60% of oil imports from Middle East through Hormuz, (2) less strategic reserve depth than Japan/South Korea with 1.4 billion people to supply, (3) Iran's selective insurance pricing offered lower premiums to Indian vessels — creating incentive to maintain quiet channels with Tehran, (4) 14.7% of Hormuz oil flows go to India — the second largest Asian consumer. India represents the developing-world calculus: maximize geopolitical leverage from non-alignment while managing genuine energy vulnerability.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Chokepoint Vulnerability Cycle",
+      "aliases": ["Never Again Pattern", "Crisis-Response Cycle"],
+      "category": "Concept",
+      "definition": "The recurring pattern where each Hormuz-related crisis (1973 embargo, 1980 Iran-Iraq War, 1987-88 Tanker War, 2019 probes, 2026 functional closure) produces institutions designed to prevent repetition, but each institution proves insufficient when the next crisis arrives — because the system learns but threats evolve faster than defenses.",
+      "role": "The structural insight about why the chokepoint keeps breaking. The cycle's stance is that institutional response always lags threat evolution. The mechanics: (1) 1973 OPEC embargo → create IEA, build SPR, 'never again,' (2) 1980 Iran-Iraq War → diversify suppliers, invest in non-OPEC production, 'never again,' (3) 1987-88 Tanker War → permanent naval presence, forward-deploy carrier groups, 'never again,' (4) 2019 probes → absorb it, no structural changes, (5) 2026 functional closure → 3-5x larger than any previous crisis. Each crisis was larger than the last. Each 'never again' proved temporary. The vulnerability isn't the strait — it's a system designed as if the 21 miles would never close.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Developing World Impact",
+      "aliases": ["Vulnerable Nations", "Global South Impact"],
+      "category": "Concept",
+      "definition": "The disproportionate impact of Hormuz closure on nations with the least capacity to absorb shocks — a hospital in Dhaka running on diesel generators for neonatal wards, a fishing fleet in Accra idled by fuel costs exceeding catch value, Bangladesh/Pakistan/Philippines facing acute energy vulnerability with minimal reserves — where the war is in the Persian Gulf but the cost is distributed heaviest on those with the least.",
+      "role": "The human cost framework that reveals who actually pays for chokepoint vulnerability. The impact's stance is that global energy architecture distributes risk inversely to capacity. The mechanics: (1) diesel backup generators keeping premature infants alive in Dhaka now cost 30% more — something will be cut, unreported as a Hormuz casualty, (2) fishing fleets in Accra idled because fuel costs exceed catch value — protein gap filled by nothing, (3) nations with minimal reserves (Bangladesh, Pakistan, Philippines) face the most acute impacts with the fewest tools, (4) the countries that absorb shocks (US, Canada, Norway) designed the system, (5) the countries that break first (South Korea, Japan, then developing world) have no voice in chokepoint strategy.",
+      "first_appearance_index": 5
+    }
+  ]
+}

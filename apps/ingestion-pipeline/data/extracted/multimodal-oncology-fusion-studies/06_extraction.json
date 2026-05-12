@@ -1,0 +1,247 @@
+{
+  "project": {
+    "name": "Multimodal Oncology Fusion Studies",
+    "unique_id": "multimodal-oncology-fusion-studies",
+    "summary": "Multimodal Oncology Fusion Studies is a standalone literature project created from the reference layer of the supplied gene-mutation paper so that the MemoryTonic collection can contain multiple comparable projects instead of only one synthesized overview. The practical purpose of this project is to create graph structure that supports bridges, cross-paper comparison, and clearer separation between evidence types. In the original uploaded collection there was only a single project, which meant there could be no bridge entities by definition even if the research itself was thoughtful. This project addresses that structural limitation by representing one coherent slice of the cited literature as its own graph-ready unit. The focus here is: A grouped project synthesizing the multimodal oncology papers cited in the anchor paper, including Steyaert, Berloco, Chen, He, Yang, and Krones, around the themes of fusion performance, interpretability, and deployment readiness. The project therefore captures the entities, methods, validation themes, and clinically relevant concepts that recur in this part of the literature, especially histopathology images, mutation prediction, precision oncology, and the conditions under which claims should be trusted. It also encodes the difference between promising internal results and stronger external evidence. By storing this literature slice as a separate project in the same Gene Mutation Research collection, the graph can now discover which concepts are repeated across projects and which themes are unique to a single paper or subfield. That is what makes bridge entities meaningful in this platform: not a single long paper, but several connected projects that share important vocabulary, methods, datasets, and limitations.",
+    "narrative_flow": [
+      "This project isolates one coherent slice of the cited gene-mutation literature so that it can function as its own graph unit inside the collection.",
+      "It focuses on recurring entities such as histopathology, mutation status, validation design, and clinically meaningful molecular targets.",
+      "The project converts those themes into structured relationships so the collection can compare methods, datasets, and claims across separate projects.",
+      "Its main value inside MemoryTonic is to create shared vocabulary with neighboring projects, enabling bridge entities and cross-paper reasoning.",
+      "Together with the other uploaded literature projects, it turns the gene-mutation collection from a single summary into a true multi-project research graph."
+    ],
+    "tags": {
+      "domain": "Biomedical Research",
+      "subdomain": "Gene Mutation Literature Graph",
+      "base_tags": [
+        "gene-mutation",
+        "literature-project",
+        "computational-pathology",
+        "validation",
+        "precision-oncology"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "source": "Histopathology Images",
+      "target": "Somatic Gene Mutation",
+      "relType": "SUPPORTS_INFERENCE",
+      "causalClassification": "ENABLES",
+      "description": "Histopathology images provide the visual substrate from which mutation-linked morphology is inferred, making tissue appearance the key non-genomic evidence source for computational mutation prediction pipelines across this literature project.",
+      "evidence": "The supplied paper repeatedly frames pathology morphology as the observable phenotype of latent genomic events.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "ongoing"
+    },
+    {
+      "source": "Somatic Gene Mutation",
+      "target": "Precision Oncology",
+      "relType": "GUIDES",
+      "causalClassification": "ENABLES",
+      "description": "Somatic mutation status guides targeted therapy selection and molecular stratification in precision oncology, giving direct clinical relevance to any method that can estimate mutation state from pathology evidence.",
+      "evidence": "The supplied paper describes mutation profiling as foundational to personalized cancer therapy.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "ongoing"
+    },
+    {
+      "source": "Histopathology Images",
+      "target": "Precision Oncology",
+      "relType": "SUPPORTS_SCREENING",
+      "causalClassification": "SUPPORTS",
+      "description": "If pathology images can support mutation inference, they become useful to precision oncology screening because they are already produced in routine care and may prioritize who most needs confirmatory sequencing.",
+      "evidence": "The supplied paper frames image-based prediction as a triage and acceleration mechanism rather than only a research exercise.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Patient-Level Generalization",
+      "target": "Precision Oncology",
+      "relType": "REQUIRED_FOR",
+      "causalClassification": "DEPENDS_ON",
+      "description": "Strong patient-level generalization is required before promising research metrics can be treated as clinically meaningful support for precision oncology workflows beyond the originating cohort.",
+      "evidence": "The broader literature repeatedly distinguishes internal performance from stronger translational evidence.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "External Validation",
+      "target": "Patient-Level Generalization",
+      "relType": "ESTABLISHES",
+      "causalClassification": "ENABLES",
+      "description": "External validation is the main empirical mechanism for establishing whether mutation-prediction systems generalize to unseen cohorts and institutions rather than only to familiar development data.",
+      "evidence": "The supplied paper and its cited literature emphasize external robustness as a key standard.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Interpretability",
+      "target": "Precision Oncology",
+      "relType": "SUPPORTS_TRUST",
+      "causalClassification": "ENABLES",
+      "description": "Interpretability supports clinical trust because researchers and clinicians need to know whether a mutation prediction rests on plausible morphology or unstable artefacts before it influences precision oncology decisions.",
+      "evidence": "The cited reviews identify interpretability as a major open challenge for medical AI.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Histopathology Images",
+      "target": "Patient-Level Generalization",
+      "relType": "CHALLENGES",
+      "causalClassification": "INFLUENCES",
+      "description": "Variation in staining, tissue composition, cohort makeup, and acquisition conditions makes patient-level generalization a central challenge for histopathology-based mutation prediction even when proof-of-concept signal exists.",
+      "evidence": "The literature repeatedly returns to robustness and external validation as unresolved needs.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Histopathology Images",
+      "target": "External Validation",
+      "relType": "REQUIRES",
+      "causalClassification": "DEPENDS_ON",
+      "description": "Because pathology datasets vary across institutions and cohorts, claims made from histopathology-based mutation systems require external validation to demonstrate reproducibility and real robustness.",
+      "evidence": "The supplied paper highlights external validation as the stronger test across the field.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Histopathology Images",
+      "target": "KRAS",
+      "relType": "PREDICTS",
+      "causalClassification": "SUPPORTS",
+      "description": "Histopathology-based mutation prediction literature also repeatedly targets KRAS, making it a natural bridge entity across lung-cancer and multimodal mutation studies.",
+      "evidence": "The supplied paper names KRAS as a recurring and clinically relevant driver mutation.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Attention-Based MIL",
+      "target": "Patient-Level Generalization",
+      "relType": "CAN_IMPROVE",
+      "causalClassification": "SUPPORTS",
+      "description": "Attention-based MIL can improve patient-level generalization by learning which regions are truly informative instead of giving every tile equal importance under coarse patient-level labels.",
+      "evidence": "The supplied paper cites MIL as a future direction for addressing label noise and localization.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Multimodal Fusion",
+      "target": "Precision Oncology",
+      "relType": "ADVANCES",
+      "causalClassification": "SUPPORTS",
+      "description": "Multimodal fusion advances precision oncology by combining pathology with complementary clinical or molecular evidence, often producing stronger and more biologically informative systems than single-modality approaches.",
+      "evidence": "The cited reviews summarize multimodal AI as outperforming unimodal systems on average.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "ResNet-50",
+      "target": "Histopathology Images",
+      "relType": "ENCODES",
+      "causalClassification": "ENABLES",
+      "description": "ResNet-50 and related backbones encode histopathology images into reusable visual representations, making them part of the shared technical vocabulary for pathology-based mutation prediction and downstream analysis.",
+      "evidence": "The supplied paper and several cited works use or discuss ResNet-based representations.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "KRAS",
+      "target": "Precision Oncology",
+      "relType": "INFLUENCES",
+      "causalClassification": "ENABLES",
+      "description": "KRAS mutation status strongly shapes treatment framing and biological interpretation in oncology, so it repeatedly appears as a meaningful target in pathology-based mutation prediction work.",
+      "evidence": "The supplied paper explicitly highlights KRAS in its clinical framing.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "TP53",
+      "target": "Somatic Gene Mutation",
+      "relType": "REPRESENTS",
+      "causalClassification": "SUPPORTS",
+      "description": "TP53 acts as a recurring example of a biologically important and frequently studied mutation target, helping connect cross-cancer studies and multimodal mutation projects within the collection.",
+      "evidence": "The supplied paper and cited literature repeatedly mention TP53 as a relevant gene target.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "ResNet-50",
+      "target": "Patient-Level Generalization",
+      "relType": "DOES_NOT_GUARANTEE",
+      "causalClassification": "CONTRADICTS",
+      "description": "A stronger backbone such as ResNet-50 can improve representation quality, but architecture choice alone does not guarantee patient-level generalization when cohort diversity and evaluation design remain limited.",
+      "evidence": "The literature repeatedly separates modelling strength from robustness across patients and institutions.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Multimodal Fusion",
+      "target": "Patient-Level Generalization",
+      "relType": "CAN_STRENGTHEN",
+      "causalClassification": "SUPPORTS",
+      "description": "Multimodal fusion can strengthen patient-level generalization by combining complementary evidence streams, though it still requires rigorous external testing to prove robustness.",
+      "evidence": "The cited reviews summarize multimodal systems as stronger on average than unimodal approaches.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "ongoing"
+    }
+  ],
+  "causal_chains": [
+    {
+      "name": "Morphology To Clinical Relevance",
+      "description": "This chain captures how pathology morphology leads to mutation prediction and then to the stricter demand for clinically meaningful validation.",
+      "links": [
+        {
+          "source": "Histopathology Images",
+          "target": "Somatic Gene Mutation",
+          "explanation": "Morphology is treated as evidence of latent genomic state."
+        },
+        {
+          "source": "Somatic Gene Mutation",
+          "target": "Precision Oncology",
+          "explanation": "Mutation state matters because it changes treatment reasoning."
+        },
+        {
+          "source": "Precision Oncology",
+          "target": "Patient-Level Generalization",
+          "explanation": "Clinical value depends on generalization beyond the development cohort."
+        }
+      ]
+    },
+    {
+      "name": "Validation Discipline",
+      "description": "This chain shows why external evaluation is required before pathology mutation systems are treated as strong translational evidence.",
+      "links": [
+        {
+          "source": "Histopathology Images",
+          "target": "External Validation",
+          "explanation": "Pathology claims require testing outside one data environment."
+        },
+        {
+          "source": "External Validation",
+          "target": "Patient-Level Generalization",
+          "explanation": "External evaluation is the main test of true generalization."
+        },
+        {
+          "source": "Patient-Level Generalization",
+          "target": "Precision Oncology",
+          "explanation": "Generalization determines whether the system is useful in practice."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "format": "memorytonic-collection-export",
+  "schema_version": "1.0",
+  "exported_at": "2026-04-08T07:38:12.030Z",
+  "collection": "Global Finance Systems",
+  "files": [
+    "graph.json",
+    "README.md",
+    "projects/central-banks-the-invisible-hand/source.html",
+    "projects/the-green-revolution-trap/source.html",
+    "projects/the-imf-lender-of-last-resort/source.html",
+    "projects/the-opium-equation/source.html",
+    "projects/the-petrodollar-system/source.html",
+    "projects/the-strait-of-hormuz-military-chokepoint-that-broke-global-energy/source.html",
+    "projects/water-privatization-system/source.html",
+    "manifest.json"
+  ]
+}

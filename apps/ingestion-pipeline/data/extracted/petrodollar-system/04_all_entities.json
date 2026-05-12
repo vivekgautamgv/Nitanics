@@ -1,0 +1,300 @@
+{
+  "temporal_phases": [
+    { "index": 1, "label": "Bretton Woods Era", "period": "1944-1971" },
+    { "index": 2, "label": "Nixon Shock & Vacuum", "period": "1971-1973" },
+    { "index": 3, "label": "Oil Crisis & Pact Formation", "period": "1973-1975" },
+    { "index": 4, "label": "Petrodollar Machine", "period": "1975-2000" },
+    { "index": 5, "label": "Cracks & Challenges", "period": "2000-2024" },
+    { "index": 6, "label": "Future Scenarios", "period": "2024-forward" }
+  ],
+  "entities": [
+    {
+      "name": "United States",
+      "aliases": ["America", "US", "USA"],
+      "category": "Place",
+      "definition": "Dominant post-WWII economic and military superpower that engineered the petrodollar system as a replacement for the collapsed gold standard, converting its military reach and diplomatic leverage into a self-reinforcing monetary architecture where global oil dependency creates permanent structural demand for its currency.",
+      "role": "Architect and primary beneficiary of the petrodollar system. The US stance is to maintain dollar hegemony in global energy markets at all costs — through diplomatic pacts, military presence at oil chokepoints, and financial sanctions against defectors. The mechanics: (1) the 1974 Kissinger-Saudi pact exchanges military protection for dollar-only oil pricing, (2) 750+ military bases protect oil transit routes ensuring the system's physical security, (3) the Federal Reserve can print trillions without domestic hyperinflation because global oil demand absorbs excess dollars, (4) sanctions weaponize dollar dependency to enforce geopolitical compliance. The reasoning is structural: without oil-backed dollar demand, the US cannot sustain $36 trillion in national debt at low interest rates — the entire fiscal model depends on this arrangement.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Saudi Arabia",
+      "aliases": ["The Kingdom", "House of Saud"],
+      "category": "Place",
+      "definition": "World's largest oil exporter and OPEC's swing producer, whose 1974 agreement with the United States to price all oil exclusively in dollars created the foundational mechanism of the petrodollar system — exchanging energy pricing power for American military protection of the monarchy.",
+      "role": "Co-architect and enforcer of the petrodollar system. Saudi Arabia's stance was initially to maintain exclusive dollar-denomination of oil sales, driven by three mechanics: (1) US military protection guarantee — the 1974 pact exchanges dollar-denominated oil for an American security umbrella over the kingdom, (2) sovereign wealth recycling — petrodollars flow back through US Treasury purchases, giving Saudi Arabia leverage in American financial markets, (3) OPEC pricing power — as the swing producer, Saudi Arabia's pricing decisions force the entire cartel to follow. The stance is now shifting: Crown Prince Mohammed bin Salman's Vision 2030, BRICS membership (2024), and yuan swap agreements signal deliberate hedging away from dollar exclusivity while maintaining the core arrangement.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Henry Kissinger",
+      "aliases": ["Kissinger"],
+      "category": "Person",
+      "definition": "US Secretary of State who architected the petrodollar system by negotiating a secret 1974 agreement with Saudi King Faisal that exchanged exclusive dollar-denomination of oil sales for American military protection — replacing the collapsed gold standard with an oil-backed currency system without any legislative ratification.",
+      "role": "Chief architect of the petrodollar pact. Kissinger's stance was that dollar hegemony must survive the collapse of Bretton Woods, and oil was the mechanism to achieve it. The mechanics: (1) identify Saudi Arabia's security vulnerability — regional threats from secular Arab nationalism and rival states, (2) offer what no other nation could — unconditional US military protection and advanced weapons, (3) extract in return what no other agreement delivered — exclusive dollar pricing of the world's most essential commodity. This single negotiation replaced gold with oil as the dollar's implicit backing. Kissinger saw the 1973 oil crisis not as a problem but as an 'anchor' — proof that whoever controlled oil pricing controlled the global financial architecture.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Richard Nixon",
+      "aliases": ["Nixon"],
+      "category": "Person",
+      "definition": "37th President of the United States who unilaterally suspended dollar-gold convertibility on August 15, 1971 — ending the Bretton Woods monetary system and creating the currency vacuum that the petrodollar system would eventually fill.",
+      "role": "The president who broke the gold standard. Nixon's stance was forced by arithmetic: by 1971, foreign governments held three times more dollars than the US had gold to back them, and France was literally sending warships to collect gold. The mechanics: a single televised address suspended 'temporarily' what became permanent — dollar-gold convertibility at $35/ounce. This destroyed the Bretton Woods architecture that had governed global finance since 1944, leaving the dollar floating without intrinsic backing and creating the vacuum Kissinger would fill three years later with oil.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "King Faisal",
+      "aliases": ["Faisal", "King Faisal of Saudi Arabia"],
+      "category": "Person",
+      "definition": "Saudi monarch who accepted Kissinger's 1974 offer exchanging exclusive dollar-denomination of Saudi oil exports for American military protection — the counterparty whose agreement created the petrodollar system and whose OPEC influence forced dollar-only pricing across global oil markets.",
+      "role": "The counterparty who made the petrodollar possible. Faisal's stance was pragmatic: accept American military protection in exchange for dollar-only oil pricing. The mechanics: (1) Saudi Arabia faced genuine regional security threats that only US military power could address, (2) the 1973 oil embargo had demonstrated Saudi pricing power but also exposed the kingdom's vulnerability to retaliation, (3) by accepting the deal, Faisal secured both his dynasty's survival and a permanent seat at the table of global finance — Saudi petrodollar surpluses recycled into US Treasuries gave the kingdom leverage over American fiscal policy.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "OPEC",
+      "aliases": ["Organization of the Petroleum Exporting Countries"],
+      "category": "Organization",
+      "definition": "Cartel of oil-producing nations that collectively controls a majority of global oil exports, whose adoption of dollar-only pricing — driven by Saudi Arabia's dominance as swing producer — transformed a bilateral US-Saudi deal into a global monetary system affecting every oil-importing nation on Earth.",
+      "role": "The transmission mechanism that scaled the petrodollar from bilateral deal to global system. OPEC's stance follows Saudi Arabia's lead on pricing currency because Saudi Arabia controls swing production capacity. The mechanics: when Saudi Arabia priced in dollars, Kuwait, UAE, Iraq, Iran, Venezuela, Nigeria, and Libya followed within two years — making virtually all 40 million barrels/day of global oil dollar-denominated. This wasn't a democratic choice but a structural inevitability: the swing producer's decision became every member's constraint. OPEC's collective dollar pricing forces every oil-importing nation on Earth to maintain dollar reserves, creating the permanent artificial demand that underpins the entire system.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Bretton Woods System",
+      "aliases": ["Bretton Woods", "Bretton Woods Agreement"],
+      "category": "System",
+      "definition": "Post-WWII international monetary framework established in 1944 where 44 nations pegged their currencies to the US dollar, which itself was pegged to gold at $35/ounce — creating a gold-backed dollar system that functioned for 27 years until US overspending made the gold promise mathematically unsustainable.",
+      "role": "The predecessor system whose collapse created the vacuum the petrodollar filled. Bretton Woods' design was elegant: currencies pegged to dollar, dollar pegged to gold, creating a trust chain anchored in physical metal. The mechanics of failure: (1) Vietnam War, Great Society, and Cold War spending caused the US to print far more dollars than gold reserves could back, (2) by 1971 foreign dollar holdings exceeded gold reserves 3:1, (3) France's de Gaulle called the bluff by sending a warship to collect gold, (4) Nixon had to choose between gold drain and breaking the promise — he broke the promise. The system's death on August 15, 1971 left the dollar floating without intrinsic backing for three years until oil replaced gold.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Petrodollar System",
+      "aliases": ["Petrodollar", "Petrodollar Architecture"],
+      "category": "System",
+      "definition": "Global monetary arrangement originating from the 1974 Kissinger-Saudi pact where oil is priced exclusively in US dollars, forcing every oil-importing nation to maintain dollar reserves and creating permanent structural demand for American currency — effectively replacing gold with oil as the dollar's implicit backing.",
+      "role": "The central system this entire investigation maps. The petrodollar's stance is self-reinforcing: oil priced in dollars creates dollar demand, dollar demand enables cheap US borrowing, cheap borrowing funds the military, the military protects oil flows, oil flows maintain dollar pricing. The mechanics form a closed loop: (1) all oil importers MUST hold dollar reserves — creating artificial demand regardless of US fiscal discipline, (2) petrodollar surpluses recycle through Treasury bonds and weapons purchases — returning dollars to the US at low interest, (3) the Fed can print trillions without proportionate domestic inflation because global oil demand absorbs excess dollars, (4) sanctions weaponize this dependency by cutting defectors off from dollar-based trade. The system has no graceful failure mode — it either works or cascades.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Petrodollar Recycling",
+      "aliases": ["Dollar Recycling", "Recycling Mechanism"],
+      "category": "Process",
+      "definition": "Two-channel mechanism whereby dollars spent by the US on oil imports flow back to America — through Saudi/Gulf sovereign wealth fund purchases of US Treasury bonds (capital channel) and through massive arms purchases from American defense contractors (weapons channel) — creating a system where the US effectively gets both the oil AND the money back.",
+      "role": "The return loop that makes the petrodollar self-sustaining. The recycling stance is that petrodollars must flow back to the US to complete the circuit. The mechanics operate through two channels: (1) Capital channel — Saudi Arabia and Gulf states invest hundreds of billions in US Treasury bonds, providing the US government with low-interest loans funded by the very money it spent on oil, (2) Weapons channel — over $100 billion in arms purchases since 2010 from Lockheed Martin, Boeing, Raytheon, General Dynamics — dollars return through defense industry. The reasoning: no other arrangement in financial history works like this — America sends dollars for oil, receives oil AND gets the dollars back as loans. The only cost is below-market Treasury bond interest rates.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Federal Reserve",
+      "aliases": ["The Fed", "Fed"],
+      "category": "Organization",
+      "definition": "US central bank whose extraordinary monetary powers — including expanding its balance sheet from $900 billion to $9 trillion between 2008-2022 without causing domestic hyperinflation — are enabled by the petrodollar architecture that distributes excess dollar supply globally through structural oil-market demand.",
+      "role": "The monetary authority whose power is amplified by the petrodollar system. The Fed's stance is to manage dollar supply and interest rates, but its actual capacity to do so depends on structural global dollar demand from oil markets. The mechanics: (1) between 2008-2022 the Fed printed approximately $8 trillion — in any normal country this would cause hyperinflation, (2) it didn't collapse the dollar because global oil pricing creates structural demand that absorbs excess supply, (3) inflation distributed globally rather than concentrating domestically, (4) this means the Fed's extraordinary powers are not purely institutional competence — they are a function of petrodollar architecture. If oil were priced in multiple currencies, the Fed would lose this absorption buffer.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "US Dollar",
+      "aliases": ["Dollar", "USD"],
+      "category": "Resource",
+      "definition": "World's primary reserve currency whose dominance since 1974 is structurally maintained not by economic performance but by oil pricing — every oil-importing nation must hold dollar reserves, creating permanent artificial demand that allows the US to borrow cheaply, print freely, and sanction globally.",
+      "role": "The instrument at the center of the system. The dollar's stance is as the mandatory medium of exchange for global oil trade. The mechanics of its dominance: (1) under Bretton Woods, the dollar was a 'receipt for metal' backed by gold at $35/ounce, (2) after 1971 the dollar lost intrinsic backing and floated for three years, (3) after 1974 the Kissinger-Saudi pact replaced gold with oil as implicit backing, (4) structural demand from oil pricing enables the US to run $36 trillion in national debt without currency collapse — if Japan or Italy had the same debt-to-GDP ratio without structural dollar demand, their currencies would collapse. The dollar is not the reserve currency because it's the strongest — it's the strongest because it's the reserve currency.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Gold Standard",
+      "aliases": ["Gold Peg", "Dollar-Gold Convertibility"],
+      "category": "System",
+      "definition": "Monetary system under Bretton Woods where the US dollar was convertible to gold at $35/ounce, providing intrinsic physical backing for the global reserve currency — collapsed in 1971 when US military and social spending created a 3:1 ratio of foreign dollar holdings to actual gold reserves.",
+      "role": "The original anchor whose failure necessitated the petrodollar. The gold standard's stance was that currency must be backed by physical metal — a literal promise redeemable at the US Treasury. The mechanics of collapse: (1) Vietnam, Great Society, and Cold War spending forced dollar printing far beyond gold reserves, (2) the arithmetic became fatal — foreign holdings 3x exceeded gold backing, (3) when France sent a warship to collect its gold and Britain prepared to follow, Nixon had to choose between watching gold drain or breaking the convertibility promise, (4) his August 15, 1971 suspension was announced as 'temporary' but was permanent. Gold was the trust anchor — when it broke, a new anchor was needed.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Exorbitant Privilege",
+      "aliases": ["Dollar Privilege", "Monetary Privilege"],
+      "category": "Concept",
+      "definition": "Term coined by French Finance Minister Valery Giscard d'Estaing describing the United States' unique ability to run massive fiscal deficits, borrow at below-market rates, and print currency without proportional inflation — a privilege that became 'truly exorbitant' after 1974 when oil pricing created structural global dollar demand independent of US economic performance.",
+      "role": "The conceptual name for the petrodollar's primary benefit to the US. The privilege's stance is that the US enjoys monetary advantages no other nation can access. The mechanics: (1) the US can sustain $36 trillion in national debt because the world MUST hold dollars to buy oil, (2) the safest place to hold dollars is US Treasuries, making demand structurally guaranteed regardless of US fiscal discipline, (3) the Fed can print $8 trillion without domestic hyperinflation because oil markets absorb excess supply globally, (4) this isn't privilege earned through economic performance — it's privilege engineered through energy dependency. The key insight: if any other nation had America's debt-to-GDP ratio without structural dollar demand, bond markets would revolt and interest rates would spike to double digits.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Charles de Gaulle",
+      "aliases": ["de Gaulle"],
+      "category": "Person",
+      "definition": "French President who saw through the unsustainability of dollar-gold convertibility and literally sent a warship to the New York Federal Reserve to collect France's gold — calling America's bluff and accelerating the collapse of the Bretton Woods system.",
+      "role": "The first leader to call the gold standard bluff. De Gaulle's stance was that the dollar's gold promise was a lie — the math proved it. The mechanics: by the late 1960s, foreign dollar holdings far exceeded US gold reserves, and de Gaulle demanded physical redemption rather than accepting worthless paper promises. His dramatic action — a naval vessel to collect gold from the Federal Reserve vault — demonstrated that the Bretton Woods system depended on nobody actually demanding what was promised. When France demanded it, and Britain prepared to follow, Nixon had no choice but to close the gold window.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "SWIFT",
+      "aliases": ["Society for Worldwide Interbank Financial Telecommunication"],
+      "category": "Technology",
+      "definition": "Dollar-based international banking messaging system that underpins global financial transactions, whose importance as a sanctions weapon was demonstrated when Russia was disconnected in 2022 — freezing $300 billion in central bank reserves and proving that dollar infrastructure doubles as a geopolitical enforcement tool.",
+      "role": "The financial plumbing that enables dollar-based sanctions. SWIFT's stance is as neutral infrastructure, but its function is inseparable from dollar dominance. The mechanics: (1) virtually all international banking transactions route through SWIFT, (2) because the system runs on dollars, disconnection from SWIFT means disconnection from the global economy, (3) when Russia was cut off in 2022, $300 billion in reserves were frozen and its economy was severely constrained, (4) this same weapon was used against Iran (2012), Venezuela, North Korea, Syria, and Cuba. The unintended consequence: SWIFT weaponization now incentivizes alternatives like China's CIPS (1,400+ member institutions by 2024).",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "China",
+      "aliases": ["People's Republic of China", "PRC"],
+      "category": "Place",
+      "definition": "World's largest oil importer (~11 million barrels/day) that is systematically building alternative financial infrastructure to reduce dollar dependency — launching yuan-denominated oil futures (2018), completing yuan-settled LNG trades (2023), signing currency swaps with Saudi Arabia (2024), and deploying CIPS as a SWIFT alternative.",
+      "role": "The primary challenger to petrodollar dominance. China's stance is that the world's largest oil buyer should not be forced to trade in someone else's currency. The mechanics of challenge: (1) Shanghai International Energy Exchange launched gold-backed yuan oil futures in 2018 — a deliberate echo of the system the US abandoned in 1971, (2) first yuan-settled LNG trade completed with UAE in 2023, (3) currency swap agreement with Saudi Arabia worth $7 billion in 2024, (4) CIPS (Cross-Border Interbank Payment System) has 1,400+ member institutions as a SWIFT alternative, (5) reduced US Treasury holdings from $1.1 trillion to under $800 billion. China isn't replacing the dollar overnight — it's building an alternative checkout counter for when the biggest customer demands a different register.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "US Treasury Bonds",
+      "aliases": ["Treasuries", "US Treasuries"],
+      "category": "Resource",
+      "definition": "US government debt instruments that serve as the primary recycling destination for petrodollars — Saudi and Gulf sovereign wealth funds invest hundreds of billions in Treasuries, providing the US government with structurally guaranteed low-interest loans funded by the very money America spent on oil imports.",
+      "role": "The capital recycling endpoint of the petrodollar system. Treasuries' stance is as the 'safest' dollar-denominated asset — but this safety is architecturally created, not earned. The mechanics: (1) oil-exporting nations accumulate massive dollar surpluses, (2) the safest and most liquid place to park dollars is US Treasuries, (3) this creates structurally guaranteed demand for US government debt regardless of fiscal discipline, (4) the result: America borrows at rates no other debtor could command because the demand is not voluntary but architectural. The threat: as central banks diversify reserves (gold purchases at record levels 2022-2024, China reducing Treasury holdings), this structural demand is eroding — threatening the cheap borrowing that funds everything from the military to social programs.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "BRICS",
+      "aliases": ["BRICS+", "BRICS Alliance"],
+      "category": "Organization",
+      "definition": "Geopolitical bloc (Brazil, Russia, India, China, South Africa, plus new members including Saudi Arabia as of 2024) whose explicit agenda includes reducing dollar dependence in international trade — representing a coordinated challenge to petrodollar hegemony from nations collectively controlling a majority of global oil production and consumption.",
+      "role": "The institutional vehicle for coordinated de-dollarization. BRICS' stance is that the dollar-dominated financial system disproportionately benefits the US at the expense of developing nations. The mechanics: (1) Saudi Arabia's formal BRICS membership in January 2024 is seismic — the country that CREATED petrodollar pricing joined a bloc working to undermine it, (2) BRICS nations are establishing bilateral currency swap lines bypassing dollar conversion, (3) Russia-India trade in rupees/rubles, Brazil-Argentina trade in reais, ASEAN local currency settlements all chip away at dollar centrality, (4) mBridge CBDC project connects China, Thailand, UAE, Hong Kong for cross-border settlements without dollar intermediation. BRICS represents the institutional coordination that individual de-dollarization efforts lacked.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Sanctions Weapon",
+      "aliases": ["Financial Sanctions", "Dollar Weaponization"],
+      "category": "Process",
+      "definition": "The US ability to deny any country access to the global financial system by leveraging dollar dominance — demonstrated against Iran (2012, exports dropped from 2.5M to 500K barrels/day), Russia (2022, $300B frozen), Venezuela, North Korea, Syria, and Cuba — functioning as the petrodollar system's enforcement mechanism.",
+      "role": "The enforcement arm of petrodollar dominance, and simultaneously the mechanism accelerating its erosion. The sanctions stance is that dollar access is conditional on US-approved behavior. The mechanics: (1) because the global financial system runs on dollars, disconnection means economic strangulation — 'the financial equivalent of cutting off someone's oxygen supply,' (2) Iran's economy contracted 15% after 2012 sanctions, (3) Russia lost access to $300B in reserves in 2022. The paradox: sanctions work precisely because dollar dependency is so deep, but each use teaches the target and every observer to find alternatives. The 2022 Russia sanctions sent a message to every central bank: 'your dollar reserves are not yours — they can be confiscated.' This triggered record gold purchases and accelerated de-dollarization.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Oil Embargo of 1973",
+      "aliases": ["1973 Oil Crisis", "OPEC Embargo"],
+      "category": "Event",
+      "definition": "OPEC retaliation against US support for Israel during the Yom Kippur War, quadrupling crude prices from $3 to $12/barrel and bringing the American economy to its knees — the crisis that revealed oil's true power as the 'blood supply of industrial civilization' and created the conditions Kissinger exploited to forge the petrodollar pact.",
+      "role": "The catalytic crisis that made the petrodollar possible. The embargo's stance was geopolitical retaliation, but its systemic effect was revealing oil's leverage over industrial civilization. The mechanics: (1) Arab nations attacked Israel in the Yom Kippur War, (2) the US resupplied Israel with weapons, (3) OPEC retaliated with an embargo that quadrupled oil prices, (4) gas stations ran dry, lines stretched around blocks, speed limits dropped to 55, the US economy buckled. Kissinger's genius was seeing this not as a problem but as an 'anchor' — proof that whoever controlled oil pricing controlled the global financial architecture. The crisis created both the leverage (oil is power) and the urgency (the dollar needs a new anchor) for the 1974 pact.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Nixon Shock",
+      "aliases": ["August 15 1971", "End of Gold Convertibility"],
+      "category": "Event",
+      "definition": "Richard Nixon's August 15, 1971 unilateral suspension of dollar-gold convertibility — announced during a Sunday evening TV address interrupting Bonanza — which permanently destroyed the Bretton Woods monetary system and left the dollar floating without intrinsic backing for three years until oil replaced gold.",
+      "role": "The rupture event that destroyed the old order and created the vacuum. The Nixon Shock's mechanics were deceptively simple: a single televised announcement killed the financial architecture that had governed the postwar world. The context: (1) US spending on Vietnam, Great Society, and Cold War had printed far more dollars than gold could back, (2) France was literally sending warships to collect its gold, (3) Nixon chose to break the promise rather than watch the gold drain, (4) his word 'temporarily' was permanent. The three-year vacuum between the Nixon Shock (1971) and the Kissinger-Saudi pact (1974) is the hinge period — the old anchor (gold) was gone, no new anchor existed, and into that vacuum Kissinger saw the opportunity to replace metal with energy.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Sovereign Wealth Funds",
+      "aliases": ["SWFs", "Gulf Sovereign Funds"],
+      "category": "Organization",
+      "definition": "State-owned investment vehicles of oil-producing nations — Abu Dhabi Investment Authority, Saudi Public Investment Fund, Kuwait Investment Authority, Qatar Investment Authority — with combined assets exceeding $3 trillion, substantially managed through New York and London, serving as the capital-channel endpoint of petrodollar recycling.",
+      "role": "The Wall Street pipeline for petrodollar recycling into the Western asset base. SWFs' stance is to maximize returns on oil revenue surpluses. The mechanics: (1) combined $3+ trillion invested in American real estate, equities, private equity, infrastructure, technology, (2) Saudi PIF owns stakes in Uber, Lucid Motors, Electronic Arts, (3) Abu Dhabi owns chunks of Citigroup, Manchester City, (4) Kuwait sovereign wealth funded Heathrow Airport. New York's position as the world's financial capital isn't purely about innovation — it's partly about being the terminus of the world's largest commodity-to-capital pipeline. Wall Street doesn't just trade; it intermediates a geopolitical arrangement.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "US Military Global Presence",
+      "aliases": ["Military Infrastructure", "Base Network"],
+      "category": "System",
+      "definition": "Network of 750+ military bases across 80 countries — the largest global military footprint in human history — clustered around oil transit chokepoints (Strait of Hormuz, Suez Canal, Strait of Malacca, Horn of Africa) and funded by the very petrodollar system it protects, forming a self-reinforcing loop of military-energy-financial power.",
+      "role": "The physical enforcement layer of the petrodollar system. The military's stance is 'financial infrastructure with guns.' The mechanics form a triangle: (1) the military protects oil flows through every major chokepoint — the Strait of Hormuz alone carries 20% of global oil daily, (2) the oil flows maintain dollar pricing which creates dollar demand, (3) the dollar demand enables cheap government borrowing which funds the military. The circle doesn't break because all three legs hold each other up. Key installations: Naval Support Activity Bahrain (Fifth Fleet), Al Udeid Air Base (Qatar), Camp Arifjan (Kuwait), plus bases throughout Saudi Arabia, Oman, UAE. This isn't power projection in the abstract — it's the armed guard for a monetary system.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Valery Giscard d'Estaing",
+      "aliases": ["Giscard d'Estaing"],
+      "category": "Person",
+      "definition": "French Finance Minister who in the 1960s coined the term 'exorbitant privilege' to describe dollar dominance — presciently identifying the structural monetary advantage the US enjoyed, which became truly exorbitant only after 1974 when oil pricing replaced gold as the dollar's backing.",
+      "role": "The intellectual who named the phenomenon. Giscard d'Estaing's stance was critical of US monetary advantage: France, as a leading European economy, chafed under a system where America could print money that everyone else had to earn. The mechanics: his term captured the asymmetry — the US could run deficits that would bankrupt others because the world had to hold dollars. He was early — the privilege he identified in the 1960s under gold-backing became exponentially more powerful after 1974 when oil created even more structural demand than gold had.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "US Defense Industry",
+      "aliases": ["Defense Contractors", "Arms Industry"],
+      "category": "Organization",
+      "definition": "American weapons manufacturers — Lockheed Martin, Boeing, Raytheon, General Dynamics — that function as monetary recycling endpoints, channeling petrodollars back to the US through over $100 billion in Saudi arms purchases since 2010 alone, with tens of billions more from UAE, Kuwait, and Qatar.",
+      "role": "The weapons channel of petrodollar recycling. The defense industry's stance is commercial — sell advanced weapons systems — but its systemic function is monetary return. The mechanics: (1) F-15 Eagles, Patriot missiles, AWACS, M1 Abrams tanks, guided munitions, training programs, maintenance contracts, (2) over $100 billion from Saudi Arabia since 2010 alone, plus tens of billions from UAE, Kuwait, Qatar, (3) every arms purchase is petrodollar recycling — dollars that left America to buy oil return through defense contractors, (4) the guns protect the oil states, the oil states fund the guns — the loop is seamless. The defense industry isn't just building weapons; it's operating as a monetary recycling endpoint.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Mohammed bin Salman",
+      "aliases": ["MBS", "Crown Prince"],
+      "category": "Person",
+      "definition": "Saudi Crown Prince who is systematically diversifying the Kingdom away from exclusive dollar dependency through Vision 2030 economic restructuring, BRICS membership, yuan swap agreements with China, and diplomatic hedging — loosening the linchpin of the petrodollar system while maintaining its core arrangement.",
+      "role": "The figure reshaping Saudi Arabia's petrodollar stance. MBS's position is hedging — sitting at two tables simultaneously. The mechanics: (1) Vision 2030 diversifies the economy away from oil dependency, (2) BRICS membership (January 2024) aligns Saudi Arabia with a bloc working to reduce dollar dependence, (3) yuan swap agreements with China worth $7 billion facilitate bilateral trade outside the dollar, (4) diplomatic diversification reduces reliance on the US security guarantee. The reasoning: MBS is preparing for a world where the US security umbrella may not be sufficient and the dollar monopoly may not be necessary. The linchpin is loosening — not removed, but visibly, deliberately loosening.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Saddam Hussein",
+      "aliases": ["Saddam"],
+      "category": "Person",
+      "definition": "Iraqi president who in November 2000 switched Iraqi oil exports from dollar to euro pricing through the Oil-for-Food Programme — one of the first direct challenges to petrodollar pricing, followed by the 2003 US invasion of Iraq after which the Coalition Provisional Authority immediately switched Iraqi oil sales back to dollars.",
+      "role": "The first heretic to challenge petrodollar pricing directly. Saddam's stance was to defy dollar-only oil pricing by switching Iraqi exports (10% of OPEC output) to euros in 2000. The mechanics: (1) the Oil-for-Food Programme facilitated the switch, (2) Iraqi oil left the dollar system, (3) in March 2003 the US invaded Iraq, (4) one of the Coalition Provisional Authority's first acts was switching oil sales back to dollars. Whether petrodollar defense was a primary invasion motivation is debatable, but the pattern — challenge dollar oil pricing, face military consequences — sits uncomfortably alongside the similar fate of Gaddafi.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Muammar Gaddafi",
+      "aliases": ["Gaddafi"],
+      "category": "Person",
+      "definition": "Libyan leader who in 2009 proposed a gold-backed African currency — the Gold Dinar — for all African oil trade, directly challenging petrodollar dominance across an entire continent, followed by NATO intervention in Libya in 2011 and Gaddafi's death.",
+      "role": "The second leader to challenge petrodollar pricing and suffer severe consequences. Gaddafi's stance was pan-African monetary independence — proposing the Gold Dinar as an alternative to dollar-denominated oil trade across Africa. The mechanics: (1) the Gold Dinar proposal would have diverted all African oil revenue from the dollar system, (2) in 2011 NATO intervened in Libya, (3) Gaddafi was killed. As with Saddam, correlation is not causation — multiple factors drove the conflict — but the pattern reinforces the perception that challenging petrodollar pricing carries existential risk.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Petrodollar Cost Map",
+      "aliases": ["Invisible Dollar Tax", "Dollar Premium"],
+      "category": "Concept",
+      "definition": "The regressive global economic burden of the petrodollar system where the poorest oil-importing nations pay the highest proportional cost — forced to maintain dollar reserves instead of funding development, healthcare, and education — a 'progressive tax in reverse' designed without the input or consent of those it most affects.",
+      "role": "The human cost framework of the petrodollar system. The cost map's stance is that the system's benefits flow to Washington and Riyadh while costs concentrate on the world's poorest. The mechanics: (1) a farmer in Bihar pays more for diesel because India must maintain dollar reserves that could fund development, (2) a garment worker in Dhaka has lower wages because Bangladesh's foreign exchange policy prioritizes dollar reserves for oil imports, (3) a government in Nairobi chooses between dollar reserves for fuel and funding rural clinics. The Reserve Bank of India keeps hundreds of billions locked as dollar reserves that could otherwise fund healthcare and education. The system was designed without developing nations' input and operates without their consent.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "CIPS",
+      "aliases": ["Cross-Border Interbank Payment System", "China's SWIFT Alternative"],
+      "category": "Technology",
+      "definition": "China's alternative to the US-dominated SWIFT international payment system, with over 1,400 member institutions by 2024 — operational infrastructure for cross-border settlements that bypass dollar intermediation entirely, representing tangible progress toward a post-petrodollar financial architecture.",
+      "role": "The alternative plumbing being built to enable de-dollarization. CIPS's stance is as neutral infrastructure, but its function is to make dollar-free international transactions possible. The mechanics: (1) over 1,400 member institutions by 2024, (2) enables direct yuan-denominated cross-border payments without routing through dollar-based SWIFT, (3) works alongside bilateral currency swap lines (China has 40+ countries), mBridge CBDC connections, and local currency settlement agreements. The key insight: systems don't change when people want them to — they change when the plumbing exists for the alternative. CIPS is that plumbing, being built quietly and functionally while the old system still runs.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "mBridge",
+      "aliases": ["CBDC Bridge", "Central Bank Digital Currency Bridge"],
+      "category": "Technology",
+      "definition": "Operational central bank digital currency bridge connecting China, Thailand, UAE, and Hong Kong for cross-border settlements without dollar intermediation — not theoretical but functional infrastructure representing the digital-age plumbing for a post-petrodollar financial system.",
+      "role": "The digital infrastructure for dollar-free cross-border settlements. mBridge's stance is as next-generation payment infrastructure. The mechanics: (1) connects central banks of China, Thailand, UAE, and Hong Kong directly, (2) enables cross-border settlements without routing through dollar-denominated systems, (3) it's operational — not a proposal or white paper, (4) represents the 'new plumbing' being installed alongside the old system. When enough alternative pipes are in place, the switch from dollar-dominated trade becomes a matter of decision, not capability. mBridge is one of the key pipes.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "De-Dollarization",
+      "aliases": ["Dollar Decline", "Reserve Diversification"],
+      "category": "Process",
+      "definition": "Measurable global trend of reducing dollar dependency — dollar share of foreign exchange reserves dropping from 71% (2000) to 58% (2024), record central bank gold purchases (1,037 tonnes in 2023), China reducing Treasury holdings from $1.1T to under $800B, and construction of alternative payment infrastructure like CIPS and mBridge.",
+      "role": "The macro-trend threatening the petrodollar system's future. De-dollarization's stance is gradual structural shift, not sudden rupture. The mechanics: (1) reserve share decline — 13 percentage points in 24 years, steady and unidirectional, (2) gold purchases at highest sustained levels since the 1960s (when France was demanding gold for dollars — a deliberate historical echo), (3) yuan's reserve share growing from 1% (2016) to 2.3% (2022) — small but with infrastructure being built, (4) BRICS coordination, bilateral currency swaps, local currency settlements all chip away at dollar centrality. The trend line is not ambiguous — the only question is speed. Three scenarios: slow erosion (most likely), strategic pivot (moderate probability), catastrophic break (low probability, maximum severity).",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Petroyuan",
+      "aliases": ["Yuan Oil Futures", "Shanghai Oil Futures"],
+      "category": "System",
+      "definition": "Yuan-denominated oil futures contract launched on the Shanghai International Energy Exchange in 2018, deliberately backed by gold — echoing the system the US abandoned in 1971 — representing China's institutional bid to create an alternative 'checkout counter' for the world's largest oil buyer to purchase energy in its own currency.",
+      "role": "The institutional mechanism for China's oil-pricing challenge. The petroyuan's stance is that the world's largest oil buyer should have its own pricing benchmark in its own currency. The mechanics: (1) launched in 2018 on the Shanghai International Energy Exchange, (2) deliberately gold-backed — a conscious echo of the Bretton Woods gold peg that the US abandoned, (3) complemented by China's first yuan-settled LNG trade with UAE (2023) and $7B currency swap with Saudi Arabia (2024). The question the petroyuan poses: can the dollar's monopoly on oil pricing survive when the biggest customer demands a different register? The answer probably isn't overnight replacement — it's gradual erosion of monopoly pricing power.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "France",
+      "aliases": ["French Republic"],
+      "category": "Place",
+      "definition": "European nation whose leadership — from de Gaulle's gold redemption demands in the 1960s to Giscard d'Estaing's 'exorbitant privilege' critique — was the earliest and most articulate challenger of dollar hegemony, with de Gaulle literally sending a warship to collect gold from the Federal Reserve as proof the Bretton Woods promise was breaking.",
+      "role": "The earliest skeptic of dollar hegemony. France's stance was intellectual and confrontational: it named the problem ('exorbitant privilege') and called the bluff (warship to collect gold). The mechanics: (1) de Gaulle recognized the 3:1 dollar-to-gold ratio meant the promise was a lie, (2) sending a naval vessel to the New York Fed was theatrical but effective — it proved the system depended on nobody demanding redemption, (3) France's demands triggered the cascade that forced Nixon's hand in 1971. France bookends the story: its 1960s gold demands helped destroy Bretton Woods, and its critics named the privilege that the petrodollar system made exponentially worse.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Yom Kippur War",
+      "aliases": ["October 1973 War", "Arab-Israeli War 1973"],
+      "category": "Event",
+      "definition": "October 1973 conflict where Arab nations attacked Israel and the US resupplied Israel with weapons — triggering OPEC's oil embargo that quadrupled crude prices and created the geopolitical crisis Kissinger exploited to negotiate the petrodollar pact with Saudi Arabia.",
+      "role": "The geopolitical trigger for the oil crisis that enabled the petrodollar. The war's stance was Arab-Israeli conflict, but its systemic effect was demonstrating oil's power over industrial civilization. The mechanics: (1) Arab nations attacked Israel, (2) US resupplied Israel, (3) OPEC retaliated with an embargo, (4) crude quadrupled from $3 to $12, (5) the American economy buckled, (6) Kissinger recognized oil as the new 'anchor' for the dollar. Without the Yom Kippur War, there would have been no embargo; without the embargo, there would have been no visceral demonstration of oil's power; without that demonstration, the Kissinger-Saudi pact would have been far harder to negotiate.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Vision 2030",
+      "aliases": ["Saudi Vision 2030"],
+      "category": "Process",
+      "definition": "Crown Prince Mohammed bin Salman's comprehensive economic diversification program to reduce Saudi Arabia's dependency on oil revenue — representing the kingdom's preparation for a post-oil and potentially post-petrodollar world where the US security guarantee may be insufficient and dollar monopoly unnecessary.",
+      "role": "Saudi Arabia's hedge against petrodollar decline. Vision 2030's stance is that the kingdom cannot remain oil-dependent forever. The mechanics: (1) economic diversification into tourism, entertainment, technology, (2) NEOM and other mega-projects designed to generate non-oil revenue, (3) complements diplomatic hedging (BRICS membership) and monetary hedging (yuan swap lines). Vision 2030 signals that the country whose decision created the petrodollar system is actively preparing for a world where that system may not be the center — the linchpin is loosening not just diplomatically but economically.",
+      "first_appearance_index": 5
+    }
+  ]
+}

@@ -1,0 +1,542 @@
+{
+  "temporal_phases": [
+    {
+      "index": 1,
+      "label": "Cochabamba Crisis",
+      "period": "1999-2000"
+    },
+    {
+      "index": 2,
+      "label": "Global Privatization Wave",
+      "period": "1997-2010"
+    },
+    {
+      "index": 3,
+      "label": "Counter-Movement and Rights",
+      "period": "2005-2010"
+    },
+    {
+      "index": 4,
+      "label": "Infrastructure Failure",
+      "period": "2014-2018"
+    },
+    {
+      "index": 5,
+      "label": "Financialization and Scarcity",
+      "period": "2020-2040"
+    }
+  ],
+  "entities": [
+    {
+      "name": "World Bank",
+      "aliases": [
+        "IBRD",
+        "The Bank"
+      ],
+      "category": "Organization",
+      "definition": "International financial institution headquartered at 1800 H Street, Washington D.C. that conditioned loans to developing countries on privatization of water supplies — connecting governments needing emergency financing with multinational water corporations, creating the structural framework where 'Condition 4.3: privatize the water supply' became standard lending practice across dozens of countries.",
+      "role": "The institutional architect of water privatization worldwide. The World Bank's stance is that private sector participation improves service delivery — conditioning sovereign loans on water privatization regardless of local capacity or affordability. The mechanics: (1) country needs financing, (2) World Bank offers loan with privatization condition, (3) multinational corporation gets contract, (4) prices rise to cover profit margins, (5) when contracts fail and are cancelled, ICSID — housed inside the World Bank — adjudicates disputes. The institution that required privatization also judges complaints about privatization. This is not a conflict of interest — it is institutional architecture operating as designed.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Bechtel Corporation",
+      "aliases": [
+        "Bechtel",
+        "Aguas del Tunari"
+      ],
+      "category": "Organization",
+      "definition": "San Francisco-based engineering and construction corporation worth seventeen point six billion dollars that took over Cochabamba's water supply through its subsidiary consortium Aguas del Tunari in 1999 — raising prices 200-300% overnight, then suing Bolivia for twenty-five million dollars in lost future profits after being expelled by popular revolt.",
+      "role": "The corporate face of the Cochabamba Water War and the test case for water privatization's failure. Bechtel's stance was that water concessions are investment contracts with enforceable profit guarantees. The mechanics: (1) won the 40-year concession through World Bank-brokered deal, (2) immediately raised prices 200-300% because no public subsidy meant costs plus profit passed directly to consumers, (3) when expelled by mass protest, sued Bolivia at ICSID for lost future profits — a corporation suing a sovereign nation for changing water policy. Under international pressure, Bechtel eventually settled for a symbolic amount, but the legal precedent remained: investment treaties protect corporate water rights more than human water rights.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Bolivia",
+      "aliases": [
+        "Bolivian Government",
+        "Republic of Bolivia"
+      ],
+      "category": "Place",
+      "definition": "South American nation that became the epicenter of the global water privatization conflict in 2000 — where the collision between World Bank conditionality, corporate profit extraction, military repression, and popular resistance produced the Cochabamba Water War, the most studied case of water privatization failure and the catalyst for the global water justice movement.",
+      "role": "The battleground where all the system's contradictions became visible. Bolivia's stance was initially compliant (needed the loan, accepted conditions) then violently repressive (declared state of siege, deployed military snipers) then responsive (cancelled the Bechtel contract after Victor Hugo Daza's death). The mechanics: a country where average income was two dollars a day was forced to privatize water as a loan condition, creating a situation where a family of five earning sixty dollars a month was charged twenty dollars for water alone. The math was never supposed to work for the population — it was designed to work for the creditor and the concessionaire.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Cochabamba",
+      "aliases": [
+        "Cochabamba Water War"
+      ],
+      "category": "Place",
+      "definition": "Bolivian city of six hundred thousand people that became the global symbol of resistance to water privatization in January-April 2000 — where World Bank-conditioned privatization to Bechtel's consortium triggered 200-300% price increases, mass protests, military repression, the death of seventeen-year-old Victor Hugo Daza, and ultimately the expulsion of the private operator.",
+      "role": "Ground zero of the water privatization conflict and the loudest case in a global pattern. Cochabamba's significance is not that it was unique — Manila, Jakarta, Buenos Aires, Dar es Salaam all experienced the same pattern — but that the resistance was total and visible. The mechanics of the crisis: (1) average income two dollars a day, (2) water bill jumped to twenty dollars a month — a third of family income, (3) tens of thousands filled the central plaza, (4) government declared state of siege with military snipers on rooftops, (5) a boy was killed, (6) the contract was cancelled. Every subsequent water privatization debate references Cochabamba as either cautionary tale or proof that privatization cannot work in poor countries.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "La Coordinadora",
+      "aliases": [
+        "Coalition for the Defense of Water and Life",
+        "La Coordinadora de Defensa del Agua y de la Vida"
+      ],
+      "category": "Organization",
+      "definition": "Bolivian coalition of farmers, factory workers, teachers, and grandmothers that organized the general strike and mass protests against water privatization in Cochabamba — using hand-painted signs because nobody could afford printed ones — becoming the organizational model for water justice movements worldwide.",
+      "role": "The organizing force behind the Cochabamba resistance and the template for community-led water movements globally. La Coordinadora's stance was that water is a commons, not a commodity. The mechanics: (1) coalition structure bridging class divisions — farmers and factory workers, teachers and grandmothers organizing together, (2) called general strikes that paralyzed the city, (3) tens of thousands in the central plaza with 'El agua es nuestra' — the water is ours, (4) sustained pressure through military repression until the government cancelled Bechtel's contract. Their success inspired similar movements in dozens of countries and contributed directly to the 235 cities that have re-municipalized water since 2000.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Victor Hugo Daza",
+      "aliases": [
+        "Daza"
+      ],
+      "category": "Person",
+      "definition": "Seventeen-year-old Bolivian boy shot through the face by a military sniper on April 8, 2000 during the Cochabamba Water War — not a protester but a bystander walking past, killed on a street named after Simon Bolivar the liberator — whose death became the turning point that ended Bechtel's water concession and symbolized the human cost of water privatization.",
+      "role": "The human cost made visible. Victor Hugo Daza's death is the investigation's moral anchor — one boy, one bullet, fired on behalf of a water company headquartered four thousand miles away. His significance is that he was NOT a protester — he was walking past. The mechanics of his death trace directly to institutional decisions: World Bank required privatization, Bolivia accepted the condition, Bechtel raised prices, people protested, the government deployed snipers, a boy died. The causal chain from loan condition to bullet is unbroken.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Suez",
+      "aliases": [
+        "Suez Environnement",
+        "Suez Group"
+      ],
+      "category": "Organization",
+      "definition": "French multinational water corporation that took over Manila's eastern water zone in 1997, raising prices five hundred percent over the next decade while disconnection rates increased and service quality stagnated — one of the two dominant global water companies (alongside Veolia) that sold privatization to the developing world but couldn't sell it to their own capital city, Paris.",
+      "role": "One of the two French corporate pillars of global water privatization. Suez's stance is that private operation delivers efficiency gains that justify price increases. The mechanics in Manila: (1) took over eastern water zone in 1997, (2) prices rose 500% over a decade, (3) service didn't improve proportionally, (4) disconnection rates increased — families two months behind on payments lost water access, (5) created a two-pipeline system where clean pressurized water flows to neighborhoods that can pay while corroded pipes deliver intermittent brown water to neighborhoods that cannot. The irony: Suez is headquartered in the country whose capital re-municipalized its water system.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Veolia",
+      "aliases": [
+        "Veolia Environnement",
+        "Veolia Water"
+      ],
+      "category": "Organization",
+      "definition": "French multinational water corporation reporting water division revenue of eleven point four billion euros with a seven percent growth target — one of the two dominant global water companies whose annual report uses the word 'opportunity' to describe the same water that UNICEF's report describes as 'crisis' — responsible for eight hundred twenty-nine thousand deaths annually from waterborne disease.",
+      "role": "The other French corporate pillar of global water privatization, alongside Suez. Veolia's stance is shareholder-return-driven water management. The mechanics: (1) water division generates 11.4 billion euros annually, (2) growth targets of 7% require expanding into new markets — meaning more cities privatizing water, (3) the same resource appears in two documents with opposite framing: Veolia's annual report calls it opportunity, UNICEF calls it crisis, (4) like Suez, headquartered in France — whose capital Paris re-municipalized water. The companies that sold privatization to the developing world couldn't sell it to their own citizens.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Nestlé",
+      "aliases": [
+        "Nestlé Waters",
+        "Nestlé Corporation"
+      ],
+      "category": "Organization",
+      "definition": "World's largest food and water company whose CEO Peter Brabeck-Letmathe declared that calling water a public right is 'extreme' and that water should have a market value like any other foodstuff — operating pumping stations extracting four hundred gallons per minute from Michigan aquifers for two hundred dollars per year in permit costs, selling the water at a roughly two thousand times markup while the nearby creek has gone dry.",
+      "role": "The corporate embodiment of water-as-commodity philosophy. Nestlé's stance is explicitly stated by its CEO: water is a foodstuff with market value, not a public right. The mechanics: (1) Mecosta County, Michigan — population eleven thousand — Nestlé pumps 400 gallons per minute, (2) permit costs $200 per year, (3) sells bottled water at ~$1.50 per half-liter — roughly 2,000x markup, (4) nearby creek has gone dry, aquifer level measurably dropped, (5) when community objected, Nestlé's legal team argued groundwater is private property, not public resource. Zero accountability for aquifer depletion. The extraction model: take public water, make it private product, externalize the environmental cost.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Peter Brabeck-Letmathe",
+      "aliases": [
+        "Brabeck",
+        "Nestlé CEO"
+      ],
+      "category": "Person",
+      "definition": "CEO of Nestlé who in a 2005 interview stated that calling water a public right is 'extreme' and that water should have a market value like any other foodstuff — articulating the philosophical foundation of water commodification with a precision that describes the system exactly as it operates.",
+      "role": "The voice that said the quiet part loud. Brabeck's stance is that water is a commodity, not a right — and his significance is that he was not being provocative but precise. The mechanics: his statement is the philosophical anchor of the entire commodification system. When he says water should have market value like any other foodstuff, he is describing what Bechtel did in Cochabamba, what Suez did in Manila, what the Chicago Mercantile Exchange formalized with water futures. He is not the architect — he is the narrator who describes the architecture honestly.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Manila",
+      "aliases": [
+        "Metro Manila"
+      ],
+      "category": "Place",
+      "definition": "Philippine capital where Suez took over the eastern water zone in 1997, creating a two-tier water system where prices rose five hundred percent, disconnection rates increased, and the physical infrastructure itself sorted populations by income — clean pressurized pipes to neighborhoods that can pay, corroded leaking pipes to neighborhoods that cannot.",
+      "role": "The case study of water privatization as income-based triage. Manila demonstrates the mechanics of how privatization creates two-tier water systems. The mechanics: (1) Suez takes over in 1997, (2) prices rise 500%, (3) families falling behind on payments get disconnected — mother holds empty bucket, three children behind her, (4) two pipelines in the same city: clean pressurized water to paying neighborhoods, brown intermittent water to non-paying neighborhoods. The investigation frames this as 'not neglect but triage by income — the system is not broken, it is sorting.'",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "ICSID",
+      "aliases": [
+        "International Centre for Settlement of Investment Disputes"
+      ],
+      "category": "Organization",
+      "definition": "International arbitration body housed inside the World Bank that adjudicates investment disputes between corporations and sovereign nations — including Bechtel's twenty-five million dollar lawsuit against Bolivia after being expelled from Cochabamba — creating a closed loop where the institution that required privatization also judges disputes arising from privatization.",
+      "role": "The judicial mechanism that completes the institutional closed loop. ICSID's stance is investor protection through international arbitration. The mechanics: (1) housed inside the World Bank — the same institution that required privatization, (2) corporations can sue nations for changing water policy, (3) nations cannot sue corporations for failing to deliver water, (4) Bechtel used ICSID to sue Bolivia for lost future profits. The chain: World Bank required privatization, Bechtel got the contract, Bolivia cancelled it, Bechtel sued at the World Bank's own court. 'The institution that created the problem is adjudicating the complaint about the solution.'",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Water Privatization",
+      "aliases": [
+        "Water Commodification",
+        "Private Water Operation"
+      ],
+      "category": "System",
+      "definition": "The global system by which public water utilities are transferred to private corporate operation through concession agreements conditioned by international financial institutions — consistently producing the pattern of price increases, service stratification by income, disconnection of non-paying households, community resistance, and partial or full reversal — documented across dozens of cities from Cochabamba to Manila to Paris.",
+      "role": "The central system under investigation. Water privatization's mechanics form a six-stage cycle: (1) public utility exists, imperfect but accessible, (2) government underfunds it — sometimes by choice, sometimes under IMF austerity, (3) service deteriorates — deterioration becomes the argument 'the public sector has failed,' (4) corporation takes over, prices rise to cover costs plus profit plus executive pay plus shareholder returns, (5) people who can't pay lose water, they protest, (6) contract is partially reversed. Then stage one restarts — except now infrastructure is degraded and institutional knowledge is gone. The wheel keeps turning. The water keeps flowing to those who can afford it.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Concession Agreement System",
+      "aliases": [
+        "Water Concessions",
+        "PPP Water Contracts"
+      ],
+      "category": "System",
+      "definition": "The contractual architecture through which water privatization operates — typically featuring 30-40 year exclusive operation rights, guaranteed minimum revenue (government pays if customers can't), currency fluctuation protection (government absorbs exchange rate risk), and the right to international arbitration under bilateral investment treaties — creating asymmetric contracts where corporations can sue nations but nations cannot sue corporations.",
+      "role": "The legal mechanism that makes water privatization structurally asymmetric. The concession system's mechanics: (1) exclusive operation rights for 30-40 years, (2) guaranteed minimum revenue — meaning the government pays the corporation if customers can't afford the prices, (3) currency fluctuation protection shifts exchange rate risk to the government, (4) international arbitration rights allow corporations to sue sovereign nations for changing water policy. A corporation can sue a nation for changing water policy. The nation cannot sue the corporation for failing to deliver water. The investigation's instruction: 'Read that again.'",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Bilateral Investment Treaties",
+      "aliases": [
+        "BITs",
+        "Investment Protection Treaties"
+      ],
+      "category": "Agreement",
+      "definition": "International legal framework that grants corporations the right to sue sovereign nations at ICSID for policy changes affecting their investments — creating enforceable corporate property rights while citizens' human rights to water remain non-binding aspirational declarations under UN Resolution 64/292.",
+      "role": "The legal infrastructure that creates the asymmetry between corporate rights and human rights. BITs' stance is investor protection above sovereign policy flexibility. The mechanics: (1) corporations have enforceable property rights under BITs, (2) citizens have aspirational human rights under non-binding UN resolutions, (3) this asymmetry is not a bug — it is the operating system, (4) Bechtel used BIT-based arbitration to sue Bolivia after being expelled from Cochabamba. The system ensures that changing water policy has a price for governments but failing to deliver water has no price for corporations.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Privatization Cycle",
+      "aliases": [
+        "Six-Stage Cycle",
+        "Water Privatization Loop"
+      ],
+      "category": "Process",
+      "definition": "The six-stage recurring pattern documented across water privatization cases worldwide: (1) public utility exists but is imperfect, (2) government underfunds it, (3) service deteriorates and becomes the argument for privatization, (4) corporation takes over and raises prices, (5) people who can't pay lose water and protest, (6) contract is partially reversed — then stage one restarts with degraded infrastructure and lost institutional knowledge.",
+      "role": "The central mechanism the investigation maps. The cycle's mechanics make it self-perpetuating: each reversal restarts the cycle in worse conditions than before — infrastructure more degraded, institutional knowledge gone, community exhausted from years without reliable water. The cycle has been running for thirty years. The investigation documents it across Cochabamba, Manila, Jakarta, Buenos Aires, Dar es Salaam, Johannesburg, Atlanta, and at least 235 cities that have re-municipalized. The pattern is not coincidental — it is structural, produced by the same institutional architecture every time.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "UN Resolution 64/292",
+      "aliases": [
+        "Water as Human Right Resolution",
+        "2010 Water Resolution"
+      ],
+      "category": "Law",
+      "definition": "United Nations General Assembly resolution passed July 28, 2010 with 122 votes in favor, none against, and 41 abstentions — recognizing water as a human right but carrying no enforcement mechanism, making it legally non-binding — creating the asymmetry where corporations have enforceable property rights while citizens have aspirational human rights.",
+      "role": "The symbolic victory that exposes the enforcement gap. The resolution's significance is what it cannot do: it is non-binding, a suggestion in legal terms. The mechanics of the asymmetry: (1) corporations have enforceable property rights under bilateral investment treaties and international arbitration, (2) citizens have aspirational human rights under this non-binding resolution, (3) 'Corporations have enforceable property rights. Citizens have aspirational human rights. The asymmetry is not a bug. It is the operating system.' The resolution produced applause, photographs, and a press release — but no enforcement mechanism.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Water Futures",
+      "aliases": [
+        "NQH2O",
+        "Nasdaq Veles California Water Index"
+      ],
+      "category": "System",
+      "definition": "Financial instrument that began trading on the Chicago Mercantile Exchange in December 2020 — indexed to the Nasdaq Veles California Water Index under ticker NQH2O — making water for the first time in human history a tradeable financial commodity alongside oil, gold, and pork bellies, enabling speculators to profit from water scarcity.",
+      "role": "The ultimate expression of water commodification. Water futures' mechanics: (1) water becomes tradeable alongside oil and gold, (2) speculators can place bets on water scarcity, (3) the drier the forecast, the higher the price, the greater the profit, (4) someone makes money every time a reservoir drops. This is the endpoint of the trajectory from World Bank conditionality through corporate concessions to pure financial abstraction — water as a number on a trading screen, disconnected from the communities who need it to survive.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Chicago Mercantile Exchange",
+      "aliases": [
+        "CME",
+        "CME Group"
+      ],
+      "category": "Organization",
+      "definition": "American derivatives exchange that launched water futures trading in December 2020, creating the marketplace where water scarcity becomes a financial opportunity — the institution that formalized the final step in water's journey from human right to tradeable commodity.",
+      "role": "The marketplace that completed water's commodification. The CME's role is providing the infrastructure where water scarcity generates profit. The mechanics: (1) created the NQH2O water futures contract indexed to California water prices, (2) enables trading water alongside oil, gold, pork bellies, (3) the drier the forecast, the higher the price, the greater the profit for speculators. The CME is listed alongside Bechtel, Suez, Veolia, Nestlé, and the World Bank as one of the entities whose answer to 'should water be subject to market allocation?' is yes.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Flint",
+      "aliases": [
+        "Flint Michigan",
+        "Flint Water Crisis"
+      ],
+      "category": "Place",
+      "definition": "Michigan city of 100,000 residents — 54% Black, median household income $28,000 — whose water source was switched from Lake Huron to the corrosive Flint River in 2014 under emergency financial management to save five million dollars over two years, dissolving lead from old pipes into the drinking supply, poisoning the entire population and killing twelve from Legionnaires' disease.",
+      "role": "The domestic American case proving water inequality is inseparable from race and class. Flint's mechanics: (1) emergency financial management — democracy suspended, state-appointed manager makes budget decisions, (2) water source switched to save $5 million, (3) corrosive river water dissolves lead from old pipes, (4) 100,000 residents poisoned, lead levels in some homes twice EPA hazardous waste threshold, (5) 12 dead from Legionnaires' disease. The investigation frames it as arithmetic: 'Someone calculated that these people's health was worth less than five million dollars. And they were right — because nobody stopped them.' Population 54% Black. This was not accident but calculation.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Cape Town",
+      "aliases": [
+        "Cape Town Water Crisis",
+        "Day Zero"
+      ],
+      "category": "Place",
+      "definition": "South African city that in 2018 faced 'Day Zero' — the projected date when municipal taps would shut off entirely — revealing how decades of infrastructure underfunding meant the poor, predominantly Black communities of the Cape Flats had been living in water poverty long before the middle class noticed, while wealthy suburbs tapped private boreholes to different aquifers.",
+      "role": "The case study of water inequality during scarcity. Cape Town demonstrates how crisis exposes pre-existing stratification. The mechanics: (1) countdown clocks on every news channel for Day Zero, (2) residents queue with containers at municipal water points — 25 liters per person, armed guards monitoring, (3) wealthy suburbs drill private boreholes to different aquifers — same drought, different water source, (4) crisis blamed on climate, but infrastructure had been underfunded for decades, (5) poor Black communities of Cape Flats had been in water poverty already. 'Day Zero was new for some. It was Tuesday for others.'",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Ogallala Aquifer",
+      "aliases": [
+        "Ogallala",
+        "High Plains Aquifer"
+      ],
+      "category": "Resource",
+      "definition": "Massive aquifer beneath the American Great Plains spanning eight states and 174,000 square miles — irrigating twenty billion dollars of agriculture annually — that took millions of years to fill but is being emptied in decades with extraction exceeding recharge by 6:1 in some areas, with parts projected to be functionally dry within thirty years.",
+      "role": "The ticking resource clock that makes water scarcity concrete. The Ogallala's significance is the arithmetic of depletion: (1) millions of years to fill, decades to empty, (2) extraction rate exceeds recharge 6:1, (3) irrigates $20 billion agriculture annually, (4) when the water runs out, farms stop, food chain breaks, everything downstream breaks. The investigation frames this as 'not a future scenario — this is current hydrology.' The Ogallala makes abstract water scarcity into measurable, predictable collapse.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Mecosta County",
+      "aliases": [
+        "Mecosta County Michigan"
+      ],
+      "category": "Place",
+      "definition": "Rural Michigan county of eleven thousand people where Nestlé operates a pumping station extracting four hundred gallons per minute from the local aquifer for a permit costing two hundred dollars per year — selling the water at a roughly two thousand times markup while the nearby creek has gone dry and the aquifer level has measurably dropped.",
+      "role": "The micro-scale case study of corporate water extraction economics. Mecosta County's mechanics strip the system to its simplest form: (1) permit costs $200/year, (2) Nestlé extracts 400 gallons/minute, (3) sells at ~$1.50 per half-liter, (4) markup roughly 2,000x, (5) creek dried up, aquifer dropping, (6) community objected, Nestlé argued groundwater is private property. Two hundred dollars for the permit. Millions in profit. Zero accountability for the aquifer. The economics are transparent — and legal.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Structural Adjustment",
+      "aliases": [
+        "SAPs",
+        "Structural Adjustment Programs"
+      ],
+      "category": "Process",
+      "definition": "World Bank and IMF policy framework requiring borrowing nations to privatize state services, eliminate subsidies, and liberalize trade as conditions for receiving loans — the mechanism through which water privatization was imposed on dozens of developing countries, not as local policy choice but as external financial condition.",
+      "role": "The policy transmission mechanism from international institution to local water tap. Structural adjustment's stance is that market discipline improves service delivery. The mechanics: (1) country needs loan, (2) loan comes with conditions including privatization of water, (3) 'no public subsidy' clause means all costs including profit pass to consumers, (4) the condition is imposed by institutions governed by countries that would never accept the same conditions domestically. The investigation documents Bolivia's Condition 4.3: privatize the water supply. Bolivia needed the loan. Bechtel wanted the contract. The World Bank connected them.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Re-municipalization Movement",
+      "aliases": [
+        "Water Remunicipalisation",
+        "Public Water Movement"
+      ],
+      "category": "Process",
+      "definition": "Global counter-movement in which at least 235 cities in 37 countries have taken their water systems back from private operators since 2000 — including Paris, home city of Suez and Veolia — representing the largest reversal of water privatization and proving that the French companies selling privatization to the developing world couldn't sell it to their own capital.",
+      "role": "The evidence that privatization is reversible and that communities can take water back. The movement's mechanics: (1) 235 cities in 37 countries since 2000, (2) Paris re-municipalized — the home city of the two largest water corporations, (3) the French companies that sold privatization to the developing world couldn't sell it to their own capital, (4) the movement is part of the 'light side' of the investigation's final image — alongside Cochabamba's La Coordinadora, UN Resolution 64/292, community water cooperatives, and indigenous water protectors.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "UNICEF",
+      "aliases": [
+        "United Nations Children's Fund"
+      ],
+      "category": "Organization",
+      "definition": "UN agency whose reports document 829,000 deaths annually from waterborne disease — 297,000 of them children under five — using the word 'crisis' to describe the same water that Veolia's annual report describes as 'opportunity,' representing the humanitarian lens on a resource the corporate lens views as a growth market.",
+      "role": "The humanitarian counter-narrative to corporate water reporting. UNICEF's function in the investigation is documentary — providing the human cost numbers that corporate reports omit. The mechanics of the contrast: (1) Veolia reports water division revenue of 11.4 billion euros and uses 'opportunity,' (2) UNICEF reports 829,000 deaths from waterborne disease and uses 'crisis,' (3) they are describing the same water. Every two minutes a child under five dies from waterborne disease — more than malaria, more than measles, more than conflict.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "United States",
+      "aliases": [
+        "US",
+        "America"
+      ],
+      "category": "Place",
+      "definition": "Country where the Flint water crisis poisoned 100,000 residents to save five million dollars, where Nestlé extracts water from Michigan aquifers at two hundred dollars per year in permits, where the Chicago Mercantile Exchange launched water futures, and where the Ogallala Aquifer is being depleted at six times its recharge rate — demonstrating that water inequality is not confined to the developing world.",
+      "role": "The domestic proof that water privatization and inequality operate in wealthy nations too. The US demonstrates that the system documented in Bolivia and Manila also operates at home — Flint's lead poisoning, Nestlé's aquifer extraction, the Ogallala's depletion, water futures trading. The mechanics are the same: decisions about water access are made by those who profit from scarcity, not by those who need water to survive. The population of Flint is 54% Black, median income $28,000 — the arithmetic of whose health is worth less than $5 million operates domestically.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Revolving Door",
+      "aliases": [
+        "Water-Bank Revolving Door",
+        "Institutional Personnel Exchange"
+      ],
+      "category": "System",
+      "definition": "The organizational architecture by which senior staff move between World Bank positions, corporate water company boards, and government advisory roles — creating a system where the person writing the policy, the person bidding on the contract, and the person approving the contract have often held each other's jobs — not hidden corruption but visible institutional design.",
+      "role": "The personnel mechanism that ensures policy alignment between institutions. The revolving door's mechanics: (1) staff move between Bank, corporate boards, and government advisory roles, (2) the person writing the policy has held the job of the person bidding on the contract, (3) this is not corruption because it is not hidden — it is organizational architecture visible on LinkedIn, (4) it ensures that privatization policy, corporate bidding, and government approval are performed by people with shared professional backgrounds, shared assumptions, and shared career incentives.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Paris",
+      "aliases": [
+        "City of Paris"
+      ],
+      "category": "Place",
+      "definition": "Capital of France and home city of both Suez and Veolia — the two dominant global water privatization corporations — that re-municipalized its own water system, proving that the French companies selling privatization to the developing world couldn't sell it to their own citizens.",
+      "role": "The irony that proves the investigation's thesis. Paris's significance is geographic: it is the home city of Suez and Veolia — the companies that operate water systems in Manila, Jakarta, Buenos Aires, and dozens of other cities. When Paris re-municipalized its water, it demonstrated that the privatization model these companies export fails the test of their own capital's citizens. Paris is counted among the 235 cities in 37 countries that have taken their water back.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Water as Human Right",
+      "aliases": [
+        "Right to Water",
+        "Water Rights Concept"
+      ],
+      "category": "Concept",
+      "definition": "The principle that access to clean water is a fundamental human right rather than a market commodity — recognized by UN Resolution 64/292 in 2010 but without enforcement mechanism — creating the central tension of the investigation: whether a substance required for human survival should be subject to market allocation.",
+      "role": "The conceptual battleground of the entire investigation. The concept's stance is that water access should not be determined by ability to pay. The mechanics of the conflict: (1) the concept was formalized in UN Resolution 64/292, (2) the resolution is non-binding — legally a 'suggestion,' (3) meanwhile corporations have enforceable property rights under bilateral investment treaties, (4) the asymmetry means corporate water rights are more legally powerful than human water rights. The investigation's closing question returns to this concept: will water be controlled by communities who need it or corporations who profit from it?",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "South Africa",
+      "aliases": [
+        "Republic of South Africa"
+      ],
+      "category": "Place",
+      "definition": "Country where Cape Town's 2018 Day Zero water crisis revealed decades of infrastructure underfunding and racial stratification in water access — where poor, predominantly Black communities of the Cape Flats had been living in water poverty long before the middle class noticed, while wealthy suburbs drilled private boreholes to different aquifers during the same drought.",
+      "role": "The case demonstrating how water crises expose pre-existing inequality along racial and economic lines. South Africa's mechanics: (1) decades of infrastructure underfunding, (2) predominantly Black communities already in water poverty, (3) crisis blamed on climate but structural causes predate drought, (4) wealthy suburbs access different aquifers through private boreholes — same drought, different water, (5) Day Zero was new for some, Tuesday for others. The country demonstrates that water inequality is not produced by scarcity — scarcity merely reveals inequality that was always there.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "China",
+      "aliases": [
+        "People's Republic of China",
+        "PRC"
+      ],
+      "category": "Place",
+      "definition": "Country identified on the 2040 water stress projection map as having northern regions under high water stress — part of a global picture where thirty-three countries and two billion people will face extreme or high water stress within fifteen years.",
+      "role": "Referenced in the global water stress projection as having northern regions under high water stress by 2040. China appears in the investigation's forward-looking section alongside the Middle East, North Africa, and South Asia as part of the global scarcity picture. Its inclusion connects the water privatization investigation to the broader resource scarcity that makes water commodification increasingly profitable — and increasingly dangerous.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Colorado River",
+      "aliases": [
+        "Colorado"
+      ],
+      "category": "Resource",
+      "definition": "Major American river serving forty million people that no longer reaches the sea — cited as evidence that water stress maps don't respect political boundaries and that critical water resources are already in terminal decline in the developed world.",
+      "role": "The American proof point that water depletion is not a developing-world problem. The Colorado River serves 40 million Americans but no longer reaches the ocean — it is fully consumed before it can complete its natural course. The investigation uses it alongside the Ogallala Aquifer to demonstrate that the water stress projected for 2040 is already manifest in the American Southwest.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Flint River",
+      "aliases": [
+        "Flint River Michigan"
+      ],
+      "category": "Resource",
+      "definition": "Corrosive Michigan waterway that became Flint's water source in 2014 when the state switched from Lake Huron to save five million dollars — its corrosive water dissolving lead from the city's old pipes into the drinking supply, poisoning 100,000 residents.",
+      "role": "The physical mechanism of the Flint water crisis. The Flint River's corrosive chemistry is what turned a cost-cutting decision into a public health catastrophe. The mechanics: corrosive water + lead pipes = lead in drinking water. The river itself is not the villain — the decision to use it without treating for corrosiveness, made by an emergency financial manager to save $5 million, is the causal mechanism.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "EPA",
+      "aliases": [
+        "Environmental Protection Agency",
+        "US EPA"
+      ],
+      "category": "Organization",
+      "definition": "United States Environmental Protection Agency whose hazardous waste threshold was exceeded by a factor of two in some Flint homes during the water crisis — the regulatory body whose standards provide the measurement framework showing that Flint's water was not merely 'poor quality' but objectively hazardous.",
+      "role": "The regulatory measurement framework in the Flint crisis. The EPA provides the threshold that quantifies Flint's contamination: lead levels in some homes were twice the EPA threshold for hazardous waste. The EPA's significance in the investigation is providing the objective metric that transforms 'bad water' into 'hazardous waste in people's homes.'",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Lake Huron",
+      "aliases": [
+        "Great Lakes Water Source"
+      ],
+      "category": "Resource",
+      "definition": "Great Lakes water source that Flint had been using safely before the 2014 switch to the corrosive Flint River — the baseline clean water source that was abandoned to save five million dollars over two years.",
+      "role": "The counterfactual in the Flint crisis — the safe water source that was abandoned for a cheaper, corrosive alternative. Lake Huron demonstrates that Flint's poisoning was not inevitable — there was a functioning clean water source already in use. The switch was purely economic, a five million dollar savings that produced a public health catastrophe.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "United Nations General Assembly",
+      "aliases": [
+        "UNGA",
+        "UN General Assembly"
+      ],
+      "category": "Organization",
+      "definition": "UN body that passed Resolution 64/292 on July 28, 2010 recognizing water as a human right — with 122 votes in favor, none against, 41 abstentions — producing a non-binding resolution that created symbolic recognition without enforcement mechanism.",
+      "role": "The institutional body that produced the symbolic recognition of water as a human right. The UNGA's vote demonstrates near-universal acknowledgment (122 yes, 0 no) but the 41 abstentions and non-binding nature reveal the gap between acknowledgment and enforcement. The investigation notes: 'There is applause. There are photographs. There is a press release. There is no enforcement mechanism.'",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Waterborne Disease Mortality",
+      "aliases": [
+        "Water-Related Deaths",
+        "Preventable Water Deaths"
+      ],
+      "category": "Metric",
+      "definition": "829,000 deaths annually from waterborne disease documented by UNICEF — 297,000 of them children under five — exceeding deaths from malaria, measles, and conflict — occurring every two minutes for children under five, representing the human cost of treating water as a market commodity rather than a guaranteed right.",
+      "role": "The human metric that quantifies what water commodification costs in lives. The number is the investigation's moral weight: 297,000 children under five per year, one every two minutes. The investigation frames this explicitly: 'This is not a market failure. The market is working exactly as designed. Markets allocate scarce resources to those who can pay the most.' The deaths are the output of a system functioning to specification.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Condition 4.3",
+      "aliases": [
+        "World Bank Privatization Condition",
+        "Loan Condition 4.3"
+      ],
+      "category": "Agreement",
+      "definition": "The specific clause in the World Bank's loan to Bolivia requiring privatization of Cochabamba's water supply with no public subsidy — the contractual mechanism that connected a country needing emergency financing to a corporation wanting a water concession, triggering the chain of events from price increases to protests to Victor Hugo Daza's death.",
+      "role": "The specific contractual trigger of the Cochabamba crisis. Condition 4.3 is where the institutional system meets the individual water tap. The mechanics: (1) Bolivia needed the loan, (2) the loan required privatizing water with no public subsidy, (3) no subsidy meant all costs plus profit passed to consumers, (4) consumers earning two dollars a day got twenty dollar water bills. 'Bolivia needed the loan. Bechtel wanted the contract. The World Bank connected them. Everyone at the table got what they wanted. Everyone at the table.'",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Simon Bolivar",
+      "aliases": [
+        "The Liberator",
+        "Bolivar"
+      ],
+      "category": "Person",
+      "definition": "Historical figure who liberated much of South America from Spanish colonial rule — whose name adorns the street where seventeen-year-old Victor Hugo Daza was killed by a military sniper during the Cochabamba Water War, creating the symbolic irony of a boy dying for water on a street named after a liberator.",
+      "role": "A symbolic presence in the investigation rather than an active entity. Simon Bolivar's significance is purely in the naming — Victor Hugo Daza died on a street named after the liberator of South America, killed by his own country's military on behalf of a foreign corporation. The irony is the investigation's point: the liberator's legacy and the reality of corporate colonialism occupying the same cobblestones.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "2040 Water Stress Projection",
+      "aliases": [
+        "Water Stress Map",
+        "Global Water Scarcity Forecast"
+      ],
+      "category": "Concept",
+      "definition": "Projection mapping showing that by 2040 — fifteen years from the investigation's timeline — thirty-three countries and two billion people will face extreme water stress, covering the Middle East, North Africa, South Asia, parts of Central America, Southern Europe, northern China, and the American Southwest.",
+      "role": "The forward-looking data that makes water commodification not just a current injustice but an escalating crisis. The projection's mechanics: (1) 33 countries, 2 billion people under extreme stress, (2) the Colorado River already doesn't reach the sea, (3) the Ogallala Aquifer will be functionally dry in 30 years, (4) water doesn't respect political boundaries. The projection makes the investigation's closing question urgent rather than theoretical: who will control water — communities who need it or corporations who can profit from it?",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Jakarta",
+      "aliases": [
+        "Indonesian Capital"
+      ],
+      "category": "Place",
+      "definition": "Indonesian capital listed alongside Manila, Buenos Aires, Dar es Salaam, Johannesburg, and Atlanta as one of dozens of cities where the same water privatization pattern played out: World Bank loan, privatization condition, foreign corporation, price hike — part of the global evidence that Cochabamba was not unique but was the loudest case.",
+      "role": "One of the global pattern cities demonstrating that Cochabamba was not an isolated incident but part of a systematic pattern across dozens of cities. Jakarta appears in the investigation list of cities that experienced the same privatization-price-protest cycle, establishing that the system documented in Bolivia operates identically across continents and economic contexts.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Buenos Aires",
+      "aliases": [
+        "Argentine Capital"
+      ],
+      "category": "Place",
+      "definition": "Argentine capital listed as one of dozens of cities experiencing the same water privatization pattern — World Bank loan, privatization condition, foreign corporation, price hike — cited alongside Manila, Jakarta, Dar es Salaam, Johannesburg, and Atlanta as evidence of the systemic nature of the privatization cycle.",
+      "role": "Part of the global evidence base demonstrating that water privatization produces identical outcomes across different countries. Buenos Aires is cited in the same list as Cochabamba, Manila, and Jakarta — establishing the pattern is structural, not local.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Dar es Salaam",
+      "aliases": [
+        "Tanzanian Capital"
+      ],
+      "category": "Place",
+      "definition": "Tanzanian city listed as one of dozens experiencing the same water privatization pattern — World Bank loan, privatization condition, foreign corporation, price hike — cited as evidence that the Cochabamba pattern is global, not local.",
+      "role": "One of the African cities in the global water privatization pattern, demonstrating that the system operates identically across the developing world. Listed alongside Manila, Jakarta, Buenos Aires, Johannesburg, and Atlanta.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Johannesburg",
+      "aliases": [
+        "Joburg"
+      ],
+      "category": "Place",
+      "definition": "South African city listed as one of dozens experiencing the water privatization pattern — cited alongside Manila, Jakarta, Buenos Aires, and Dar es Salaam as global evidence of the systemic cycle from World Bank conditionality to corporate price hikes to community resistance.",
+      "role": "Part of the Southern African water privatization evidence base, alongside Cape Town and South Africa more broadly. Listed in the global pattern cities establishing that water privatization produces identical outcomes across continents.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Atlanta",
+      "aliases": [
+        "Atlanta Georgia"
+      ],
+      "category": "Place",
+      "definition": "American city listed alongside developing-world cities (Manila, Jakarta, Buenos Aires, Dar es Salaam, Johannesburg) as experiencing the same water privatization pattern — significant because it demonstrates the pattern is not confined to the Global South but operates in the wealthy developed world as well.",
+      "role": "The American entry in the global privatization pattern, demonstrating that the cycle is not a developing-world phenomenon. Atlanta is listed alongside Cochabamba, Manila, and Jakarta — proving the system operates regardless of national wealth level.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Cape Flats",
+      "aliases": [
+        "Cape Flats Communities"
+      ],
+      "category": "Place",
+      "definition": "Predominantly Black communities in Cape Town that had been living in water poverty long before the 2018 Day Zero crisis made the middle class notice — representing the pre-existing inequality that water crises expose rather than create.",
+      "role": "The geographic embodiment of pre-existing water inequality in South Africa. Cape Flats demonstrates that Day Zero was not a crisis that arrived in 2018 but a condition that had been normal for poor Black communities for decades. The investigation uses Cape Flats to make its point: Day Zero was new for some, Tuesday for others.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Washington D.C.",
+      "aliases": [
+        "Washington",
+        "D.C."
+      ],
+      "category": "Place",
+      "definition": "Location of World Bank headquarters at 1800 H Street where water privatization policy is designed in temperature-controlled rooms with complimentary water — the geographic center of the institutional architecture that produces water crises in Cochabamba, Manila, and dozens of other cities.",
+      "role": "The geographic seat of the institutional architecture. The investigation describes the World Bank conference room at 1800 H Street as temperature-controlled with complimentary water — while the policies designed there produce water crises for communities where water is neither complimentary nor guaranteed. The contrast between the policy-making environment and the policy outcomes is the investigation point.",
+      "first_appearance_index": 1
+    }
+  ]
+}

@@ -1,0 +1,411 @@
+{
+  "temporal_phases": [
+    { "index": 1, "label": "Borlaug's Research", "period": "1944-1965" },
+    { "index": 2, "label": "The Green Revolution Deployment", "period": "1965-1970" },
+    { "index": 3, "label": "The Input Trap Formation", "period": "1968-1990" },
+    { "index": 4, "label": "Corporate Consolidation and Crisis", "period": "1995-2020" },
+    { "index": 5, "label": "The Crossroads", "period": "2020-present" }
+  ],
+  "entities": [
+    {
+      "name": "Norman Borlaug",
+      "aliases": ["Borlaug"],
+      "category": "Person",
+      "definition": "Thirty-year-old plant pathologist from Iowa who arrived in Mexico's Yaqui Valley in 1944 under Rockefeller Foundation funding, spent twenty years crossbreeding wheat using unorthodox shuttle breeding between two altitudes, created semi-dwarf varieties that produced two to three times more grain per acre, and received the Nobel Peace Prize in 1970 for feeding more people than any human in history — while unknowingly installing the operating system of agricultural dependency.",
+      "role": "The inventor whose genuine miracle became the platform for a dependency system he didn't intend. Borlaug's stance was humanitarian — fix wheat, prevent famine. The mechanics: (1) twenty years of obsessive crossbreeding produced semi-dwarf wheat with enormous yields, (2) the varieties were genuine breakthroughs that saved hundreds of millions from starvation, (3) but the seeds were platforms, not products — requiring synthetic fertilizer, chemical pesticides, controlled irrigation, and credit, (4) the system that grew from his seeds — debt traps, corporate consolidation, farmer suicides — is 'not what Borlaug intended. But intention is not what systems optimize for.'",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "India",
+      "aliases": ["Republic of India"],
+      "category": "Place",
+      "definition": "Country that was supposed to starve in the 1960s according to Paul Ehrlich's predictions, instead became a Green Revolution showcase when Punjab's wheat yields tripled in 1968, then became the primary case study of the revolution's downstream costs — 300,000 farmer suicides since 1995, aquifer depletion at one of the fastest rates on Earth, and the largest protest in human history when farmers blockaded Delhi in 2020-2021.",
+      "role": "The country where every phase of the Green Revolution played out most visibly. India's trajectory IS the investigation: (1) 1965 famine crisis with American food shipments tied to Cold War alignment, (2) 1968 Punjab miracle tripling yields, (3) subsequent decades of debt traps, soil degradation, and groundwater collapse, (4) 300,000+ farmer suicides in the cotton belt, (5) 2020 protests blockading Delhi against the final stage of corporate consolidation. India is both the revolution's greatest success and its most damning evidence.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Rockefeller Foundation",
+      "aliases": ["Rockefeller"],
+      "category": "Organization",
+      "definition": "American philanthropic foundation that funded Norman Borlaug's twenty-year wheat research in Mexico, providing the institutional support and the first link in the chain that connects agricultural science to geopolitics to corporate consolidation — the foundation grant that started a system affecting billions.",
+      "role": "The initial institutional enabler whose funding created the science the system was built on. The Rockefeller Foundation appears on the investigation's convergence map as one of the institutional nodes: Rockefeller funds the research, USAID funds the distribution, World Bank funds the infrastructure, chemical companies supply the inputs. The foundation's role was genuine — enabling breakthrough science — but it also established the pattern of external institutional control over developing-world agriculture.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "World Bank",
+      "aliases": ["IBRD"],
+      "category": "Organization",
+      "definition": "International financial institution that under Robert McNamara's presidency (1968-1981) increased agricultural lending tenfold, funding the infrastructure required for Green Revolution deployment — and later imposing structural adjustment conditions that removed fertilizer subsidies, opened markets, and dismantled protections for small farmers.",
+      "role": "The institutional infrastructure funder that later became the structural adjustment enforcer. The World Bank's dual role: (1) funded wells, irrigation, roads that made the Green Revolution physically possible, (2) when debtor nations couldn't service those loans, imposed conditions — remove fertilizer subsidies, open markets to imports, privatize seed companies — that dismantled every buffer between small farmers and global market forces. The same institution that built the dependency then removed the safety nets.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Monsanto",
+      "aliases": ["Monsanto Company"],
+      "category": "Organization",
+      "definition": "Corporation founded in 1901 (original product: saccharin, then Agent Orange, then Roundup, then GM seeds requiring Roundup) whose pivot from chemical warfare to chemical agriculture is 'not a metaphor but a business strategy' — presenting Bt cotton to Indian villages at four times the cost of traditional varieties with contracts prohibiting seed saving, acquired by Bayer in 2018 for sixty-three billion dollars.",
+      "role": "The corporate embodiment of agricultural dependency as business model. Monsanto's trajectory is the investigation's corporate arc: (1) saccharin to Agent Orange to Roundup to GM seeds — each pivot exploiting existing chemical capacity, (2) seeds engineered to require Roundup create a locked product ecosystem, (3) contracts prohibit the ten-thousand-year-old practice of seed saving — 'a behavior older than writing, older than cities, older than civilization itself, enclosed within a legal framework younger than the internet,' (4) Bt cotton costs 4x traditional varieties, creating the debt cycle that contributed to 300,000 farmer suicides.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Punjab",
+      "aliases": ["Punjab India"],
+      "category": "Place",
+      "definition": "Indian state where the Green Revolution's wheat miracle was most dramatic — fields producing 800 kg/hectare tripled to 2,400 in 1968 — and where the downstream costs are most measurable: topsoil organic carbon reduced by half, tube wells now four hundred feet deep where they were once fifty, aquifer depleting at one of the fastest rates on Earth according to NASA satellite data.",
+      "role": "The geographic proof of the revolution's trajectory from miracle to crisis. Punjab demonstrates every phase: (1) 1968 harvest miracle that turned India from importer to builder of grain silos, (2) decades of monoculture reducing soil from living system to chemical substrate, (3) tube wells drilling progressively deeper — fifty feet, then hundred, then two hundred, then four hundred — chasing a receding aquifer, (4) the land that saved India from famine is 'being hollowed out from beneath.'",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Semi-Dwarf Wheat",
+      "aliases": ["Borlaug's Wheat", "High-Yield Varieties"],
+      "category": "Technology",
+      "definition": "Wheat varieties engineered by Borlaug through twenty years of shuttle breeding — growing short with thick stems and enormous heads instead of tall and falling over — producing two to three times more grain per acre but requiring synthetic fertilizer, chemical pesticides, controlled irrigation, and credit to function, making the seed 'the app' while the input stack is 'the operating system.'",
+      "role": "The technological breakthrough that is simultaneously a genuine miracle and a platform for dependency. The semi-dwarf wheat's architecture is the investigation's central metaphor: (1) the seed solved the immediate problem — it produced enormous yields and prevented famine, (2) but it was a platform, not a product — requiring petroleum-derived fertilizer, chemical pesticides, drilled wells, and credit, (3) each requirement is a dependency, each dependency is a revenue stream for someone who isn't farming, (4) the seed is the app, the input stack is the operating system. The technology works. The system it requires creates traps.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Green Revolution",
+      "aliases": ["Agricultural Revolution", "Green Revolution System"],
+      "category": "System",
+      "definition": "Global agricultural transformation beginning in the 1960s that introduced high-yield crop varieties requiring synthetic inputs (fertilizer, pesticides, irrigation, credit) to the developing world — saving hundreds of millions from starvation while creating structural dependencies on external inputs, corporate seed suppliers, international lending, and petroleum-derived chemicals.",
+      "role": "The central system under investigation. The Green Revolution's mechanics form the investigation's core: (1) genuine miracle that tripled yields and prevented mass famine, (2) but the miracle required an input stack that created dependencies, (3) dependencies created debt, debt created traps, traps created crises (farmer suicides, soil degradation, aquifer depletion), (4) the system was 'assembled from legitimate parts that produces illegitimate outcomes.' It is not a conspiracy but a convergence — agricultural science, Cold War geopolitics, chemical industry surplus capacity, and institutional lending all aligned to create a machine that feeds billions while trapping millions.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Input Stack",
+      "aliases": ["Agricultural Input System", "Dependency Stack"],
+      "category": "System",
+      "definition": "The interlocking set of purchased inputs required by Green Revolution crop varieties — synthetic fertilizer (petroleum-derived), chemical pesticides (from former wartime munitions manufacturers), controlled irrigation (from wells drilled with borrowed money), and credit (from banks connected to institutions with their own agendas) — where 'the seed is the app and this is the operating system.'",
+      "role": "The hidden architecture that transforms a seed breakthrough into an economic trap. The input stack's mechanics: (1) each component is necessary — the seed cannot produce high yields without all four inputs, (2) each component requires cash before planting, transforming farming from a largely self-sufficient activity to a credit-dependent business, (3) each component is supplied by external actors (chemical companies, banks, well drillers), (4) every dependency is a revenue stream for someone who isn't farming. The input stack is what turns the Green Revolution from a technology into an operating system.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Bayer",
+      "aliases": ["Bayer AG", "Bayer-Monsanto"],
+      "category": "Organization",
+      "definition": "German pharmaceutical and chemical corporation that acquired Monsanto in 2018 for sixty-three billion dollars, creating an entity controlling approximately one quarter of the global seed market and one quarter of the global pesticide market — consolidating the system that began with a foundation grant into a corporate structure with more agricultural power than most nations.",
+      "role": "The endpoint of corporate consolidation in the Green Revolution's arc. Bayer's acquisition of Monsanto represents: (1) a system that started with one scientist and a Rockefeller grant consolidated into a single corporation controlling 25% of global seeds AND 25% of global pesticides, (2) the locked ecosystem — seeds that require chemicals, chemicals sold by the same company — is now institutionalized at maximum scale, (3) 'this is not what Borlaug intended. But intention is not what systems optimize for.'",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "CRISPR Gene Editing",
+      "aliases": ["CRISPR", "Gene Editing"],
+      "category": "Technology",
+      "definition": "Molecular crop modification technology with precision Borlaug couldn't have imagined — genuinely extraordinary science whose patents are held by Corteva, Bayer, and Syngenta, meaning the ownership structure of the next agricultural revolution is identical to the current one.",
+      "role": "The technological future that reveals whether the system has changed. CRISPR's significance in the investigation: (1) the technology works and is genuinely revolutionary, (2) but the patents are held by the same corporate entities (Corteva, Bayer, Syngenta), (3) the question is not whether the technology works but whether the system it's embedded in has changed, (4) 'Look at who holds the patents. You have your answer.' CRISPR reprises the Green Revolution's central dynamic: brilliant science, unchanged power structure.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Robert McNamara",
+      "aliases": ["McNamara"],
+      "category": "Person",
+      "definition": "Secretary of Defense during Vietnam, President of Ford Motor Company before that, President of the World Bank from 1968 to 1981 — under whose leadership agricultural lending increased tenfold — embodying the revolving door between military strategy, corporate management, and development finance that share 'a grammar.'",
+      "role": "The personal embodiment of the institutional convergence. McNamara's career trajectory IS the system: (1) Ford Motor Company (corporate management), (2) Secretary of Defense during Vietnam ('managed the body count in Southeast Asia'), (3) World Bank president ('managed the loan portfolio for the developing world's food supply'). His career demonstrates that military strategy, corporate management, and development finance are not separate domains — they share institutional logic, personnel, and methods. The tenfold increase in agricultural lending under his presidency built the infrastructure that locked developing countries into Green Revolution dependency.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Paul Ehrlich",
+      "aliases": ["Ehrlich"],
+      "category": "Person",
+      "definition": "Author of the bestseller predicting that hundreds of millions would starve in the coming decade with India first — whose dire predictions created the urgency that made the Green Revolution politically possible and justified the geopolitical strings attached to food aid.",
+      "role": "The voice of crisis that created the political space for intervention. Ehrlich's predictions were wrong in outcome but important in function: they established the urgency that justified American food diplomacy and agricultural transformation as geopolitical tools. Without the crisis narrative, there would have been less pressure on India to accept conditions attached to American wheat.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "C. Subramaniam",
+      "aliases": ["Subramaniam"],
+      "category": "Person",
+      "definition": "India's agriculture minister who negotiated the import of 18,000 tons of Borlaug's Mexican wheat seed — the largest seed purchase in human history — while President Johnson held up food shipments until India agreed to agricultural reforms, navigating between domestic famine and American geopolitical conditions.",
+      "role": "The Indian decision-maker caught between famine and geopolitical conditions. Subramaniam's position embodies the constraint developing nations faced: (1) India was starving, (2) American wheat was available but conditioned on reforms, (3) Borlaug's seed offered a way out, (4) accepting the seed meant accepting the input system it required. He negotiated the largest seed purchase in history under duress — 'short-tether diplomacy' where the tether is hunger.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Lyndon Johnson",
+      "aliases": ["Johnson", "President Johnson"],
+      "category": "Person",
+      "definition": "US President who personally held up food shipments to India until the country agreed to agricultural reforms — practicing 'short-tether diplomacy' where the tether is hunger — using famine as leverage for geopolitical alignment during the Cold War.",
+      "role": "The geopolitical enforcer of agricultural reform. Johnson's role reveals the Cold War mechanics beneath the humanitarian narrative: (1) India needed American wheat to survive, (2) Johnson personally controlled the shipments, (3) releases were conditioned on India accepting agricultural reforms, (4) 'short-tether diplomacy — the tether is hunger.' This is where agricultural science becomes geopolitics — food aid as foreign policy lever.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Iowa",
+      "aliases": ["State of Iowa"],
+      "category": "Place",
+      "definition": "American state where Norman Borlaug was born and raised — the heartland origin point of the scientist whose work in Mexico's Yaqui Valley would reshape agriculture across the developing world.",
+      "role": "Borlaug's geographic origin, establishing the American roots of the Green Revolution. Iowa as the breadbasket state that produced the scientist who would transform global agriculture — connecting American farming tradition to developing-world agricultural transformation.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Mexico",
+      "aliases": ["United Mexican States"],
+      "category": "Place",
+      "definition": "Country where Borlaug conducted twenty years of wheat research in the Yaqui Valley under Rockefeller Foundation funding — the laboratory where shuttle breeding between two altitudes produced the semi-dwarf varieties that launched the Green Revolution.",
+      "role": "The laboratory of the Green Revolution. Mexico's Yaqui Valley is where Borlaug's twenty years of crossbreeding produced the breakthrough — the location where agricultural science happened before it became geopolitics and corporate strategy.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Yaqui Valley",
+      "aliases": ["Yaqui Valley Mexico"],
+      "category": "Place",
+      "definition": "Mexican agricultural valley where Borlaug arrived in 1944 and spent two decades crossbreeding wheat, using shuttle breeding between two altitudes to develop the semi-dwarf varieties that tripled yields — the specific geographic site of the Green Revolution's origin.",
+      "role": "The birthplace of the Green Revolution's science. Borlaug worked 'not in a clean lab but in dirt, under sun, for two decades.' The Yaqui Valley is where the myth of genius meets the reality of 'obsession plus funding.'",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Food for Peace",
+      "aliases": ["PL-480", "Public Law 480"],
+      "category": "Law",
+      "definition": "American food aid program under which India imported wheat in the 1960s — where 'peace' meant geopolitical alignment: 'we feed you, you align with us' — the legislative mechanism through which famine was leveraged for Cold War foreign policy objectives.",
+      "role": "The legal instrument that weaponized food aid. Food for Peace's mechanics: the name says peace but the function is alignment — American wheat exports to India were conditioned on political cooperation, making famine a lever for geopolitical influence during the Cold War.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Stem Rust",
+      "aliases": ["Wheat Rust", "Puccinia graminis"],
+      "category": "Resource",
+      "definition": "Fungal disease that has been killing wheat since before the Roman Empire — the enemy that Borlaug set out to defeat, and the genuine agricultural threat that justified twenty years of research and the development of resistant semi-dwarf varieties.",
+      "role": "The original problem that the Green Revolution legitimately solved. Stem rust is real — it destroyed harvests and caused famine. The Romans sacrificed red dogs to the god Robigus to prevent it. Borlaug's approach was 'less theological and more effective.' The fungus provides the genuine humanitarian justification for the revolution — the science was needed. The question is what system was built on top of the solution.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Dow",
+      "aliases": ["Dow Chemical"],
+      "category": "Organization",
+      "definition": "American chemical corporation that, along with DuPont, had enormous production capacity after World War II and needed new markets — since ammonium nitrate makes both explosives and fertilizer, the developing world's agricultural modernization was 'not just an opportunity but a survival strategy for an industry built for conflict.'",
+      "role": "One of the chemical industry actors whose postwar surplus capacity drove the fertilizer and pesticide markets that the Green Revolution depended on. Dow and DuPont demonstrate the military-industrial-agricultural nexus: wartime chemistry became peacetime agriculture, not through humanitarian intent but through market necessity.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "DuPont",
+      "aliases": ["DuPont Chemical"],
+      "category": "Organization",
+      "definition": "American chemical corporation that alongside Dow had massive wartime production capacity repurposed for agricultural chemicals — part of the military-to-agriculture pipeline where wartime munitions manufacturing became peacetime fertilizer and pesticide production.",
+      "role": "The other half of the chemical industry pivot from war to agriculture. DuPont's postwar conversion from munitions to fertilizer demonstrates that the Green Revolution's chemical input system was not designed for agriculture — it was adapted from military production. The molecular structure of ammonium nitrate doesn't care about intentions.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "USAID",
+      "aliases": ["United States Agency for International Development"],
+      "category": "Organization",
+      "definition": "American development agency that funded the distribution of Green Revolution technologies, appearing on the investigation's convergence map as one of the institutional nodes — the distribution arm complementing Rockefeller's research funding, World Bank's infrastructure lending, and chemical companies' input supply.",
+      "role": "The American distribution mechanism for Green Revolution technologies. USAID funded distribution while Rockefeller funded research, World Bank funded infrastructure, and chemical companies supplied inputs. Together they form the convergence map where 'the farmer is at the center — not as the driver, but as the customer.'",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Cold War",
+      "aliases": ["Cold War Geopolitics"],
+      "category": "Event",
+      "definition": "Global geopolitical conflict between the US and Soviet Union that provided the strategic motivation for the Green Revolution — making agricultural development a tool of political alignment where 'we feed you, you align with us' was the operating logic behind food aid and agricultural modernization programs.",
+      "role": "The geopolitical context that transformed agricultural science into foreign policy. The Cold War's role in the investigation: (1) Food for Peace program tied wheat exports to political alignment, (2) Johnson's 'short-tether diplomacy' used famine as geopolitical leverage, (3) preventing communist revolution in hungry nations was an explicit motivation, (4) the Cold War appears on the convergence map as the strategic motivation layer beneath the humanitarian narrative.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "World War II",
+      "aliases": ["WWII", "Second World War"],
+      "category": "Event",
+      "definition": "Global conflict whose end left the chemical industry with enormous production capacity and no war — creating the market pressure that drove Dow, DuPont, and their peers to repurpose ammonium nitrate production from explosives to fertilizer, establishing the military-industrial-agricultural pipeline.",
+      "role": "The event that created the surplus capacity driving the Green Revolution's chemical input system. WWII's significance is structural: it built the chemical industry infrastructure that needed new markets after 1945. The developing world's agricultural modernization absorbed that capacity — wartime chemistry became peacetime agriculture through market necessity, not humanitarian design.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Roundup",
+      "aliases": ["Glyphosate", "Roundup Herbicide"],
+      "category": "Technology",
+      "definition": "Monsanto's herbicide product that forms one half of a locked ecosystem — seeds genetically modified to require Roundup paired with Roundup herbicide sold by the same company — creating a product dependency where the crop and its chemical input are manufactured by a single corporation.",
+      "role": "The chemical half of Monsanto's locked ecosystem. Roundup's mechanics: (1) seeds engineered to be Roundup-resistant require Roundup to function, (2) the company that sells the seed also sells the only herbicide the seed can survive, (3) this creates a dependency loop where the farmer must buy both products from the same corporation, (4) Roundup is the chemical manifestation of the broader input dependency that defines the Green Revolution system.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Farmer Suicide Crisis",
+      "aliases": ["Cotton Belt Suicides", "Indian Farmer Suicides"],
+      "category": "Event",
+      "definition": "More than 300,000 Indian farmer suicides since 1995, concentrated in Maharashtra's cotton belt, following a consistent pattern: purchased seeds, purchased inputs, crop failure, unpayable debt, death — the human endpoint of a system designed to optimize yield rather than human survival.",
+      "role": "The most devastating evidence of the Green Revolution system's downstream costs. The suicide crisis demonstrates the system's failure mode in its starkest terms: (1) consistent pattern of debt-driven death, (2) 300,000 lives — each 'not a statistic but the endpoint of a system designed to optimize yield,' (3) the woman holding her husband's photograph who will farm his land, service his debts, raise their children alone, (4) 'the system has no setting for mercy. It has settings for profit, for interest, for repayment schedules. Mercy is not a parameter.'",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Seed Saving Prohibition",
+      "aliases": ["Seed Patents", "Seed IP System"],
+      "category": "System",
+      "definition": "Legal framework under which Monsanto's contracts prohibit farmers from saving, replanting, transferring, or selling seed produced from patented technology — enclosing within intellectual property law a practice older than writing, cities, and civilization itself, enforced through the Neolithic Revolution's most fundamental agricultural behavior.",
+      "role": "The legal mechanism that transforms a ten-thousand-year practice into a crime. The seed saving prohibition's mechanics: (1) Monsanto's fine print: 'The purchaser agrees not to save, replant, transfer, or sell seed,' (2) for 10,000 years since the Neolithic Revolution, farmers saved seeds — this is how agriculture worked, (3) that practice is now IP infringement, (4) farmers must buy new seeds every season from the corporation, completing the dependency loop. This is the system's most symbolically potent mechanism — turning humanity's oldest agricultural act into a contract violation.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Structural Adjustment",
+      "aliases": ["SAPs", "IMF Conditions"],
+      "category": "Process",
+      "definition": "International Monetary Fund conditions imposed on debtor nations requiring removal of fertilizer subsidies, opening markets to foreign imports, strengthening patent protections, and privatizing seed companies — each condition reasonable in isolation but together dismantling every buffer between the small farmer and the global market.",
+      "role": "The macro-level manifestation of the same trap that operates at the farm level. Structural adjustment's mechanics: (1) governments borrowed from the World Bank to fund agricultural modernization, (2) when debts became unserviceable, the IMF offered restructuring with conditions, (3) conditions remove the subsidies and protections that buffer small farmers from global market forces, (4) 'the same pattern that traps individual farmers traps entire nations.' The policy-level debt cycle mirrors the farm-level debt cycle — deliberate institutional architecture, not coincidence.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Monoculture",
+      "aliases": ["Monoculture Agriculture", "Single-Crop Farming"],
+      "category": "Process",
+      "definition": "Agricultural practice of growing a single crop in dense plantings — required by Green Revolution varieties and opposite of traditional polyculture — creating 'buffets for pests' that require chemical pesticide intervention, while eliminating the natural pest suppression of diverse interplanting.",
+      "role": "The agricultural method that creates pesticide dependency. Monoculture's mechanics: (1) Green Revolution wheat grows in dense single-crop plantings, (2) monocultures concentrate pest populations — 'buffets for pests,' (3) traditional polyculture (dozens of crops interplanted) naturally suppresses pests, (4) monoculture requires chemical intervention — 'this farmer is spraying organophosphates without protective equipment. He does this every season. The chemicals enter the soil, the water, his lungs. This is not an accident. It is a feature of the system.'",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Aquifer Depletion",
+      "aliases": ["Groundwater Collapse", "Water Table Drop"],
+      "category": "Process",
+      "definition": "The progressive exhaustion of Punjab's ancient aquifer by tube wells drilled to irrigate Green Revolution crops — wells going from fifty feet to four hundred feet deep over decades as the water table drops, with NASA satellite data confirming northwestern India's groundwater is depleting at one of the fastest rates on Earth.",
+      "role": "The ecological time bomb beneath the Green Revolution's success. The aquifer depletion's mechanics: (1) semi-dwarf wheat needs precise water — not too much, not too little, (2) tube wells drilled into millennia-old aquifer, (3) extraction exceeds recharge — wells go deeper each year (50 → 100 → 200 → 400 feet), (4) 'the aquifer doesn't know about crop schedules — it just knows extraction,' (5) 'when it's gone, it's gone. And it is going.' We are farming on ecological credit — the land that saved India from famine is being hollowed out from beneath.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Genetic Diversity Loss",
+      "aliases": ["Seed Diversity Collapse", "Varietal Erosion"],
+      "category": "Process",
+      "definition": "The replacement of India's estimated 100,000 rice varieties — each adapted to local conditions and carrying centuries of refined genetic information — with fewer than a dozen commercial varieties by 2000, eliminating the genetic insurance policy against future disease while calling it 'efficiency.'",
+      "role": "The hidden cost of standardization. Genetic diversity loss means: (1) 100,000 varieties reduced to fewer than 12, (2) each lost variety carried unique disease resistance, climate adaptation, soil suitability, (3) 'this is called efficiency — it is also the elimination of the insurance policy,' (4) 'when the next disease arrives — and it will — the backup copies have been erased.' The Green Revolution optimized for yield at the cost of resilience.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Agroecology",
+      "aliases": ["Agroecological Farming", "Alternative Agriculture"],
+      "category": "Concept",
+      "definition": "Agricultural approach demonstrated by farms like the Kerala example — rice paddies bordered by vegetable gardens, fish ponds, and fruit trees with no purchased inputs and no debt — endorsed by the UN in 2011, achieving comparable yields in long-term studies, but receiving only 0.5% of global agricultural research funding because it doesn't create markets for inputs.",
+      "role": "The road not taken — and the investigation's evidence that alternatives exist. Agroecology's significance: (1) farmer checks her soil with her hands — 'dark, moist, alive,' (2) no purchased inputs, no debt, (3) comparable yields in long-term studies, (4) UN-endorsed since 2011, (5) receives 0.5% of research funding, (6) 'it doesn't create markets for inputs — that's why it works, that's why it's underfunded.' Agroecology proves the Green Revolution's dependencies are structural choices, not technical necessities.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Maharashtra",
+      "aliases": ["Maharashtra India", "Cotton Belt"],
+      "category": "Place",
+      "definition": "Indian state containing the cotton belt where more than 300,000 farmers have taken their own lives since 1995 — the geographic concentration of the farmer suicide crisis that represents the human endpoint of the Green Revolution's debt trap cycle.",
+      "role": "The geographic epicenter of the farmer suicide crisis. Maharashtra's cotton belt is where the system's failure mode is most concentrated: purchased seeds, purchased inputs, crop failure, unpayable debt, death — 300,000 times since 1995.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Corteva",
+      "aliases": ["Corteva Agriscience"],
+      "category": "Organization",
+      "definition": "Agricultural corporation holding CRISPR gene editing patents alongside Bayer and Syngenta — one of the three corporate entities whose patent ownership of the next agricultural revolution ensures the ownership structure remains identical to the current one.",
+      "role": "One of three corporate patent holders of CRISPR technology, demonstrating that the next agricultural revolution's ownership structure is unchanged. 'The question is not whether the technology works. The question is whether the system it's embedded in has changed. Look at who holds the patents. You have your answer.'",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Syngenta",
+      "aliases": ["Syngenta Group"],
+      "category": "Organization",
+      "definition": "Global agrochemical and seed corporation holding CRISPR patents alongside Bayer and Corteva — part of the corporate triad that controls the next generation of agricultural technology, ensuring continuity of the ownership structure from Green Revolution to gene editing revolution.",
+      "role": "The third member of the CRISPR patent triad with Bayer and Corteva. Syngenta's inclusion in the investigation demonstrates that corporate consolidation has not just maintained but expanded — three companies now control both current seeds/pesticides and next-generation gene editing patents.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Delhi",
+      "aliases": ["New Delhi"],
+      "category": "Place",
+      "definition": "Indian capital whose borders were blockaded for over a year by farmers protesting three agricultural reform laws in 2020-2021 — the largest protest in human history, with millions participating — resulting in repeal of the laws but not of the underlying system.",
+      "role": "The site of the largest protest in human history, representing the political resistance to the final stage of agricultural corporatization. Delhi's blockade demonstrates: (1) farmers saw three reform laws as the final removal of protections, (2) millions participated in sustained protest, (3) the laws were repealed — 'the system was not.' Political victory without structural change.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Kerala",
+      "aliases": ["Kerala India"],
+      "category": "Place",
+      "definition": "South Indian state where agroecological farms demonstrate the alternative to Green Revolution dependency — rice paddies bordered by vegetable gardens, fish ponds, and fruit trees, achieving comparable yields without purchased inputs or debt.",
+      "role": "The geographic proof that alternatives to the Green Revolution model exist and work. Kerala's agroecology farms are the investigation's counter-example: dark, moist, alive soil versus Punjab's depleted substrate. No debt. Comparable yields. The contrast between Kerala and Punjab is the contrast between two agricultural systems.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Nobel Peace Prize",
+      "aliases": ["Nobel Prize"],
+      "category": "Event",
+      "definition": "Award given to Norman Borlaug in Oslo in 1970 for feeding more people than any human in history — the moment when the narrative 'locked into place: science saves, technology delivers, progress marches forward' while everything that would follow (debt, suicides, groundwater collapse, corporate consolidation) was 'invisible from this podium.'",
+      "role": "The symbolic moment where the Green Revolution narrative crystallized and its costs became invisible. The Nobel ceremony is where complexity collapses into hero story: (1) 'a man who spent decades in mud fields is now a monument,' (2) the narrative becomes: science saves, technology delivers, (3) 'everything that happens next is invisible from this podium.' The prize consecrates the success and obscures the system.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Neolithic Revolution",
+      "aliases": ["Agricultural Revolution Origins"],
+      "category": "Event",
+      "definition": "The ten-thousand-year-old origin of agriculture and the practice of seed saving that Monsanto's intellectual property contracts now prohibit — the historical baseline against which the investigation measures the enclosure of humanity's oldest agricultural behavior within modern legal frameworks.",
+      "role": "The temporal anchor showing what has been enclosed. The Neolithic Revolution established seed saving as the foundation of agriculture for ten thousand years. Monsanto's patents enclose that practice within IP law 'younger than the internet.' The contrast between ten millennia of open seed practice and decades of corporate enclosure is the investigation's measure of what the Green Revolution system has captured.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "NASA",
+      "aliases": ["National Aeronautics and Space Administration"],
+      "category": "Organization",
+      "definition": "American space agency whose satellite data confirms that northwestern India's groundwater is depleting at one of the fastest rates on Earth — providing the scientific measurement framework that transforms anecdotal well-depth observations into verified continental-scale aquifer collapse.",
+      "role": "The independent scientific validator of aquifer depletion. NASA satellite data provides the objective measurement showing Punjab's groundwater crisis is not anecdotal but continental-scale — verifying from space what farmers observe from their wells going deeper each year.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Ford Motor Company",
+      "aliases": ["Ford"],
+      "category": "Organization",
+      "definition": "American corporation where Robert McNamara served as president before becoming Secretary of Defense during Vietnam and then President of the World Bank — one stop on the career trajectory that embodies the revolving door between corporate management, military strategy, and development finance.",
+      "role": "One vertex of McNamara's career trajectory demonstrating that corporate management, military strategy, and development finance 'share a grammar.' Ford is where McNamara learned the management systems he applied first to war (Vietnam body counts) then to development (World Bank agricultural lending).",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Vietnam",
+      "aliases": ["Vietnam War"],
+      "category": "Event",
+      "definition": "War during which Robert McNamara served as Secretary of Defense, managing the body count in Southeast Asia before pivoting to manage the World Bank's loan portfolio for the developing world — the military chapter of a career that connects war management to agricultural development finance.",
+      "role": "The war that connects military management to development lending through McNamara's career. Vietnam demonstrates that the same management logic — quantitative optimization, systems analysis, bureaucratic control — was applied to both military strategy and agricultural development. 'The man who managed the body count in Southeast Asia managed the loan portfolio for the developing world's food supply.'",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "International Monetary Fund",
+      "aliases": ["IMF"],
+      "category": "Organization",
+      "definition": "International financial institution that offers debt restructuring to developing nations with conditions requiring removal of fertilizer subsidies, market opening, patent protections, and privatization — imposing at the national level the same dependency pattern that operates at the farm level.",
+      "role": "The institutional enforcer of structural adjustment at the national level. The IMF's role in the Green Revolution system: (1) when debtor nations can't service World Bank agricultural loans, the IMF offers restructuring with conditions, (2) conditions dismantle farmer protections — subsidy removal, market opening, patent enforcement, seed company privatization, (3) 'each condition is reasonable in isolation — together, they dismantle every buffer between the small farmer and the global market.'",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Roman Empire",
+      "aliases": ["Romans"],
+      "category": "Organization",
+      "definition": "Ancient civilization that had a god (Robigus) dedicated to preventing wheat rust — sacrificing red dogs every April — providing the historical benchmark showing that stem rust has threatened agriculture for millennia and that Borlaug's work addressed a genuinely ancient problem.",
+      "role": "Historical reference establishing that Borlaug fought a genuinely ancient enemy. The Romans' dedication of a god to wheat rust prevention demonstrates the scale of the problem across human history — Borlaug's approach was 'less theological and more effective' but the threat was real.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "United Nations",
+      "aliases": ["UN"],
+      "category": "Organization",
+      "definition": "International organization that endorsed agroecology as a viable alternative to industrial agriculture in 2011, yet the approach receives only 0.5% of global agricultural research funding — demonstrating the gap between institutional endorsement and actual resource allocation.",
+      "role": "The international body whose endorsement of agroecology demonstrates the gap between policy recognition and funding reality. The UN endorsed the alternative in 2011 — but 0.5% of research funding means the endorsement is symbolic while the industrial system retains 99.5% of resources.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Agent Orange",
+      "aliases": ["Herbicide Orange"],
+      "category": "Technology",
+      "definition": "Chemical defoliant produced by Monsanto during the Vietnam War — preceding Roundup in the company's product history — representing the literal pivot from chemical warfare to chemical agriculture that 'is not a metaphor but a business strategy.'",
+      "role": "The product that connects Monsanto's military history to its agricultural present. Agent Orange's significance: Monsanto's product timeline runs saccharin → Agent Orange → Roundup → GM seeds. The pivot from chemical warfare to chemical agriculture is not metaphorical — it is corporate strategy, repurposing chemical capacity from military to agricultural markets.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Moneylender System",
+      "aliases": ["Village Moneylender", "Shadow Credit"],
+      "category": "System",
+      "definition": "Shadow economy credit system that forms when the formal banking system rejects farmers — charging 30-70% interest on loans to farmers who have run out of institutional options — a system whose business model assumes things will go wrong, unlike the Green Revolution's business model which assumes everything goes right.",
+      "role": "The shadow financial system that fills the gap the formal system creates. The moneylender's mechanics: (1) bank says no, moneylender says yes at 30-70% interest, (2) 'every name in this ledger is a farmer who ran out of institutional options,' (3) 'the Green Revolution's business model assumes everything goes right — the moneylender's business model assumes it won't.' The moneylender system is not a corruption of the Green Revolution — it is its inevitable shadow, the financial underside of a system with 'no setting for mercy.'",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "2020 Indian Farm Protests",
+      "aliases": ["Delhi Blockade", "Farm Laws Protest"],
+      "category": "Event",
+      "definition": "Largest protest in human history where millions of Indian farmers blockaded Delhi's borders for over a year in 2020-2021, protesting three agricultural reform laws seen as the final stage of the cycle removing protections between small producers and corporate market power — resulting in the laws' repeal but not the system's change.",
+      "role": "The political climax of the Green Revolution's arc — and the investigation's evidence that popular resistance can win battles but not yet the war. The protests demonstrate: (1) farmers recognized the reform laws as the final stage of corporate consolidation, (2) millions sustained a year-long blockade — the largest protest ever, (3) 'the laws were repealed. The system was not.' Victory on paper, continuity in structure.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "China",
+      "aliases": ["People's Republic of China", "PRC"],
+      "category": "Place",
+      "definition": "Country referenced in the global context of agricultural transformation — not a primary case study in this investigation but part of the broader developing-world pattern where Green Revolution technologies were deployed alongside institutional lending and chemical input dependency.",
+      "role": "Present in the broader global context of Green Revolution deployment. China's inclusion connects this investigation to the global pattern — the same seed-input-credit dependency system operated across the developing world, not just in India.",
+      "first_appearance_index": 3
+    }
+  ]
+}

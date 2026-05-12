@@ -1,0 +1,125 @@
+{
+  "temporal_phases": [
+    {
+      "index": 1,
+      "label": "Problem Context",
+      "period": "Phase 1"
+    },
+    {
+      "index": 2,
+      "label": "Method And Evidence",
+      "period": "Phase 2"
+    },
+    {
+      "index": 3,
+      "label": "Validation And Implications",
+      "period": "Phase 3"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Histopathology Images",
+      "aliases": [
+        "H&E Images",
+        "Whole-Slide Images"
+      ],
+      "category": "Resource",
+      "definition": "Histopathology images are stained tissue slides and derived tiles used in computational pathology to analyze tumour morphology, tissue architecture, and cellular texture for downstream tasks linked to molecular or clinical states.",
+      "role": "Acts as the primary imaging modality shared across mutation-prediction studies and benchmark discussions.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Somatic Gene Mutation",
+      "aliases": [
+        "Mutation Status",
+        "Tumour Mutation"
+      ],
+      "category": "Concept",
+      "definition": "Somatic gene mutation refers to tumour-acquired genetic alterations that influence growth, therapy response, resistance, and disease progression, making mutation status a central target in precision oncology and pathology-genomics research.",
+      "role": "Provides the core prediction target that links imaging methods to molecular oncology.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Precision Oncology",
+      "aliases": [
+        "Personalized Oncology"
+      ],
+      "category": "Concept",
+      "definition": "Precision oncology is the clinical practice of tailoring treatment decisions to the molecular and biological characteristics of a patient\u2019s tumour, often relying on biomarkers, mutation profiles, and multimodal evidence to guide targeted therapy selection.",
+      "role": "Supplies the clinical rationale for mutation-prediction systems and faster molecular screening pipelines.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "ResNet-50",
+      "aliases": [
+        "Residual Network 50"
+      ],
+      "category": "Technology",
+      "definition": "ResNet-50 is a pre-trained convolutional network frequently used as a feature extractor or backbone in computational pathology pipelines, translating image tiles into high-dimensional visual representations for downstream learning.",
+      "role": "Serves as a shared visual backbone across several image-analysis pipelines.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Patient-Level Generalization",
+      "aliases": [
+        "New-Patient Generalization",
+        "External Generalization"
+      ],
+      "category": "Metric",
+      "definition": "Patient-level generalization measures whether a model performs well on entirely unseen individuals or external cohorts rather than only on held-out images from patients already represented during training.",
+      "role": "Captures the main validation standard that separates promising internal results from stronger translational evidence.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "External Validation",
+      "aliases": [
+        "Out-of-Cohort Validation"
+      ],
+      "category": "Process",
+      "definition": "External validation tests a model on data from different cohorts, sites, or institutions than those used for training, making it one of the strongest indicators that a pathology AI system may generalize beyond internal experimental conditions.",
+      "role": "Provides the operational standard for stronger translational confidence.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Interpretability",
+      "aliases": [
+        "Model Explainability"
+      ],
+      "category": "Concept",
+      "definition": "Interpretability in biomedical AI refers to the ability to explain what evidence, regions, or modality contributions drove a model\u2019s prediction, helping researchers and clinicians assess biological plausibility, trust, and failure modes.",
+      "role": "Acts as a cross-cutting concern especially in multimodal and clinically oriented systems.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Image-Level Training",
+      "aliases": [
+        "Patch-Level Training",
+        "Tile-Level Learning"
+      ],
+      "category": "Process",
+      "definition": "Image-level training treats pathology tiles as independent supervised samples while preserving patient-linked labels, increasing effective sample count and exposing local morphology that may be lost under patient-level aggregation.",
+      "role": "Represents a recurring methodological strategy for extracting more learnable signal from limited patient cohorts.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "TP53",
+      "aliases": [
+        "Tumor Protein 53"
+      ],
+      "category": "Concept",
+      "definition": "TP53 is a canonical tumour suppressor gene commonly mutated across cancers and often used in computational mutation studies because it is biologically important and frequently represented in pathology-genomics datasets.",
+      "role": "Provides a shared molecular anchor across multiple cancer and mutation-prediction contexts.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "KRAS",
+      "aliases": [
+        "Kirsten Rat Sarcoma"
+      ],
+      "category": "Concept",
+      "definition": "KRAS is a major oncogenic driver frequently studied in computational oncology because its mutation status shapes tumour behaviour and therapeutic options, making it a common target in pathology-genomics and multimodal mutation research.",
+      "role": "Acts as a recurrent gene target shared across mutation-prediction studies.",
+      "first_appearance_index": 1
+    }
+  ]
+}

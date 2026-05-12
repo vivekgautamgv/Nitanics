@@ -1,0 +1,46 @@
+{
+  "name": "nitanics",
+  "private": true,
+  "packageManager": "bun@1.3.8",
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "apps/api",
+    "apps/ingestion-pipeline",
+    "apps/mcp",
+    "apps/web",
+    "apps/web/frontend",
+    "apps/web/modules/graph-studio",
+    "packages/*"
+  ],
+  "scripts": {
+    "neo4j:ensure": "node scripts/ensure-neo4j.mjs",
+    "dev": "bun run dev:web",
+    "dev:web": "concurrently -k -n FRONTEND,GRAPH -c cyan,magenta \"bun run dev:frontend\" \"bun run dev:graph\"",
+    "dev:frontend": "bun run --cwd apps/web/frontend dev",
+    "dev:graph": "bun run --cwd apps/web/modules/graph-studio dev",
+    "dev:api": "bun run --cwd apps/api dev",
+    "dev:mcp": "bun run --cwd apps/mcp dev",
+    "build": "bun run build:web",
+    "build:web": "bun run build:frontend && bun run build:graph",
+    "build:frontend": "bun run --cwd apps/web/frontend build",
+    "build:graph": "bun run --cwd apps/web/modules/graph-studio build",
+    "build:api": "bun run --cwd apps/api build",
+    "build:mcp": "bun run --cwd apps/mcp build",
+    "start": "bun run start:frontend",
+    "start:frontend": "bun run --cwd apps/web/frontend preview",
+    "start:graph": "bun run --cwd apps/web/modules/graph-studio preview",
+    "start:api": "bun run --cwd apps/api dev",
+    "start:mcp": "bun run --cwd apps/mcp start",
+    "setup": "bash scripts/setup.sh",
+    "postinstall": "cd apps/ingestion-pipeline && uv sync",
+    "reset": "bash scripts/reset.sh"
+  },
+  "dependencies": {
+    "dockerode": "^4.0.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "turbo": "^2.9.6"
+  }
+}

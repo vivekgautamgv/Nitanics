@@ -1,0 +1,24 @@
+{
+  "name": "@nitanics/mcp",
+  "version": "1.0.0",
+  "description": "Nitanics MCP Server - AI interface to knowledge graph",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "neo4j:ensure": "node ../../scripts/ensure-neo4j.mjs",
+    "build": "tsc",
+    "bundle": "tsc && node esbuild.config.mjs",
+    "start": "bun run neo4j:ensure && node dist/index.js",
+    "dev": "bun run neo4j:ensure && tsc --watch"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "neo4j-driver": "^5.27.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.28.0",
+    "typescript": "^5.7.0"
+  }
+}

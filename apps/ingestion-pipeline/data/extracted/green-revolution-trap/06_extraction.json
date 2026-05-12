@@ -1,0 +1,483 @@
+{
+  "project": {
+    "name": "The Green Revolution Trap",
+    "unique_id": "green-revolution-trap",
+    "summary": "The Green Revolution investigation traces how a genuine agricultural miracle — Norman Borlaug's semi-dwarf wheat varieties developed over twenty years in Mexico's Yaqui Valley under Rockefeller Foundation funding — became the operating system for a dependency trap affecting billions. Starting in 1944, the investigation follows the seed from laboratory breakthrough to Nobel Prize to global deployment, revealing how high-yield varieties that require synthetic fertilizer, chemical pesticides, controlled irrigation, and credit transformed farming from a largely self-sufficient activity into a cash-dependent business. The system was assembled from legitimate parts: Cold War geopolitics provided motivation through Food for Peace, which tied wheat exports to political alignment; the World Bank under Robert McNamara funded infrastructure by increasing agricultural lending tenfold; chemical companies like Dow and DuPont repurposed wartime munitions production capacity into fertilizer and pesticide markets; and USAID distributed the technology. Each dependency became a revenue stream for someone not farming. When individual farmers and entire nations defaulted on agricultural loans, the International Monetary Fund imposed structural adjustment conditions that dismantled protections — removing fertilizer subsidies, opening markets, and strengthening patent protections. Monsanto completed the corporate arc, pivoting from saccharin to Agent Orange to Roundup to genetically modified seeds requiring Roundup, with contracts prohibiting the ten-thousand-year practice of seed saving. The consequences are devastating: more than 300,000 farmer suicides in Maharashtra since 1995 following a consistent pattern of purchased seeds, crop failure, and unpayable debt; Punjab's aquifer depleting at one of the fastest rates on Earth according to NASA satellite data; and India's 100,000 rice varieties reduced to fewer than a dozen. The 2020 Delhi protests — the largest in human history — won repeal of three farm laws but not the underlying system. The next revolution, CRISPR gene editing, is held by the same corporate entities: Corteva, Bayer, and Syngenta. Meanwhile, agroecological alternatives in Kerala demonstrate comparable yields without purchased inputs, endorsed by the UN since 2011 but receiving only 0.5% of global agricultural research funding — because they do not create markets for inputs. The investigation is not about conspiracy but convergence: a machine assembled from legitimate parts that produces illegitimate outcomes.",
+    "narrative_flow": [
+      "Norman Borlaug arrives in Mexico's Yaqui Valley in 1944 under Rockefeller Foundation funding, beginning twenty years of wheat crossbreeding that produces semi-dwarf varieties yielding two to three times more grain per acre — a genuine miracle that is also a platform requiring specific fuel.",
+      "India faces famine in 1965 as Paul Ehrlich predicts mass starvation; agriculture minister C. Subramaniam negotiates the largest seed purchase in history while President Johnson conditions food shipments on agricultural reforms — short-tether diplomacy where the tether is hunger.",
+      "Punjab's 1968 wheat harvest triples yields and Borlaug receives the Nobel Peace Prize in 1970, locking the narrative that science saves and technology delivers — while the input dependency system installs beneath the success story.",
+      "After World War II, Dow and DuPont repurpose wartime chemical production into fertilizer and pesticide markets; the Green Revolution's seed varieties require these purchased inputs, transforming farming from self-sufficient to credit-dependent.",
+      "The World Bank under Robert McNamara increases agricultural lending tenfold, building the infrastructure that locks developing countries into dependency; when debts become unserviceable, the IMF imposes structural adjustment conditions that remove subsidies and open markets.",
+      "Monsanto pivots from Agent Orange to Roundup to GM seeds requiring Roundup, prohibiting the ten-thousand-year practice of seed saving through intellectual property contracts — enclosing humanity's oldest agricultural behavior within legal frameworks younger than the internet.",
+      "More than 300,000 Indian farmers take their own lives since 1995 following a consistent pattern: purchased seeds, purchased inputs, crop failure, unpayable debt, death — while Punjab's ancient aquifer depletes toward irreversible collapse.",
+      "Bayer acquires Monsanto for sixty-three billion dollars in 2018, consolidating control of one quarter of global seeds and pesticides; CRISPR patents held by Corteva, Bayer, and Syngenta ensure the ownership structure of the next revolution is identical.",
+      "Agroecological farming in Kerala demonstrates comparable yields without purchased inputs or debt, endorsed by the UN since 2011 but receiving only 0.5% of global research funding — proving the Green Revolution's dependencies are structural choices, not technical necessities."
+    ],
+    "tags": {
+      "domain": "Agriculture",
+      "subdomain": "Agricultural Systems and Dependencies",
+      "base_tags": [
+        "green-revolution",
+        "food-systems",
+        "agricultural-dependency",
+        "farmer-debt",
+        "corporate-consolidation",
+        "seed-technology"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "source": "Rockefeller Foundation",
+      "target": "Norman Borlaug",
+      "relType": "FUNDS_RESEARCH",
+      "causalClassification": "ENABLES",
+      "description": "The Rockefeller Foundation employed Borlaug and funded twenty years of wheat research in Mexico's Yaqui Valley, providing the institutional support and the first link in the chain connecting agricultural science to geopolitics to corporate consolidation.",
+      "evidence": "His employer was the Rockefeller Foundation. His assignment: fix wheat.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "Norman Borlaug",
+      "target": "Semi-Dwarf Wheat",
+      "relType": "DEVELOPS",
+      "causalClassification": "PRODUCES",
+      "description": "Borlaug spent twenty years shuttle-breeding wheat between two altitudes in Mexico, creating semi-dwarf varieties with thick stems and enormous heads that produced two to three times more grain per acre — a genuine architectural breakthrough in plant biology.",
+      "evidence": "Borlaug's semi-dwarf varieties grew short, with thick stems and enormous heads. They stood up. They produced two to three times more grain per acre.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1964"
+    },
+    {
+      "source": "Semi-Dwarf Wheat",
+      "target": "Input Stack",
+      "relType": "REQUIRES",
+      "causalClassification": "DEPENDS_ON",
+      "description": "Semi-dwarf wheat varieties are not standalone products but platforms requiring synthetic fertilizer, chemical pesticides, controlled irrigation, and credit to function — the seed is the app and the input stack is the operating system.",
+      "evidence": "The seed is not a standalone product. It's a platform. It requires synthetic fertilizer — petroleum-derived. It requires chemical pesticides... It requires controlled irrigation... And it requires credit.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1965"
+    },
+    {
+      "source": "Cold War",
+      "target": "Food for Peace",
+      "relType": "MOTIVATES",
+      "causalClassification": "ENABLES",
+      "description": "Cold War geopolitics provided the strategic motivation for American food aid programs, where 'peace' meant geopolitical alignment — feeding nations conditional on political cooperation to prevent communist revolution in hungry countries.",
+      "evidence": "The country is importing American wheat under PL-480, the Food for Peace program. 'Peace' in this context means: we feed you, you align with us.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1954"
+    },
+    {
+      "source": "Lyndon Johnson",
+      "target": "India",
+      "relType": "COERCES",
+      "causalClassification": "INFLUENCES",
+      "description": "President Johnson personally held up food shipments to India until the country agreed to agricultural reforms, using famine as leverage for geopolitical alignment in what was called short-tether diplomacy where the tether is hunger.",
+      "evidence": "President Johnson personally holds up food shipments until India agrees to agricultural reforms. This is called 'short-tether' diplomacy. The tether is hunger.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1965"
+    },
+    {
+      "source": "C. Subramaniam",
+      "target": "Semi-Dwarf Wheat",
+      "relType": "IMPORTS",
+      "causalClassification": "IMPLEMENTS",
+      "description": "India's agriculture minister negotiated the import of 18,000 tons of Borlaug's Mexican wheat seed — the largest seed purchase in human history — while navigating between domestic famine pressure and American geopolitical conditions.",
+      "evidence": "India's agriculture minister, C. Subramaniam, negotiates the import of 18,000 tons of Borlaug's Mexican wheat seed — the largest seed purchase in human history.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1965"
+    },
+    {
+      "source": "Green Revolution",
+      "target": "India",
+      "relType": "TRANSFORMS_AGRICULTURE",
+      "causalClassification": "TRANSFORMS",
+      "description": "The Green Revolution tripled Punjab's wheat yields by 1968, turning India from a nation predicted to starve into one building grain silos — while installing the dependency system that would produce farmer suicides, aquifer depletion, and corporate consolidation over the following decades.",
+      "evidence": "Fields that produced 800 kilograms per hectare are now producing 2,400. India, which was supposed to starve, is building grain silos.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1968"
+    },
+    {
+      "source": "Norman Borlaug",
+      "target": "Nobel Peace Prize",
+      "relType": "RECEIVES",
+      "causalClassification": "PRODUCES",
+      "description": "Borlaug received the Nobel Peace Prize in Oslo in 1970 for feeding more people than any human in history, a ceremony that crystallized the success narrative and rendered invisible everything that would follow — debt, suicides, groundwater collapse, and corporate consolidation.",
+      "evidence": "Borlaug receives the Nobel Peace Prize. The citation says he has fed more people than any human in history.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1970"
+    },
+    {
+      "source": "World War II",
+      "target": "Dow",
+      "relType": "CREATES_SURPLUS_CAPACITY",
+      "causalClassification": "ENABLES",
+      "description": "World War II left Dow with enormous chemical production capacity and no military market — since ammonium nitrate makes both explosives and fertilizer, developing-world agricultural modernization became a survival strategy for an industry built for conflict.",
+      "evidence": "After World War II, the chemical industry had a problem: enormous production capacity and no war. Ammonium nitrate makes both explosives and fertilizer.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1945"
+    },
+    {
+      "source": "World War II",
+      "target": "DuPont",
+      "relType": "CREATES_SURPLUS_CAPACITY",
+      "causalClassification": "ENABLES",
+      "description": "World War II's end left DuPont with massive chemical production capacity requiring new markets, driving the conversion from military explosives manufacturing to agricultural fertilizer and pesticide production for the developing world.",
+      "evidence": "Dow, DuPont, and their peers needed new markets. The developing world's agricultural modernization was not just an opportunity — it was a survival strategy for an industry built for conflict.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1945"
+    },
+    {
+      "source": "Green Revolution",
+      "target": "Monoculture",
+      "relType": "REQUIRES",
+      "causalClassification": "CAUSES",
+      "description": "Green Revolution wheat varieties grow in dense monocultures that replace traditional polyculture's natural pest suppression, creating pest buffets that mandate chemical intervention — transforming farming's relationship with ecology from partnership to warfare.",
+      "evidence": "The new wheat varieties grow in dense monocultures. Monocultures are buffets for pests. Traditional polyculture — dozens of crops interplanted — naturally suppresses pest populations.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1968"
+    },
+    {
+      "source": "Monoculture",
+      "target": "Genetic Diversity Loss",
+      "relType": "ELIMINATES_VARIETIES",
+      "causalClassification": "CAUSES",
+      "description": "Monoculture-driven commercial production replaced India's estimated 100,000 rice varieties — each adapted to local conditions and carrying centuries of refined genetic information — with fewer than a dozen varieties by 2000, erasing the backup copies against future disease.",
+      "evidence": "Before the Green Revolution, India had an estimated 100,000 rice varieties... By 2000, fewer than a dozen varieties dominated commercial production. This is called efficiency. It is also the elimination of the insurance policy.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2000"
+    },
+    {
+      "source": "Robert McNamara",
+      "target": "World Bank",
+      "relType": "TRANSFORMS_LENDING",
+      "causalClassification": "TRANSFORMS",
+      "description": "McNamara's presidency of the World Bank from 1968 to 1981 increased agricultural lending tenfold, applying management logic from Ford Motor Company and Vietnam military strategy to development finance for the developing world's food supply.",
+      "evidence": "President of the World Bank from 1968 to 1981. Under his leadership, agricultural lending increased tenfold.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1968"
+    },
+    {
+      "source": "World Bank",
+      "target": "Structural Adjustment",
+      "relType": "TRIGGERS",
+      "causalClassification": "CAUSES",
+      "description": "World Bank agricultural loans created debts that developing nations could not service, triggering IMF restructuring conditions — the same institution that built the Green Revolution's infrastructure dependency later contributed to the removal of safety nets when debts came due.",
+      "evidence": "Governments that borrowed from the World Bank to fund agricultural modernization now owe debts they cannot service.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1980"
+    },
+    {
+      "source": "International Monetary Fund",
+      "target": "Structural Adjustment",
+      "relType": "IMPOSES_CONDITIONS",
+      "causalClassification": "IMPLEMENTS",
+      "description": "The IMF imposed restructuring conditions on debtor nations requiring removal of fertilizer subsidies, market opening to foreign imports, patent protections, and seed company privatization — each condition reasonable in isolation but together dismantling every buffer between small farmers and global markets.",
+      "evidence": "The International Monetary Fund offers restructuring — with conditions. Remove fertilizer subsidies. Open markets to foreign imports. Strengthen patent protections. Privatize seed companies.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1985"
+    },
+    {
+      "source": "Monsanto",
+      "target": "Roundup",
+      "relType": "PRODUCES",
+      "causalClassification": "PRODUCES",
+      "description": "Monsanto produced Roundup herbicide as part of its pivot from chemical warfare to chemical agriculture, then engineered seeds that required Roundup to survive, creating a locked product ecosystem where the crop and its chemical input are manufactured by the same corporation.",
+      "evidence": "Then: Roundup. Then: genetically modified seeds engineered to require Roundup. The pivot from chemical warfare to chemical agriculture is not a metaphor. It is a business strategy.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1974"
+    },
+    {
+      "source": "Monsanto",
+      "target": "Seed Saving Prohibition",
+      "relType": "ENFORCES",
+      "causalClassification": "IMPLEMENTS",
+      "description": "Monsanto's contracts prohibit saving, replanting, transferring, or selling seed from patented technology — enclosing the ten-thousand-year-old practice of seed saving within a legal framework younger than the internet, turning humanity's oldest agricultural act into a contract violation.",
+      "evidence": "The purchaser agrees not to save, replant, transfer, or sell seed produced from Monsanto's patented technology.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1996"
+    },
+    {
+      "source": "Bayer",
+      "target": "Monsanto",
+      "relType": "ACQUIRES",
+      "causalClassification": "TRANSFORMS",
+      "description": "Bayer acquired Monsanto in 2018 for sixty-three billion dollars, creating a single corporate entity controlling approximately one quarter of the global seed market and one quarter of the global pesticide market — consolidating the system that began with one foundation grant.",
+      "evidence": "In 2018, Bayer acquired Monsanto for sixty-three billion dollars. The resulting entity controls approximately one quarter of the global seed market and one quarter of the global pesticide market.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2018"
+    },
+    {
+      "source": "Input Stack",
+      "target": "Farmer Suicide Crisis",
+      "relType": "CREATES_DEBT_CYCLE",
+      "causalClassification": "CAUSES",
+      "description": "The input stack's requirement for purchased seeds, fertilizer, pesticides, and diesel before planting creates debt cycles that follow a consistent pattern ending in 300,000 farmer suicides since 1995 — the system has no setting for mercy, only for profit and repayment schedules.",
+      "evidence": "The pattern is consistent: purchased seeds, purchased inputs, crop failure, unpayable debt, death.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1995"
+    },
+    {
+      "source": "Moneylender System",
+      "target": "Farmer Suicide Crisis",
+      "relType": "ACCELERATES",
+      "causalClassification": "ENABLES",
+      "description": "When the formal banking system rejects farmers, village moneylenders provide credit at thirty to seventy percent interest, accelerating the debt spiral — a shadow economy that forms in the gaps the formal economy creates.",
+      "evidence": "When the bank says no, the village moneylender says yes. At thirty percent interest. Or fifty. Or seventy.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1995"
+    },
+    {
+      "source": "Green Revolution",
+      "target": "Aquifer Depletion",
+      "relType": "CAUSES",
+      "causalClassification": "CAUSES",
+      "description": "Green Revolution crops require controlled irrigation from tube wells drilled into Punjab's ancient aquifer, extracting groundwater faster than natural recharge — wells going from fifty to four hundred feet deep over decades as the water table drops irreversibly.",
+      "evidence": "NASA satellite data confirms: northwestern India's groundwater is depleting at one of the fastest rates on Earth. The Green Revolution was irrigated by an ancient aquifer.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1970"
+    },
+    {
+      "source": "USAID",
+      "target": "Green Revolution",
+      "relType": "DISTRIBUTES",
+      "causalClassification": "ENABLES",
+      "description": "USAID funded the distribution of Green Revolution technologies, completing the convergence map where Rockefeller funded research, World Bank funded infrastructure, chemical companies supplied inputs, and USAID delivered the technology to farmers.",
+      "evidence": "USAID funds the distribution.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1965"
+    },
+    {
+      "source": "Monsanto",
+      "target": "Agent Orange",
+      "relType": "PRODUCES",
+      "causalClassification": "PRODUCES",
+      "description": "Monsanto produced Agent Orange chemical defoliant during the Vietnam War, establishing the corporate trajectory from chemical warfare to chemical agriculture that culminated in Roundup and genetically modified seed systems.",
+      "evidence": "Founded 1901. Original product: saccharin. Then: Agent Orange. Then: Roundup.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1965"
+    },
+    {
+      "source": "Seed Saving Prohibition",
+      "target": "Neolithic Revolution",
+      "relType": "ENCLOSES",
+      "causalClassification": "CONTRADICTS",
+      "description": "Monsanto's intellectual property contracts enclose within modern legal frameworks the fundamental agricultural practice that has defined humanity's relationship with food since the Neolithic Revolution — a behavior older than writing, cities, and civilization itself.",
+      "evidence": "For ten thousand years — since the Neolithic Revolution — farmers have saved seeds. That practice is now a violation of intellectual property law.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1996"
+    },
+    {
+      "source": "Agroecology",
+      "target": "Green Revolution",
+      "relType": "DEMONSTRATES_ALTERNATIVE",
+      "causalClassification": "CONTRADICTS",
+      "description": "Agroecological farming in Kerala achieves comparable yields without purchased inputs or debt, proving that the Green Revolution's dependencies are structural choices rather than technical necessities — yet it receives only 0.5% of global research funding because it does not create markets.",
+      "evidence": "No purchased inputs. No debt. Comparable yields in long-term studies. The UN endorsed this approach in 2011. It receives 0.5% of global agricultural research funding.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2011"
+    },
+    {
+      "source": "2020 Indian Farm Protests",
+      "target": "India",
+      "relType": "CHALLENGES",
+      "causalClassification": "BLOCKS",
+      "description": "The largest protest in human history saw millions of farmers blockade Delhi's borders for over a year, winning repeal of three agricultural reform laws but failing to dismantle the underlying system of dependency — political victory without structural change.",
+      "evidence": "For over a year, farmers blockaded Delhi's borders. Millions participated. The laws were repealed. The system was not.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2020"
+    },
+    {
+      "source": "CRISPR Gene Editing",
+      "target": "Green Revolution",
+      "relType": "EXTENDS",
+      "causalClassification": "TRANSFORMS",
+      "description": "CRISPR gene editing represents the next molecular agricultural revolution with extraordinary precision, but its patents held by Corteva, Bayer, and Syngenta ensure the ownership structure is identical to the Green Revolution's corporate consolidation.",
+      "evidence": "The technology is genuinely extraordinary. The patents are held by Corteva, Bayer, and Syngenta. The ownership structure is identical.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2020"
+    },
+    {
+      "source": "Structural Adjustment",
+      "target": "Farmer Suicide Crisis",
+      "relType": "REMOVES_PROTECTIONS",
+      "causalClassification": "ENABLES",
+      "description": "IMF structural adjustment conditions dismantled subsidies, market protections, and buffer systems that shielded small farmers from global market forces, enabling the debt cycles that drive the consistent pattern of farmer suicides across India's cotton belt.",
+      "evidence": "Each condition is reasonable in isolation. Together, they dismantle every buffer between the small farmer and the global market.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1990"
+    },
+    {
+      "source": "Paul Ehrlich",
+      "target": "Green Revolution",
+      "relType": "CREATES_URGENCY",
+      "causalClassification": "ENABLES",
+      "description": "Ehrlich's bestselling prediction that hundreds of millions would starve in the coming decade created the crisis urgency that made the Green Revolution politically possible and justified the geopolitical conditions attached to American food aid programs.",
+      "evidence": "Paul Ehrlich has written a bestseller predicting that hundreds of millions will starve to death in the coming decade — and India will be first.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1965"
+    },
+    {
+      "source": "NASA",
+      "target": "Aquifer Depletion",
+      "relType": "CONFIRMS",
+      "causalClassification": "SUPPORTS",
+      "description": "NASA satellite data provides independent scientific confirmation that northwestern India's groundwater is depleting at one of the fastest rates on Earth, transforming anecdotal farmer observations of deeper wells into verified continental-scale aquifer collapse.",
+      "evidence": "NASA satellite data confirms: northwestern India's groundwater is depleting at one of the fastest rates on Earth.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2009"
+    }
+  ],
+  "causal_chains": [
+    {
+      "name": "From Miracle Seed to Dependency Machine",
+      "description": "Traces how Borlaug's genuine wheat breakthrough became the platform for a global dependency system — from single scientist to input stack to ecological collapse.",
+      "links": [
+        {
+          "source": "Norman Borlaug",
+          "target": "Semi-Dwarf Wheat",
+          "explanation": "Twenty years of shuttle breeding in Mexico's Yaqui Valley produced semi-dwarf varieties that tripled wheat yields — a genuine miracle that also installed an operating system, because the seed is a platform requiring specific purchased inputs to function."
+        },
+        {
+          "source": "Semi-Dwarf Wheat",
+          "target": "Input Stack",
+          "explanation": "The semi-dwarf varieties require synthetic fertilizer (petroleum-derived), chemical pesticides (from wartime manufacturers), controlled irrigation (from drilled wells), and credit (from banks with their own agendas) — each requirement is a dependency, each dependency is a revenue stream for someone not farming."
+        },
+        {
+          "source": "Input Stack",
+          "target": "Monoculture",
+          "explanation": "The input system mandates dense single-crop plantings that replace traditional polyculture's natural pest suppression — creating pest buffets that require further chemical intervention, deepening the dependency cycle at the field level."
+        },
+        {
+          "source": "Monoculture",
+          "target": "Genetic Diversity Loss",
+          "explanation": "Commercial monoculture replaced India's 100,000 rice varieties with fewer than a dozen by 2000 — each lost variety carried unique disease resistance and climate adaptation, eliminating the genetic insurance policy against future disease."
+        },
+        {
+          "source": "Green Revolution",
+          "target": "Aquifer Depletion",
+          "explanation": "Controlled irrigation requirements drove tube wells into Punjab's ancient aquifer — wells going from fifty to four hundred feet deep over decades as extraction exceeded recharge on any human timescale, mining ecological capital that cannot be restored."
+        }
+      ]
+    },
+    {
+      "name": "The Institutional Debt Trap",
+      "description": "Traces how World Bank lending created national-scale debt dependency that the IMF then leveraged to dismantle farmer protections, mirroring the farm-level debt cycle at a geopolitical scale.",
+      "links": [
+        {
+          "source": "Robert McNamara",
+          "target": "World Bank",
+          "explanation": "McNamara's presidency (1968-1981) increased agricultural lending tenfold, applying the same quantitative management logic from Ford Motor Company and Vietnam military strategy — the man who managed body counts in Southeast Asia now managed loan portfolios for the developing world's food supply."
+        },
+        {
+          "source": "World Bank",
+          "target": "Structural Adjustment",
+          "explanation": "Agricultural loans built the Green Revolution's physical infrastructure but created debts developing nations could not service — when payments came due, the same institutional system that built the dependency triggered the conditions that would remove farmer protections."
+        },
+        {
+          "source": "International Monetary Fund",
+          "target": "Structural Adjustment",
+          "explanation": "The IMF offered debt restructuring with conditions: remove fertilizer subsidies, open markets to imports, strengthen patent protections, privatize seed companies — each reasonable in isolation but together dismantling every buffer between small farmers and global market forces."
+        },
+        {
+          "source": "Structural Adjustment",
+          "target": "Moneylender System",
+          "explanation": "As institutional protections were stripped and formal credit tightened, village moneylenders filled the gap at 30-70% interest — a shadow economy forming in the gaps the formal economy creates, with every name in the ledger representing a farmer who ran out of institutional options."
+        },
+        {
+          "source": "Moneylender System",
+          "target": "Farmer Suicide Crisis",
+          "explanation": "Compound interest from shadow lenders accelerates the debt spiral to its consistent endpoint: purchased seeds, purchased inputs, crop failure, unpayable debt, death — 300,000 times since 1995 in Maharashtra's cotton belt alone."
+        }
+      ]
+    },
+    {
+      "name": "Military-Industrial to Agricultural Pipeline",
+      "description": "Traces how wartime chemical production capacity was converted into the Green Revolution's input supply chain, and how Monsanto's trajectory from chemical warfare to seed patents exemplifies the pipeline.",
+      "links": [
+        {
+          "source": "World War II",
+          "target": "Dow",
+          "explanation": "The war's end left Dow and DuPont with enormous ammonium nitrate production capacity and no military market — since the molecular structure makes both explosives and fertilizer, developing-world agricultural modernization became a survival strategy for an industry built for conflict."
+        },
+        {
+          "source": "Dow",
+          "target": "Input Stack",
+          "explanation": "Wartime chemical companies pivoted their production capacity to supply the Green Revolution's fertilizer and pesticide requirements — the agricultural input market absorbed military-industrial surplus, creating the chemical foundation of the dependency system."
+        },
+        {
+          "source": "Monsanto",
+          "target": "Agent Orange",
+          "explanation": "Monsanto produced Agent Orange chemical defoliant during the Vietnam War — the corporate capacity for chemical warfare became the foundation for chemical agriculture, a transition that 'is not a metaphor but a business strategy.'"
+        },
+        {
+          "source": "Monsanto",
+          "target": "Roundup",
+          "explanation": "Monsanto pivoted from Agent Orange to Roundup herbicide, then engineered seeds that require Roundup to survive — creating a locked product ecosystem where the crop and its chemical input are sold by the same corporation."
+        },
+        {
+          "source": "Monsanto",
+          "target": "Seed Saving Prohibition",
+          "explanation": "Monsanto's contracts prohibit saving, replanting, or selling seed from patented technology — enclosing within intellectual property law a ten-thousand-year agricultural practice, forcing farmers to buy new seeds every season from the corporation."
+        }
+      ]
+    },
+    {
+      "name": "Corporate Consolidation Arc",
+      "description": "Traces how the Green Revolution's dispersed institutional network consolidated into a corporate oligopoly controlling both current and next-generation agricultural technology, and the resistance this provoked.",
+      "links": [
+        {
+          "source": "Monsanto",
+          "target": "Seed Saving Prohibition",
+          "explanation": "Monsanto's patent enforcement on GM seeds created the legal framework for agricultural dependency — Bt cotton at four times traditional cost with contracts prohibiting seed saving, locking farmers into annual purchases from a single corporation."
+        },
+        {
+          "source": "Bayer",
+          "target": "Monsanto",
+          "explanation": "Bayer's sixty-three-billion-dollar acquisition of Monsanto consolidated one quarter of global seeds and one quarter of global pesticides into a single corporate entity — a system that started with one foundation grant and one scientist now controls more agricultural power than most nations."
+        },
+        {
+          "source": "CRISPR Gene Editing",
+          "target": "Green Revolution",
+          "explanation": "CRISPR's patents are held by Corteva, Bayer, and Syngenta — ensuring the ownership structure of the next agricultural revolution is identical to the current one. The question is not whether the technology works but whether the system it's embedded in has changed."
+        },
+        {
+          "source": "2020 Indian Farm Protests",
+          "target": "India",
+          "explanation": "Millions of farmers blockaded Delhi for over a year in the largest protest in human history, recognizing three reform laws as the final removal of protections between small producers and corporate market power — the laws were repealed, the system was not."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "temporal_phases": [
+    {
+      "index": 1,
+      "label": "Clinical Motivation And Problem Framing",
+      "period": "Introduction"
+    },
+    {
+      "index": 2,
+      "label": "Methodological Reframing Around Patch-Level Learning",
+      "period": "Anchor Method"
+    },
+    {
+      "index": 3,
+      "label": "Benchmarking, Validation, And Future Research",
+      "period": "Literature Context"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Histopathology Images",
+      "aliases": [
+        "H&E Images",
+        "Whole-Slide Images"
+      ],
+      "category": "Resource",
+      "definition": "Histopathology images are stained tissue images used in routine pathology workflows and are the core visual modality used in computational pathology to study tumour morphology, tissue architecture, and cellular patterns that may correlate with molecular alterations and clinical outcomes across multiple cancer types.",
+      "role": "Serves as the primary visual input modality from which mutation-linked morphology is inferred across the anchor paper and several cited studies.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Somatic Gene Mutation",
+      "aliases": [
+        "Tumour Mutation",
+        "Mutation Status"
+      ],
+      "category": "Concept",
+      "definition": "Somatic gene mutation refers to a DNA alteration acquired in tumour cells rather than inherited through the germline, and these alterations shape tumour behaviour, drug response, resistance patterns, and eligibility for targeted therapies in precision oncology workflows.",
+      "role": "Acts as the central prediction target that ties together biology, clinical decision making, and model evaluation across the research collection.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Next-Generation Sequencing",
+      "aliases": [
+        "NGS",
+        "Genomic Sequencing"
+      ],
+      "category": "Technology",
+      "definition": "Next-generation sequencing is the clinical and research standard for measuring tumour mutation profiles, but it remains expensive, infrastructure heavy, and time consuming, especially in settings where pathology slides are easier to obtain than molecular assays.",
+      "role": "Functions as the incumbent diagnostic baseline that image-based mutation inference aims to complement, triage, or partially substitute in constrained settings.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Precision Oncology",
+      "aliases": [
+        "Personalized Cancer Therapy"
+      ],
+      "category": "Concept",
+      "definition": "Precision oncology is the clinical framework in which treatment selection is guided by tumour-specific molecular features, biomarkers, and mutation patterns so that therapies can be matched to the biology of an individual patient rather than applied only by tumour site.",
+      "role": "Provides the clinical justification for faster and cheaper mutation inference methods.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "TCGA LUAD/LUSC Cohort",
+      "aliases": [
+        "TCGA Lung Cancer Cohort",
+        "TCGA"
+      ],
+      "category": "Resource",
+      "definition": "The TCGA LUAD and LUSC cohort is a paired histology and genomics resource containing lung cancer whole-slide images and mutation calls that is widely used as a foundational benchmark for computational pathology and mutation-prediction experiments.",
+      "role": "Supplies the anchor paper with the 12-patient cohort used for patch-level multi-label mutation classification.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Image-Level Training",
+      "aliases": [
+        "Patch-Level Training",
+        "Tile-Level Learning"
+      ],
+      "category": "Process",
+      "definition": "Image-level training treats each tissue tile as an individual supervised sample while inheriting its parent patient label set, thereby greatly increasing sample count compared with patient-level aggregation and preserving local morphological heterogeneity that may carry predictive signal.",
+      "role": "Represents the main methodological contribution of the anchor paper and the key reason its classical machine learning pipeline becomes viable in a small cohort.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Patient-Level Aggregation",
+      "aliases": [
+        "Mean Pooled Patient Representation"
+      ],
+      "category": "Process",
+      "definition": "Patient-level aggregation compresses all tile features from a patient into a single summary vector, simplifying training but discarding spatial and morphological diversity and dramatically reducing effective sample size for downstream classifiers.",
+      "role": "Functions as the main baseline design choice that the anchor paper argues is structurally limiting in small-cohort path-genomics.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "ResNet-50",
+      "aliases": [
+        "Residual Network 50"
+      ],
+      "category": "Technology",
+      "definition": "ResNet-50 is a deep convolutional network commonly used as a pre-trained visual feature extractor, allowing histopathology tiles to be mapped into high-dimensional feature vectors that can then be consumed by classical or deep downstream models.",
+      "role": "Acts as the frozen feature extractor that produces 2048-dimensional vectors for the anchor pipeline.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "XGBoost",
+      "aliases": [
+        "Extreme Gradient Boosting"
+      ],
+      "category": "Technology",
+      "definition": "XGBoost is a gradient-boosted decision tree framework that performs strongly on structured feature vectors, supports weighting for rare classes, and can be scaled across many independent binary classification tasks in multi-label settings.",
+      "role": "Serves as the downstream classifier family used to predict mutation labels from extracted image features.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "MultiOutputClassifier",
+      "aliases": [
+        "Binary Relevance Wrapper"
+      ],
+      "category": "Technology",
+      "definition": "MultiOutputClassifier is a wrapper strategy that fits one classifier per output label, turning a multi-label problem into many parallel binary decisions and enabling thousands of gene-wise models to be trained over the same feature matrix.",
+      "role": "Provides the parallel binary relevance structure for thousands of gene mutation targets.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Class Imbalance Correction",
+      "aliases": [
+        "scale_pos_weight",
+        "Imbalance Handling"
+      ],
+      "category": "Process",
+      "definition": "Class imbalance correction is the practice of increasing the training importance of rare positive labels so that models do not collapse into majority-class predictions, which is particularly important in mutation datasets where non-mutated labels far outnumber mutated labels.",
+      "role": "Shifts the anchor model toward clinically useful recall by compensating for sparse mutation labels.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "DeepGEM Collaboration",
+      "aliases": [
+        "DeepGEM"
+      ],
+      "category": "Organization",
+      "definition": "The DeepGEM Collaboration is the large multicentre lung cancer mutation-prediction effort cited by the paper as a state-of-the-art deep learning benchmark, notable for large cohort scale, external robustness, and strong gene-target performance.",
+      "role": "Represents the large-cohort performance frontier against which the anchor paper positions its smaller and more practical classical baseline.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "PathGene Benchmark",
+      "aliases": [
+        "PathGene"
+      ],
+      "category": "Resource",
+      "definition": "PathGene is a multicentre lung cancer histopathology benchmark introduced for driver gene mutation and exon prediction, designed to support stronger external validation and standardized comparison of path-genomics systems.",
+      "role": "Functions as an important future validation target for testing the anchor paper beyond its small internal cohort.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Attention-Based MIL",
+      "aliases": [
+        "Multiple Instance Learning",
+        "MIL"
+      ],
+      "category": "Technology",
+      "definition": "Attention-based multiple instance learning is a modelling strategy that learns which tiles matter most within a bag of images, making it useful when labels exist at patient or slide level but only some regions visually express the underlying biological phenomenon.",
+      "role": "Provides a future-method node motivated by tile-label inheritance noise and localization needs.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Multimodal Fusion",
+      "aliases": [
+        "Histology-Genomics Fusion",
+        "Multimodal Deep Learning"
+      ],
+      "category": "Process",
+      "definition": "Multimodal fusion combines pathology images with additional data such as genomics, transcriptomics, or clinical variables to improve predictive performance, biological interpretability, and generalization beyond what any single modality can typically deliver alone.",
+      "role": "Represents the broader literature direction that likely defines the upper performance ceiling in precision oncology.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Patient-Level Generalization",
+      "aliases": [
+        "External Generalization",
+        "New-Patient Validation"
+      ],
+      "category": "Metric",
+      "definition": "Patient-level generalization refers to a model?s ability to maintain useful performance on entirely unseen patients or external cohorts rather than only on held-out tiles from patients already represented during training, making it a crucial benchmark for clinical credibility.",
+      "role": "Captures the main unresolved limitation of the anchor paper and the key evaluation gap the platform should surface.",
+      "first_appearance_index": 3
+    }
+  ]
+}

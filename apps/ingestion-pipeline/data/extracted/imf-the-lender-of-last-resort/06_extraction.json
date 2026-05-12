@@ -1,0 +1,568 @@
+{
+  "project": {
+    "name": "The IMF: Lender of Last Resort",
+    "unique_id": "imf-the-lender-of-last-resort",
+    "summary": "Investigation into the International Monetary Fund as the emergency lender that countries call when they run out of money — and the structural question of why the same countries keep calling. The IMF was designed at Bretton Woods in 1944 by Harry Dexter White, whose dollar-centered plan defeated Keynes's balanced bancor because America held half the world's manufacturing and two-thirds of its gold. The resulting architecture embedded three permanent features: quota-weighted voting proportional to financial contribution, an 85% supermajority threshold that gives the US a permanent veto (16.5% of votes vs. 15% threshold), and unwritten conventions (European leads IMF, American leads World Bank) that have never been broken across twelve Managing Directors. The institution's core mechanism — conditionality — exchanges loans for policy reforms: spending cuts, privatization, trade liberalization, monetary tightening. Applied through structural adjustment programs to 100+ countries between 1980-2000, the template produced a self-reinforcing loop: cut spending during crisis, economy contracts, revenue falls, deficit returns, country borrows again. Sri Lanka has entered 17 programs since 1965, Pakistan 23 since 1958, Argentina across four decades. The case studies prove the pattern: in the 1997 Asian crisis, IMF-mandated bank closures in Indonesia triggered depositor panic (GDP -13.1%) while Malaysia refused the program and recovered faster. In Greece, the IMF's own fiscal multiplier was wrong by a factor of 2x — austerity was nearly twice as destructive as modeled, producing 25% GDP contraction and 27.5% unemployment. The surcharge system charges premium interest on the largest and longest borrowers — 22 countries currently, of which 11 are climate-vulnerable and 12 in debt distress. Ukraine pays surcharges while under bombardment. The Federal Reserve created $10 trillion at market speed during COVID; the IMF's $650 billion SDR allocation arrived 17 months later, distributed by the same quota structure that gives the US veto power. The machine is not broken. It performs to specification. The question is who it was built to work for.",
+    "narrative_flow": [
+      "Sri Lanka has entered 17 IMF programs since 1965 — in 2022, the cycle hit bottom: sovereign default, reserves below $50M, president fleeing by military aircraft. Then the IMF arrived again.",
+      "The IMF lends money when no one else will — but conditions reshape economies: spending cuts, privatization, trade liberalization. The emergency room tells the patient how to live.",
+      "The IMF sits at the center of a web: US Treasury (largest shareholder), World Bank (sister institution), central banks, credit rating agencies, bond markets — a single lending decision signals through every node.",
+      "When the same countries keep returning — Sri Lanka 17, Pakistan 23, Argentina across four decades — the question shifts from 'what is wrong with these countries?' to 'what kind of machine produces repeat customers?'",
+      "July 1944, Bretton Woods: 44 nations design a financial system to prevent the chaos that produced two world wars. Interwar currency wars had collapsed trade by 65%.",
+      "Keynes proposes the bancor — shared adjustment burdens, no single currency dominance. White proposes dollar centrality. White wins because America has the leverage, not because his plan is better.",
+      "85% supermajority + US holding 16.5% of votes = permanent structural veto. In 2026, China produces 18% of GDP but holds 6.09% of votes. Africa: 17% of population, 5.4% of votes.",
+      "The IMF MD is always European, World Bank President always American. Twelve consecutive Europeans since 1946. The countries that borrow have never chosen the person who runs the institution.",
+      "Harry Dexter White — architect of American financial hegemony — was accused of passing information to Soviet intelligence. The machine outlived its maker's loyalties.",
+      "First loans to France and Netherlands (1947), then Marshall Plan overshadows IMF for reconstruction. Developing nations become the permanent customer base.",
+      "Conditionality mechanism: country in crisis → IMF designs reform program → spending cuts, privatization, trade liberalization, monetary tightening. Internally coherent logic, devastating downstream effects.",
+      "Washington Consensus: ten prescriptions applied to 100+ countries 1980-2000. Sub-Saharan Africa's GDP per capita lower in 2000 than 1980. Two decades of adjustment, negative results.",
+      "SDRs: $650 billion allocated in 2021 — US gets $113B, Africa gets $33B, low-income countries get 3.2%. Emergency measure replicates the power structure it was meant to compensate for.",
+      "16th General Review of Quotas grinds forward in 2026. China pushes for rebalancing. The US veto ensures no reallocation pushes America below 15%.",
+      "Structural adjustment 1980-2000: government employees fired, hospitals defunded, food subsidies eliminated. A 2006 study of 79 countries: reduced health/education spending, no growth improvements.",
+      "Asia 1997: IMF prescribes fiscal austerity for a liquidity crisis. In Indonesia, closing 16 banks triggers depositor panic — GDP contracts 13.1%, poverty doubles, Suharto falls. Malaysia refuses IMF, recovers faster.",
+      "Argentina 2001: IMF supports unsustainable dollar peg. Austerity loop — cut spending, economy contracts, revenue falls, deficit returns. Bank deposits frozen, riots kill 27, $95B default.",
+      "Greece 2010: troika prescribes severe austerity. GDP contracts 25%, unemployment 27.5%. Blanchard paper reveals fiscal multiplier was 0.9-1.7, not 0.5 �� wrong math, Great Depression outcomes.",
+      "COVID speed gap: Fed creates $10 trillion at market speed, IMF's $650B SDR allocation arrives 17 months later. The gap determines who recovers first and who accumulates debt.",
+      "The IMF is necessary — emergency financing no other institution provides. Technical assistance, surveillance, market access. The question is who the machine serves.",
+      "The countries that designed the IMF have never needed its services. The countries with the most votes never sit on the borrower's side. Architecture, not conspiracy.",
+      "Surcharge system: 22 countries pay premium charges (3x pre-COVID). 11 climate-vulnerable, 12 in debt distress. Ukraine: $2.9B in surcharges while under bombardment.",
+      "Revolving door: Sri Lanka 17 times, Pakistan 23 times. Conditional lending treating symptoms without resolving causes guarantees return customers. The IMF acknowledges this pattern.",
+      "Cyclone Ditwah kills 643 in Sri Lanka during its 17th IMF program. A nation contributing <0.1% of emissions pays premium charges while absorbing the worst climate impacts.",
+      "2026: surcharge reform insufficient, PRGT ends zero-interest lending, quota review stalled. Georgieva manages an institution designed for a world that no longer exists.",
+      "Two futures playing out in different committee rooms: reform (quota rebalancing, climate-sensitive conditionality) vs. continuity (veto holds, revolving door continues).",
+      "Keynes proposed shared burdens. White proposed dollar centrality. White won because America had the leverage. Eighty-two years later: the machine performs to specification. Who was it built to work for?"
+    ],
+    "tags": {
+      "domain": "Global Finance",
+      "subdomain": "International Lending and Sovereign Debt",
+      "base_tags": [
+        "IMF",
+        "sovereign debt",
+        "conditionality",
+        "Bretton Woods",
+        "structural adjustment",
+        "lender of last resort",
+        "Washington Consensus",
+        "surcharges",
+        "quota system",
+        "veto power",
+        "revolving door",
+        "climate-debt intersection",
+        "Global South"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "source": "Bretton Woods Conference",
+      "target": "International Monetary Fund",
+      "relType": "CREATES",
+      "causalClassification": "PRODUCES",
+      "description": "Forty-four nations at the 1944 Mount Washington Hotel conference designed and ratified the creation of the IMF as the international institution for crisis lending and financial stability, establishing its charter, governance structure, and operational mandate.",
+      "evidence": "July 1944. Forty-four nations send delegates to the Mount Washington Hotel in Bretton Woods, New Hampshire. The world is still at war. Europe is rubble.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "Bretton Woods Conference",
+      "target": "World Bank",
+      "relType": "CREATES",
+      "causalClassification": "PRODUCES",
+      "description": "The same 1944 conference that created the IMF simultaneously established the World Bank (IBRD) as its sister institution for long-term development lending, forming the twin pillars of the postwar international financial architecture.",
+      "evidence": "Connected to the World Bank — its sister institution, created on the same day.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "Harry Dexter White",
+      "target": "International Monetary Fund",
+      "relType": "DESIGNS",
+      "causalClassification": "CAUSES",
+      "description": "White designed the dollar-centered IMF architecture — the dollar as anchor currency, quota-weighted voting, conditional lending mechanism — defeating Keynes's alternative by leveraging America's overwhelming postwar economic dominance, with his design persisting nearly unchanged for eighty-two years.",
+      "evidence": "White proposes the US dollar as the anchor. All currencies pegged to the dollar. The dollar pegged to gold. An International Monetary Fund to lend dollars to countries in temporary difficulty — with conditions attached.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "Harry Dexter White",
+      "target": "Bancor",
+      "relType": "DEFEATS",
+      "causalClassification": "BLOCKS",
+      "description": "White's dollar-centered plan blocked Keynes's bancor proposal — a balanced international currency with shared adjustment burdens — not through superior design but through American economic leverage (half of global manufacturing, two-thirds of gold reserves).",
+      "evidence": "White wins. Not because his plan is better. Because the United States in 1944 produces half the world's manufactured goods, holds two-thirds of its gold reserves, and is the only major economy not destroyed by the war. Leverage decides architecture.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "John Maynard Keynes",
+      "target": "Bancor",
+      "relType": "PROPOSES",
+      "causalClassification": "PRODUCES",
+      "description": "Keynes designed the bancor as the alternative international monetary architecture — a new currency belonging to no nation, managed by a global clearing union, where surplus and deficit countries shared adjustment burdens equally, with no single currency dominance.",
+      "evidence": "Keynes proposes the 'bancor' — a new international currency belonging to no single nation, managed by a global clearing union. Countries running persistent trade surpluses would face penalties equal to those running deficits.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "United States",
+      "target": "Quota and Voting System",
+      "relType": "SHAPES",
+      "causalClassification": "CAUSES",
+      "description": "The US leveraged its 1944 economic dominance to design the quota-weighted voting system that gives votes proportional to financial contribution, then ensured the 85% supermajority threshold intersected with its >15% quota share to create a permanent structural veto no other nation possesses.",
+      "evidence": "Each country's votes are proportional to its financial contribution — its 'quota.' The United States gets the largest quota. The largest vote. And a structural guarantee: decisions on fundamental matters require an 85% supermajority. The US quota exceeds 15%.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "Quota and Voting System",
+      "target": "US Veto Power",
+      "relType": "ENABLES",
+      "causalClassification": "ENABLES",
+      "description": "The intersection of quota-proportional voting (US holds 16.5%) and the 85% supermajority threshold creates a structural veto — one country can block any fundamental reform, a power preserved through every quota review for eighty-two years because reducing the US below 15% requires US consent.",
+      "evidence": "One country can block any reform. No other nation has this power. In 2026, the numbers barely differ. The US holds 16.5% of votes.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "US Veto Power",
+      "target": "China",
+      "relType": "BLOCKS",
+      "causalClassification": "BLOCKS",
+      "description": "The US veto structurally prevents quota rebalancing that would give China voting power proportional to its economic weight — China produces 18% of global GDP but holds only 6.09% of IMF votes, a 3:1 mismatch the US veto makes permanent.",
+      "evidence": "China — which produces 18% of global GDP — holds 6.09%. Any reallocation that pushes the US below 15% eliminates its blocking power over fundamental decisions. No American administration — Democratic or Republican — has shown willingness to cross that line.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "US Treasury",
+      "target": "International Monetary Fund",
+      "relType": "GOVERNS",
+      "causalClassification": "INFLUENCES",
+      "description": "The US Treasury holds the largest IMF quota, provides the institutional and ideological framework for conditionality, and forms one vertex of the Washington Consensus triangle — the IMF was literally designed by Treasury staff (White was Assistant Secretary) and every major Fund decision requires Treasury acquiescence.",
+      "evidence": "Connected to the US Treasury — its largest shareholder, holding 16.5% of all votes.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "US Treasury",
+      "target": "Washington Consensus",
+      "relType": "FORMULATES",
+      "causalClassification": "COOPERATES_WITH",
+      "description": "The US Treasury forms the third vertex of the Washington Consensus triangle alongside the IMF and World Bank — the three Washington institutions that agreed on ten policy prescriptions for developing countries that became the rigid default template applied globally from 1980-2000.",
+      "evidence": "In 1989, an economist named John Williamson coins a term for the policy prescriptions that Washington institutions — the IMF, the World Bank, the US Treasury — agree on for developing countries.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1989"
+    },
+    {
+      "source": "International Monetary Fund",
+      "target": "Conditionality System",
+      "relType": "OPERATES",
+      "causalClassification": "IMPLEMENTS",
+      "description": "The IMF implements conditionality as its core lending mechanism — exchanging emergency loans for policy reforms (spending cuts, privatization, trade liberalization, monetary tightening) that reshape borrowing nations' entire economies, treating every crisis with the same template regardless of cause.",
+      "evidence": "The IMF does not give money. It lends money in exchange for policy reforms: spending cuts, tax increases, privatization, trade liberalization. The patient enters the emergency room. The emergency room tells the patient how to live.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1980"
+    },
+    {
+      "source": "Washington Consensus",
+      "target": "Conditionality System",
+      "relType": "TEMPLATES",
+      "causalClassification": "INFLUENCES",
+      "description": "The Washington Consensus codified the ten policy prescriptions (fiscal discipline, privatization, deregulation, etc.) that became the rigid default template for IMF conditionality — applied to 100+ countries 1980-2000 regardless of whether the crisis matched the template's assumptions.",
+      "evidence": "The Washington Consensus becomes the default template — applied to every country in crisis, regardless of whether the crisis resembles the one the template was designed for.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1989"
+    },
+    {
+      "source": "Conditionality System",
+      "target": "Structural Adjustment",
+      "relType": "MANIFESTS_AS",
+      "causalClassification": "IMPLEMENTS",
+      "description": "The conditionality system manifested as structural adjustment programs (SAPs) from 1980-2000 — the operational form through which IMF conditions became lived reality: government employees fired, hospitals defunded, food subsidies eliminated, state companies privatized, tariffs dropped on domestic agriculture.",
+      "evidence": "Between 1980 and 2000, 'structural adjustment' is the official name for IMF lending programs. The name is precise: borrowing countries must structurally adjust their entire economies according to Fund prescriptions.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1980"
+    },
+    {
+      "source": "Conditionality System",
+      "target": "Revolving Door Problem",
+      "relType": "GENERATES",
+      "causalClassification": "CAUSES",
+      "description": "The conditionality system's self-reinforcing loop — cut spending, economy contracts, revenue falls, deficit returns, country borrows again — structurally produces repeat customers, with Sri Lanka at 17 programs and Pakistan at 23 programs proving that treating symptoms without resolving causes guarantees return.",
+      "evidence": "Conditional lending that treats symptoms without resolving structural causes guarantees the borrower will return. Cut spending during a crisis. The economy contracts. Revenue falls. The deficit returns. The country borrows again.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1965"
+    },
+    {
+      "source": "International Monetary Fund",
+      "target": "Sri Lanka",
+      "relType": "LENDS_TO",
+      "causalClassification": "REGULATES",
+      "description": "The IMF has lent to Sri Lanka through 17 programs since 1965 — the investigation's primary case study of the revolving door — culminating in the 2022 sovereign default (reserves below $50M, 12-hour power cuts, president fleeing) followed by the Fund arriving again for the 17th time.",
+      "evidence": "Sri Lanka has entered 17 IMF programs since 1965. Seventeen times, the country ran out of money. Seventeen times, it called the same institution. Seventeen times, it agreed to conditions in exchange for a loan. And seventeen times, the cycle eventually repeated.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1965"
+    },
+    {
+      "source": "International Monetary Fund",
+      "target": "Pakistan",
+      "relType": "LENDS_TO",
+      "causalClassification": "REGULATES",
+      "description": "The IMF has lent to Pakistan through 23 programs since 1958 — the highest number for any country — embodying the revolving door problem in its most extreme form, with the country spending more years under IMF conditions than not across six decades.",
+      "evidence": "Pakistan has called 23 times since 1958.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1958"
+    },
+    {
+      "source": "International Monetary Fund",
+      "target": "Argentina",
+      "relType": "LENDS_TO",
+      "causalClassification": "REGULATES",
+      "description": "The IMF provided over $40 billion to Argentina while supporting the unsustainable dollar peg, with each round of austerity deepening the recession in a mathematical vicious loop — ultimately contributing to the 2001 default ($95B, largest ever at the time), riots killing 27, and five presidents in two weeks.",
+      "evidence": "The IMF provides over $40 billion in loans. Each loan comes with austerity conditions. But each round of austerity deepens the recession, which reduces tax revenue, which increases the deficit, which requires more austerity. The loop is mathematical.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1991"
+    },
+    {
+      "source": "International Monetary Fund",
+      "target": "Asian Financial Crisis",
+      "relType": "INTERVENES_IN",
+      "causalClassification": "INFLUENCES",
+      "description": "The IMF intervened in the 1997 Asian crisis with massive programs ($17.2B Thailand, $42B Indonesia, $57B South Korea) applying standard austerity conditions to a liquidity/capital flight crisis — the wrong medicine for the wrong disease, deepening the crisis in every country that followed the prescription.",
+      "evidence": "The IMF intervenes with massive programs: $17.2 billion for Thailand, $42 billion for Indonesia, $57 billion for South Korea. The conditions are standard: fiscal austerity, high interest rates, immediate closure of insolvent banks.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1997"
+    },
+    {
+      "source": "Conditionality System",
+      "target": "Indonesia",
+      "relType": "DEVASTATES",
+      "causalClassification": "CAUSES",
+      "description": "IMF conditionality mandated closure of 16 Indonesian banks to remove weak institutions — instead triggering depositor panic across all remaining banks, accelerating the collapse to a 13.1% GDP contraction, poverty doubling, and the fall of Suharto's 32-year regime.",
+      "evidence": "In Indonesia, the IMF demands the closure of 16 banks. The intention: remove weak institutions. The result: panic. Depositors rush to withdraw from every remaining bank, accelerating the collapse. Indonesia's GDP contracts 13.1% in 1998.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1997"
+    },
+    {
+      "source": "Asian Financial Crisis",
+      "target": "Indonesia",
+      "relType": "DEVASTATES",
+      "causalClassification": "CAUSES",
+      "description": "The 1997 Asian contagion spreading from Thailand's baht collapse hit Indonesia hardest of all crisis countries — GDP contracted 13.1%, poverty doubled, and the 32-year Suharto regime fell, with IMF-mandated bank closures amplifying rather than containing the damage.",
+      "evidence": "Indonesia's GDP contracts 13.1% in 1998. Poverty doubles. President Suharto — who had ruled for 32 years — falls.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1997"
+    },
+    {
+      "source": "Joseph Stiglitz",
+      "target": "International Monetary Fund",
+      "relType": "CRITICIZES",
+      "causalClassification": "CONTRADICTS",
+      "description": "Stiglitz, as World Bank Chief Economist during the Asian crisis, publicly called the IMF's prescription 'like administering aspirin to a patient with internal bleeding' — arguing that raising interest rates during a liquidity crisis chokes economies when they need oxygen — and resigned in 2000, proving the twin institutions do not tolerate internal dissent.",
+      "evidence": "Joseph Stiglitz — then Chief Economist of the World Bank, later a Nobel laureate — calls the IMF's prescription 'like administering aspirin to a patient with internal bleeding.'",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1997"
+    },
+    {
+      "source": "Malaysia",
+      "target": "International Monetary Fund",
+      "relType": "DEFIES",
+      "causalClassification": "CONTRADICTS",
+      "description": "Malaysia refused the IMF program during the 1997 Asian crisis, imposing capital controls — the exact opposite of IMF prescription — and recovered faster than neighboring countries that followed IMF conditions, serving as the control case proving the standard treatment was counterproductive.",
+      "evidence": "Malaysia's Prime Minister Mahathir Mohamad refuses the IMF program. He imposes capital controls — the exact opposite of IMF prescription. Malaysia recovers faster than the countries that followed IMF conditions.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1997"
+    },
+    {
+      "source": "Michel Camdessus",
+      "target": "Indonesia",
+      "relType": "HUMILIATES",
+      "causalClassification": "INFLUENCES",
+      "description": "Camdessus's arms-crossed posture while Suharto signed the IMF agreement became the most enduring photograph in IMF history — published across Asia as a portrait of the power asymmetry between the institution that sets conditions and the sovereign nation that must accept them.",
+      "evidence": "Managing Director Michel Camdessus standing with arms crossed while Indonesian President Suharto signs the IMF agreement. The photograph is published across Asia as a portrait of institutional humiliation.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1998"
+    },
+    {
+      "source": "International Monetary Fund",
+      "target": "Greek Debt Crisis",
+      "relType": "INTERVENES_IN",
+      "causalClassification": "INFLUENCES",
+      "description": "The IMF as part of the troika (with ECB and European Commission) provided three bailout packages totaling EUR 289 billion for Greece with severe austerity conditions — 30% wage cuts, pension cuts, mass layoffs, privatization — based on fiscal multiplier calculations later proven wrong by a factor of 2x.",
+      "evidence": "The troika — the IMF, the European Central Bank, and the European Commission — provides three bailout packages totaling approximately EUR 289 billion between 2010 and 2015.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2010"
+    },
+    {
+      "source": "Fiscal Multiplier Error",
+      "target": "Greece",
+      "relType": "DEVASTATES",
+      "causalClassification": "CAUSES",
+      "description": "The IMF's miscalibrated fiscal multiplier (assumed 0.5, actual 0.9-1.7) meant austerity was nearly twice as destructive as predicted — directly causing Greece's 25% GDP contraction, 27.5% unemployment, 60% youth unemployment, and 35% suicide rate increase, damage comparable to the American Great Depression.",
+      "evidence": "The Fund's models had assumed that cutting government spending by one euro would reduce GDP by fifty cents — a fiscal multiplier of 0.5. The paper finds the actual multiplier was between 0.9 and 1.7. Austerity was nearly twice as destructive as the IMF's own models predicted.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2013"
+    },
+    {
+      "source": "Fiscal Multiplier Error",
+      "target": "Greek Debt Crisis",
+      "relType": "AMPLIFIES",
+      "causalClassification": "CAUSES",
+      "description": "The Blanchard paper's 2013 discovery that the fiscal multiplier was 0.9-1.7 (not 0.5) proved mathematically that the troika's austerity prescriptions were calibrated on wrong assumptions — each euro of cuts produced 80 cents to $1.70 of GDP loss instead of the assumed 50 cents.",
+      "evidence": "The institution had prescribed a dose based on calculations it later admitted were wrong.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2013"
+    },
+    {
+      "source": "Conditionality System",
+      "target": "Greece",
+      "relType": "DEVASTATES",
+      "causalClassification": "CAUSES",
+      "description": "Troika conditionality applied to Greece — 30% public sector wage cuts, pension reductions, VAT increases, mass layoffs, port and airport privatization — contracted GDP by 25% and pushed unemployment to 27.5%, proving that conditionality harm is not limited to developing nations.",
+      "evidence": "Greek GDP contracts 25% between 2008 and 2013. Unemployment reaches 27.5%. Youth unemployment exceeds 60%. Suicide rates increase 35%. The contraction is comparable in depth to the American Great Depression.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2010"
+    },
+    {
+      "source": "Surcharge System",
+      "target": "Ukraine",
+      "relType": "EXTRACTS_FROM",
+      "causalClassification": "CAUSES",
+      "description": "The surcharge system charges Ukraine projected $2.9 billion in premium interest between 2024-2033 because its war borrowing exceeds size and duration thresholds — a country defending its existence pays premium charges to the institution created to stabilize the global financial system.",
+      "evidence": "Ukraine — fighting a full-scale war since February 2022 — is projected to pay $2.9 billion in surcharges between 2024 and 2033. A country defending its existence is paying premium charges to the institution created to stabilize the global financial system.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2022"
+    },
+    {
+      "source": "Climate-Debt Intersection",
+      "target": "Sri Lanka",
+      "relType": "COMPOUNDS",
+      "causalClassification": "CAUSES",
+      "description": "The climate-debt intersection compounds Sri Lanka's crisis — Cyclone Ditwah killed 643 and displaced 2.2 million during the country's 17th IMF program, forcing a nation contributing <0.1% of global emissions to rebuild from climate disaster while implementing spending cuts and paying surcharges.",
+      "evidence": "In November 2025, Cyclone Ditwah strikes Sri Lanka. It kills 643 people. It displaces 2.2 million. Sri Lanka is in the middle of its 17th IMF program.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2025"
+    },
+    {
+      "source": "Special Drawing Rights",
+      "target": "Quota and Voting System",
+      "relType": "REPLICATES",
+      "causalClassification": "DEPENDS_ON",
+      "description": "SDR allocation follows the same quota shares that determine voting power — meaning the emergency reserve supplement distributes resources proportional to existing wealth, with the US receiving $113 billion and Africa $33 billion from the $650 billion 2021 allocation.",
+      "evidence": "But allocation follows quota share. The United States receives $113 billion. The entire continent of Africa receives approximately $33 billion. Low-income countries — the ones facing the worst pandemic impact — receive 3.2% of the total.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2021"
+    },
+    {
+      "source": "Kristalina Georgieva",
+      "target": "International Monetary Fund",
+      "relType": "LEADS",
+      "causalClassification": "INFLUENCES",
+      "description": "Georgieva serves as the twelfth consecutive European Managing Director, managing incremental reform (2024 surcharge reduction, PRGT tiered interest) within structural constraints — even a sympathetic leader cannot overcome governance requiring US consent for fundamental change.",
+      "evidence": "Kristalina Georgieva — the IMF's Managing Director, a Bulgarian economist and the twelfth European to hold the position — manages an institution designed for a world that no longer exists.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Federal Reserve",
+      "target": "International Monetary Fund",
+      "relType": "OUTPACES",
+      "causalClassification": "COMPETES_WITH",
+      "description": "The Fed created over $10 trillion through quantitative easing at market speed during COVID while the IMF's $650 billion SDR allocation arrived 17 months after the pandemic began — the structural speed gap between a single-economy central bank and a 190-country institution determined which nations recovered first.",
+      "evidence": "The Federal Reserve moved at market speed. The IMF moved at institutional speed. The gap between those two speeds determined which countries recovered first and which ones accumulated debt they are still servicing in 2026.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2020"
+    },
+    {
+      "source": "International Monetary Fund",
+      "target": "World Bank",
+      "relType": "PARTNERS_WITH",
+      "causalClassification": "COOPERATES_WITH",
+      "description": "The IMF and World Bank form the Bretton Woods twin institutions — IMF for crisis stabilization, World Bank for development lending — linked by the unwritten leadership convention (European leads IMF, American leads World Bank) and the Washington Consensus policy framework.",
+      "evidence": "The IMF Managing Director is always European. The World Bank President is always American. Since 1946, twelve people have led the IMF. All twelve have been European.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1946"
+    },
+    {
+      "source": "Bancor",
+      "target": "Quota and Voting System",
+      "relType": "OPPOSES",
+      "causalClassification": "CONTRADICTS",
+      "description": "The bancor represented the structural opposite of the quota-weighted voting system — shared adjustment burdens between surplus and deficit countries, no single currency dominance, no single-nation veto — its rejection at Bretton Woods defining the road not taken that haunts every governance asymmetry.",
+      "evidence": "Keynes proposes the 'bancor' — a new international currency belonging to no single nation. Countries running persistent trade surpluses would face penalties equal to those running deficits. The system would force balance. No single currency would dominate.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "Structural Adjustment",
+      "target": "Revolving Door Problem",
+      "relType": "PERPETUATES",
+      "causalClassification": "CAUSES",
+      "description": "Structural adjustment programs treating symptoms (deficits) without resolving structural causes perpetuate the revolving door — reducing government spending shrinks the economy, reducing revenue, widening the deficit again, requiring the country to return for another program.",
+      "evidence": "A 2006 study of 79 countries finds IMF programs associated with reduced spending on health and education — without corresponding improvements in growth. The promise was: endure the pain now, growth comes later. For many countries, later never arrived.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1980"
+    }
+  ],
+  "causal_chains": [
+    {
+      "name": "The Architecture Lock",
+      "description": "How 1944 design decisions became permanent governance features that prevent institutional reform",
+      "links": [
+        {
+          "source": "United States",
+          "target": "Bretton Woods Conference",
+          "explanation": "The US entered Bretton Woods with overwhelming leverage — half of global manufacturing, two-thirds of gold reserves, the only major economy undestroyed by war. This leverage determined architecture: White's dollar-centered plan defeated Keynes's balanced bancor not on merit but on power."
+        },
+        {
+          "source": "Bretton Woods Conference",
+          "target": "Quota and Voting System",
+          "explanation": "The conference established quota-weighted voting — votes proportional to financial contribution — and set the 85% supermajority threshold for fundamental decisions. With the US quota exceeding 15%, this created a permanent structural veto embedded in the institution's DNA."
+        },
+        {
+          "source": "Quota and Voting System",
+          "target": "US Veto Power",
+          "explanation": "The intersection of >15% US quota share and 85% supermajority requirement creates a mathematical lock: one country can block any fundamental reform. No American administration has allowed its share to fall below the threshold, making the lock self-reinforcing."
+        },
+        {
+          "source": "US Veto Power",
+          "target": "China",
+          "explanation": "China produces 18% of global GDP but holds 6.09% of IMF votes — a 3:1 mismatch. The 16th General Review of Quotas grinds forward in 2026, but any reallocation pushing the US below 15% is blocked by the US veto itself. The governance structure cannot evolve without consent from the country that benefits most from keeping it."
+        },
+        {
+          "source": "China",
+          "target": "Kristalina Georgieva",
+          "explanation": "Georgieva manages an institution where even the Managing Director cannot overcome structural constraints. The twelfth consecutive European to lead an institution the borrowing countries have never chosen the leader of — incremental reform (surcharge reduction, PRGT tiered interest) is the ceiling when the US veto holds."
+        }
+      ]
+    },
+    {
+      "name": "The Conditionality Loop",
+      "description": "How the IMF's lending mechanism structurally produces repeat customers through a self-reinforcing austerity cycle",
+      "links": [
+        {
+          "source": "Washington Consensus",
+          "target": "Conditionality System",
+          "explanation": "The ten prescriptions codified by the Washington Consensus (fiscal discipline, privatization, trade liberalization, etc.) became the rigid default template for IMF conditionality — applied to 100+ countries between 1980-2000 regardless of whether the specific crisis matched the template's assumptions."
+        },
+        {
+          "source": "Conditionality System",
+          "target": "Structural Adjustment",
+          "explanation": "Conditionality manifested as structural adjustment programs that required countries to structurally adjust their entire economies: government employees fired, hospitals defunded, food subsidies eliminated, state companies sold. Sub-Saharan Africa's GDP per capita was lower in 2000 than in 1980 — two decades of adjustment, negative results."
+        },
+        {
+          "source": "Structural Adjustment",
+          "target": "Revolving Door Problem",
+          "explanation": "The austerity loop is mathematical: cut spending to close the deficit → the cut reduces economic activity → reduced activity reduces revenue → the deficit returns → the country borrows again → conditions reimposed. Sri Lanka 17 times since 1965, Pakistan 23 times since 1958 — the machine produces repeat customers."
+        },
+        {
+          "source": "Revolving Door Problem",
+          "target": "Sri Lanka",
+          "explanation": "Sri Lanka is the pattern incarnate: 17 programs over 60 years, each treating the symptom (deficit) without resolving the structural cause, guaranteeing return. The 2022 default (reserves below $50M, president fleeing) was followed by — another IMF program. The 17th."
+        },
+        {
+          "source": "Sri Lanka",
+          "target": "Climate-Debt Intersection",
+          "explanation": "While mid-17th-program, Cyclone Ditwah killed 643 and displaced 2.2 million. A nation contributing <0.1% of global emissions pays premium surcharges while absorbing the worst climate impacts — the 1944 architecture has no framework for climate-driven debt because climate change was not a design parameter."
+        }
+      ]
+    },
+    {
+      "name": "The Wrong Medicine Cascade",
+      "description": "How applying fiscal crisis templates to a liquidity crisis amplified damage across Asia and proved the alternative worked",
+      "links": [
+        {
+          "source": "Asian Financial Crisis",
+          "target": "International Monetary Fund",
+          "explanation": "Thailand's baht collapse in July 1997 triggered contagion across Southeast Asia — capital flight, currency crashes, bank failures. The IMF intervened with massive programs: $17.2B Thailand, $42B Indonesia, $57B South Korea. But the crisis was a liquidity/capital flight crisis, not a fiscal crisis — the standard fiscal template was the wrong treatment."
+        },
+        {
+          "source": "International Monetary Fund",
+          "target": "Indonesia",
+          "explanation": "The IMF demanded closure of 16 Indonesian banks to remove weak institutions. Instead of restoring confidence, the closures triggered depositor panic across all remaining banks — the cure caused the disease. GDP contracted 13.1%, poverty doubled, Suharto fell after 32 years."
+        },
+        {
+          "source": "Indonesia",
+          "target": "Joseph Stiglitz",
+          "explanation": "The Indonesian catastrophe prompted Stiglitz — World Bank Chief Economist — to publicly declare the IMF's prescription was 'like administering aspirin to a patient with internal bleeding.' Raising interest rates during a liquidity crisis chokes the economy when it needs oxygen. His dissent led to his resignation in 2000."
+        },
+        {
+          "source": "Joseph Stiglitz",
+          "target": "Malaysia",
+          "explanation": "Stiglitz's critique found its proof in Malaysia — the control case. Prime Minister Mahathir refused the IMF program and imposed capital controls (the exact opposite prescription). Malaysia recovered faster than every country that followed IMF conditions, providing mathematical proof the standard treatment was counterproductive."
+        },
+        {
+          "source": "Malaysia",
+          "target": "Fiscal Multiplier Error",
+          "explanation": "Malaysia's faster recovery without IMF conditions foreshadowed what the Blanchard paper proved in 2013: the IMF's own fiscal multiplier was wrong by a factor of 2x. The institution prescribed doses based on calculations it later admitted were wrong — from Asia 1997 to Greece 2010, the same pattern of miscalibrated medicine."
+        },
+        {
+          "source": "Fiscal Multiplier Error",
+          "target": "Greece",
+          "explanation": "The Blanchard paper found the actual fiscal multiplier was 0.9-1.7, not the assumed 0.5 — each euro of cuts produced 80 cents to $1.70 of GDP loss. Greece's 25% GDP contraction, 27.5% unemployment, 60% youth unemployment, and 35% suicide increase were the human cost of wrong math. The paper changed the academic debate. It did not undo the damage."
+        }
+      ]
+    },
+    {
+      "name": "The Extraction Spiral",
+      "description": "How the surcharge system extracts premium charges from the countries least able to pay, compounded by climate vulnerability",
+      "links": [
+        {
+          "source": "International Monetary Fund",
+          "target": "Surcharge System",
+          "explanation": "The IMF charges additional interest on loans exceeding size (>187.5% of quota) or duration (>36 months) thresholds — stated purpose is to incentivize quick repayment, but the countries triggering thresholds are precisely those in deepest crisis. Twenty-two countries currently pay, three times the pre-COVID number."
+        },
+        {
+          "source": "Surcharge System",
+          "target": "Ukraine",
+          "explanation": "Ukraine — fighting a full-scale war since February 2022 — is projected to pay $2.9 billion in surcharges between 2024-2033 because survival borrowing exceeds thresholds. The system cannot distinguish between reckless borrowing and existential necessity — it charges the same premium regardless."
+        },
+        {
+          "source": "Surcharge System",
+          "target": "Climate-Debt Intersection",
+          "explanation": "Of the 22 surcharge-paying countries, 11 are climate-vulnerable and 12 are in debt distress — the overlap is nearly total. Countries least responsible for climate change pay premium charges on emergency loans while absorbing the worst climate impacts. The cost distributes by vulnerability, not responsibility."
+        },
+        {
+          "source": "Climate-Debt Intersection",
+          "target": "Federal Reserve",
+          "explanation": "The speed gap completes the extraction spiral: the Fed created $10 trillion at market speed during COVID while the IMF's $650 billion SDR allocation arrived 17 months later, distributed by quota share. Countries with their own central banks recovered first. Countries dependent on IMF institutional speed accumulated the debt they now pay surcharges on."
+        }
+      ]
+    }
+  ]
+}

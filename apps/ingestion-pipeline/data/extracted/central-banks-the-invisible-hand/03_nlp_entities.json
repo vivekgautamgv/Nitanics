@@ -1,0 +1,5016 @@
+{
+  "entity_candidates": [
+    {
+      "text": "Fed",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 17,
+      "sections": [
+        20,
+        61,
+        62,
+        67,
+        79,
+        96,
+        97,
+        98,
+        103,
+        104,
+        105,
+        111,
+        115,
+        121,
+        126,
+        154
+      ],
+      "contexts": [
+        "And in 2026, the President of the United States is replacing the Fed Chair with his own nominee.",
+        "When the Fed cuts rates, the reverse: borrowing is cheap, spending accelerates, asset prices rise, companies invest, hiring picks up.",
+        "When they move, the rest of the world adjusts — because global capital flows toward the highest return, and the Fed rate is the benchmark."
+      ]
+    },
+    {
+      "text": "United States",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 11,
+      "sections": [
+        5,
+        20,
+        28,
+        31,
+        52,
+        67,
+        90,
+        125,
+        132,
+        145,
+        146
+      ],
+      "contexts": [
+        "They are traveling to Jekyll Island — a private club owned by J.P. Morgan and associates — to design the central banking system for the United States.",
+        "And in 2026, the President of the United States is replacing the Fed Chair with his own nominee.",
+        "The United States resists central banking for over a century."
+      ]
+    },
+    {
+      "text": "Federal Reserve",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 11,
+      "sections": [
+        6,
+        18,
+        59,
+        67,
+        71,
+        90,
+        109,
+        119,
+        132,
+        136,
+        153
+      ],
+      "contexts": [
+        "What they design in those nine days will become the Federal Reserve — the institution that today controls $6.6 trillion in assets and sets the cost of borrowing for the largest economy on Earth.",
+        "The Federal Reserve was designed in secret by six men on a private island in 1910.",
+        "When the Federal Reserve raises its benchmark rate, every loan in America gets more expensive."
+      ]
+    },
+    {
+      "text": "US",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 6,
+      "sections": [
+        48,
+        111,
+        126,
+        136,
+        145
+      ],
+      "contexts": [
+        "The system is elegant: every currency is pegged to the US dollar.",
+        "The US dollar is pegged to gold at $35 per ounce.",
+        "By June 2022, US inflation hits 9.1% — the highest in forty years."
+      ]
+    },
+    {
+      "text": "QE",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 6,
+      "sections": [
+        64,
+        79,
+        81,
+        109,
+        112,
+        117
+      ],
+      "contexts": [
+        "Quantitative easing — QE — is the tool that changed everything.",
+        "When the Fed cuts rates or launches QE, the money flows through financial markets first.",
+        "QE inflated those assets first."
+      ]
+    },
+    {
+      "text": "$6.6 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 4,
+      "sections": [
+        6,
+        19,
+        68,
+        136
+      ],
+      "contexts": [
+        "What they design in those nine days will become the Federal Reserve — the institution that today controls $6.6 trillion in assets and sets the cost of borrowing for the largest economy on Earth.",
+        "One hundred and sixteen years later, it controls $6.6 trillion in assets.",
+        "As of March 2026, the balance sheet stands at $6.6 trillion."
+      ]
+    },
+    {
+      "text": "Bank of England",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 4,
+      "sections": [
+        9,
+        25,
+        109,
+        152
+      ],
+      "contexts": [
+        "Paul Warburg — a German-born banker at Kuhn, Loeb & Co. who had studied the Reichsbank and the Bank of England.",
+        "The Bank of England is born.",
+        "The Bank of England, the ECB, and the Bank of Japan do the same proportionally."
+      ]
+    },
+    {
+      "text": "American",
+      "spacy_label": "NORP",
+      "suggested_category": "Organization",
+      "frequency": 4,
+      "sections": [
+        91,
+        92,
+        94,
+        121
+      ],
+      "contexts": [
+        "The highest interest rate in American history.",
+        "The American Rust Belt — the industrial heartland — is born in the wreckage of Volcker's rate hikes.",
+        "It proved that a single person, sitting in the right chair, could reshape the entire American economy."
+      ]
+    },
+    {
+      "text": "China",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 4,
+      "sections": [
+        139,
+        143,
+        146
+      ],
+      "contexts": [
+        "China is not fighting inflation — it is fighting deflation.",
+        "China leads.",
+        "China's central bank can now see every transaction, adjust money supply in real time, and potentially program how money is spent."
+      ]
+    },
+    {
+      "text": "America",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 3,
+      "sections": [
+        9,
+        35,
+        59
+      ],
+      "contexts": [
+        "Frank Vanderlip — president of National City Bank, the largest bank in America, now known as Citibank.",
+        "He is seventy years old, the most powerful banker in America.",
+        "When the Federal Reserve raises its benchmark rate, every loan in America gets more expensive."
+      ]
+    },
+    {
+      "text": "Americans",
+      "spacy_label": "NORP",
+      "suggested_category": "Organization",
+      "frequency": 3,
+      "sections": [
+        62,
+        81,
+        120
+      ],
+      "contexts": [
+        "One committee — the Federal Open Market Committee, twelve people — meets eight times a year and sets the price of money for 330 million Americans.",
+        "The top 10% of Americans own 89% of all stock market wealth.",
+        "The top 10% of Americans own 89% of all stock market wealth."
+      ]
+    },
+    {
+      "text": "ECB",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 3,
+      "sections": [
+        76,
+        109,
+        137
+      ],
+      "contexts": [
+        "The ECB had not spent a single euro.",
+        "The Bank of England, the ECB, and the Bank of Japan do the same proportionally.",
+        "Christine Lagarde says the ECB is in a \"good place.\""
+      ]
+    },
+    {
+      "text": "Volcker",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 3,
+      "sections": [
+        91,
+        92,
+        111
+      ],
+      "contexts": [
+        "Volcker raises the federal funds rate to 20%.",
+        "The American Rust Belt — the industrial heartland — is born in the wreckage of Volcker's rate hikes.",
+        "The Fed reverses course, raising rates at the fastest pace since Volcker: from near-zero to over 5% in eighteen months."
+      ]
+    },
+    {
+      "text": "Bank of Japan",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 3,
+      "sections": [
+        109,
+        131,
+        138
+      ],
+      "contexts": [
+        "The Bank of England, the ECB, and the Bank of Japan do the same proportionally.",
+        "Bank of Japan Governor Kazuo Ueda is trying to normalize rates — currently at 0.75%, the highest since 1995.",
+        "The Bank of Japan is at 0.75% — the highest since 1995."
+      ]
+    },
+    {
+      "text": "Treasury",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 2,
+      "sections": [
+        9,
+        29
+      ],
+      "contexts": [
+        "Piatt Andrew — Assistant Secretary of the Treasury.",
+        "Alexander Hamilton — the first Secretary of the Treasury — creates the First Bank of the United States in 1791."
+      ]
+    },
+    {
+      "text": "Congress",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 2,
+      "sections": [
+        18,
+        96
+      ],
+      "contexts": [
+        "It was signed into law on December 23, 1913, two days before Christmas, when many members of Congress had already left Washington.",
+        "Congress defers to him."
+      ]
+    },
+    {
+      "text": "$891 billion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 2,
+      "sections": [
+        66,
+        67
+      ],
+      "contexts": [
+        "The Federal Reserve's balance sheet: $891 billion in 2007.",
+        "To put that in perspective: it took the United States 233 years — from 1776 to 2007 — to accumulate the first $891 billion on the Fed's balance sheet."
+      ]
+    },
+    {
+      "text": "European Central Bank",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 2,
+      "sections": [
+        72,
+        137
+      ],
+      "contexts": [
+        "But the most powerful demonstration came from Mario Draghi, president of the European Central Bank — the institution that manages monetary policy for the nineteen countries sharing the euro.",
+        "The European Central Bank holds at 2.0%."
+      ]
+    },
+    {
+      "text": "10%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 2,
+      "sections": [
+        81,
+        120
+      ],
+      "contexts": [
+        "The top 10% of Americans own 89% of all stock market wealth.",
+        "The top 10% of Americans own 89% of all stock market wealth."
+      ]
+    },
+    {
+      "text": "89%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 2,
+      "sections": [
+        81,
+        120
+      ],
+      "contexts": [
+        "The top 10% of Americans own 89% of all stock market wealth.",
+        "The top 10% of Americans own 89% of all stock market wealth."
+      ]
+    },
+    {
+      "text": "14.8%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 2,
+      "sections": [
+        90,
+        93
+      ],
+      "contexts": [
+        "Inflation in the United States is running at 14.8% — prices are rising faster than at any point since World War II.",
+        "From 14.8% to below 3% by 1983."
+      ]
+    },
+    {
+      "text": "Twenty percent",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 2,
+      "sections": [
+        91,
+        126
+      ],
+      "contexts": [
+        "Twenty percent.",
+        "Twenty percent of all emerging market dollar debt matures by 2027 — at rates far higher than when it was issued."
+      ]
+    },
+    {
+      "text": "Great Depression",
+      "spacy_label": "EVENT",
+      "suggested_category": "Event",
+      "frequency": 2,
+      "sections": [
+        92,
+        103
+      ],
+      "contexts": [
+        "Unemployment hits 10.8% — the worst since the Great Depression.",
+        "Ben Bernanke — a scholar of the Great Depression who became Fed Chair specifically because he had studied what happens when central banks fail to act — makes a series of decisions that no Fed chair ha"
+      ]
+    },
+    {
+      "text": "Fed Chair",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 2,
+      "sections": [
+        96,
+        103
+      ],
+      "contexts": [
+        "Alan Greenspan serves as Fed Chair for nineteen years — 1987 to 2006 — the longest tenure since the Fed's founding.",
+        "Ben Bernanke — a scholar of the Great Depression who became Fed Chair specifically because he had studied what happens when central banks fail to act — makes a series of decisions that no Fed chair ha"
+      ]
+    },
+    {
+      "text": "Greenspan",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 2,
+      "sections": [
+        97,
+        100
+      ],
+      "contexts": [
+        "Greenspan keeps rates low after every crisis.",
+        "When Greenspan retires in 2006, the bomb is already built."
+      ]
+    },
+    {
+      "text": "Turkey",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 2,
+      "sections": [
+        130,
+        148
+      ],
+      "contexts": [
+        "Turkey: President Erdogan fired multiple central bank governors who tried to raise rates.",
+        "Turkey is the cautionary tale."
+      ]
+    },
+    {
+      "text": "Japan",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 2,
+      "sections": [
+        131,
+        138
+      ],
+      "contexts": [
+        "Japan:",
+        "Japan has experienced forty-five consecutive months above its inflation target."
+      ]
+    },
+    {
+      "text": "0.75%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 2,
+      "sections": [
+        131,
+        138
+      ],
+      "contexts": [
+        "Bank of Japan Governor Kazuo Ueda is trying to normalize rates — currently at 0.75%, the highest since 1995.",
+        "The Bank of Japan is at 0.75% — the highest since 1995."
+      ]
+    },
+    {
+      "text": "Powell",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 2,
+      "sections": [
+        132,
+        136
+      ],
+      "contexts": [
+        "Senator Thom Tillis has blocked Warsh's confirmation over a Department of Justice investigation of Powell.",
+        "Powell's term expires May 15."
+      ]
+    },
+    {
+      "text": "Most Powerful Unelected Institutions on Earth",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        0
+      ],
+      "contexts": [
+        "## How Central Banks Became the Most Powerful Unelected Institutions on Earth"
+      ]
+    },
+    {
+      "text": "New Jersey",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        3
+      ],
+      "contexts": [
+        "Six men board a private railcar at a New Jersey train station."
+      ]
+    },
+    {
+      "text": "Georgia",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        3
+      ],
+      "contexts": [
+        "They tell reporters they are going duck hunting on a private island off the coast of Georgia."
+      ]
+    },
+    {
+      "text": "Jekyll Island",
+      "spacy_label": "LOC",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        5
+      ],
+      "contexts": [
+        "They are traveling to Jekyll Island — a private club owned by J.P. Morgan and associates — to design the central banking system for the United States."
+      ]
+    },
+    {
+      "text": "J.P. Morgan",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        5
+      ],
+      "contexts": [
+        "They are traveling to Jekyll Island — a private club owned by J.P. Morgan and associates — to design the central banking system for the United States."
+      ]
+    },
+    {
+      "text": "Earth",
+      "spacy_label": "LOC",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        6
+      ],
+      "contexts": [
+        "What they design in those nine days will become the Federal Reserve — the institution that today controls $6.6 trillion in assets and sets the cost of borrowing for the largest economy on Earth."
+      ]
+    },
+    {
+      "text": "Nelson Aldrich",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Nelson Aldrich — chairman of the Senate Finance Committee and father-in-law of John D. Rockefeller Jr. Henry Davison — senior partner at J.P. Morgan & Company."
+      ]
+    },
+    {
+      "text": "Senate Finance Committee",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Nelson Aldrich — chairman of the Senate Finance Committee and father-in-law of John D. Rockefeller Jr. Henry Davison — senior partner at J.P. Morgan & Company."
+      ]
+    },
+    {
+      "text": "John D. Rockefeller Jr.",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Nelson Aldrich — chairman of the Senate Finance Committee and father-in-law of John D. Rockefeller Jr. Henry Davison — senior partner at J.P. Morgan & Company."
+      ]
+    },
+    {
+      "text": "Henry Davison",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Nelson Aldrich — chairman of the Senate Finance Committee and father-in-law of John D. Rockefeller Jr. Henry Davison — senior partner at J.P. Morgan & Company."
+      ]
+    },
+    {
+      "text": "J.P. Morgan & Company",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Nelson Aldrich — chairman of the Senate Finance Committee and father-in-law of John D. Rockefeller Jr. Henry Davison — senior partner at J.P. Morgan & Company."
+      ]
+    },
+    {
+      "text": "Frank Vanderlip",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Frank Vanderlip — president of National City Bank, the largest bank in America, now known as Citibank."
+      ]
+    },
+    {
+      "text": "National City Bank",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Frank Vanderlip — president of National City Bank, the largest bank in America, now known as Citibank."
+      ]
+    },
+    {
+      "text": "Citibank",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Frank Vanderlip — president of National City Bank, the largest bank in America, now known as Citibank."
+      ]
+    },
+    {
+      "text": "Paul Warburg",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Paul Warburg — a German-born banker at Kuhn, Loeb & Co. who had studied the Reichsbank and the Bank of England."
+      ]
+    },
+    {
+      "text": "German",
+      "spacy_label": "NORP",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Paul Warburg — a German-born banker at Kuhn, Loeb & Co. who had studied the Reichsbank and the Bank of England."
+      ]
+    },
+    {
+      "text": "Kuhn, Loeb & Co.",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Paul Warburg — a German-born banker at Kuhn, Loeb & Co. who had studied the Reichsbank and the Bank of England."
+      ]
+    },
+    {
+      "text": "Reichsbank",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Paul Warburg — a German-born banker at Kuhn, Loeb & Co. who had studied the Reichsbank and the Bank of England."
+      ]
+    },
+    {
+      "text": "Arthur Shelton",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Arthur Shelton — Aldrich's personal secretary."
+      ]
+    },
+    {
+      "text": "Aldrich",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        9
+      ],
+      "contexts": [
+        "Arthur Shelton — Aldrich's personal secretary."
+      ]
+    },
+    {
+      "text": "Vanderlip",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        11
+      ],
+      "contexts": [
+        "Vanderlip confirmed the meeting publicly in 1935, twenty-five years after it happened."
+      ]
+    },
+    {
+      "text": "Washington",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        18
+      ],
+      "contexts": [
+        "It was signed into law on December 23, 1913, two days before Christmas, when many members of Congress had already left Washington."
+      ]
+    },
+    {
+      "text": "William III",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        23
+      ],
+      "contexts": [
+        "King William III of England needs £1.2 million to fight a war against France."
+      ]
+    },
+    {
+      "text": "England",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        23
+      ],
+      "contexts": [
+        "King William III of England needs £1.2 million to fight a war against France."
+      ]
+    },
+    {
+      "text": "£1.2 million",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        23
+      ],
+      "contexts": [
+        "King William III of England needs £1.2 million to fight a war against France."
+      ]
+    },
+    {
+      "text": "France",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        23
+      ],
+      "contexts": [
+        "King William III of England needs £1.2 million to fight a war against France."
+      ]
+    },
+    {
+      "text": "London",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        24
+      ],
+      "contexts": [
+        "A group of London merchants proposes a deal: they will lend the Crown £1.2 million at 8% interest."
+      ]
+    },
+    {
+      "text": "8%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        24
+      ],
+      "contexts": [
+        "A group of London merchants proposes a deal: they will lend the Crown £1.2 million at 8% interest."
+      ]
+    },
+    {
+      "text": "Alexander Hamilton",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        29
+      ],
+      "contexts": [
+        "Alexander Hamilton — the first Secretary of the Treasury — creates the First Bank of the United States in 1791."
+      ]
+    },
+    {
+      "text": "First Bank of the United States",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        29
+      ],
+      "contexts": [
+        "Alexander Hamilton — the first Secretary of the Treasury — creates the First Bank of the United States in 1791."
+      ]
+    },
+    {
+      "text": "Thomas Jefferson",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        29
+      ],
+      "contexts": [
+        "Thomas Jefferson opposes it as an unconstitutional concentration of financial power."
+      ]
+    },
+    {
+      "text": "Second Bank",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        30
+      ],
+      "contexts": [
+        "A Second Bank is chartered in 1816."
+      ]
+    },
+    {
+      "text": "Andrew Jackson",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        30
+      ],
+      "contexts": [
+        "Andrew Jackson kills it in 1836."
+      ]
+    },
+    {
+      "text": "Bank",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        30
+      ],
+      "contexts": [
+        "His words to the bank's president: \"The Bank is trying to kill me, but I will kill it.\""
+      ]
+    },
+    {
+      "text": "John Pierpont Morgan",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        35
+      ],
+      "contexts": [
+        "One man steps in: John Pierpont Morgan."
+      ]
+    },
+    {
+      "text": "New York's",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        35
+      ],
+      "contexts": [
+        "He summons the heads of New York's major banks to his private library on Madison Avenue."
+      ]
+    },
+    {
+      "text": "Madison Avenue",
+      "spacy_label": "FAC",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        35
+      ],
+      "contexts": [
+        "He summons the heads of New York's major banks to his private library on Madison Avenue."
+      ]
+    },
+    {
+      "text": "Bretton Woods",
+      "spacy_label": "FAC",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        47
+      ],
+      "contexts": [
+        "Forty-four nations at Bretton Woods, New Hampshire — the same conference that standardized GDP — also formalize the role of central banks in the postwar order."
+      ]
+    },
+    {
+      "text": "New Hampshire",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        47
+      ],
+      "contexts": [
+        "Forty-four nations at Bretton Woods, New Hampshire — the same conference that standardized GDP — also formalize the role of central banks in the postwar order."
+      ]
+    },
+    {
+      "text": "35",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        48
+      ],
+      "contexts": [
+        "The US dollar is pegged to gold at $35 per ounce."
+      ]
+    },
+    {
+      "text": "Richard Nixon",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        52
+      ],
+      "contexts": [
+        "Richard Nixon addresses the nation from the Oval Office."
+      ]
+    },
+    {
+      "text": "Oval Office",
+      "spacy_label": "FAC",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        52
+      ],
+      "contexts": [
+        "Richard Nixon addresses the nation from the Oval Office."
+      ]
+    },
+    {
+      "text": "Federal Open Market Committee",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        62
+      ],
+      "contexts": [
+        "One committee — the Federal Open Market Committee, twelve people — meets eight times a year and sets the price of money for 330 million Americans."
+      ]
+    },
+    {
+      "text": "Federal Reserve's",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        66
+      ],
+      "contexts": [
+        "The Federal Reserve's balance sheet: $891 billion in 2007."
+      ]
+    },
+    {
+      "text": "$4.5 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        66
+      ],
+      "contexts": [
+        "$4.5 trillion by 2015."
+      ]
+    },
+    {
+      "text": "$4.2 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        66
+      ],
+      "contexts": [
+        "$4.2 trillion in early 2020."
+      ]
+    },
+    {
+      "text": "$8.8 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        66
+      ],
+      "contexts": [
+        "$8.8 trillion by 2022."
+      ]
+    },
+    {
+      "text": "roughly $4.6 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        67
+      ],
+      "contexts": [
+        "The Federal Reserve created roughly $4.6 trillion in two years during COVID."
+      ]
+    },
+    {
+      "text": "Mario Draghi",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        72
+      ],
+      "contexts": [
+        "But the most powerful demonstration came from Mario Draghi, president of the European Central Bank — the institution that manages monetary policy for the nineteen countries sharing the euro."
+      ]
+    },
+    {
+      "text": "Greek",
+      "spacy_label": "NORP",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        73
+      ],
+      "contexts": [
+        "Greek, Italian, and Spanish government bond yields were spiking."
+      ]
+    },
+    {
+      "text": "Italian",
+      "spacy_label": "NORP",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        73
+      ],
+      "contexts": [
+        "Greek, Italian, and Spanish government bond yields were spiking."
+      ]
+    },
+    {
+      "text": "Spanish",
+      "spacy_label": "NORP",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        73
+      ],
+      "contexts": [
+        "Greek, Italian, and Spanish government bond yields were spiking."
+      ]
+    },
+    {
+      "text": "Draghi",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        74
+      ],
+      "contexts": [
+        "Draghi spoke six words: \"Whatever it takes to preserve the euro.\""
+      ]
+    },
+    {
+      "text": "a single euro",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        76
+      ],
+      "contexts": [
+        "The ECB had not spent a single euro."
+      ]
+    },
+    {
+      "text": "Main Street",
+      "spacy_label": "FAC",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        80
+      ],
+      "contexts": [
+        "By the time cheaper borrowing reaches Main Street — lower mortgage rates leading to more homebuying, lower business loan rates leading to more hiring — months or years have passed."
+      ]
+    },
+    {
+      "text": "World War II",
+      "spacy_label": "EVENT",
+      "suggested_category": "Event",
+      "frequency": 1,
+      "sections": [
+        90
+      ],
+      "contexts": [
+        "Inflation in the United States is running at 14.8% — prices are rising faster than at any point since World War II."
+      ]
+    },
+    {
+      "text": "Jimmy Carter",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        90
+      ],
+      "contexts": [
+        "Jimmy Carter appoints Paul Volcker as chairman of the Federal Reserve."
+      ]
+    },
+    {
+      "text": "Paul Volcker",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        90
+      ],
+      "contexts": [
+        "Jimmy Carter appoints Paul Volcker as chairman of the Federal Reserve."
+      ]
+    },
+    {
+      "text": "20%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        91
+      ],
+      "contexts": [
+        "Volcker raises the federal funds rate to 20%."
+      ]
+    },
+    {
+      "text": "10.8%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        92
+      ],
+      "contexts": [
+        "Unemployment hits 10.8% — the worst since the Great Depression."
+      ]
+    },
+    {
+      "text": "below 3%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        93
+      ],
+      "contexts": [
+        "From 14.8% to below 3% by 1983."
+      ]
+    },
+    {
+      "text": "Alan Greenspan",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        96
+      ],
+      "contexts": [
+        "Alan Greenspan serves as Fed Chair for nineteen years — 1987 to 2006 — the longest tenure since the Fed's founding."
+      ]
+    },
+    {
+      "text": "Maestro",
+      "spacy_label": "WORK_OF_ART",
+      "suggested_category": "Document",
+      "frequency": 1,
+      "sections": [
+        96
+      ],
+      "contexts": [
+        "He is called \"The Maestro.\""
+      ]
+    },
+    {
+      "text": "Asian",
+      "spacy_label": "NORP",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        97
+      ],
+      "contexts": [
+        "After the 1997 Asian financial crisis."
+      ]
+    },
+    {
+      "text": "Greenspan Put",
+      "spacy_label": "WORK_OF_ART",
+      "suggested_category": "Document",
+      "frequency": 1,
+      "sections": [
+        98
+      ],
+      "contexts": [
+        "This belief — the \"Greenspan Put\" — creates moral hazard at a systemic scale."
+      ]
+    },
+    {
+      "text": "AAA",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        99
+      ],
+      "contexts": [
+        "Rating agencies grade them AAA."
+      ]
+    },
+    {
+      "text": "Lehman Brothers",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        102
+      ],
+      "contexts": [
+        "Lehman Brothers collapses."
+      ]
+    },
+    {
+      "text": "Ben Bernanke",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        103
+      ],
+      "contexts": [
+        "Ben Bernanke — a scholar of the Great Depression who became Fed Chair specifically because he had studied what happens when central banks fail to act — makes a series of decisions that no Fed chair ha"
+      ]
+    },
+    {
+      "text": "$891 billion to $4.5 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        104
+      ],
+      "contexts": [
+        "The Fed's balance sheet explodes from $891 billion to $4.5 trillion."
+      ]
+    },
+    {
+      "text": "Bernanke",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        105
+      ],
+      "contexts": [
+        "Bernanke later describes it: the Fed \"crossed the Rubicon.\""
+      ]
+    },
+    {
+      "text": "Rubicon",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        105
+      ],
+      "contexts": [
+        "Bernanke later describes it: the Fed \"crossed the Rubicon.\""
+      ]
+    },
+    {
+      "text": "trillions of dollars",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        106
+      ],
+      "contexts": [
+        "But the precedent is set: when the crisis is severe enough, the central bank will create trillions of dollars from nothing to prevent collapse."
+      ]
+    },
+    {
+      "text": "$4.6 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        109
+      ],
+      "contexts": [
+        "The Federal Reserve cuts rates to zero and launches QE at unprecedented scale — adding $4.6 trillion to its balance sheet in two years."
+      ]
+    },
+    {
+      "text": "9.1%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        111
+      ],
+      "contexts": [
+        "By June 2022, US inflation hits 9.1% — the highest in forty years."
+      ]
+    },
+    {
+      "text": "Silicon Valley Bank",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        112
+      ],
+      "contexts": [
+        "Banks fail (Silicon Valley Bank, March 2023)."
+      ]
+    },
+    {
+      "text": "Great Recession",
+      "spacy_label": "EVENT",
+      "suggested_category": "Event",
+      "frequency": 1,
+      "sections": [
+        115
+      ],
+      "contexts": [
+        "Without the Fed's intervention in 2008, the Great Recession would likely have become the Second Great Depression."
+      ]
+    },
+    {
+      "text": "Second Great Depression",
+      "spacy_label": "EVENT",
+      "suggested_category": "Event",
+      "frequency": 1,
+      "sections": [
+        115
+      ],
+      "contexts": [
+        "Without the Fed's intervention in 2008, the Great Recession would likely have become the Second Great Depression."
+      ]
+    },
+    {
+      "text": "approximately $8 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        119
+      ],
+      "contexts": [
+        "Between 2008 and 2022, the Federal Reserve created approximately $8 trillion through quantitative easing."
+      ]
+    },
+    {
+      "text": "1%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        120
+      ],
+      "contexts": [
+        "The top 1% own over 50%."
+      ]
+    },
+    {
+      "text": "over 50%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        120
+      ],
+      "contexts": [
+        "The top 1% own over 50%."
+      ]
+    },
+    {
+      "text": "$1.7 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        121
+      ],
+      "contexts": [
+        "Between 2020 and 2022, American billionaire wealth increased by $1.7 trillion while real wages for the bottom 50% barely kept pace with inflation."
+      ]
+    },
+    {
+      "text": "50%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        121
+      ],
+      "contexts": [
+        "Between 2020 and 2022, American billionaire wealth increased by $1.7 trillion while real wages for the bottom 50% barely kept pace with inflation."
+      ]
+    },
+    {
+      "text": "220,000",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        125
+      ],
+      "contexts": [
+        "In the United States, the median home price rose from $220,000 in 2020 to over $390,000 by 2024."
+      ]
+    },
+    {
+      "text": "over $390,000",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        125
+      ],
+      "contexts": [
+        "In the United States, the median home price rose from $220,000 in 2020 to over $390,000 by 2024."
+      ]
+    },
+    {
+      "text": "Erdogan",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        130
+      ],
+      "contexts": [
+        "Turkey: President Erdogan fired multiple central bank governors who tried to raise rates."
+      ]
+    },
+    {
+      "text": "Turkish",
+      "spacy_label": "NORP",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        130
+      ],
+      "contexts": [
+        "Turkish inflation hit 34.9%."
+      ]
+    },
+    {
+      "text": "34.9%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        130
+      ],
+      "contexts": [
+        "Turkish inflation hit 34.9%."
+      ]
+    },
+    {
+      "text": "Sanae Takaichi",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        131
+      ],
+      "contexts": [
+        "Prime Minister Sanae Takaichi won a supermajority of 316 seats — a postwar record — in the February 8, 2026 snap election."
+      ]
+    },
+    {
+      "text": "February 8, 2026",
+      "spacy_label": "EVENT",
+      "suggested_category": "Event",
+      "frequency": 1,
+      "sections": [
+        131
+      ],
+      "contexts": [
+        "Prime Minister Sanae Takaichi won a supermajority of 316 seats — a postwar record — in the February 8, 2026 snap election."
+      ]
+    },
+    {
+      "text": "Kazuo Ueda",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        131
+      ],
+      "contexts": [
+        "Bank of Japan Governor Kazuo Ueda is trying to normalize rates — currently at 0.75%, the highest since 1995."
+      ]
+    },
+    {
+      "text": "Trump",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "United States: President Trump nominated Kevin Warsh to replace Jerome Powell on January 30, 2026."
+      ]
+    },
+    {
+      "text": "Kevin Warsh",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "United States: President Trump nominated Kevin Warsh to replace Jerome Powell on January 30, 2026."
+      ]
+    },
+    {
+      "text": "Jerome Powell",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "United States: President Trump nominated Kevin Warsh to replace Jerome Powell on January 30, 2026."
+      ]
+    },
+    {
+      "text": "Stephen Miran",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "He placed Stephen Miran — his Council of Economic Advisors chair — on the Fed Board."
+      ]
+    },
+    {
+      "text": "Council of Economic Advisors",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "He placed Stephen Miran — his Council of Economic Advisors chair — on the Fed Board."
+      ]
+    },
+    {
+      "text": "Fed Board",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "He placed Stephen Miran — his Council of Economic Advisors chair — on the Fed Board."
+      ]
+    },
+    {
+      "text": "Thom Tillis",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "Senator Thom Tillis has blocked Warsh's confirmation over a Department of Justice investigation of Powell."
+      ]
+    },
+    {
+      "text": "Warsh",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "Senator Thom Tillis has blocked Warsh's confirmation over a Department of Justice investigation of Powell."
+      ]
+    },
+    {
+      "text": "Department of Justice",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "Senator Thom Tillis has blocked Warsh's confirmation over a Department of Justice investigation of Powell."
+      ]
+    },
+    {
+      "text": "Nixon",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        132
+      ],
+      "contexts": [
+        "The independence of the Federal Reserve is being tested more directly than at any point since Nixon."
+      ]
+    },
+    {
+      "text": "3.50-3.75%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        136
+      ],
+      "contexts": [
+        "The Federal Reserve holds rates at 3.50-3.75%."
+      ]
+    },
+    {
+      "text": "2.4%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        136
+      ],
+      "contexts": [
+        "US inflation at 2.4%, stubbornly above the 2% target."
+      ]
+    },
+    {
+      "text": "2%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        136
+      ],
+      "contexts": [
+        "US inflation at 2.4%, stubbornly above the 2% target."
+      ]
+    },
+    {
+      "text": "2.0%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        137
+      ],
+      "contexts": [
+        "The European Central Bank holds at 2.0%."
+      ]
+    },
+    {
+      "text": "1.7%",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        137
+      ],
+      "contexts": [
+        "Eurozone inflation has fallen to 1.7% — below target."
+      ]
+    },
+    {
+      "text": "Europe",
+      "spacy_label": "LOC",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        137
+      ],
+      "contexts": [
+        "Europe's problem is not inflation."
+      ]
+    },
+    {
+      "text": "Christine Lagarde",
+      "spacy_label": "PERSON",
+      "suggested_category": "Person",
+      "frequency": 1,
+      "sections": [
+        137
+      ],
+      "contexts": [
+        "Christine Lagarde says the ECB is in a \"good place.\""
+      ]
+    },
+    {
+      "text": "Eighty-five percent",
+      "spacy_label": "PERCENT",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        137
+      ],
+      "contexts": [
+        "Eighty-five percent of economists expect no change through 2026."
+      ]
+    },
+    {
+      "text": "People's Bank of China",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        139
+      ],
+      "contexts": [
+        "The People's Bank of China has adopted a \"moderately loose\" stance for the first time since 2011."
+      ]
+    },
+    {
+      "text": "digital yuan",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        143
+      ],
+      "contexts": [
+        "The digital yuan — e-CNY — has processed $2.38 trillion in cumulative transactions through 2.25 billion wallets."
+      ]
+    },
+    {
+      "text": "$2.38 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        143
+      ],
+      "contexts": [
+        "The digital yuan — e-CNY — has processed $2.38 trillion in cumulative transactions through 2.25 billion wallets."
+      ]
+    },
+    {
+      "text": "Russia",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        144
+      ],
+      "contexts": [
+        "Russia and Brazil are launching their own CBDCs in 2026."
+      ]
+    },
+    {
+      "text": "Brazil",
+      "spacy_label": "GPE",
+      "suggested_category": "Place",
+      "frequency": 1,
+      "sections": [
+        144
+      ],
+      "contexts": [
+        "Russia and Brazil are launching their own CBDCs in 2026."
+      ]
+    },
+    {
+      "text": "House",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        145
+      ],
+      "contexts": [
+        "The House passed the Anti-CBDC Surveillance State Act in July 2025."
+      ]
+    },
+    {
+      "text": "Digital",
+      "spacy_label": "ORG",
+      "suggested_category": "Organization",
+      "frequency": 1,
+      "sections": [
+        148
+      ],
+      "contexts": [
+        "Digital currencies coexist."
+      ]
+    },
+    {
+      "text": "$4 trillion",
+      "spacy_label": "MONEY",
+      "suggested_category": "Metric",
+      "frequency": 1,
+      "sections": [
+        154
+      ],
+      "contexts": [
+        "In 2008, one Fed chairman created $4 trillion from nothing to save the financial system."
+      ]
+    }
+  ],
+  "co_occurrences": [
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "United States",
+      "shared_sections": [
+        67,
+        90,
+        132
+      ],
+      "count": 3
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "United States",
+      "shared_sections": [
+        20,
+        67
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "US",
+      "shared_sections": [
+        111,
+        126
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Fed Chair",
+      "shared_sections": [
+        96,
+        103
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "$6.6 trillion",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        6,
+        136
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Powell",
+      "shared_sections": [
+        132,
+        136
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "American",
+      "entity_b": "Volcker",
+      "shared_sections": [
+        91,
+        92
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "10%",
+      "entity_b": "Americans",
+      "shared_sections": [
+        81,
+        120
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "89%",
+      "entity_b": "Americans",
+      "shared_sections": [
+        81,
+        120
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "Bank of Japan",
+      "entity_b": "Japan",
+      "shared_sections": [
+        131,
+        138
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "0.75%",
+      "entity_b": "Bank of Japan",
+      "shared_sections": [
+        131,
+        138
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "10%",
+      "entity_b": "89%",
+      "shared_sections": [
+        81,
+        120
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "0.75%",
+      "entity_b": "Japan",
+      "shared_sections": [
+        131,
+        138
+      ],
+      "count": 2
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        67
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "QE",
+      "shared_sections": [
+        79
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "American",
+      "entity_b": "Fed",
+      "shared_sections": [
+        121
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Americans",
+      "entity_b": "Fed",
+      "shared_sections": [
+        62
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Volcker",
+      "shared_sections": [
+        111
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Congress",
+      "entity_b": "Fed",
+      "shared_sections": [
+        96
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$891 billion",
+      "entity_b": "Fed",
+      "shared_sections": [
+        67
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Twenty percent",
+      "shared_sections": [
+        126
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Great Depression",
+      "shared_sections": [
+        103
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Greenspan",
+      "shared_sections": [
+        97
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Federal Open Market Committee",
+      "shared_sections": [
+        62
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "roughly $4.6 trillion",
+      "shared_sections": [
+        67
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Alan Greenspan",
+      "entity_b": "Fed",
+      "shared_sections": [
+        96
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Maestro",
+      "shared_sections": [
+        96
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Asian",
+      "entity_b": "Fed",
+      "shared_sections": [
+        97
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Greenspan Put",
+      "shared_sections": [
+        98
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Ben Bernanke",
+      "entity_b": "Fed",
+      "shared_sections": [
+        103
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$891 billion to $4.5 trillion",
+      "entity_b": "Fed",
+      "shared_sections": [
+        104
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bernanke",
+      "entity_b": "Fed",
+      "shared_sections": [
+        105
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Rubicon",
+      "shared_sections": [
+        105
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "9.1%",
+      "entity_b": "Fed",
+      "shared_sections": [
+        111
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Great Recession",
+      "shared_sections": [
+        115
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Second Great Depression",
+      "shared_sections": [
+        115
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$1.7 trillion",
+      "entity_b": "Fed",
+      "shared_sections": [
+        121
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "50%",
+      "entity_b": "Fed",
+      "shared_sections": [
+        121
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$4 trillion",
+      "entity_b": "Fed",
+      "shared_sections": [
+        154
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "US",
+      "entity_b": "United States",
+      "shared_sections": [
+        145
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "China",
+      "entity_b": "United States",
+      "shared_sections": [
+        146
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$891 billion",
+      "entity_b": "United States",
+      "shared_sections": [
+        67
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "14.8%",
+      "entity_b": "United States",
+      "shared_sections": [
+        90
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Powell",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Jekyll Island",
+      "entity_b": "United States",
+      "shared_sections": [
+        5
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "J.P. Morgan",
+      "entity_b": "United States",
+      "shared_sections": [
+        5
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Richard Nixon",
+      "entity_b": "United States",
+      "shared_sections": [
+        52
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Oval Office",
+      "entity_b": "United States",
+      "shared_sections": [
+        52
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "United States",
+      "entity_b": "roughly $4.6 trillion",
+      "shared_sections": [
+        67
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "United States",
+      "entity_b": "World War II",
+      "shared_sections": [
+        90
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Jimmy Carter",
+      "entity_b": "United States",
+      "shared_sections": [
+        90
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Paul Volcker",
+      "entity_b": "United States",
+      "shared_sections": [
+        90
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "220,000",
+      "entity_b": "United States",
+      "shared_sections": [
+        125
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "United States",
+      "entity_b": "over $390,000",
+      "shared_sections": [
+        125
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Trump",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Kevin Warsh",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Jerome Powell",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Stephen Miran",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Council of Economic Advisors",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed Board",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Thom Tillis",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "United States",
+      "entity_b": "Warsh",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Department of Justice",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Nixon",
+      "entity_b": "United States",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "House",
+      "entity_b": "United States",
+      "shared_sections": [
+        145
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "US",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "QE",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        59
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "ECB",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of Japan",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Congress",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        18
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$891 billion",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        67
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "14.8%",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        90
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Earth",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        6
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Washington",
+      "shared_sections": [
+        18
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "roughly $4.6 trillion",
+      "shared_sections": [
+        67
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "World War II",
+      "shared_sections": [
+        90
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Jimmy Carter",
+      "shared_sections": [
+        90
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Paul Volcker",
+      "shared_sections": [
+        90
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$4.6 trillion",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "approximately $8 trillion",
+      "shared_sections": [
+        119
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Trump",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Kevin Warsh",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Jerome Powell",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Stephen Miran",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Council of Economic Advisors",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Fed Board",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Thom Tillis",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Warsh",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Department of Justice",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Nixon",
+      "shared_sections": [
+        132
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "3.50-3.75%",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "2.4%",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "2%",
+      "entity_b": "Federal Reserve",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$6.6 trillion",
+      "entity_b": "US",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "US",
+      "entity_b": "Volcker",
+      "shared_sections": [
+        111
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Twenty percent",
+      "entity_b": "US",
+      "shared_sections": [
+        126
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Powell",
+      "entity_b": "US",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "35",
+      "entity_b": "US",
+      "shared_sections": [
+        48
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "9.1%",
+      "entity_b": "US",
+      "shared_sections": [
+        111
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "3.50-3.75%",
+      "entity_b": "US",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "2.4%",
+      "entity_b": "US",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "2%",
+      "entity_b": "US",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "House",
+      "entity_b": "US",
+      "shared_sections": [
+        145
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "QE",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Americans",
+      "entity_b": "QE",
+      "shared_sections": [
+        81
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "ECB",
+      "entity_b": "QE",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of Japan",
+      "entity_b": "QE",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "10%",
+      "entity_b": "QE",
+      "shared_sections": [
+        81
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "89%",
+      "entity_b": "QE",
+      "shared_sections": [
+        81
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$4.6 trillion",
+      "entity_b": "QE",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "QE",
+      "entity_b": "Silicon Valley Bank",
+      "shared_sections": [
+        112
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$6.6 trillion",
+      "entity_b": "Powell",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$6.6 trillion",
+      "entity_b": "Earth",
+      "shared_sections": [
+        6
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$6.6 trillion",
+      "entity_b": "3.50-3.75%",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$6.6 trillion",
+      "entity_b": "2.4%",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$6.6 trillion",
+      "entity_b": "2%",
+      "shared_sections": [
+        136
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Bank of England",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "ECB",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Bank of Japan",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Nelson Aldrich",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Senate Finance Committee",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "John D. Rockefeller Jr.",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Henry Davison",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "J.P. Morgan & Company",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Frank Vanderlip",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "National City Bank",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Citibank",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Paul Warburg",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "German",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Kuhn, Loeb & Co.",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of England",
+      "entity_b": "Reichsbank",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Arthur Shelton",
+      "entity_b": "Bank of England",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Aldrich",
+      "entity_b": "Bank of England",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$4.6 trillion",
+      "entity_b": "Bank of England",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "American",
+      "entity_b": "Twenty percent",
+      "shared_sections": [
+        91
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "American",
+      "entity_b": "Great Depression",
+      "shared_sections": [
+        92
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "20%",
+      "entity_b": "American",
+      "shared_sections": [
+        91
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "10.8%",
+      "entity_b": "American",
+      "shared_sections": [
+        92
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$1.7 trillion",
+      "entity_b": "American",
+      "shared_sections": [
+        121
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "50%",
+      "entity_b": "American",
+      "shared_sections": [
+        121
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "China",
+      "entity_b": "People's Bank of China",
+      "shared_sections": [
+        139
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "China",
+      "entity_b": "digital yuan",
+      "shared_sections": [
+        143
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$2.38 trillion",
+      "entity_b": "China",
+      "shared_sections": [
+        143
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Nelson Aldrich",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Senate Finance Committee",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "John D. Rockefeller Jr.",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Henry Davison",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "J.P. Morgan & Company",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Frank Vanderlip",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "National City Bank",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Citibank",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Paul Warburg",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "German",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Kuhn, Loeb & Co.",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Reichsbank",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Arthur Shelton",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Aldrich",
+      "entity_b": "America",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "John Pierpont Morgan",
+      "shared_sections": [
+        35
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "New York's",
+      "shared_sections": [
+        35
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "America",
+      "entity_b": "Madison Avenue",
+      "shared_sections": [
+        35
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Americans",
+      "entity_b": "Federal Open Market Committee",
+      "shared_sections": [
+        62
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "1%",
+      "entity_b": "Americans",
+      "shared_sections": [
+        120
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Americans",
+      "entity_b": "over 50%",
+      "shared_sections": [
+        120
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of Japan",
+      "entity_b": "ECB",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "ECB",
+      "entity_b": "European Central Bank",
+      "shared_sections": [
+        137
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "ECB",
+      "entity_b": "a single euro",
+      "shared_sections": [
+        76
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$4.6 trillion",
+      "entity_b": "ECB",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "2.0%",
+      "entity_b": "ECB",
+      "shared_sections": [
+        137
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "1.7%",
+      "entity_b": "ECB",
+      "shared_sections": [
+        137
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "ECB",
+      "entity_b": "Europe",
+      "shared_sections": [
+        137
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Christine Lagarde",
+      "entity_b": "ECB",
+      "shared_sections": [
+        137
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "ECB",
+      "entity_b": "Eighty-five percent",
+      "shared_sections": [
+        137
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Twenty percent",
+      "entity_b": "Volcker",
+      "shared_sections": [
+        91
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Great Depression",
+      "entity_b": "Volcker",
+      "shared_sections": [
+        92
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "20%",
+      "entity_b": "Volcker",
+      "shared_sections": [
+        91
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "10.8%",
+      "entity_b": "Volcker",
+      "shared_sections": [
+        92
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "9.1%",
+      "entity_b": "Volcker",
+      "shared_sections": [
+        111
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "$4.6 trillion",
+      "entity_b": "Bank of Japan",
+      "shared_sections": [
+        109
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of Japan",
+      "entity_b": "Sanae Takaichi",
+      "shared_sections": [
+        131
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of Japan",
+      "entity_b": "February 8, 2026",
+      "shared_sections": [
+        131
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Bank of Japan",
+      "entity_b": "Kazuo Ueda",
+      "shared_sections": [
+        131
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Nelson Aldrich",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Senate Finance Committee",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "John D. Rockefeller Jr.",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Henry Davison",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "J.P. Morgan & Company",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Frank Vanderlip",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "National City Bank",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Citibank",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Paul Warburg",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "German",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Kuhn, Loeb & Co.",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Reichsbank",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Arthur Shelton",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Aldrich",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        9
+      ],
+      "count": 1
+    },
+    {
+      "entity_a": "Alexander Hamilton",
+      "entity_b": "Treasury",
+      "shared_sections": [
+        29
+      ],
+      "count": 1
+    }
+  ],
+  "keywords": [
+    {
+      "term": "central",
+      "score": 7.8954
+    },
+    {
+      "term": "bank",
+      "score": 6.0654
+    },
+    {
+      "term": "banks",
+      "score": 5.6441
+    },
+    {
+      "term": "money",
+      "score": 4.8198
+    },
+    {
+      "term": "central banks",
+      "score": 4.6678
+    },
+    {
+      "term": "central bank",
+      "score": 3.9188
+    },
+    {
+      "term": "rates",
+      "score": 3.8216
+    },
+    {
+      "term": "years",
+      "score": 3.7144
+    },
+    {
+      "term": "financial",
+      "score": 3.6467
+    },
+    {
+      "term": "fed",
+      "score": 3.4134
+    },
+    {
+      "term": "inflation",
+      "score": 3.3232
+    },
+    {
+      "term": "2026",
+      "score": 3.2522
+    },
+    {
+      "term": "economy",
+      "score": 3.0975
+    },
+    {
+      "term": "trillion",
+      "score": 2.7391
+    },
+    {
+      "term": "federal",
+      "score": 2.7251
+    },
+    {
+      "term": "government",
+      "score": 2.5597
+    },
+    {
+      "term": "states",
+      "score": 2.5421
+    },
+    {
+      "term": "united states",
+      "score": 2.5421
+    },
+    {
+      "term": "united",
+      "score": 2.5421
+    },
+    {
+      "term": "markets",
+      "score": 2.3979
+    }
+  ],
+  "keywords_by_section": {
+    "0": [
+      "earth",
+      "unelected",
+      "powerful",
+      "central banks",
+      "banks",
+      "central"
+    ],
+    "1": [
+      "investigation"
+    ],
+    "2": [],
+    "3": [
+      "private",
+      "tell",
+      "hunting",
+      "1910 men",
+      "going duck",
+      "going",
+      "duck hunting",
+      "duck",
+      "men",
+      "1910"
+    ],
+    "4": [
+      "hunting",
+      "going duck",
+      "going",
+      "duck hunting",
+      "duck"
+    ],
+    "5": [
+      "took",
+      "place",
+      "morgan",
+      "design",
+      "island",
+      "days",
+      "central banking",
+      "banking",
+      "private",
+      "united states"
+    ],
+    "6": [
+      "sets",
+      "trillion assets",
+      "largest economy",
+      "earth",
+      "controls trillion",
+      "design",
+      "cost",
+      "days",
+      "controls",
+      "borrowing"
+    ],
+    "7": [],
+    "8": [],
+    "9": [
+      "aldrich",
+      "secretary",
+      "bank",
+      "studied",
+      "vanderlip",
+      "secretary treasury",
+      "treasury",
+      "personal",
+      "john",
+      "law"
+    ],
+    "10": [
+      "approximately",
+      "world",
+      "wealth"
+    ],
+    "11": [
+      "years happened",
+      "vanderlip",
+      "years"
+    ],
+    "12": [],
+    "13": [
+      "financial",
+      "central banks",
+      "banks",
+      "central"
+    ],
+    "14": [
+      "loan",
+      "currency",
+      "money",
+      "card economy",
+      "card",
+      "car loan",
+      "set",
+      "determine",
+      "deciding",
+      "control money"
+    ],
+    "15": [
+      "decision",
+      "flows",
+      "institution",
+      "financial"
+    ],
+    "16": [
+      "people daily",
+      "lives",
+      "daily lives",
+      "daily",
+      "unelected",
+      "power",
+      "people"
+    ],
+    "17": [],
+    "18": [
+      "left",
+      "law",
+      "1913",
+      "congress",
+      "men",
+      "private island",
+      "1910",
+      "island",
+      "designed",
+      "days"
+    ],
+    "19": [
+      "businesses hire",
+      "businesses",
+      "years later",
+      "trillion assets",
+      "service",
+      "determine",
+      "controls trillion",
+      "later",
+      "controls",
+      "decisions"
+    ],
+    "20": [
+      "replacing",
+      "elected",
+      "make",
+      "fed chair",
+      "decisions",
+      "chair",
+      "president",
+      "people",
+      "2026",
+      "states"
+    ],
+    "21": [
+      "controls money",
+      "actually",
+      "controls",
+      "money supply",
+      "supply",
+      "money"
+    ],
+    "22": [],
+    "23": [
+      "1694 king",
+      "needs",
+      "million",
+      "1694",
+      "war",
+      "england",
+      "rates",
+      "banks"
+    ],
+    "24": [
+      "government",
+      "lend",
+      "merchants",
+      "group",
+      "right",
+      "issue",
+      "million",
+      "exchange",
+      "debt",
+      "banker"
+    ],
+    "25": [
+      "born",
+      "days",
+      "bank england",
+      "england",
+      "money",
+      "bank"
+    ],
+    "26": [
+      "created",
+      "stabilize",
+      "pattern",
+      "fund war",
+      "fund",
+      "centuries",
+      "war",
+      "world",
+      "economy",
+      "central bank"
+    ],
+    "27": [],
+    "28": [
+      "central banking",
+      "banking",
+      "states",
+      "united states",
+      "united",
+      "central"
+    ],
+    "29": [
+      "bank",
+      "treasury",
+      "secretary treasury",
+      "secretary",
+      "expires",
+      "creates",
+      "power",
+      "states",
+      "united states",
+      "united"
+    ],
+    "30": [
+      "kill",
+      "bank",
+      "second",
+      "trying",
+      "1836",
+      "andrew",
+      "words",
+      "president",
+      "federal"
+    ],
+    "31": [
+      "1913",
+      "seven",
+      "resolved",
+      "1836",
+      "panic",
+      "industrial",
+      "seventy",
+      "seven years",
+      "major",
+      "private"
+    ],
+    "32": [],
+    "33": [
+      "savings",
+      "street",
+      "panics",
+      "failing",
+      "stock market",
+      "stock",
+      "market",
+      "banks"
+    ],
+    "34": [
+      "institution",
+      "act",
+      "government",
+      "central bank",
+      "bank",
+      "central"
+    ],
+    "35": [
+      "york major",
+      "york",
+      "years old",
+      "seventy",
+      "john",
+      "stop",
+      "panic",
+      "agree",
+      "major",
+      "morgan"
+    ],
+    "36": [
+      "personal",
+      "using",
+      "largest economy",
+      "agree",
+      "largest",
+      "world",
+      "crisis",
+      "wealth",
+      "private",
+      "financial"
+    ],
+    "37": [
+      "immediate",
+      "needs",
+      "mechanism",
+      "political",
+      "crisis",
+      "government"
+    ],
+    "38": [],
+    "39": [
+      "operate",
+      "actually",
+      "control",
+      "tools",
+      "entire",
+      "monetary",
+      "central banks",
+      "banks",
+      "central"
+    ],
+    "40": [
+      "goes",
+      "borrowing",
+      "spending accelerates",
+      "gets expensive",
+      "gets",
+      "cheap spending",
+      "borrowing cheap",
+      "price",
+      "spending",
+      "expensive"
+    ],
+    "41": [
+      "money",
+      "buys sells",
+      "buys",
+      "buying injects",
+      "selling",
+      "open market",
+      "open",
+      "buying",
+      "government bonds",
+      "bonds"
+    ],
+    "42": [
+      "bank",
+      "lend",
+      "money prevent",
+      "prevent collapse",
+      "failing",
+      "lender",
+      "lender resort",
+      "resort",
+      "prevent",
+      "entire"
+    ],
+    "43": [
+      "buying selling",
+      "selling",
+      "management",
+      "exchange",
+      "buying",
+      "currency",
+      "currencies",
+      "rate"
+    ],
+    "44": [
+      "capital requirements",
+      "running",
+      "operate",
+      "regulation",
+      "deciding",
+      "capital",
+      "bank"
+    ],
+    "45": [
+      "tools",
+      "entire",
+      "institution",
+      "economy"
+    ],
+    "46": [],
+    "47": [
+      "order",
+      "postwar",
+      "role",
+      "july",
+      "new",
+      "central banks",
+      "banks",
+      "central"
+    ],
+    "48": [
+      "pegged",
+      "dollar",
+      "exchange",
+      "currency",
+      "gold",
+      "central banks",
+      "rates",
+      "banks",
+      "central"
+    ],
+    "49": [
+      "stable",
+      "theory",
+      "physical",
+      "create",
+      "constraint",
+      "dollar",
+      "gold",
+      "backed",
+      "central banks",
+      "money"
+    ],
+    "50": [
+      "seven",
+      "works",
+      "seven years",
+      "years"
+    ],
+    "51": [],
+    "52": [
+      "nixon",
+      "1971",
+      "dollars",
+      "august 15",
+      "15 1971",
+      "august",
+      "15",
+      "gold",
+      "states",
+      "united states"
+    ],
+    "53": [
+      "constraint",
+      "gold"
+    ],
+    "54": [
+      "create",
+      "money",
+      "judgment",
+      "limit",
+      "physical",
+      "constraint",
+      "inflation",
+      "central banks",
+      "banks",
+      "central"
+    ],
+    "55": [
+      "1971",
+      "1694 1971",
+      "limit",
+      "discipline",
+      "begins",
+      "august 15",
+      "15 1971",
+      "physical",
+      "modern",
+      "august"
+    ],
+    "56": [
+      "years test",
+      "discipline",
+      "holds",
+      "years"
+    ],
+    "57": [],
+    "58": [
+      "tool",
+      "banker",
+      "powerful",
+      "rate",
+      "central"
+    ],
+    "59": [
+      "loans",
+      "cards business",
+      "cards",
+      "car loans",
+      "business loans",
+      "rises",
+      "mortgages",
+      "gets expensive",
+      "gets",
+      "car"
+    ],
+    "60": [
+      "business investment",
+      "consumer",
+      "spending",
+      "hiring",
+      "business",
+      "economy"
+    ],
+    "61": [
+      "spending accelerates",
+      "fed cuts",
+      "cheap spending",
+      "borrowing cheap",
+      "hiring",
+      "prices rise",
+      "rise",
+      "spending",
+      "accelerates",
+      "cuts rates"
+    ],
+    "62": [
+      "committee",
+      "open market",
+      "sets",
+      "open",
+      "year",
+      "global capital",
+      "capital flows",
+      "benchmark",
+      "million",
+      "price"
+    ],
+    "63": [],
+    "64": [
+      "changed",
+      "quantitative easing",
+      "tool",
+      "easing",
+      "quantitative",
+      "qe"
+    ],
+    "65": [
+      "financial",
+      "money",
+      "buy financial",
+      "buy",
+      "term",
+      "long",
+      "bonds mortgage",
+      "mortgage backed",
+      "financial assets",
+      "creates"
+    ],
+    "66": [
+      "trillion",
+      "2007",
+      "tell",
+      "891 billion",
+      "891",
+      "billion",
+      "2022",
+      "2020",
+      "sheet",
+      "balance sheet"
+    ],
+    "67": [
+      "years",
+      "years covid",
+      "reserve created",
+      "2007",
+      "took",
+      "fed balance",
+      "covid",
+      "891 billion",
+      "891",
+      "billion"
+    ],
+    "68": [
+      "trillion quantitative",
+      "stands",
+      "sheet stands",
+      "pandemic",
+      "march 2026",
+      "tightening",
+      "stands trillion",
+      "march",
+      "quantitative",
+      "sheet"
+    ],
+    "69": [],
+    "70": [
+      "need",
+      "act",
+      "central banks",
+      "banks",
+      "central"
+    ],
+    "71": [
+      "markets",
+      "hundreds",
+      "change",
+      "single",
+      "tool",
+      "bond",
+      "market",
+      "reserve",
+      "federal reserve",
+      "federal"
+    ],
+    "72": [
+      "came mario",
+      "came",
+      "nineteen",
+      "european central",
+      "european",
+      "draghi",
+      "countries",
+      "monetary policy",
+      "euro",
+      "institution"
+    ],
+    "73": [
+      "yields spiking",
+      "eurozone",
+      "bond yields",
+      "yields",
+      "july",
+      "euro",
+      "bond",
+      "collapse",
+      "markets",
+      "government"
+    ],
+    "74": [
+      "draghi",
+      "words",
+      "euro"
+    ],
+    "75": [
+      "believe"
+    ],
+    "76": [
+      "yields collapsed",
+      "spent",
+      "work",
+      "did",
+      "bond yields",
+      "yields",
+      "single",
+      "words",
+      "ecb",
+      "euro"
+    ],
+    "77": [],
+    "78": [
+      "built central",
+      "bank policy",
+      "problem",
+      "reaches",
+      "built",
+      "policy",
+      "economy",
+      "central bank",
+      "bank",
+      "central"
+    ],
+    "79": [
+      "prices",
+      "rise",
+      "prices rise",
+      "launches qe",
+      "immediately",
+      "financial markets",
+      "fed cuts",
+      "estate prices",
+      "launches",
+      "real estate"
+    ],
+    "80": [
+      "leading",
+      "rates leading",
+      "lower",
+      "rates",
+      "years passed",
+      "passed",
+      "street",
+      "mortgage rates",
+      "business loan",
+      "reaches"
+    ],
+    "81": [
+      "assets",
+      "market wealth",
+      "stocks",
+      "benefit",
+      "americans 89",
+      "89 stock",
+      "89",
+      "10 americans",
+      "financial assets",
+      "americans"
+    ],
+    "82": [
+      "built flow",
+      "bank policy",
+      "plumbing",
+      "mechanism",
+      "built",
+      "policy",
+      "asset",
+      "markets",
+      "central bank",
+      "bank"
+    ],
+    "83": [],
+    "84": [
+      "theory",
+      "politicians",
+      "bank independence",
+      "independence",
+      "supply",
+      "money supply",
+      "central bank",
+      "money",
+      "bank",
+      "central"
+    ],
+    "85": [
+      "election",
+      "president",
+      "rises",
+      "cheap money",
+      "consequences",
+      "low",
+      "cheap",
+      "economy",
+      "rates",
+      "money"
+    ],
+    "86": [
+      "pressure",
+      "want",
+      "independent",
+      "raise rates",
+      "raise",
+      "long",
+      "politicians",
+      "make",
+      "central bankers",
+      "low"
+    ],
+    "87": [
+      "doctrine",
+      "central banking",
+      "banking",
+      "central"
+    ],
+    "88": [
+      "using",
+      "resolved",
+      "hundreds",
+      "millions people",
+      "elected",
+      "millions",
+      "tools",
+      "economic",
+      "decisions",
+      "people"
+    ],
+    "89": [],
+    "90": [
+      "carter",
+      "14 prices",
+      "point",
+      "paul",
+      "running",
+      "faster",
+      "14",
+      "chairman",
+      "august",
+      "war"
+    ],
+    "91": [
+      "rate",
+      "history",
+      "raises",
+      "percent",
+      "volcker",
+      "american",
+      "highest",
+      "federal"
+    ],
+    "92": [
+      "brutal unemployment",
+      "immediate",
+      "unemployment",
+      "sector",
+      "industrial",
+      "worst",
+      "hits",
+      "great depression",
+      "great",
+      "depression"
+    ],
+    "93": [
+      "14 1983",
+      "14",
+      "inflation"
+    ],
+    "94": [
+      "millions people",
+      "severe",
+      "unelected",
+      "single",
+      "millions",
+      "right",
+      "decision",
+      "entire",
+      "american",
+      "economic"
+    ],
+    "95": [],
+    "96": [
+      "fed",
+      "called maestro",
+      "called",
+      "1987",
+      "serves",
+      "nineteen",
+      "congress",
+      "2006",
+      "fed chair",
+      "greenspan"
+    ],
+    "97": [
+      "crisis",
+      "bust 2001",
+      "bust",
+      "1987",
+      "money prevent",
+      "cheap money",
+      "low",
+      "stock market",
+      "time",
+      "prevent"
+    ],
+    "98": [
+      "scale",
+      "believe",
+      "creates",
+      "greenspan",
+      "markets",
+      "fed",
+      "central bank",
+      "banks",
+      "bank",
+      "central"
+    ],
+    "99": [
+      "bubble inflates",
+      "bubble",
+      "loans",
+      "mortgages",
+      "housing",
+      "agencies",
+      "2006",
+      "securities",
+      "banks"
+    ],
+    "100": [
+      "built successor",
+      "2006",
+      "built",
+      "greenspan"
+    ],
+    "101": [],
+    "102": [
+      "stop",
+      "credit",
+      "collapses",
+      "2008",
+      "global",
+      "markets",
+      "financial",
+      "banks"
+    ],
+    "103": [
+      "fed chair",
+      "chair",
+      "fed",
+      "studied",
+      "fail",
+      "bernanke",
+      "banks fail",
+      "great depression",
+      "great",
+      "depression"
+    ],
+    "104": [
+      "fed",
+      "buying trillions",
+      "rates zero",
+      "trillions",
+      "fed balance",
+      "begins",
+      "zero launches",
+      "launches",
+      "mortgage backed",
+      "buying"
+    ],
+    "105": [
+      "resort",
+      "buyer resort",
+      "buyer",
+      "role",
+      "bernanke",
+      "lender",
+      "later",
+      "lender resort",
+      "market",
+      "fed"
+    ],
+    "106": [
+      "prevent collapse",
+      "question",
+      "set",
+      "severe",
+      "left",
+      "trillions",
+      "survives",
+      "dollars",
+      "later",
+      "create"
+    ],
+    "107": [],
+    "108": [
+      "pandemic",
+      "intervention",
+      "global economy",
+      "history",
+      "march",
+      "largest",
+      "2020",
+      "monetary",
+      "global",
+      "economy"
+    ],
+    "109": [
+      "bank",
+      "launches qe",
+      "rates zero",
+      "scale",
+      "zero launches",
+      "launches",
+      "japan",
+      "ecb",
+      "bank japan",
+      "cuts rates"
+    ],
+    "110": [
+      "prices",
+      "mortgage rates",
+      "hit",
+      "worst",
+      "estate prices",
+      "hits",
+      "record",
+      "real estate",
+      "estate",
+      "asset prices"
+    ],
+    "111": [
+      "years fed",
+      "pace",
+      "near zero",
+      "near",
+      "fastest",
+      "hits",
+      "volcker",
+      "2022",
+      "months",
+      "highest"
+    ],
+    "112": [
+      "years reshapes",
+      "tightening",
+      "market currencies",
+      "global economy",
+      "fastest",
+      "fail",
+      "emerging market",
+      "emerging",
+      "banks fail",
+      "zero rates"
+    ],
+    "113": [],
+    "114": [
+      "designed",
+      "central banks",
+      "banks",
+      "central"
+    ],
+    "115": [
+      "great",
+      "business failures",
+      "unemployment",
+      "worse",
+      "intervention",
+      "second",
+      "far",
+      "deflation",
+      "covid",
+      "great depression"
+    ],
+    "116": [
+      "panics",
+      "stabilize",
+      "systems",
+      "economies",
+      "modern",
+      "prevent",
+      "monetary",
+      "financial",
+      "central banks",
+      "banks"
+    ],
+    "117": [
+      "problem",
+      "works",
+      "work",
+      "immediately",
+      "financial markets",
+      "benefit",
+      "plumbing",
+      "issue",
+      "reaches",
+      "tools"
+    ],
+    "118": [],
+    "119": [
+      "reserve created",
+      "trillion quantitative",
+      "2008 2022",
+      "stocks",
+      "bonds mortgage",
+      "approximately",
+      "mortgage backed",
+      "financial assets",
+      "backed securities",
+      "securities"
+    ],
+    "120": [
+      "wealth",
+      "upward",
+      "market wealth",
+      "americans 89",
+      "89 stock",
+      "89",
+      "10 americans",
+      "prices rise",
+      "rise",
+      "americans"
+    ],
+    "121": [
+      "kept",
+      "wages",
+      "pace",
+      "outcome",
+      "did",
+      "mechanism",
+      "50",
+      "american",
+      "2022",
+      "2020"
+    ],
+    "122": [
+      "upward",
+      "plumbing",
+      "modern",
+      "history",
+      "design",
+      "quantitative easing",
+      "easing",
+      "largest",
+      "quantitative",
+      "wealth"
+    ],
+    "123": [],
+    "124": [
+      "savings",
+      "near zero",
+      "near",
+      "2008 2022",
+      "kept",
+      "economies",
+      "power",
+      "2022",
+      "2008",
+      "zero"
+    ],
+    "125": [
+      "000",
+      "rose",
+      "housing",
+      "zero rates",
+      "millions",
+      "price",
+      "record",
+      "2020",
+      "zero",
+      "prices"
+    ],
+    "126": [
+      "emerging market",
+      "emerging",
+      "market",
+      "higher",
+      "debt",
+      "dollar",
+      "rates",
+      "market currencies",
+      "returns",
+      "service"
+    ],
+    "127": [
+      "asset",
+      "rose",
+      "wages",
+      "faster",
+      "asset prices",
+      "wealth",
+      "prices",
+      "inflation"
+    ],
+    "128": [],
+    "129": [
+      "bank independence",
+      "independence",
+      "2026",
+      "central bank",
+      "bank",
+      "central"
+    ],
+    "130": [
+      "inflation",
+      "rates",
+      "raise rates",
+      "turkey",
+      "raise",
+      "hit",
+      "opposite",
+      "president",
+      "central bank",
+      "bank"
+    ],
+    "131": [
+      "japan",
+      "campaigned loose",
+      "campaigned",
+      "loose",
+      "highest 1995",
+      "prime",
+      "postwar",
+      "1995",
+      "trying",
+      "technocratic"
+    ],
+    "132": [
+      "warsh",
+      "powell",
+      "nixon",
+      "january",
+      "point",
+      "investigation",
+      "board",
+      "independence",
+      "economic",
+      "chair"
+    ],
+    "133": [
+      "serves",
+      "want",
+      "pattern",
+      "outcome",
+      "political leaders",
+      "leaders",
+      "control money",
+      "control",
+      "central bankers",
+      "monetary policy"
+    ],
+    "134": [],
+    "135": [
+      "march 2026",
+      "march",
+      "central banking",
+      "banking",
+      "global",
+      "2026",
+      "central"
+    ],
+    "136": [
+      "15 balance",
+      "sheet stands",
+      "stands trillion",
+      "stands",
+      "term",
+      "powell",
+      "expires",
+      "target",
+      "75",
+      "50"
+    ],
+    "137": [
+      "inflation",
+      "place",
+      "eurozone",
+      "european central",
+      "european",
+      "change",
+      "problem",
+      "target",
+      "percent",
+      "ecb"
+    ],
+    "138": [
+      "japan",
+      "157 dollar",
+      "157",
+      "154 157",
+      "154",
+      "yen trades",
+      "yen",
+      "1995",
+      "highest 1995",
+      "75 highest"
+    ],
+    "139": [
+      "fighting",
+      "china",
+      "loose",
+      "deflation",
+      "consumer",
+      "time",
+      "prices",
+      "people",
+      "inflation",
+      "bank"
+    ],
+    "140": [
+      "different",
+      "major",
+      "global",
+      "central banks",
+      "banks",
+      "central"
+    ],
+    "141": [],
+    "142": [
+      "digital currencies",
+      "issued",
+      "new",
+      "digital",
+      "currencies",
+      "central banks",
+      "banks",
+      "central"
+    ],
+    "143": [
+      "china",
+      "money",
+      "yuan",
+      "spent",
+      "time",
+      "billion",
+      "digital",
+      "real",
+      "supply",
+      "money supply"
+    ],
+    "144": [
+      "2026"
+    ],
+    "145": [
+      "digital",
+      "2025",
+      "dollar",
+      "tokens",
+      "order",
+      "opposite",
+      "passed",
+      "state",
+      "january",
+      "executive"
+    ],
+    "146": [
+      "digital",
+      "government",
+      "sector",
+      "regulation",
+      "tokens",
+      "state",
+      "digital tokens",
+      "china",
+      "issued",
+      "currency"
+    ],
+    "147": [],
+    "148": [
+      "independence",
+      "management",
+      "technocratic",
+      "survives",
+      "turkey",
+      "path",
+      "stable",
+      "worse",
+      "doctrine",
+      "digital currencies"
+    ],
+    "149": [
+      "political",
+      "capture accelerates",
+      "capture",
+      "116 year",
+      "path",
+      "returns",
+      "year",
+      "prime",
+      "independent",
+      "executive"
+    ],
+    "150": [
+      "different",
+      "countries",
+      "right"
+    ],
+    "151": [],
+    "152": [
+      "1694 group",
+      "merchants",
+      "group",
+      "fund war",
+      "fund",
+      "1694",
+      "war",
+      "bank england",
+      "england",
+      "created"
+    ],
+    "153": [
+      "1910 men",
+      "1910",
+      "private island",
+      "men",
+      "island",
+      "designed",
+      "private",
+      "reserve",
+      "federal reserve",
+      "years"
+    ],
+    "154": [
+      "chairman",
+      "2008",
+      "created",
+      "trillion",
+      "financial",
+      "fed"
+    ],
+    "155": [
+      "years preceding",
+      "centuries",
+      "2020",
+      "created",
+      "years",
+      "central banks",
+      "money",
+      "banks",
+      "central"
+    ],
+    "156": [
+      "leaders",
+      "political leaders",
+      "replacing",
+      "central bankers",
+      "bankers",
+      "political",
+      "2026",
+      "central"
+    ],
+    "157": [
+      "question",
+      "changed"
+    ],
+    "158": [
+      "people daily",
+      "lives",
+      "daily lives",
+      "daily",
+      "controls money",
+      "appoint",
+      "politicians",
+      "make",
+      "decision",
+      "designed"
+    ],
+    "159": [
+      "invisible",
+      "look",
+      "people"
+    ],
+    "160": [
+      "look"
+    ],
+    "161": [],
+    "162": [
+      "systems"
+    ]
+  },
+  "dedup_groups": [
+    [
+      "Federal Reserve",
+      "Federal Reserve's"
+    ],
+    [
+      "$6.6 trillion",
+      "$4.5 trillion",
+      "$4.2 trillion",
+      "$8.8 trillion",
+      "roughly $4.6 trillion",
+      "$4.6 trillion",
+      "$1.7 trillion"
+    ],
+    [
+      "14.8%",
+      "10.8%"
+    ],
+    [
+      "0.75%",
+      "1.7%"
+    ],
+    [
+      "J.P. Morgan",
+      "J.P. Morgan & Company"
+    ],
+    [
+      "Nelson Aldrich",
+      "Aldrich"
+    ],
+    [
+      "Richard Nixon",
+      "Nixon"
+    ],
+    [
+      "Ben Bernanke",
+      "Bernanke"
+    ],
+    [
+      "approximately $8 trillion",
+      "$4 trillion"
+    ],
+    [
+      "1%",
+      "2%"
+    ],
+    [
+      "2.4%",
+      "2.0%"
+    ]
+  ],
+  "total_entities": 145,
+  "total_co_occurrences": 200,
+  "section_count": 163
+}

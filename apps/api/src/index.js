@@ -1,0 +1,5 @@
+console.log('apps/api scaffold is ready.')
+console.log('Current backend runtimes:')
+console.log('- Graph data + query backend: Neo4j')
+console.log('- MCP server runtime: apps/mcp')
+console.log('- Ingestion worker runtime: apps/ingestion-pipeline')

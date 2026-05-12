@@ -1,0 +1,22 @@
+[project]
+name = "memorytonic-ingestion-worker"
+version = "0.1.0"
+description = "MemoryTonic ingestion worker (Python) managed with uv"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "spacy==3.8.4",
+  "sentence-transformers==3.4.1",
+  "scikit-learn==1.6.1",
+  "numpy==2.2.3",
+  "python-dotenv>=1.0.1",
+]
+
+[dependency-groups]
+dev = [
+  "ruff>=0.11.0",
+  "vulture>=2.11",
+]
+
+[tool.uv]
+package = false

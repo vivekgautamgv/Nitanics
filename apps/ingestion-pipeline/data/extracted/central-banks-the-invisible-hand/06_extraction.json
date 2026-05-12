@@ -1,0 +1,456 @@
+{
+  "project": {
+    "name": "Central Banks: The Invisible Hand",
+    "unique_id": "central-banks-the-invisible-hand",
+    "summary": "Central banking is the story of a mechanism designed in secret that became the most powerful unelected force in global economics. The Bank of England was created in 1694 not to stabilize an economy but to fund King William III's war against France â€” merchants lent Â£1.2 million at 8% interest in exchange for banknote-issuing privileges, establishing the template that central banks are born from the fusion of private capital and state power. The United States resisted this model for over a century until the Panic of 1907 forced the question: who stabilizes a financial system when there is no central authority? Six men â€” representing one-quarter of the world's wealth â€” designed the Federal Reserve in nine days of secret meetings on Jekyll Island in 1910, denied the gathering for twenty-five years, and saw their design signed into law on December 23, 1913 when much of Congress had left Washington. The Bretton Woods System constrained central banks by tying currencies to gold until Richard Nixon severed the link in 1971, unleashing fiat currency and removing any physical limit on money creation. What followed was a half-century experiment in institutional discipline: Paul Volcker proved one unelected official could reshape an entire economy by raising rates to 20%, Alan Greenspan's nineteen-year tenure created the moral hazard of the 'Greenspan Put' where markets learned the Fed would always rescue them, and Ben Bernanke crossed the Rubicon in 2008 by expanding the Fed from lender of last resort to buyer of last resort â€” creating $4.5 trillion from nothing. The COVID response dwarfed even 2008: central banks globally created more money in two years than in the preceding two centuries combined, producing the largest upward wealth transfer in modern history through a mechanism where quantitative easing flows through asset markets first, benefiting the top 10% who own 89% of stock market wealth. By 2026, the system faces a three-front crisis: political leaders in Turkey, Japan, and the United States are directly challenging central bank independence through appointments and pressure; digital currencies are splitting the architecture of money along geopolitical lines as China's digital yuan processes $2.38 trillion while the US prohibits a federal digital dollar; and the fundamental democratic tension â€” that the most consequential economic decisions affecting hundreds of millions are made by officials nobody elected â€” remains unresolved.",
+    "narrative_flow": [
+      "The Bank of England is created in 1694 to fund King William III's war against France, establishing the template that central banks are born from the merger of private capital and state power",
+      "The United States resists central banking for over a century until the Panic of 1907 â€” resolved by J.P. Morgan locking bankers in his library â€” proves a government mechanism is needed",
+      "Six men representing one-quarter of the world's wealth design the Federal Reserve in secret on Jekyll Island in 1910, creating an institution meant to regulate banks that was designed by bankers",
+      "The Bretton Woods System ties currencies to gold, constraining central banks with a physical limit on money creation, until Richard Nixon severs the link in 1971 and fiat currency begins",
+      "Paul Volcker raises rates to 20% to break inflation, proving one unelected official can reshape an economy, while Alan Greenspan's nineteen-year tenure creates systemic moral hazard",
+      "The 2008 financial crisis forces Ben Bernanke to cross the Rubicon â€” expanding the Fed from lender of last resort to buyer of last resort through $4.5 trillion in quantitative easing",
+      "Mario Draghi demonstrates the purest form of central bank power when six words end the eurozone crisis without spending a single euro",
+      "The COVID response produces the largest monetary intervention in human history and the largest upward wealth transfer â€” QE flows through asset markets first, reaching the wealthy immediately and everyone else eventually",
+      "By 2026, central bank independence faces simultaneous attacks from political leaders in Turkey, Japan, and the United States, while digital currencies split the architecture of money along geopolitical lines"
+    ],
+    "tags": {
+      "domain": "Economics",
+      "subdomain": "Central Banking and Monetary Systems",
+      "base_tags": [
+        "central-banking",
+        "monetary-policy",
+        "federal-reserve",
+        "quantitative-easing",
+        "central-bank-independence",
+        "digital-currency",
+        "wealth-inequality",
+        "financial-crisis",
+        "fiat-currency",
+        "political-economy"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "source": "King William III",
+      "target": "Bank of England",
+      "relType": "CREATES",
+      "causalClassification": "CAUSES",
+      "description": "King William III's need for Â£1.2 million to fight France leads to the creation of the Bank of England in 1694 â€” merchants lend at 8% interest in exchange for banknote-issuing privileges, establishing the template that central banks are born to fund wars",
+      "evidence": "King William III of England needs Â£1.2 million to fight a war against France. He cannot tax enough. He cannot borrow from existing banks at acceptable rates.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1694"
+    },
+    {
+      "source": "Nelson Aldrich",
+      "target": "Federal Reserve",
+      "relType": "DESIGNS",
+      "causalClassification": "CAUSES",
+      "description": "Nelson Aldrich organizes the secret Jekyll Island meetings in 1910 where six men design the Federal Reserve system in nine days â€” his dual role as Senate Finance chairman and Rockefeller family embodies the private-public nexus at the institution's origin",
+      "evidence": "Nelson Aldrich â€” chairman of the Senate Finance Committee and father-in-law of John D. Rockefeller Jr. Henry Davison â€” senior partner at J.P. Morgan & Company.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1910"
+    },
+    {
+      "source": "John Pierpont Morgan",
+      "target": "Federal Reserve",
+      "relType": "NECESSITATES",
+      "causalClassification": "PRECEDES",
+      "description": "Morgan's single-handed bailout of the 1907 panic â€” locking bankers in his library until they agreed to contribute â€” proved that relying on one private citizen to stabilize the financial system was unsustainable, creating the political impetus for a government central bank",
+      "evidence": "One man steps in: John Pierpont Morgan. He is seventy years old, the most powerful banker in America. He summons the heads of New York's major banks to his private library on Madison Avenue. He locks the doors.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1907"
+    },
+    {
+      "source": "Andrew Jackson",
+      "target": "Second Bank of the United States",
+      "relType": "DESTROYS",
+      "causalClassification": "BLOCKS",
+      "description": "Andrew Jackson kills the Second Bank of the United States in 1836 by withdrawing all federal deposits, creating a seventy-seven-year gap where America has no central bank â€” the only major industrial economy without one",
+      "evidence": "Andrew Jackson kills it in 1836. His words to the bank's president: 'The Bank is trying to kill me, but I will kill it.' He withdraws all federal deposits.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1836"
+    },
+    {
+      "source": "Bretton Woods System",
+      "target": "Gold Standard",
+      "relType": "FORMALIZES",
+      "causalClassification": "IMPLEMENTS",
+      "description": "The 1944 Bretton Woods conference formalizes the gold constraint on central banks â€” every currency pegged to the US dollar, the dollar pegged to gold at $35 per ounce, meaning central banks cannot print money freely because every dollar must be backed by gold",
+      "evidence": "The system is elegant: every currency is pegged to the US dollar. The US dollar is pegged to gold at $35 per ounce. Central banks must maintain their exchange rates within narrow bands.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1944"
+    },
+    {
+      "source": "Richard Nixon",
+      "target": "Gold Standard",
+      "relType": "ABOLISHES",
+      "causalClassification": "TRANSFORMS",
+      "description": "Nixon closes the gold window on August 15, 1971, severing the dollar's convertibility to gold and removing any physical limit on central bank money creation â€” the moment modern central banking begins, as the only remaining constraint is institutional discipline",
+      "evidence": "August 15, 1971. Richard Nixon addresses the nation from the Oval Office. He announces that the United States will no longer convert dollars to gold.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1971"
+    },
+    {
+      "source": "Richard Nixon",
+      "target": "Fiat Currency",
+      "relType": "ENABLES",
+      "causalClassification": "ENABLES",
+      "description": "By closing the gold window, Nixon enables the fiat currency era where money has no physical backing â€” central banks are untethered from any physical limit on money creation and the only constraint is their own judgment about inflation",
+      "evidence": "Central banks are now untethered from any physical limit on money creation. They can create as much money as they decide to create. The only constraint is their own judgment about inflation.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1971"
+    },
+    {
+      "source": "Federal Open Market Committee",
+      "target": "United States",
+      "relType": "CONTROLS",
+      "causalClassification": "REGULATES",
+      "description": "Twelve unelected members of the FOMC meet eight times a year and set the price of money for 330 million Americans â€” when they move, the rest of the world adjusts because global capital flows toward the highest return and the Fed rate is the benchmark",
+      "evidence": "One committee â€” the Federal Open Market Committee, twelve people â€” meets eight times a year and sets the price of money for 330 million Americans.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1971-present"
+    },
+    {
+      "source": "Jimmy Carter",
+      "target": "Paul Volcker",
+      "relType": "APPOINTS",
+      "causalClassification": "ENABLES",
+      "description": "Carter appoints Volcker as Fed chairman in August 1979 with inflation at 14.8%, enabling the most dramatic demonstration of central bank power â€” one unelected official raising rates to 20%, devastating the manufacturing sector but breaking inflation",
+      "evidence": "August 1979. Inflation in the United States is running at 14.8% â€” prices are rising faster than at any point since World War II. Jimmy Carter appoints Paul Volcker as chairman of the Federal Reserve.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1979"
+    },
+    {
+      "source": "Paul Volcker",
+      "target": "Great Depression",
+      "relType": "PARALLELS",
+      "causalClassification": "CAUSES",
+      "description": "Volcker's 20% interest rate causes unemployment to hit 10.8% â€” the worst since the Great Depression â€” destroying the manufacturing sector, shutting auto plants and steel mills, creating the American Rust Belt, but successfully breaking inflation from 14.8% to below 3%",
+      "evidence": "Unemployment hits 10.8% â€” the worst since the Great Depression. The manufacturing sector collapses. Auto plants close. Steel mills shut down. Farmers go bankrupt; some commit suicide.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1979-1983"
+    },
+    {
+      "source": "Alan Greenspan",
+      "target": "Greenspan Put",
+      "relType": "CREATES",
+      "causalClassification": "CAUSES",
+      "description": "Greenspan's nineteen-year pattern of flooding the system with cheap money after every crisis creates systemic moral hazard â€” markets learn the Fed will always rescue them, so banks take bigger risks knowing the central bank is their backstop",
+      "evidence": "Markets learn the lesson: the Fed will always rescue them. This belief â€” the 'Greenspan Put' â€” creates moral hazard at a systemic scale. Banks take bigger risks because they believe the central bank will bail them out.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1987-2006"
+    },
+    {
+      "source": "Greenspan Put",
+      "target": "2008 Financial Crisis",
+      "relType": "ENABLES",
+      "causalClassification": "ENABLES",
+      "description": "The moral hazard of the Greenspan Put enables the conditions for the 2008 crisis â€” banks leverage thirty-to-one on subprime mortgages rated AAA because they believe the central bank will bail them out, building the bomb that detonates under Bernanke",
+      "evidence": "The housing bubble inflates between 2003 and 2006. Subprime mortgages â€” loans to borrowers who cannot repay â€” are packaged into securities and sold worldwide. Rating agencies grade them AAA. Banks leverage thirty-to-one.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2003-2008"
+    },
+    {
+      "source": "Ben Bernanke",
+      "target": "Quantitative Easing",
+      "relType": "LAUNCHES",
+      "causalClassification": "CAUSES",
+      "description": "Bernanke launches quantitative easing in 2008 after cutting rates to zero proves insufficient â€” the Fed begins buying trillions in mortgage-backed securities and government bonds, expanding its balance sheet from $891 billion to $4.5 trillion and crossing the Rubicon from lender of last resort to buyer of last resort",
+      "evidence": "He cuts rates to zero. When that is not enough, he launches quantitative easing â€” the Fed begins buying trillions in mortgage-backed securities and government bonds. The Fed's balance sheet explodes from $891 billion to $4.5 trillion.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2008"
+    },
+    {
+      "source": "Mario Draghi",
+      "target": "European Central Bank",
+      "relType": "DEMONSTRATES_POWER_OF",
+      "causalClassification": "INFLUENCES",
+      "description": "Draghi demonstrates the purest form of central bank power â€” credibility as a tool â€” when his six words 'whatever it takes to preserve the euro' end the eurozone crisis in 2012 without the ECB spending a single euro, proving that communication alone can move markets",
+      "evidence": "Draghi spoke six words: 'Whatever it takes to preserve the euro.' He added: 'And believe me, it will be enough.' Bond yields collapsed. The crisis ended. The ECB had not spent a single euro.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2012"
+    },
+    {
+      "source": "Quantitative Easing",
+      "target": "Wealth Inequality Mechanism",
+      "relType": "PRODUCES",
+      "causalClassification": "PRODUCES",
+      "description": "QE produces the largest upward wealth transfer in modern history â€” not by design but by plumbing, because the transmission mechanism flows through financial markets first, inflating assets owned primarily by the top 10% who hold 89% of stock market wealth, while Main Street receives benefits months or years later",
+      "evidence": "The people who benefit first and most are those who already own financial assets: stocks, bonds, real estate. The top 10% of Americans own 89% of all stock market wealth. QE inflated those assets first.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2008-2022"
+    },
+    {
+      "source": "Quantitative Easing",
+      "target": "Main Street",
+      "relType": "DELAYS_BENEFITS_TO",
+      "causalClassification": "BLOCKS",
+      "description": "QE's transmission mechanism structurally delays benefits to Main Street â€” cheaper borrowing reaches ordinary Americans through lower mortgage and business loan rates only after months or years, by which time asset owners have already captured the first wave of wealth creation",
+      "evidence": "By the time cheaper borrowing reaches Main Street â€” lower mortgage rates leading to more homebuying, lower business loan rates leading to more hiring â€” months or years have passed.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2008-2022"
+    },
+    {
+      "source": "Lehman Brothers",
+      "target": "2008 Financial Crisis",
+      "relType": "TRIGGERS",
+      "causalClassification": "CAUSES",
+      "description": "Lehman Brothers' collapse in September 2008 triggers the global financial crisis â€” the financial system freezes, banks stop lending to each other, credit markets seize, and the Fed is forced to cross the Rubicon with unprecedented intervention",
+      "evidence": "September 2008. Lehman Brothers collapses. The global financial system freezes. Banks stop lending to each other. Credit markets seize.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2008"
+    },
+    {
+      "source": "Recep Tayyip Erdogan",
+      "target": "Central Bank Independence",
+      "relType": "ATTACKS",
+      "causalClassification": "BLOCKS",
+      "description": "Erdogan fires multiple central bank governors who try to raise rates, believing high interest rates cause inflation â€” the opposite of mainstream economics â€” producing 34.9% Turkish inflation and serving as the cautionary tale for what happens when political leaders capture monetary policy",
+      "evidence": "Turkey: President Erdogan fired multiple central bank governors who tried to raise rates. He believes high interest rates cause inflation â€” the opposite of mainstream economics. Turkish inflation hit 34.9%.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2023-2026"
+    },
+    {
+      "source": "Donald Trump",
+      "target": "Jerome Powell",
+      "relType": "REPLACES",
+      "causalClassification": "BLOCKS",
+      "description": "Trump nominates Kevin Warsh to replace Jerome Powell on January 30, 2026, and places Stephen Miran on the Fed Board, testing the independence of the Federal Reserve more directly than at any point since Nixon â€” the most aggressive political attempt to capture US monetary policy in half a century",
+      "evidence": "President Trump nominated Kevin Warsh to replace Jerome Powell on January 30, 2026. He placed Stephen Miran â€” his Council of Economic Advisors chair â€” on the Fed Board.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Sanae Takaichi",
+      "target": "Bank of Japan",
+      "relType": "PRESSURES",
+      "causalClassification": "INFLUENCES",
+      "description": "Takaichi wins a supermajority of 316 seats in February 2026 campaigning on loose monetary policy, pressuring BOJ Governor Ueda who is trying to normalize rates at 0.75% â€” the tension between political mandate and technocratic judgment playing out in real time",
+      "evidence": "Prime Minister Sanae Takaichi won a supermajority of 316 seats â€” a postwar record â€” in the February 8, 2026 snap election. She campaigned on loose monetary policy.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "People's Bank of China",
+      "target": "Digital Yuan",
+      "relType": "DEPLOYS",
+      "causalClassification": "IMPLEMENTS",
+      "description": "The PBOC leads the world in central bank digital currency deployment â€” the digital yuan has processed $2.38 trillion through 2.25 billion wallets, giving the central bank real-time transaction visibility, programmable money capabilities, and instant money supply adjustment tools no previous central bank has possessed",
+      "evidence": "The digital yuan â€” e-CNY â€” has processed $2.38 trillion in cumulative transactions through 2.25 billion wallets. As of 2026, it pays interest.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2020-2026"
+    },
+    {
+      "source": "Digital Yuan",
+      "target": "United States",
+      "relType": "DIVERGES_FROM",
+      "causalClassification": "COMPETES_WITH",
+      "description": "The digital yuan represents the maximum state visibility model that the US explicitly rejects â€” an executive order prohibited federal digital dollar development while the House passed the Anti-CBDC Surveillance State Act, with the US opting for regulated private stablecoins instead, splitting the architecture of money along geopolitical lines",
+      "evidence": "Two models. China: government-issued digital currency, maximum state visibility. United States: private-sector digital tokens, government regulation. The architecture of money itself is diverging along geopolitical lines.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2025-2026"
+    },
+    {
+      "source": "Thom Tillis",
+      "target": "Kevin Warsh",
+      "relType": "BLOCKS",
+      "causalClassification": "BLOCKS",
+      "description": "Senator Tillis blocks Warsh's confirmation as Fed Chair over a Department of Justice investigation of Powell, creating a political standoff that freezes the Fed leadership transition Trump initiated",
+      "evidence": "Senator Thom Tillis has blocked Warsh's confirmation over a Department of Justice investigation of Powell.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Paul Warburg",
+      "target": "Reichsbank",
+      "relType": "IMPORTS_MODEL_FROM",
+      "causalClassification": "INFLUENCES",
+      "description": "Warburg brings European central banking expertise from his study of the Reichsbank and Bank of England to the Jekyll Island design â€” the Federal Reserve was not built from American principles but adapted from European models by a banker who understood both systems",
+      "evidence": "Paul Warburg â€” a German-born banker at Kuhn, Loeb & Co. who had studied the Reichsbank and the Bank of England â€” the international banking expert among the Jekyll Island six who brought European central banking models to the American design.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1910"
+    },
+    {
+      "source": "Silicon Valley Bank",
+      "target": "Federal Reserve",
+      "relType": "EXPOSES_RISK_OF",
+      "causalClassification": "CONTRADICTS",
+      "description": "SVB's collapse in March 2023 exposes the whiplash effect of the Fed's fastest rate-tightening since Volcker â€” from near-zero to over 5% in eighteen months â€” demonstrating that the reversal of unlimited QE creates its own set of systemic casualties",
+      "evidence": "The whiplash â€” from zero rates and unlimited QE to the fastest tightening in forty years â€” reshapes the global economy. Banks fail (Silicon Valley Bank, March 2023).",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2023"
+    },
+    {
+      "source": "Thomas Jefferson",
+      "target": "Alexander Hamilton",
+      "relType": "OPPOSES",
+      "causalClassification": "CONTRADICTS",
+      "description": "Jefferson opposes Hamilton's First Bank of the United States as an unconstitutional concentration of financial power, establishing the foundational American tension between centralized financial authority and distributed power that persists through 2026",
+      "evidence": "Alexander Hamilton â€” the first Secretary of the Treasury â€” creates the First Bank of the United States in 1791. Thomas Jefferson opposes it as an unconstitutional concentration of financial power.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "1791"
+    },
+    {
+      "source": "Forward Guidance",
+      "target": "Federal Reserve",
+      "relType": "AMPLIFIES_POWER_OF",
+      "causalClassification": "ENABLES",
+      "description": "Forward guidance gives the Fed the ability to move markets through communication alone â€” a single word change in a statement can move billions in bond markets, as the difference between 'patient' and 'vigilant' is worth hundreds of basis points in market expectations",
+      "evidence": "Forward guidance â€” telling markets what the central bank plans to do â€” became a tool in itself. A single word change in a Federal Reserve statement can move billions in bond markets.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2008-present"
+    },
+    {
+      "source": "Bank of England",
+      "target": "Federal Reserve",
+      "relType": "PROVIDES_TEMPLATE_FOR",
+      "causalClassification": "PRECEDES",
+      "description": "The Bank of England's 1694 creation establishes the template replicated by the Federal Reserve 219 years later â€” central banks born from the fusion of private capital and state power, created not for economic stability but for immediate financial need",
+      "evidence": "The world's first central bank was not created to stabilize the economy. It was created to fund a war. That pattern will repeat for the next three centuries.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1694"
+    },
+    {
+      "source": "Panic of 1907",
+      "target": "Federal Reserve",
+      "relType": "NECESSITATES",
+      "causalClassification": "CAUSES",
+      "description": "The Panic of 1907 creates the political necessity for a central bank â€” when one private citizen (Morgan) must stabilize the entire financial system from his library, the political conclusion is immediate that the next crisis needs a government mechanism",
+      "evidence": "The political conclusion is immediate: this is unsustainable. The next crisis needs a government mechanism.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1907"
+    },
+    {
+      "source": "Kazuo Ueda",
+      "target": "Bank of Japan",
+      "relType": "NORMALIZES",
+      "causalClassification": "TRANSFORMS",
+      "description": "Governor Ueda attempts to normalize BOJ rates to 0.75% â€” the highest since 1995 â€” after forty-five consecutive months above the inflation target, caught between the need to raise rates and political pressure from Takaichi who campaigned on loose monetary policy",
+      "evidence": "Bank of Japan Governor Kazuo Ueda is trying to normalize rates â€” currently at 0.75%, the highest since 1995. Political pressure versus technocratic judgment.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    }
+  ],
+  "causal_chains": [
+    {
+      "name": "From War Fund to Global Power",
+      "description": "How central banking evolved from a mechanism to fund one king's war into the most powerful unelected force in global economics",
+      "links": [
+        {
+          "source": "King William III",
+          "target": "Bank of England",
+          "explanation": "In 1694, William III cannot fund his war against France through taxation or conventional borrowing. London merchants propose a deal: Â£1.2 million at 8% interest in exchange for banknote-issuing privileges. The Bank of England is born â€” not to stabilize an economy but to fund a war. The template is set: central banks emerge from the fusion of private capital and state power."
+        },
+        {
+          "source": "Bank of England",
+          "target": "Federal Reserve",
+          "explanation": "The Bank of England's model â€” private interests lending to the state in exchange for money-creation privileges â€” is studied by Paul Warburg and imported to America. The Federal Reserve replicates this template 219 years later: designed by private bankers on Jekyll Island, signed into law as a government institution, blending private banking interests with public monetary authority."
+        },
+        {
+          "source": "Federal Reserve",
+          "target": "Bretton Woods System",
+          "explanation": "The Federal Reserve and the dollar become the anchors of the 1944 Bretton Woods System â€” all currencies pegged to the dollar, the dollar pegged to gold. The US central bank becomes the de facto global monetary authority, constrained only by gold convertibility at $35 per ounce."
+        },
+        {
+          "source": "Bretton Woods System",
+          "target": "Fiat Currency",
+          "explanation": "Nixon closes the gold window in 1971, severing the last physical constraint on money creation. Central banks are untethered â€” they can create as much money as they decide to create. The only limit becomes institutional discipline, not metal in vaults. This transforms central banks from constrained institutions into entities whose power is bounded only by their own judgment."
+        },
+        {
+          "source": "Fiat Currency",
+          "target": "Quantitative Easing",
+          "explanation": "Fiat currency's absence of physical constraints makes QE possible â€” central banks create trillions electronically, buying financial assets to stabilize crises. The Fed's balance sheet explodes from $891 billion (2007) to $8.8 trillion (2022), creating more money in two years during COVID than in the preceding two centuries combined."
+        }
+      ]
+    },
+    {
+      "name": "The Moral Hazard Machine",
+      "description": "How each central bank rescue created the conditions for the next, larger crisis",
+      "links": [
+        {
+          "source": "Alan Greenspan",
+          "target": "Greenspan Put",
+          "explanation": "Across nineteen years, Greenspan floods the system with cheap money after every crisis â€” the 1987 crash, the 1997 Asian crisis, the 2001 dot-com bust. Markets learn the lesson: the Fed will always rescue them. This belief â€” the Greenspan Put â€” creates moral hazard at a systemic scale, because rational actors take bigger risks when they believe losses will be socialized."
+        },
+        {
+          "source": "Greenspan Put",
+          "target": "Lehman Brothers",
+          "explanation": "The moral hazard produces its consequences: banks leverage thirty-to-one on subprime mortgages because they believe the central bank is their backstop. Rating agencies grade toxic securities AAA. When Greenspan retires in 2006, the bomb is already built. Lehman Brothers collapses in September 2008, freezing the entire global financial system."
+        },
+        {
+          "source": "Lehman Brothers",
+          "target": "Ben Bernanke",
+          "explanation": "Bernanke â€” a scholar of the Great Depression who became Fed Chair specifically because he had studied what happens when central banks fail to act â€” launches quantitative easing. He expands the Fed from lender of last resort to buyer of last resort, creating $4.5 trillion from nothing. The financial system survives. The precedent is set: when the crisis is severe enough, the central bank will create trillions."
+        },
+        {
+          "source": "Ben Bernanke",
+          "target": "Wealth Inequality Mechanism",
+          "explanation": "QE's transmission mechanism flows through financial markets first â€” bond prices rise immediately, stock prices follow, real estate inflates. The top 10% who own 89% of stock market wealth benefit first and most. Between 2020 and 2022, billionaire wealth increases by $1.7 trillion while real wages for the bottom 50% barely keep pace with inflation. The largest upward wealth transfer in modern history â€” not by design, but by plumbing."
+        },
+        {
+          "source": "Wealth Inequality Mechanism",
+          "target": "Silicon Valley Bank",
+          "explanation": "The whiplash from unlimited QE to the fastest tightening in forty years â€” near-zero to over 5% in eighteen months â€” creates its own casualties. SVB collapses in March 2023. Emerging market currencies collapse. The era of free money ends, but the wealth transfer it produced is permanent. Each rescue creates the conditions for the next crisis, each larger than the last."
+        }
+      ]
+    },
+    {
+      "name": "The Independence Erosion",
+      "description": "How political leaders in three countries simultaneously challenge central bank autonomy in 2026",
+      "links": [
+        {
+          "source": "Central Bank Independence",
+          "target": "Paul Volcker",
+          "explanation": "The independence doctrine rests on a demonstrated case: Volcker raises rates to 20%, devastating millions but breaking inflation. An elected politician could never inflict that pain. The doctrine holds that central bankers â€” appointed for long terms, insulated from elections â€” can make unpopular decisions politicians cannot. For four decades this is the consensus."
+        },
+        {
+          "source": "Recep Tayyip Erdogan",
+          "target": "Turkey",
+          "explanation": "Erdogan shatters the doctrine by example. He fires multiple central bank governors who try to raise rates, believing â€” against mainstream economics â€” that high rates cause inflation. The result: 34.9% Turkish inflation. Turkey becomes the cautionary tale for what happens when political leaders capture monetary policy."
+        },
+        {
+          "source": "Sanae Takaichi",
+          "target": "Kazuo Ueda",
+          "explanation": "Takaichi wins 316 seats â€” a postwar record â€” campaigning on loose monetary policy. BOJ Governor Ueda is trying to normalize rates after forty-five months above the inflation target. The tension is live: a democratic mandate for easy money versus a technocratic judgment that rates need to rise."
+        },
+        {
+          "source": "Donald Trump",
+          "target": "Jerome Powell",
+          "explanation": "Trump nominates Kevin Warsh to replace Powell and places Stephen Miran on the Fed Board â€” the most direct political attempt to capture US monetary policy since Nixon. Senator Tillis blocks Warsh's confirmation over a DOJ investigation. The independence of the Federal Reserve is being tested more aggressively than at any point in half a century."
+        }
+      ]
+    }
+  ]
+}

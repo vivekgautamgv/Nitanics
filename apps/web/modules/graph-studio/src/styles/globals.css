@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f6f6f4;
+  --surface: #ffffff;
+  --surface-hover: #f1f1ed;
+  --surface-raised: #fafaf8;
+  --border: #d9d7d1;
+  --border-subtle: #e8e5de;
+
+  --text-primary: #171717;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+
+  --accent: #111827;
+  --accent-dim: rgba(17, 24, 39, 0.06);
+  --warning: #b45309;
+  --error: #b42318;
+  --success: #166534;
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --font-sans: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-sans) !important;
+}
+
+body {
+  background: linear-gradient(180deg, #fbfbf9 0%, var(--bg) 100%);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a, p, span, div, label, h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+}
+
+button, a {
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+::selection {
+  background: rgba(17, 24, 39, 0.10);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(17, 24, 39, 0.28);
+  outline-offset: 2px;
+}

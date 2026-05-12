@@ -1,0 +1,52 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+*.err.log
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Neo4j
+neo4j-data/
+
+# Pipeline temp and exports (generated, not source)
+apps/ingestion-pipeline/data/temp/
+apps/ingestion-pipeline/data/exports/
+
+# Local build artifacts
+apps/web/frontend/dist/
+apps/web/modules/graph-studio/dist/
+apps/api/dist/
+apps/mcp/dist/
+apps/mcp/bundle/
+.turbo/
+
+# Private data (not for open-source distribution)
+json/
+apps/electron/
+apps/docs/
+LOCAL_ELECTRON_MCP_PLAN.md
+
+# IDE, agent skills, and tool caches
+.idea/
+.vscode/
+.claude/
+.agents/
+.serena/
+skills/
+skills-lock.json
+*.swp
+*.swo
+
+# Build
+*.tsbuildinfo
+
+# OS
+desktop.ini

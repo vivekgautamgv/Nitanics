@@ -1,0 +1,29 @@
+{
+  "entity_candidates": [
+    {
+      "text": "Histopathology Images",
+      "label": "RESOURCE",
+      "count": 8
+    },
+    {
+      "text": "TCGA LUAD/LUSC Cohort",
+      "label": "DATASET",
+      "count": 6
+    },
+    {
+      "text": "Image-Level Training",
+      "label": "PROCESS",
+      "count": 5
+    },
+    {
+      "text": "DeepGEM Collaboration",
+      "label": "ORG",
+      "count": 3
+    },
+    {
+      "text": "PathGene Benchmark",
+      "label": "DATASET",
+      "count": 3
+    }
+  ]
+}

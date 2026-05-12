@@ -1,0 +1,267 @@
+{
+  "temporal_phases": [
+    { "index": 1, "label": "Origin and Design", "period": "1944-1947" },
+    { "index": 2, "label": "Early Operations and Pivot", "period": "1947-1980" },
+    { "index": 3, "label": "Washington Consensus Era", "period": "1980-2000" },
+    { "index": 4, "label": "The Crisis Cascade", "period": "1997-2015" },
+    { "index": 5, "label": "Pandemic and Present", "period": "2020-2026" }
+  ],
+  "entities": [
+    {
+      "name": "International Monetary Fund",
+      "aliases": ["IMF", "The Fund"],
+      "category": "Organization",
+      "definition": "Institution created at Bretton Woods in 1944 to prevent financial crises from spreading across borders — now with 190 member countries and ~$160 billion in outstanding loans, functioning as the lender of last resort that countries call when they run out of money, cannot pay debts, when currencies collapse and no private lender will touch the risk — lending money in exchange for policy reforms that reshape borrowing nations' economies.",
+      "role": "The central mechanism of the investigation — the emergency room that tells the patient how to live. The IMF's stance is institutional preservation through conditional lending. The mechanics: (1) country in crisis approaches with depleted reserves and falling currency, (2) IMF designs a program of policy reforms (spending cuts, privatization, trade liberalization, monetary tightening) in exchange for lending, (3) conditions are set by an institution governed by nations that never borrow — US holds 16.5% of votes, 85% supermajority required for fundamental changes, giving the US sole veto power, (4) the institution has restructured over 100 economies since 1980, producing both recoveries and decades-long cycles of debt, austerity, and repeat borrowing. The IMF is simultaneously necessary (no other institution provides emergency sovereign financing) and structurally biased (designed by creditors, operated in creditors' interests). The machine is not broken — it performs to specification. The question is who it was built to work for.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "United States",
+      "aliases": ["US", "America", "Washington"],
+      "category": "Place",
+      "definition": "Largest shareholder and sole veto holder in the IMF — holding 16.5% of all votes against the 85% supermajority threshold for fundamental decisions — having never borrowed from the Fund it governs, while producing half the world's manufactured goods and holding two-thirds of its gold reserves at the time of the IMF's creation in 1944.",
+      "role": "The architect and permanent guarantor of the IMF's power structure. The US stance is structural dominance through governance mechanics, not conspiracy. The mechanics: (1) in 1944, the US had the leverage — half of global manufacturing, two-thirds of gold — so White's dollar-centered plan defeated Keynes's balanced bancor, (2) the quota system gives votes proportional to financial contribution, and the 85% supermajority threshold with US quota >15% creates a permanent veto, (3) no American administration has shown willingness to let its share fall below 15%, (4) the unwritten convention that the World Bank president is always American complements European control of the IMF directorship. The US designed the system, funds the system, and has never needed the system. The doctors do not get sick.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Harry Dexter White",
+      "aliases": ["White"],
+      "category": "Person",
+      "definition": "Assistant Secretary of the US Treasury who designed the dollar-centered international monetary architecture at Bretton Woods in 1944 — defeating Keynes's bancor proposal by leveraging America's postwar economic dominance — later accused of passing information to Soviet intelligence and died of a heart attack in 1948, three days after testifying before the House Un-American Activities Committee.",
+      "role": "The ghost architect whose design outlived his loyalties. White's stance was American financial dominance embedded in institutional architecture. The mechanics: (1) proposed the US dollar as anchor with all currencies pegged to the dollar pegged to gold, (2) designed the quota-weighted voting system that gave the US permanent structural advantage, (3) won not because his plan was better but because the US had the leverage, (4) the Venona project declassified Soviet cables corroborating at least some contacts with Soviet intelligence. The architect of American financial hegemony may have been a Soviet agent — but the machine outlived its maker's loyalties. The system he built entrenched dollar dominance regardless of who he reported to.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "John Maynard Keynes",
+      "aliases": ["Keynes"],
+      "category": "Person",
+      "definition": "The most influential economist of the twentieth century who proposed the 'bancor' at Bretton Woods — a new international currency belonging to no single nation, managed by a global clearing union where surplus and deficit countries shared adjustment burdens equally — rejected in favor of White's dollar-centered system because Britain had no leverage against American economic dominance.",
+      "role": "The losing architect whose rejected vision defines the road not taken. Keynes's stance was systemic balance — no single currency dominance, shared burden between surplus and deficit nations. The mechanics of the bancor: (1) new international currency belonging to no nation, (2) managed by a global clearing union, (3) countries running persistent surpluses penalized equally to those running deficits, (4) the system would force balance rather than concentrate power. Eighty-two years later, the rejection of Keynes's vision is the structural cause of every asymmetry the investigation documents — the US veto, the creditor bias, the revolving door. The closing question of the investigation returns to Keynes: what if adjustment burdens had been shared?",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Bretton Woods Conference",
+      "aliases": ["Bretton Woods", "Mount Washington Hotel Conference"],
+      "category": "Event",
+      "definition": "July 1944 gathering of 44 nations at the Mount Washington Hotel in New Hampshire to design a financial system preventing the chaos that produced two world wars in thirty years — creating the IMF and World Bank, establishing the dollar-gold peg, and building the governance architecture that persists nearly unchanged eighty-two years later.",
+      "role": "The founding moment whose design decisions became permanent. The conference's stance was crisis prevention through institutional architecture. The mechanics: (1) delegates mandated to prevent repeat of interwar beggar-thy-neighbor currency wars that collapsed trade by 65% between 1929-1934, (2) established IMF with quota-weighted voting proportional to financial contribution, (3) set the 85% supermajority threshold that gives the US permanent veto, (4) created the unwritten conventions (European leads IMF, American leads World Bank) that survive eight decades. The governance structure designed in a New Hampshire hotel in 1944 persists, nearly unchanged — because the countries with the power to change it benefit from keeping it.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "World Bank",
+      "aliases": ["IBRD", "International Bank for Reconstruction and Development"],
+      "category": "Organization",
+      "definition": "Sister institution to the IMF created on the same day at Bretton Woods — focused on long-term development lending rather than crisis financing — whose presidency has always been American under the unwritten convention that pairs European IMF leadership with American World Bank leadership.",
+      "role": "The complementary institution that completes the Bretton Woods twin architecture. The World Bank's stance is development lending under American leadership. The mechanics: (1) created alongside the IMF to handle different functions — World Bank for development, IMF for crisis stabilization, (2) the unwritten American-European leadership convention has never been broken since 1946, (3) when Joseph Stiglitz, its Chief Economist, criticized IMF prescriptions during the Asian crisis, he resigned — the system does not tolerate internal dissent across the twin institutions.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "US Treasury",
+      "aliases": ["Treasury Department"],
+      "category": "Organization",
+      "definition": "The IMF's largest shareholder and most powerful external influence — providing the institutional and ideological framework for conditionality policy, holding 16.5% of IMF votes, and forming one vertex of the Washington Consensus triangle alongside the IMF and World Bank.",
+      "role": "The power behind the institution. The US Treasury's stance is creditor-first financial orthodoxy. The mechanics: (1) Harry Dexter White was Assistant Secretary of the Treasury — the IMF was literally designed by Treasury staff, (2) forms the third vertex of the Washington Consensus alongside IMF and World Bank, (3) holds the largest quota and therefore largest voting share, (4) every major IMF decision requires US Treasury acquiescence because of the veto power. The Treasury-IMF-World Bank triangle is the institutional expression of American financial dominance — designed by the Treasury, governed through the Treasury's voting power.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Conditionality System",
+      "aliases": ["IMF Conditionality", "Lending Conditions"],
+      "category": "System",
+      "definition": "The mechanism by which the IMF exchanges loans for policy reforms — consistently prescribing spending cuts, privatization, trade liberalization, and monetary tightening from the 1980s through early 2000s — treating every crisis with the same template regardless of whether the crisis resembled the one the template was designed for.",
+      "role": "The core operating mechanism that produces the investigation's central pattern. The conditionality system's stance is that fiscal discipline cures all crises. The mechanics form a self-reinforcing loop: (1) country in crisis accepts conditions, (2) spending cuts reduce the fiscal deficit, (3) but cuts also reduce economic activity, which reduces tax revenue, which widens the deficit again, (4) the country borrows again, conditions are reimposed, the cycle continues. The IMF calls this a 'revolving door problem.' The logic is internally coherent (overspending requires less spending) but the downstream effects — fired government employees, defunded hospitals, eliminated food subsidies — are borne by citizens who had no voice in the negotiation.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Washington Consensus",
+      "aliases": ["Williamson Consensus"],
+      "category": "Concept",
+      "definition": "Term coined by economist John Williamson in 1989 for the ten policy prescriptions that Washington institutions (IMF, World Bank, US Treasury) agreed on for developing countries — fiscal discipline, privatization, deregulation, trade liberalization, and six others — that became the rigid default template applied to every country in crisis regardless of circumstance.",
+      "role": "The ideological framework that turned institutional preference into universal prescription. The Washington Consensus's stance is one-size-fits-all market orthodoxy. The mechanics: (1) ten prescriptions covering fiscal, monetary, trade, and structural policy, (2) Williamson protested his term was hijacked to describe rigid free-market ideology he never endorsed, (3) between 1980-2000 the template was applied to 100+ countries through structural adjustment programs, (4) Sub-Saharan Africa's GDP per capita was lower in 2000 than in 1980 — two decades of adjustment, negative results, (5) the IMF's own Independent Evaluation Office admitted in 2011 that conditionality was 'too intrusive' and 'insufficiently sensitive to country circumstances.' The template was the problem — treating different diseases with the same medicine.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Quota and Voting System",
+      "aliases": ["IMF Quotas", "Voting Power Structure"],
+      "category": "System",
+      "definition": "The IMF's governance mechanism where each country's votes are proportional to its financial contribution (quota) — with an 85% supermajority required for fundamental decisions and the US holding 16.5% of votes, creating a structural veto that ensures the countries most affected by IMF programs have the least power over IMF policy.",
+      "role": "The architectural lock that preserves 1944 power relations in 2026. The quota system's stance is that financial contribution equals governance authority. The mechanics: (1) US quota exceeds 15%, 85% supermajority required — one country can block any reform, (2) China produces 18% of global GDP but holds only 6.09% of votes, (3) Africa (1.4 billion people, 17% of world population) holds approximately 5.4% of votes, (4) the 16th General Review of Quotas grinds forward in 2026 but no American administration will let its share fall below 15%. The governance structure means the doctors do not get sick — the countries that never borrow have the most power, the countries that always borrow have the least.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "US Veto Power",
+      "aliases": ["American Veto", "85% Supermajority Threshold"],
+      "category": "System",
+      "definition": "The structural guarantee arising from the intersection of the 85% supermajority requirement for fundamental IMF decisions and the US holding 16.5% of votes — meaning one country can block any reform, a power no other nation possesses, preserved through every quota review for eighty-two years.",
+      "role": "The single most important architectural feature preventing IMF reform. The veto's stance is permanent minority control through threshold design. The mechanics: (1) the threshold was set at Bretton Woods when the US had overwhelming leverage, (2) any quota reallocation pushing the US below 15% eliminates its blocking power — no administration has agreed to this, (3) the veto means developing countries can push for rebalancing indefinitely without effect, (4) the structure ensures the institution cannot evolve beyond its 1944 design without US consent. The veto is not a bug — it is the foundational feature that makes all other structural asymmetries permanent.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Sri Lanka",
+      "aliases": ["Ceylon"],
+      "category": "Place",
+      "definition": "Nation that has entered 17 IMF programs since 1965 — the investigation's primary case study of the revolving door — culminating in its first-ever sovereign default in April 2022 when reserves fell below $50 million, followed by fuel shortages, power cuts, hospital medicine shortages, citizens storming the presidential palace, and the president fleeing by military aircraft, before the IMF arrived again.",
+      "role": "The pattern incarnate — one country, one lender, sixty years, the same cycle. Sri Lanka's stance is structural dependency on an institution that treats symptoms without resolving causes. The mechanics: (1) 17 programs since 1965 — each time the country ran out of money, called the IMF, agreed to conditions, and eventually repeated the cycle, (2) the 2022 default was the bottom: reserves below $50M, 12-hour power cuts, Rajapaksa fleeing by helicopter, (3) then Cyclone Ditwah in November 2025 killed 643 people and displaced 2.2 million while the country was mid-program, (4) a nation contributing <0.1% of global carbon emissions pays premium charges on emergency loans while absorbing the worst climate impacts. Sri Lanka is the proof that conditional lending treating symptoms without curing structural causes guarantees return customers.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Argentina",
+      "aliases": ["Argentine Republic"],
+      "category": "Place",
+      "definition": "Nation that has cycled through IMF programs for four decades — pegging its peso to the US dollar in 1991 with IMF support, receiving over $40 billion in loans as the peg became unsustainable, then defaulting on $95 billion in sovereign bonds in December 2001 (the largest sovereign default in history at the time) after riots killed 27 people and five presidents cycled through in two weeks.",
+      "role": "The vicious loop case study — mathematical proof that austerity during recession is self-defeating. Argentina's stance is recurring entrapment in the conditionality cycle. The mechanics: (1) IMF supported the dollar peg that made exports uncompetitive, (2) each round of austerity deepened the recession, reducing tax revenue, increasing the deficit, requiring more austerity — the loop is mathematical, (3) in December 2001 the government froze all bank deposits — citizens couldn't access savings, riots erupted, President de la Rúa fled by helicopter, (4) the IMF's own evaluation later acknowledged it supported the unsustainable peg too long and imposed conditions that worsened the downturn — the admission came after the damage was done. In 2026, Argentina is implementing the Fund's largest-ever lending program.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Asian Financial Crisis",
+      "aliases": ["1997 Asian Crisis", "Asian Contagion"],
+      "category": "Event",
+      "definition": "Financial crisis beginning with Thailand's baht collapse in July 1997 that spread to Indonesia, South Korea, Malaysia, and the Philippines — prompting IMF interventions totaling $116+ billion with standard austerity conditions that deepened the crisis, most devastatingly in Indonesia where GDP contracted 13.1% and poverty doubled after IMF-mandated bank closures triggered depositor panic.",
+      "role": "The wrong-medicine case study that produced the most enduring critique of IMF prescriptions. The crisis's stance is that standard conditionality applied to a liquidity crisis is like 'administering aspirin to a patient with internal bleeding' (Stiglitz). The mechanics: (1) IMF prescribed fiscal austerity, high interest rates, and immediate bank closures during a capital flight crisis, (2) in Indonesia, closing 16 banks triggered depositor panic across all remaining banks — the cure caused the disease, (3) raising interest rates during a liquidity crisis choked economies that needed oxygen, (4) Malaysia refused the IMF program, imposed capital controls (the exact opposite prescription), and recovered faster. The Camdessus-Suharto photograph — the IMF director arms-crossed while Suharto signs — became the portrait of institutional humiliation across Asia.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Greek Debt Crisis",
+      "aliases": ["Greek Crisis", "Eurozone Crisis"],
+      "category": "Event",
+      "definition": "Crisis triggered by Greece's 2010 revelation that its deficit was 15.4% of GDP (not the reported 3.7%) — resulting in three troika bailout packages totaling EUR 289 billion with severe austerity that contracted GDP by 25%, pushed unemployment to 27.5% and youth unemployment past 60%, while the IMF's own models later proved the fiscal multiplier was nearly twice as destructive as assumed.",
+      "role": "The wrong-math case study — proof that the institution's own models were miscalibrated. The crisis's stance is that austerity prescribed on incorrect calculations produces Great Depression-level damage. The mechanics: (1) the troika (IMF + ECB + European Commission) prescribed 30% public sector wage cuts, pension cuts, VAT increases, mass layoffs, privatization of ports and airports, (2) the IMF's models assumed cutting one euro of spending reduces GDP by 50 cents (multiplier 0.5), (3) the 2013 Blanchard paper found the actual multiplier was 0.9-1.7 — austerity was nearly twice as destructive as the IMF predicted, (4) suicide rates increased 35%, the contraction was comparable to the American Great Depression. The institution prescribed a dose based on calculations it later admitted were wrong.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Indonesia",
+      "aliases": ["Republic of Indonesia"],
+      "category": "Place",
+      "definition": "Nation that received $42 billion in IMF lending during the 1997 Asian crisis — where the IMF's demand to close 16 banks triggered depositor panic across all remaining banks, GDP contracted 13.1% in 1998, poverty doubled, and 32-year ruler President Suharto fell — the most devastating outcome of IMF conditionality in the crisis cascade.",
+      "role": "The most extreme case of IMF cure causing the disease. Indonesia's stance was compliance with catastrophic results. The mechanics: (1) IMF demanded closure of 16 banks to remove weak institutions, (2) instead of restoring confidence, closures triggered depositor runs on every remaining bank — panic, not stability, (3) GDP contracted 13.1% — the worst in the region, (4) Suharto fell after 32 years, (5) the photograph of Camdessus standing arms-crossed while Suharto signed became the symbol of institutional humiliation. Indonesia demonstrates that IMF prescriptions optimized for fiscal crises can be catastrophic when applied to liquidity crises.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Joseph Stiglitz",
+      "aliases": ["Stiglitz"],
+      "category": "Person",
+      "definition": "Chief Economist of the World Bank during the 1997 Asian crisis and later Nobel laureate — who publicly called the IMF's prescription 'like administering aspirin to a patient with internal bleeding,' argued that raising interest rates during a liquidity crisis chokes economies precisely when they need oxygen, and resigned from the World Bank in 2000.",
+      "role": "The insider critic whose dissent exposed the institutional blind spot. Stiglitz's stance was that the IMF's one-size-fits-all approach was killing patients. The mechanics of his critique: (1) the Asian crisis was a liquidity/capital flight crisis, not a fiscal crisis — the standard fiscal austerity template was the wrong treatment, (2) raising interest rates during capital flight chokes credit precisely when economies need breathing room, (3) forced bank closures triggered panic rather than restoring confidence, (4) his resignation from the World Bank in 2000 demonstrated that the Bretton Woods twin institutions do not tolerate internal dissent. Stiglitz is the case study for what happens when the system's own experts identify the flaw: they are expelled, not heeded.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Malaysia",
+      "aliases": ["Federation of Malaysia"],
+      "category": "Place",
+      "definition": "Nation that refused the IMF program during the 1997 Asian crisis under Prime Minister Mahathir Mohamad, instead imposing capital controls — the exact opposite of IMF prescription — and recovered faster than neighboring countries that followed IMF conditions, providing the control case proving the IMF's standard treatment was counterproductive.",
+      "role": "The control case that disproves the necessity of IMF conditionality. Malaysia's stance was sovereign defiance of institutional orthodoxy. The mechanics: (1) Mahathir imposed capital controls — preventing capital flight by restricting money from leaving, (2) this was the exact opposite of the IMF's prescription of open markets and free capital movement, (3) Malaysia recovered faster than Thailand, Indonesia, and South Korea — all of which followed IMF programs, (4) the IMF quietly acknowledged years later that Malaysia's approach had merit. Malaysia proves that the IMF's standard prescription was not the only path and may have been the worse path — the countries that complied suffered more than the country that refused.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Structural Adjustment",
+      "aliases": ["SAPs", "Structural Adjustment Programs"],
+      "category": "Process",
+      "definition": "The official name for IMF lending programs between 1980-2000 requiring borrowing countries to structurally adjust their entire economies — government employees fired, public hospitals defunded, school budgets cut, food subsidies eliminated, state water companies sold to foreign investors, tariffs dropped while farmers competed against subsidized Western imports.",
+      "role": "The mechanism through which conditionality became lived experience for hundreds of millions. Structural adjustment's stance is that market efficiency outweighs social protection. The mechanics: (1) applied to over 100 countries between 1980-2000, (2) a 2006 study of 79 countries found IMF programs associated with reduced health and education spending without corresponding growth improvements, (3) Sub-Saharan Africa's GDP per capita was lower in 2000 than in 1980 — two decades of adjustment, negative results, (4) the IMF eventually renamed the programs ('Poverty Reduction and Growth Facilities,' then 'Extended Credit Facilities') but the mechanism — lending with economy-reshaping conditions — continues. The names change; the machine persists.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Special Drawing Rights",
+      "aliases": ["SDRs"],
+      "category": "Resource",
+      "definition": "Reserve supplement created by the IMF in 1969 — not a currency but a claim on currencies (dollar 43.38%, euro 29.31%, yuan 12.28%, yen 7.59%, pound 7.44%) — whose largest-ever allocation of $650 billion in August 2021 distributed according to quota share, giving the US $113 billion and the entire continent of Africa $33 billion, with low-income countries receiving only 3.2% of the total.",
+      "role": "The emergency measure that replicates the power structure it was meant to compensate for. SDRs' stance is supplementary reserves weighted toward dominant economies. The mechanics: (1) allocation follows quota share — the same governance structure that gives the US veto power determines who gets emergency reserves, (2) the $650 billion COVID-era allocation was the largest in IMF history, (3) the US received $113 billion while Africa received $33 billion — despite Africa facing worse pandemic impact, (4) low-income countries (most exposed to the crisis) received 3.2% of the total. SDRs demonstrate that even when the IMF creates new resources, the distribution mechanism replicates existing power asymmetries.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Surcharge System",
+      "aliases": ["IMF Surcharges", "Premium Charges"],
+      "category": "System",
+      "definition": "Additional interest charged on IMF loans exceeding size (>187.5% of quota) or duration (>36 months) thresholds — currently paid by 22 countries (3x pre-COVID), of which 11 are climate-vulnerable and 12 in debt distress — including Ukraine, projected to pay $2.9 billion in surcharges between 2024-2033 while fighting a full-scale war.",
+      "role": "The extraction mechanism that punishes the most vulnerable borrowers for needing the most help. The surcharge system's stance is repayment incentive through premium pricing. The mechanics: (1) stated purpose is to incentivize quick repayment and discourage excessive borrowing, (2) reality: the countries paying surcharges are precisely those in deepest crisis — the overlap between surcharge-paying, climate-vulnerable, and debt-distressed countries is nearly total, (3) November 2024 reform lowered margin from 100bp to 60bp and raised threshold — estimated savings $1.2B/year, but $9.8B in surcharges still projected over 5 years, (4) Ukraine paying premium charges while its cities are under bombardment is the reductio ad absurdum. The reform reduced the extraction. It did not end it.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Revolving Door Problem",
+      "aliases": ["Debt Trap Pattern", "Repeat Borrower Cycle"],
+      "category": "Concept",
+      "definition": "The pattern where the same countries return to the IMF repeatedly — Sri Lanka 17 times since 1965, Pakistan 23 times since 1958, Argentina across four decades — raising the structural question of whether conditional lending that treats symptoms without resolving causes guarantees the borrower will return, producing the system the IMF itself calls a 'revolving door problem.'",
+      "role": "The investigation's central insight — the shift from 'what is wrong with these countries' to 'what kind of machine produces repeat customers.' The revolving door's stance is structural inevitability. The mechanics form a self-reinforcing loop: (1) cut spending to close the deficit during crisis, (2) the cut reduces economic activity, (3) reduced activity reduces revenue, (4) the deficit returns, (5) the country borrows again, (6) conditions are reimposed, (7) the cycle continues. The IMF acknowledges this pattern. Critics call it a debt trap — not conspiratorial but structural. The machine produces the outcome it was designed to produce: countries that keep borrowing from an institution governed by countries that never borrow.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Fiscal Multiplier Error",
+      "aliases": ["Blanchard Paper", "Multiplier Miscalculation"],
+      "category": "Concept",
+      "definition": "The 2013 discovery by IMF Chief Economist Olivier Blanchard that the fiscal multiplier used in Greek crisis calculations was between 0.9-1.7, not the assumed 0.5 — meaning austerity was nearly twice as destructive as the IMF's own models predicted, prescribed doses based on calculations the institution later admitted were wrong.",
+      "role": "The mathematical proof that the institution's own models were miscalibrated with devastating consequences. The error's stance is that incorrect assumptions hardcoded into lending models produce real-world suffering. The mechanics: (1) the IMF assumed cutting one euro of government spending reduces GDP by 50 cents (multiplier 0.5), (2) the Blanchard paper found actual multiplier was 0.9-1.7, (3) this means every euro of cuts produced 80 cents to $1.70 of GDP loss — not 50 cents, (4) Greece's 25% GDP contraction, 27.5% unemployment, 60% youth unemployment, and 35% increase in suicide rates were the human cost of wrong math. The paper changed the academic debate. It did not undo the damage.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Bancor",
+      "aliases": ["Keynes Plan", "International Clearing Union"],
+      "category": "Concept",
+      "definition": "Keynes's proposed alternative to the dollar-centered system at Bretton Woods — a new international currency belonging to no single nation, managed by a global clearing union where countries running persistent trade surpluses would face penalties equal to those running deficits, forcing systemic balance with no single currency dominance.",
+      "role": "The rejected architecture that defines the counterfactual — the road not taken that haunts every structural asymmetry. The bancor's stance was shared burden and systemic balance. The mechanics: (1) no nation's currency would dominate, (2) surplus countries penalized equally to deficit countries — forcing balance rather than concentrating power, (3) a global clearing union would manage adjustment, (4) rejected because the US had the leverage and preferred dollar centrality. The investigation opens and closes with Keynes's question: what if adjustment burdens had been shared equally? The bancor represents the system that could have existed — one where the lender of last resort was not governed by the lenders alone.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Pakistan",
+      "aliases": ["Islamic Republic of Pakistan"],
+      "category": "Place",
+      "definition": "Nation that has entered 23 IMF programs since 1958 — the single highest number of any country — embodying the revolving door problem in its most extreme form, returning to the same institution for emergency financing again and again across six decades without breaking the structural dependency cycle.",
+      "role": "The most extreme case of the revolving door. Pakistan's stance is chronic structural dependency. Twenty-three programs since 1958 means the country has spent more years under IMF conditions than not. Pakistan demonstrates that the conditionality mechanism does not produce graduation — it produces permanent patients who periodically stabilize enough to exit only to return when the next shock hits. If Sri Lanka at 17 programs is the investigation's protagonist, Pakistan at 23 is the epilogue.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "China",
+      "aliases": ["People's Republic of China", "PRC"],
+      "category": "Place",
+      "definition": "Nation producing 18% of global GDP at market exchange rates but holding only 6.09% of IMF votes — the most dramatic illustration of the governance mismatch between economic weight and institutional power — pushing for quota rebalancing in the 16th General Review while the US veto prevents any reallocation that would dilute American blocking power.",
+      "role": "The rising power whose economic weight exposes the governance anachronism. China's stance is that the 1944 power structure no longer reflects economic reality. The mechanics: (1) 18% of global GDP vs. 6.09% of IMF votes — a 3:1 mismatch, (2) the entire continent of Africa (17% of population) holds only 5.4%, (3) China pushes for rebalancing through the 16th General Review of Quotas, (4) but any reallocation pushing the US below 15% is blocked by the US veto — creating a structural impossibility. China represents the governance paradox: the institution cannot reflect modern economic reality without the consent of the country that benefits most from the 1944 architecture.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Ukraine",
+      "aliases": [],
+      "category": "Place",
+      "definition": "Nation fighting a full-scale war since February 2022 while simultaneously borrowing from the IMF and projected to pay $2.9 billion in surcharges between 2024-2033 — the most extreme illustration of the surcharge system's perversity, where a country defending its existence pays premium charges to the institution created to stabilize the global financial system.",
+      "role": "The reductio ad absurdum of the surcharge system. Ukraine's stance is survival borrowing under impossible conditions. The mechanics: (1) fighting a full-scale war requires massive borrowing, (2) the borrowing exceeds surcharge thresholds, (3) therefore a country under bombardment pays premium interest to the global stabilization institution, (4) the November 2024 reform reduced but did not eliminate surcharges for countries like Ukraine. Ukraine proves that the surcharge system cannot distinguish between reckless borrowing and existential necessity — it charges the same premium regardless.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Greece",
+      "aliases": ["Hellenic Republic"],
+      "category": "Place",
+      "definition": "Nation that revealed a government deficit of 15.4% of GDP in 2010 (previously reported as 3.7%), triggering three troika bailout packages totaling EUR 289 billion with severe austerity conditions that contracted GDP by 25%, pushed unemployment to 27.5% and youth unemployment past 60%, increased suicide rates 35% — damage comparable to the American Great Depression.",
+      "role": "The wrong-math case study — where the institution's miscalibrated models produced Great Depression-level damage in a European democracy. Greece's stance was forced compliance with devastating conditions. The mechanics: (1) the troika prescribed 30% wage cuts, pension cuts, mass layoffs, privatization, (2) the fiscal multiplier assumption was wrong by a factor of 2x — austerity was nearly twice as destructive as modeled, (3) 25% GDP contraction, 27.5% unemployment, 35% suicide increase, (4) the IMF acknowledged the error only after the damage was done. Greece demonstrates that the conditionality system's harm is not limited to developing nations — given sufficient miscalculation, it can produce Great Depression outcomes in advanced economies.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Kristalina Georgieva",
+      "aliases": ["Georgieva"],
+      "category": "Person",
+      "definition": "Bulgarian economist serving as IMF Managing Director in 2026 — the twelfth European to hold the position under the unwritten convention — managing an institution under pressure from every direction: surcharge reform, quota rebalancing demands, climate-vulnerable borrowers, and a 1944 architecture straining against a world that no longer matches its design.",
+      "role": "The current steward of an institution designed for a world that no longer exists. Georgieva's stance is incremental reform within structural constraints. The mechanics: (1) the twelfth consecutive European to lead the IMF — the unwritten convention persists, (2) the countries that borrow have never chosen the person who runs the institution, (3) she manages multiple simultaneous pressures (Argentina's largest-ever program, Ukraine's war borrowing, Sri Lanka's default + cyclone, 22 surcharge-paying countries), (4) the 2024 surcharge reform she oversaw reduced but did not eliminate the extraction. Georgieva represents the institutional limit: even a sympathetic leader cannot overcome structural governance that requires US consent for fundamental change.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Michel Camdessus",
+      "aliases": ["Camdessus"],
+      "category": "Person",
+      "definition": "IMF Managing Director during the 1997 Asian financial crisis whose image standing with arms crossed while Indonesian President Suharto signed the IMF agreement became the most enduring photograph in IMF history — published across Asia as a portrait of institutional humiliation that crystallized the power asymmetry between lender and borrower.",
+      "role": "The face of institutional power asymmetry captured in a single photograph. Camdessus's stance was the standard institutional position of conditional lending. The mechanics of the image: (1) the IMF director stands, arms folded, looking down, (2) the president of a sovereign nation signs conditions set by an institution he has no governance power over, (3) the photograph was published across Asia as a symbol — not of help, but of humiliation, (4) the image crystallized what the numbers showed: the countries designing conditions are not the countries living under them.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Climate-Debt Intersection",
+      "aliases": ["Climate Vulnerability Overlap"],
+      "category": "Concept",
+      "definition": "The convergence where 11 of the 22 countries paying IMF surcharges are climate-vulnerable and 12 are in debt distress — the countries least responsible for climate change paying premium charges on emergency loans while absorbing the worst climate impacts — a problem the 1944 architecture has no answer for because climate change was not a design parameter.",
+      "role": "The structural gap that proves the 1944 machine cannot address 2026 problems. The intersection's stance is that cost is distributed by vulnerability, not responsibility. The mechanics: (1) Sri Lanka contributes <0.1% of global emissions but was hit by Cyclone Ditwah while mid-IMF program, (2) 11 of 22 surcharge-paying countries are climate-vulnerable, (3) climate disasters are now the most common trigger for economic crises that send countries to the IMF, (4) the institution was designed for currency crises and balance-of-payments problems — it has no framework for climate-driven debt. The machine was built in 1944. The problem it now faces most frequently did not exist then.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Federal Reserve",
+      "aliases": ["The Fed", "US Federal Reserve"],
+      "category": "Organization",
+      "definition": "US central bank that created over $10 trillion through quantitative easing during the COVID pandemic at 'market speed' — compared to the IMF's $650 billion SDR allocation that arrived 17 months after the pandemic began at 'institutional speed' — the gap between those two speeds determining which countries recovered first and which accumulated debt they are still servicing.",
+      "role": "The speed benchmark that exposes the IMF's structural limitation for global emergencies. The Fed's stance is rapid domestic monetary response. The mechanics of the speed gap: (1) the Fed moved at market speed — creating trillions within weeks, (2) the IMF moved at institutional speed — $170 billion across 90 countries over months, SDR allocation not until August 2021, (3) the gap is structural: the Fed serves one economy, the IMF serves 190 through negotiated conditions, (4) the countries that recovered first had their own central banks creating money, the countries that accumulated debt were waiting for IMF institutional processes. The Fed-IMF speed comparison proves the institution designed for country-specific crises cannot respond to simultaneous global emergencies.",
+      "first_appearance_index": 5
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "project": {
+    "name": "The Strait of Hormuz: Military Chokepoint That Broke Global Energy",
+    "unique_id": "strait-of-hormuz-military-chokepoint",
+    "summary": "The Strait of Hormuz — 21 nautical miles wide, carrying 20.5 million barrels of oil daily (one-fifth of global consumption) — represents the world's most critical energy chokepoint with zero structural redundancy. This investigation traces how Iran developed an asymmetric doctrine after its devastating 1988 defeat in Operation Praying Mantis, rebuilding not with a larger navy but with 1,500+ fast-attack boats, 2,000-5,000 mines, and mobile coastal missiles — all optimized for area denial in confined waters. The critical insight Iran grasped before anyone else: the strait's real gatekeepers sit in Lloyd's of London, not the Pentagon. When Operation Epic Fury destroyed Iran's conventional navy in February 2026, it simultaneously activated the asymmetric playbook that actually closed the strait — not through military force but through the insurance-based closure mechanism. Lloyd's quadrupled war risk premiums, P&I clubs cancelled coverage entirely, and the Western financial system's own risk-pricing infrastructure rendered the strait commercially nonexistent. Iran then weaponized the selective insurance mechanism, offering lower premiums to Chinese and Indian vessels to fracture the anti-Iran coalition through actuarial tables. The cascade was devastating: Brent crude hit $126 with a $40 risk premium extracting $4 billion daily from the global economy, supertanker rates quadrupled, and a hidden fertilizer cascade (one-third of global fertilizer trade transits Hormuz) transformed the energy crisis into a food crisis on a 3-6 month delay hitting the most vulnerable nations. Strategic petroleum reserves — 400 million barrels across 31 IEA nations — represent only 20 days of Hormuz flows. Bypass pipelines cover 8-9 million of the 20 million daily barrels, leaving an unbridgeable 11-12 million barrel gap. The deepest structural insight is the chokepoint vulnerability cycle: each crisis (1973, 1980, 1988, 2019, 2026) produced institutions designed to prevent the next one, but each institution proved insufficient because threats evolve faster than defenses. The vulnerability isn't the strait — it's a global energy system engineered for efficiency with no structural redundancy for its most critical chokepoint.",
+    "narrative_flow": [
+      "Two numbers define global energy vulnerability: 21 miles wide, 20 million barrels daily through a single corridor with no alternative exit",
+      "Six miles of navigable channel — two shipping lanes plus buffer — carrying 100 vessels daily through legally contested waters Iran signed but never ratified",
+      "Dependency asymmetry: China absorbs 37.7% but can absorb the shock; Japan (87% imported fossil fuels) and South Korea (81% import dependence) cannot",
+      "The 1988 lesson: USS Samuel B. Roberts mine strike triggered Operation Praying Mantis, US destroyed half Iran's navy in 8 hours — Tehran learned to go asymmetric",
+      "2019 rehearsals: tanker sabotage, limpet mines, Abqaiq-Khurais drone strike knocking 5.7M barrels offline — Iran was mapping pressure points before breaking the machine",
+      "Iran built two navies: conventional IRIN for symbolism, IRGCN with 1,500+ fast-attack boats for swarm warfare doctrine — area denial, not naval battle",
+      "The invisible weapon: 2,000-5,000 naval mines costing thousands of dollars each threatening $150M supertankers — laying takes hours, clearing takes weeks",
+      "Coastal anti-ship missiles on mobile launchers covering 1,500km of coastline — 'degraded' by airstrikes is not 'eliminated'",
+      "Operation Epic Fury destroyed 130 IRGC vessels but activated the asymmetric playbook: mines, coastal missiles, and the phone call to Lloyd's",
+      "The real closure began with a spreadsheet: Lloyd's quadrupled war risk premiums, P&I clubs cancelled all Gulf coverage — making ships legally unable to operate",
+      "Iran weaponized insurance: selective pricing gave Chinese/Indian vessels lower premiums, fracturing the anti-Iran coalition through the West's own financial system",
+      "The rate shock: supertanker charters quadrupled from $200K to $800K/day, Brent hit $126 with $40 risk premium — fear is more expensive than scarcity",
+      "Strategic petroleum reserves activated: 400M barrels (largest IEA release ever) = 20 days of Hormuz flows — a slow weapon against a fast crisis",
+      "Bypass pipelines total 8-9M barrels/day maximum against 20M regular flows — the 11-12M barrel gap has no substitute",
+      "The hidden cascade: one-third of global fertilizer transits Hormuz — nitrogen prices spiked 43%, propagating to food prices with 3-6 month lag",
+      "Developing world impact: the war is in the Persian Gulf, the cost is distributed across every economy, falling heaviest on those with the least capacity to absorb it",
+      "The chokepoint vulnerability cycle: 1973 → IEA, 1980 → diversify, 1988 → permanent naval presence, 2019 → absorb it, 2026 → the system breaks again, larger each time",
+      "The deepest insight: the most powerful navy in the world cannot overrule an actuarial calculation — the invisible hand that guides markets can also close them entirely"
+    ],
+    "tags": {
+      "domain": "Geopolitics",
+      "subdomain": "Energy Security",
+      "base_tags": [
+        "strait-of-hormuz",
+        "chokepoint",
+        "energy-security",
+        "asymmetric-warfare",
+        "insurance-mechanism",
+        "oil-markets",
+        "iran",
+        "naval-warfare",
+        "supply-chain-vulnerability",
+        "cascade-economics",
+        "food-security",
+        "strategic-reserves",
+        "actuarial-closure"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "source": "Iran",
+      "target": "IRGC Navy",
+      "relType": "OPERATES",
+      "causalClassification": "IMPLEMENTS",
+      "description": "Iran created and operates the IRGC Navy as a parallel force to its conventional navy — specifically designed for asymmetric area-denial doctrine in the Strait of Hormuz, based at Bandar Abbas directly on the strait's northern shore.",
+      "evidence": "The IRGCN — the Islamic Revolutionary Guard Corps Navy — is something else entirely. Based at Bandar Abbas, the port city that sits directly on the northern shore of the Strait of Hormuz, the IRGCN operates more than 1,500 fast-attack craft.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "ongoing"
+    },
+    {
+      "source": "IRGC Navy",
+      "target": "Swarm Warfare Doctrine",
+      "relType": "IMPLEMENTS",
+      "causalClassification": "IMPLEMENTS",
+      "description": "The IRGC Navy implements swarm warfare doctrine — dozens of fast boats converging simultaneously from multiple directions, each expendable, optimized for area denial in the 21-mile strait rather than conventional naval engagement.",
+      "evidence": "Their doctrine is called swarm warfare. Dozens of fast boats converging simultaneously on a single target from multiple directions, each carrying missiles or torpedoes, each expendable, each a threat that a warship's defense systems must track and engage individually.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "ongoing"
+    },
+    {
+      "source": "Naval Mines",
+      "target": "USS Samuel B. Roberts",
+      "relType": "DAMAGED",
+      "causalClassification": "CAUSES",
+      "description": "An Iranian M-08 contact mine struck the USS Samuel B. Roberts on April 14, 1988, ripping a 15-foot hull hole and breaking the ship's keel — demonstrating that a mine costing thousands of dollars can threaten a warship worth hundreds of millions.",
+      "evidence": "the guided-missile frigate USS Samuel B. Roberts was escorting reflagged Kuwaiti oil tankers through the Persian Gulf... when it struck an Iranian M-08 contact mine. The explosion ripped a 15-foot hole in the hull and broke the ship's keel.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1988"
+    },
+    {
+      "source": "USS Samuel B. Roberts",
+      "target": "Operation Praying Mantis",
+      "relType": "TRIGGERED",
+      "causalClassification": "CAUSES",
+      "description": "The mine strike on the USS Samuel B. Roberts directly triggered Operation Praying Mantis four days later — the largest American naval engagement since World War II — as the US retaliated with overwhelming force.",
+      "evidence": "Four days later, the United States launched Operation Praying Mantis — the largest American naval engagement since World War II.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1988"
+    },
+    {
+      "source": "Operation Praying Mantis",
+      "target": "Iran",
+      "relType": "TRANSFORMED",
+      "causalClassification": "TRANSFORMS",
+      "description": "Operation Praying Mantis destroyed half of Iran's operational navy in 8 hours, teaching Tehran the decisive lesson that reshaped its entire military doctrine: never fight Americans on their terms — adapt, go asymmetric, make the strait itself the weapon.",
+      "evidence": "Iran lost half its operational navy in eight hours. The lesson Washington took: overwhelming force works. The lesson Tehran took was different: never fight the Americans on their terms. Adapt. Go asymmetric. Make the strait itself the weapon.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "1988"
+    },
+    {
+      "source": "Iran",
+      "target": "Abqaiq-Khurais Attack",
+      "relType": "EXECUTED",
+      "causalClassification": "CAUSES",
+      "description": "Iran executed the Abqaiq-Khurais attack as reconnaissance — mapping pressure points, testing insurance market response, measuring price movements, and observing US military reaction before deciding to break the system.",
+      "evidence": "Houthis claimed it, US/UK/France/Germany attributed it to Iran... the attack was not meant to start a war — it was reconnaissance: mapping pressure points, testing insurance market response, measuring price movements, observing US military reaction.",
+      "evidenceStrength": "claimed",
+      "magnitude": "significant",
+      "year": "2019"
+    },
+    {
+      "source": "Abqaiq-Khurais Attack",
+      "target": "Saudi Arabia",
+      "relType": "STRUCK",
+      "causalClassification": "CAUSES",
+      "description": "The Abqaiq-Khurais attack struck the world's largest oil processing complex with 18 drones and 7 cruise missiles, knocking 5.7 million barrels/day offline — half of Saudi output, 5% of global supply — proving the kingdom's concentrated infrastructure is targetable.",
+      "evidence": "eighteen drones and seven cruise missiles struck Saudi Aramco's oil processing facilities at Abqaiq and Khurais — the largest oil processing complex on earth. 5.7 million barrels per day knocked offline in a single strike.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2019"
+    },
+    {
+      "source": "Operation Epic Fury",
+      "target": "IRGC Navy",
+      "relType": "DESTROYED",
+      "causalClassification": "BLOCKS",
+      "description": "Operation Epic Fury destroyed Iran's conventional naval capability — 130 vessels hit, 100+ destroyed, every Soleimani-class corvette sunk — rendering the IRGCN 'combat ineffective' in conventional terms while simultaneously activating the asymmetric playbook.",
+      "evidence": "By Day 16, CENTCOM reported 130 Iranian naval vessels hit, more than 100 destroyed, every Soleimani-class corvette — the IRGCN's newest and most capable surface combatants — sunk. Official assessment: 'combat ineffective.'",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "Operation Epic Fury",
+      "target": "Insurance-Based Closure Mechanism",
+      "relType": "ACTIVATED",
+      "causalClassification": "ENABLES",
+      "description": "Operation Epic Fury removed the restraint that had held for forty years — the calculation that closing the strait would invite retaliation was moot because retaliation was already underway — enabling Iran to activate the insurance-based closure mechanism it had rehearsed for a generation.",
+      "evidence": "The restraint that had held for forty years — the calculation that closing the strait would invite American retaliation — was moot. Retaliation was already underway. The IRGC had nothing left to lose by executing the threat it had rehearsed for a generation.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "Lloyd's of London",
+      "target": "Insurance-Based Closure Mechanism",
+      "relType": "PRICES",
+      "causalClassification": "ENABLES",
+      "description": "Lloyd's of London enabled the insurance-based closure by quadrupling war risk premiums overnight from 0.25% to 1% of hull value — $1.5M per transit per week for a supertanker — making transit economically prohibitive through actuarial calculation rather than military force.",
+      "evidence": "war risk premiums for the Persian Gulf quadrupled overnight. From 0.25% to 1% of a vessel's hull replacement value, renewable every seven days. For a supertanker valued at $150 million, that meant $1.5 million per transit. Per week.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "P&I Clubs",
+      "target": "Insurance-Based Closure Mechanism",
+      "relType": "CANCELLED_COVERAGE",
+      "causalClassification": "ENABLES",
+      "description": "P&I clubs made the decisive move by cancelling war risk extensions for all Persian Gulf vessels — without P&I coverage a ship cannot legally operate, no port accepts it, no cargo owner loads it — closing the strait more effectively than any weapon.",
+      "evidence": "all cancelled war risk extensions for vessels entering the Persian Gulf... Without P&I coverage, a commercial vessel cannot legally operate. No port will accept it. No cargo owner will load it. No bank will finance it.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "Insurance-Based Closure Mechanism",
+      "target": "Strait of Hormuz",
+      "relType": "CLOSED",
+      "causalClassification": "BLOCKS",
+      "description": "The insurance-based closure mechanism functionally closed the Strait of Hormuz without physical blockade — when Lloyd's prices a waterway as uninsurable and P&I clubs cancel coverage, it ceases to function as a trade route regardless of physical access.",
+      "evidence": "When Lloyd's prices a waterway as uninsurable, it ceases to function as a trade route — regardless of whether any ship has actually been struck.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "Iran",
+      "target": "Selective Insurance Mechanism",
+      "relType": "WEAPONIZED",
+      "causalClassification": "IMPLEMENTS",
+      "description": "Iran weaponized the insurance market by creating a two-tier risk environment — ships with US/UK/Israeli connections charged 3x premiums while Chinese and Indian vessels received lower premiums and safe-passage guarantees — using the Western financial system's own risk-pricing to fracture the coalition against it.",
+      "evidence": "Ships with a perceived American, British, or Israeli connection... were charged three times the standard war risk premium. Chinese vessels, Indian vessels, and ships from non-aligned nations received different treatment. Lower premiums.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Selective Insurance Mechanism",
+      "target": "China",
+      "relType": "INCENTIVIZED",
+      "causalClassification": "INFLUENCES",
+      "description": "The selective insurance mechanism gave Chinese vessels lower premiums and Iranian safe-passage guarantees, incentivizing China (37.7% of Hormuz flows) to maintain quiet back-channels with Tehran rather than join the Western coalition.",
+      "evidence": "China, which absorbs 37.7% of Hormuz oil flows, suddenly had an incentive to maintain quiet channels with Tehran. India, at 14.7%, had the same.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Selective Insurance Mechanism",
+      "target": "India",
+      "relType": "INCENTIVIZED",
+      "causalClassification": "INFLUENCES",
+      "description": "The selective insurance mechanism offered lower premiums to Indian vessels (14.7% of Hormuz flows), creating incentive for India to maintain pragmatic non-alignment and quiet channels with Tehran rather than supporting the Western coalition.",
+      "evidence": "India, at 14.7%, had the same. The strait was not closed to everyone equally. It was closed selectively — and the selection criteria tracked Iran's diplomatic interests with precision.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Insurance-Based Closure Mechanism",
+      "target": "Oil Price Cascade",
+      "relType": "TRIGGERED",
+      "causalClassification": "CAUSES",
+      "description": "The insurance-based closure triggered the oil price cascade: Brent crude hit $126 with a $40 risk premium ($4 billion/day extracted from the global economy), supertanker rates quadrupled, and costs propagated through every link in the supply chain — all before actual supply shortfalls materialized.",
+      "evidence": "$126. A $40 geopolitical risk premium... Forty dollars per barrel of uncertainty, multiplied across 100 million barrels consumed globally every day. Four billion dollars a day in risk premium alone, extracted from the global economy by a 21-mile waterway.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "Oil Price Cascade",
+      "target": "Japan",
+      "relType": "DEVASTATES",
+      "causalClassification": "INFLUENCES",
+      "description": "The oil price cascade devastates Japan — with 87% of energy from imported fossil fuels and 90% of crude from the Middle East through Hormuz, Japan's 140 days of strategic reserves buffer a crisis measured in weeks but cannot survive one measured in months.",
+      "evidence": "Eighty-seven percent of Japan's total energy consumption comes from imported fossil fuels. Ninety percent of its crude oil originates in the Middle East, and virtually all of it transits the Strait of Hormuz.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "Oil Price Cascade",
+      "target": "South Korea",
+      "relType": "DEVASTATES",
+      "causalClassification": "INFLUENCES",
+      "description": "The oil price cascade forces South Korea — 81% import dependence, 70% of crude from the Middle East, 95%+ through Hormuz, 90 days of reserves — toward a choice between economic contraction and energy rationing if the strait stays closed beyond three months.",
+      "evidence": "South Korea's buffer is shorter — approximately 90 days... If the strait has not reopened by then, South Korea faces a choice between economic contraction and energy rationing.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Oil Price Cascade",
+      "target": "Fertilizer Cascade",
+      "relType": "AMPLIFIES",
+      "causalClassification": "CAUSES",
+      "description": "The oil price cascade amplifies into a fertilizer cascade because one-third of global fertilizer trade transits the same chokepoint — nitrogen prices spiked 43%, propagating to food prices with a 3-6 month lag, transforming the energy crisis into a food crisis.",
+      "evidence": "One-third of global fertilizer trade transits the Strait of Hormuz... nitrogen fertilizer prices at the New Orleans hub rose from $475 per metric ton to $680. A 43% spike. Fertilizer prices do not stay in fertilizer markets. They propagate to food prices with a lag of three to six months.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "Fertilizer Cascade",
+      "target": "Developing World Impact",
+      "relType": "DEVASTATES",
+      "causalClassification": "CAUSES",
+      "description": "The fertilizer cascade devastates the developing world — the countries that import the most fertilizer and can least afford price shocks (Egypt, Bangladesh, Sub-Saharan Africa, Philippines) face food insecurity from the same chokepoint that caused the energy crisis.",
+      "evidence": "The countries that import the most fertilizer and can least afford price shocks are the same countries that will face food insecurity if the strait stays closed: Egypt, which imports 60% of its wheat. Bangladesh. Sub-Saharan Africa. The Philippines.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "International Energy Agency",
+      "target": "Strategic Petroleum Reserves",
+      "relType": "COORDINATES",
+      "causalClassification": "REGULATES",
+      "description": "The IEA coordinated the largest strategic petroleum reserve release in its 52-year history — 400 million barrels across 31 nations — activating the system it was built for after the 1973 OPEC embargo, but the reserves equal only 20 days of Hormuz flows.",
+      "evidence": "Four hundred million barrels released from strategic petroleum reserves across 31 member nations. The largest coordinated release in the IEA's 52-year history... Four hundred million barrels is enormous. It is also 20 days of Hormuz traffic.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Strategic Petroleum Reserves",
+      "target": "Oil Price Cascade",
+      "relType": "BUFFERS",
+      "causalClassification": "BLOCKS",
+      "description": "Strategic petroleum reserves provide a temporary buffer against the oil price cascade — but 400 million barrels covers only 20 days of Hormuz traffic, and the US SPR requires 13 days from presidential order to market delivery, making it a slow weapon against a fast crisis.",
+      "evidence": "If the strait stays closed for a month, the reserves buy time. If it stays closed for three months, they buy a slower crisis. If it stays closed for six months, they run out.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Bypass Pipeline Network",
+      "target": "Strait of Hormuz",
+      "relType": "PARTIALLY_SUBSTITUTES",
+      "causalClassification": "BLOCKS",
+      "description": "The bypass pipeline network provides partial alternative to Hormuz — Saudi Petroline (5-7M bbl/day), UAE pipeline (1.8M bbl/day), Iraq-Turkey pipeline (1.6M bbl/day intermittent) — totaling 8-9M barrels against 20M daily flows, leaving an unbridgeable 11-12M barrel gap.",
+      "evidence": "Total bypass capacity at maximum output: approximately 8 to 9 million barrels per day. Generous estimate. Against 20 million barrels per day of regular Hormuz flows. The gap: 11 to 12 million barrels per day.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Saudi Arabia",
+      "target": "Strait of Hormuz",
+      "relType": "DEPENDS_ON",
+      "causalClassification": "DEPENDS_ON",
+      "description": "Saudi Arabia depends on the Strait of Hormuz for the majority of its oil exports — the East-West Petroline bypass covers only 5-7M of the kingdom's production, making Saudi Arabia simultaneously the strait's largest beneficiary and most vulnerable stakeholder.",
+      "evidence": "The Saudi East-West Pipeline — Petroline — runs from the Abqaiq processing center to Yanbu on the Red Sea. Capacity: 5 million barrels per day, expandable to 7 million.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "ongoing"
+    },
+    {
+      "source": "US Fifth Fleet",
+      "target": "Strait of Hormuz",
+      "relType": "PATROLS",
+      "causalClassification": "REGULATES",
+      "description": "The US Fifth Fleet patrols the Strait of Hormuz as the primary military instrument for protecting oil transit — successfully destroying Iran's conventional navy but unable to prevent mine-laying from civilian vessels or force insurance markets to cover Gulf transits.",
+      "evidence": "military dominance in the strait is necessary but not sufficient — the real gatekeepers are in London insurance offices.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "ongoing"
+    },
+    {
+      "source": "Naval Mines",
+      "target": "Insurance-Based Closure Mechanism",
+      "relType": "TRIGGERS",
+      "causalClassification": "ENABLES",
+      "description": "Naval mines create the credible physical threat that triggers the insurance-based closure — a few dozen mines in shipping lanes force every vessel to stop, and the indistinguishability of mine-layers from fishing boats makes the threat persistent and uncontainable.",
+      "evidence": "a few dozen is enough. A single mine in a shipping lane forces every vessel to stop until the lane is verified clear... Iran retained 80 to 90 percent of its small boat fleet.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "2026"
+    },
+    {
+      "source": "Coastal Anti-Ship Missiles",
+      "target": "Insurance-Based Closure Mechanism",
+      "relType": "SUSTAINS",
+      "causalClassification": "ENABLES",
+      "description": "Coastal anti-ship missiles sustain the insurance-based closure by providing persistent threat that survives conventional military degradation — mobile launchers along 1,500km of coastline relocate within minutes of firing, ensuring enough survive to threaten a single tanker.",
+      "evidence": "Air power can degrade these batteries. It did — Operation Epic Fury struck coastal installations along the entire littoral. But 'degraded' is not 'eliminated.'... The question is whether enough survive to threaten a single tanker. And the answer, for the foreseeable future, is yes.",
+      "evidenceStrength": "established",
+      "magnitude": "significant",
+      "year": "2026"
+    },
+    {
+      "source": "Chokepoint Vulnerability Cycle",
+      "target": "International Energy Agency",
+      "relType": "PRODUCED",
+      "causalClassification": "PRODUCES",
+      "description": "The chokepoint vulnerability cycle produced the IEA from the 1973 OPEC embargo — each crisis generates institutions designed to prevent repetition, but each institution proves insufficient when the next crisis arrives because threats evolve faster than defenses.",
+      "evidence": "1973: the OPEC embargo cut 5% of supply. Oil prices quadrupled. Western economies entered recession. The response: create the International Energy Agency. Build strategic petroleum reserves. Never again.",
+      "evidenceStrength": "established",
+      "magnitude": "foundational",
+      "year": "ongoing"
+    }
+  ],
+  "causal_chains": [
+    {
+      "name": "From Defeat to Doctrine: How a 1988 Loss Created the 2026 Closure",
+      "links": [
+        {
+          "source": "Naval Mines",
+          "target": "USS Samuel B. Roberts",
+          "explanation": "A single Iranian M-08 contact mine struck the USS Roberts in 1988, ripping a 15-foot hull hole and breaking its keel — demonstrating the foundational asymmetry: a mine costing thousands of dollars can threaten a vessel worth hundreds of millions. This mine strike was the first domino."
+        },
+        {
+          "source": "USS Samuel B. Roberts",
+          "target": "Operation Praying Mantis",
+          "explanation": "The Roberts mine strike triggered Operation Praying Mantis four days later. The US destroyed half of Iran's navy in 8 hours — sinking the frigate Sahand, disabling Sabalan, demolishing two IRGC staging platforms. Washington concluded overwhelming force works in the Gulf."
+        },
+        {
+          "source": "Operation Praying Mantis",
+          "target": "Swarm Warfare Doctrine",
+          "explanation": "Tehran drew the opposite lesson from its devastating defeat: never fight Americans on their terms. Iran's extensive internal review concluded the answer was not a bigger navy but a different kind of force — one that turned the strait's geography from vulnerability into weapon. Every subsequent investment in swarm boats, mines, and coastal missiles traces directly to this lesson."
+        },
+        {
+          "source": "Swarm Warfare Doctrine",
+          "target": "IRGC Navy",
+          "explanation": "The doctrine materialized as the IRGC Navy — 1,500+ fast-attack boats including Heydar-110 class reaching 110 knots with anti-ship cruise missiles. A force optimized not for naval battle but area denial: make the strait too costly to use, because one burning supertanker closes it more effectively than a fleet engagement."
+        },
+        {
+          "source": "IRGC Navy",
+          "target": "Insurance-Based Closure Mechanism",
+          "explanation": "The IRGC understood before anyone else that the strait's real gatekeepers sit in Lloyd's, not the Pentagon. The entire asymmetric force — swarm boats, mines, coastal missiles — was designed not to achieve military victory but to create enough credible threat that insurance markets close the strait autonomously. The doctrine's genius: actuarial closure requires no military triumph."
+        }
+      ]
+    },
+    {
+      "name": "The Invisible Siege: How Insurance Closed a Waterway Without Firing a Shot",
+      "links": [
+        {
+          "source": "Operation Epic Fury",
+          "target": "IRGC Navy",
+          "explanation": "Epic Fury destroyed Iran's conventional navy — 130 vessels hit, 100+ destroyed, every Soleimani-class corvette sunk. CENTCOM assessed the IRGCN as 'combat ineffective.' But the operation removed the restraint that had held for forty years: retaliation was already underway, so the IRGC activated the asymmetric playbook it had rehearsed for a generation."
+        },
+        {
+          "source": "IRGC Navy",
+          "target": "Lloyd's of London",
+          "explanation": "With conventional capability destroyed but asymmetric assets intact — mines from indistinguishable fishing boats, coastal missiles behind ridgelines, and a credible declaration that 'not a litre of oil will get through' — the IRGC created exactly enough uncertainty for the insurance marketplace. The phone call to Lloyd's was the most powerful weapon fired."
+        },
+        {
+          "source": "Lloyd's of London",
+          "target": "P&I Clubs",
+          "explanation": "Lloyd's quadrupled war risk premiums overnight from 0.25% to 1% of hull value — $1.5M per transit per week. But Lloyd's prices risk; P&I clubs cancel coverage. When Gard, Skuld, North-Standard, and the London P&I Club all cancelled war risk extensions for Gulf vessels, the decisive move was made: without P&I coverage, no vessel can legally operate."
+        },
+        {
+          "source": "P&I Clubs",
+          "target": "Insurance-Based Closure Mechanism",
+          "explanation": "The P&I cancellation completed the insurance-based closure mechanism — the strait became commercially nonexistent. No port accepts uninsured ships, no cargo owner loads them, no bank finances them. The coverage withdrawal did what no missile could: transformed a military threat into a commercial impossibility through the Western financial system's own risk-pricing infrastructure."
+        },
+        {
+          "source": "Insurance-Based Closure Mechanism",
+          "target": "Oil Price Cascade",
+          "explanation": "The actuarial closure triggered the cascade: Brent hit $126 with $40 risk premium extracting $4B/day from the global economy, supertanker rates quadrupled from $200K to $800K/day, and costs propagated through refiner → distributor → consumer at every link. Fear was more expensive than scarcity — the price spike was pure information about certainty that supply would fall and uncertainty about when it would return."
+        }
+      ]
+    },
+    {
+      "name": "The Double Cascade: From Energy Crisis to Food Crisis Through the Same Chokepoint",
+      "links": [
+        {
+          "source": "Oil Price Cascade",
+          "target": "Japan",
+          "explanation": "Japan — 87% imported fossil fuels, 90% of crude from the Middle East through Hormuz — faces the sharpest economic impact. Its 140 days of strategic reserves buffer weeks but not months. Below 90 days, planners model rationing; below 60, they implement it. The world's third-largest economy runs on a supply line through a 21-mile gap."
+        },
+        {
+          "source": "Oil Price Cascade",
+          "target": "Fertilizer Cascade",
+          "explanation": "The energy cascade has a branch most analysts miss: one-third of global fertilizer trade transits the same chokepoint. Qatar nitrogen, Saudi/UAE/Oman phosphates and potash — all through Hormuz. Nitrogen prices spiked 43% at the New Orleans benchmark. The energy crisis and the food crisis are the same crisis, running through the same 21 miles."
+        },
+        {
+          "source": "Fertilizer Cascade",
+          "target": "Developing World Impact",
+          "explanation": "Fertilizer prices propagate to food prices with a 3-6 month lag. The countries that import the most fertilizer and can least afford shocks — Egypt (60% wheat imports), Bangladesh, Sub-Saharan Africa, Philippines — face food insecurity. A hospital in Dhaka running diesel generators for neonatal wards now pays 30% more; fishing fleets in Accra are idled because fuel exceeds catch value. The war is in the Persian Gulf; the cost falls heaviest on those with the least."
+        },
+        {
+          "source": "Developing World Impact",
+          "target": "Chokepoint Vulnerability Cycle",
+          "explanation": "The disproportionate impact on the developing world reveals the structural pattern: each Hormuz crisis is larger than the last, each produces institutions designed to prevent repetition, each institution proves insufficient. The countries that absorb shocks designed the system; the countries that break first have no voice in chokepoint strategy. The vulnerability isn't the strait — it's a global energy system engineered for efficiency with zero redundancy for its most critical chokepoint."
+        }
+      ]
+    }
+  ]
+}

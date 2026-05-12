@@ -1,0 +1,652 @@
+{
+  "temporal_phases": [
+    { "index": 1, "label": "The Origins", "period": "1694-1912" },
+    { "index": 2, "label": "The Secret Design", "period": "1910-1913" },
+    { "index": 3, "label": "Bretton Woods and the Gold Constraint", "period": "1944-1971" },
+    { "index": 4, "label": "The Untethered Era", "period": "1971-2006" },
+    { "index": 5, "label": "Crisis and Unlimited Power", "period": "2007-2022" },
+    { "index": 6, "label": "The Reckoning", "period": "2023-present" }
+  ],
+  "entities": [
+    {
+      "name": "Federal Reserve",
+      "aliases": ["Fed", "The Fed", "Federal Reserve System"],
+      "category": "Organization",
+      "definition": "Central bank of the United States, designed in secret on Jekyll Island in 1910 by six men representing one-quarter of the world's wealth, signed into law December 23, 1913. Controls $6.6 trillion in assets as of March 2026, sets the cost of borrowing for the largest economy on Earth, and serves as the global benchmark — when the Fed moves, the rest of the world adjusts because global capital flows toward the highest return.",
+      "role": "The central institution of the investigation — the most powerful unelected body affecting daily life. The Federal Reserve's trajectory IS the story: (1) designed in secret by private bankers, (2) signed into law when Congress was away, (3) expanded from lender of last resort to buyer of last resort during 2008, (4) created $4.6 trillion in two years during COVID, (5) its interest rate decisions determine whether businesses hire or fire, families afford homes, and governments service debts. Nobody elected the people who make these decisions.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Bank of England",
+      "aliases": ["BOE", "The Old Lady of Threadneedle Street"],
+      "category": "Organization",
+      "definition": "The world's first central bank, created in 1694 when a group of London merchants lent King William III £1.2 million at 8% interest to fight France, receiving in exchange the right to issue banknotes backed by government debt — establishing the template that central banks are born not to stabilize economies but to fund wars.",
+      "role": "The origin template for all central banking. The Bank of England established the foundational pattern: (1) created to fund a war, not stabilize an economy, (2) merchants lend to the state in exchange for money-creation privileges, (3) the money is raised in eleven days — demonstrating that private capital and state power combine when mutual interest aligns. This pattern repeats for three centuries across every major central bank.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "European Central Bank",
+      "aliases": ["ECB"],
+      "category": "Organization",
+      "definition": "Institution managing monetary policy for the nineteen countries sharing the euro, whose president Mario Draghi demonstrated the power of central bank communication when six words — 'whatever it takes to preserve the euro' — ended the 2012 eurozone crisis without spending a single euro. Holds rates at 2.0% in March 2026 with eurozone inflation at 1.7%.",
+      "role": "Demonstrates the purest form of central bank power: the ability to move markets with words alone. The ECB under Draghi proved that credibility IS the tool — three words did the work that trillions in bond purchases might not have. In 2026, under Lagarde, the ECB faces stagnation rather than inflation, illustrating that different central banks face completely different problems within one interconnected system.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Bank of Japan",
+      "aliases": ["BOJ"],
+      "category": "Organization",
+      "definition": "Japan's central bank, at 0.75% — the highest since 1995 — after forty-five consecutive months above its inflation target, with the yen trading at 154-157 to the dollar. Governor Kazuo Ueda is trying to normalize rates while facing political pressure from Prime Minister Takaichi who campaigned on loose monetary policy.",
+      "role": "The case study of political pressure versus technocratic judgment. The BOJ illustrates what happens when a central bank tries to normalize after decades of ultra-loose policy — caught between the need to raise rates (inflation above target for 45 months) and political leaders who want rates low. Japan's situation is unique among major economies: fighting decades of deflation while the rest of the world fights inflation.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "People's Bank of China",
+      "aliases": ["PBOC", "China's Central Bank"],
+      "category": "Organization",
+      "definition": "China's central bank, which has adopted a 'moderately loose' stance for the first time since 2011 and leads the world in central bank digital currency deployment — the digital yuan (e-CNY) has processed $2.38 trillion through 2.25 billion wallets, giving the central bank the ability to see every transaction and potentially program how money is spent.",
+      "role": "Represents one pole of the digital money divergence: maximum state visibility over currency. The PBOC is not fighting inflation but deflation, and its digital yuan gives it capabilities no previous central bank has possessed — real-time transaction monitoring, programmable money, and instant money supply adjustment. This is the architecture of money diverging along geopolitical lines.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Nelson Aldrich",
+      "aliases": ["Aldrich", "Senator Aldrich"],
+      "category": "Person",
+      "definition": "Chairman of the Senate Finance Committee and father-in-law of John D. Rockefeller Jr. — one of six men who traveled to Jekyll Island under assumed names in November 1910 to design the Federal Reserve system in nine days of secret meetings they denied for twenty-five years.",
+      "role": "The political architect of the Federal Reserve. Aldrich's dual role — chairman of Senate Finance AND Rockefeller family — embodies the private-public nexus at the Fed's origin. He provided the legislative channel through which private banking interests designed a government institution.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Henry Davison",
+      "aliases": ["Davison"],
+      "category": "Person",
+      "definition": "Senior partner at J.P. Morgan & Company and one of the six Jekyll Island conspirators who designed the Federal Reserve system in 1910 — representing the Morgan banking empire's interest in a centralized monetary system.",
+      "role": "Morgan's representative at Jekyll Island. Davison's presence ensured the most powerful banking house in America had direct input into the central bank's design — the institution meant to regulate banks was designed by bankers.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Frank Vanderlip",
+      "aliases": ["Vanderlip"],
+      "category": "Person",
+      "definition": "President of National City Bank (now Citibank) — the largest bank in America — and one of the six Jekyll Island conspirators. Vanderlip confirmed the secret meeting publicly in 1935, twenty-five years after it took place.",
+      "role": "The banker who eventually confirmed the secret. Vanderlip's 1935 admission validated what had been rumored for decades — that America's central bank was designed in secret by the very bankers it was supposed to regulate. His confirmation demonstrates the gap between institutional mythology and actual origin.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Paul Warburg",
+      "aliases": ["Warburg"],
+      "category": "Person",
+      "definition": "German-born banker at Kuhn, Loeb & Co. who had studied the Reichsbank and the Bank of England — the international banking expert among the Jekyll Island six who brought European central banking models to the American design.",
+      "role": "The intellectual architect who imported European central banking expertise to America. Warburg's knowledge of the Reichsbank and Bank of England provided the structural template — the Federal Reserve was not designed from American principles but adapted from European models by a banker who understood both systems.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "A. Piatt Andrew",
+      "aliases": ["Andrew", "Assistant Secretary Andrew"],
+      "category": "Person",
+      "definition": "Assistant Secretary of the Treasury and one of the six Jekyll Island participants — the only government official (aside from Senator Aldrich) at the meeting, providing the Treasury Department's perspective on monetary system design.",
+      "role": "The Treasury's voice at Jekyll Island. Andrew's presence gave the secret meeting a veneer of government involvement — though the design was driven by private banking interests, having the Assistant Secretary of the Treasury participate ensured the result would be compatible with existing government financial operations.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Arthur Shelton",
+      "aliases": ["Shelton"],
+      "category": "Person",
+      "definition": "Nelson Aldrich's personal secretary and the sixth member of the Jekyll Island party — present to assist the Senate Finance Committee chairman during the nine days of meetings that designed the Federal Reserve system.",
+      "role": "The most junior member of the Jekyll Island group, present as Aldrich's aide. Shelton's inclusion demonstrates that the meeting was Aldrich's operation — a senator's private project staffed by the most powerful bankers in America.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "John D. Rockefeller Jr.",
+      "aliases": ["Rockefeller Jr.", "Rockefeller"],
+      "category": "Person",
+      "definition": "Son of Standard Oil founder John D. Rockefeller and son-in-law of Senator Nelson Aldrich — the family connection that linked the Senate Finance Committee chairmanship to the Rockefeller fortune, placing banking legislation within the orbit of America's wealthiest dynasty.",
+      "role": "The family link between political power and financial empire. Rockefeller Jr. is not directly at Jekyll Island but his relationship to Aldrich — father-in-law — means the Federal Reserve's legislative sponsor was connected by marriage to the country's dominant industrial fortune.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "John Pierpont Morgan",
+      "aliases": ["J.P. Morgan", "Morgan"],
+      "category": "Person",
+      "definition": "The most powerful banker in America who at age seventy personally stabilized the US financial system during the 1907 Panic — summoning bank heads to his private library on Madison Avenue, locking the doors, and refusing to let anyone leave until they agreed to contribute money to stop the crisis — demonstrating that one private citizen could do what the absence of a central bank could not.",
+      "role": "The proof that the system needed a central bank — and the reason the central bank was designed by bankers. Morgan's 1907 intervention demonstrated both the power and unsustainability of private crisis management: (1) one man with personal authority stabilized the financial system, (2) the political conclusion was immediate — this cannot depend on one person, (3) but the solution — the Federal Reserve — was designed by Morgan's associates, ensuring the new institution reflected private banking interests.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "King William III",
+      "aliases": ["William III", "William of Orange"],
+      "category": "Person",
+      "definition": "King of England who needed £1.2 million to fight a war against France in 1694, could not tax or borrow enough through existing channels, and accepted London merchants' proposal to lend the money in exchange for the right to issue banknotes — creating the Bank of England and establishing the template for central banking.",
+      "role": "The sovereign whose war funding need created the first central bank. William III's situation established the foundational pattern: state needs money for war, private interests provide it in exchange for money-creation privileges. This transaction — war debt exchanged for currency monopoly — is the origin of central banking.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Alexander Hamilton",
+      "aliases": ["Hamilton"],
+      "category": "Person",
+      "definition": "First Secretary of the Treasury who created the First Bank of the United States in 1791, establishing America's first experiment with central banking against fierce opposition from Thomas Jefferson who saw it as an unconstitutional concentration of financial power.",
+      "role": "The first American advocate for central banking. Hamilton's creation of the First Bank established the pro-centralization position in a debate that would continue for 120 years: centralized financial power enables economic coordination but concentrates control. Jefferson's opposition defined the counter-argument that runs through the investigation.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Thomas Jefferson",
+      "aliases": ["Jefferson"],
+      "category": "Person",
+      "definition": "Third President of the United States who opposed Hamilton's First Bank as an unconstitutional concentration of financial power — establishing the anti-central-bank position that Andrew Jackson would weaponize and that echoes in 2026 debates over Federal Reserve independence.",
+      "role": "The voice of opposition to centralized financial power. Jefferson's constitutional argument against the First Bank is the investigation's recurring tension: the democratic objection that unelected institutions should not control the money supply. This argument reappears with Jackson, is dormant during the Federal Reserve era, and resurfaces in 2026.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Andrew Jackson",
+      "aliases": ["Jackson", "President Jackson"],
+      "category": "Person",
+      "definition": "Seventh President of the United States who killed the Second Bank of the United States in 1836 — withdrawing all federal deposits with the declaration 'The Bank is trying to kill me, but I will kill it' — leaving America without a central bank for seventy-seven years.",
+      "role": "The most aggressive opponent of central banking in American history. Jackson's destruction of the Second Bank created the seventy-seven-year gap (1836-1913) during which America was the only major industrial economy without a central bank — proving that the country could function without one, but at the cost of every financial panic requiring private resolution.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Richard Nixon",
+      "aliases": ["Nixon", "President Nixon"],
+      "category": "Person",
+      "definition": "President who closed the gold window on August 15, 1971, announcing the United States would no longer convert dollars to gold — severing the constraint that had limited central bank money creation since 1694 and launching the era of fiat currency where the only limit on money creation is institutional discipline.",
+      "role": "The president who untethered central banking from physical reality. Nixon's decision is the investigation's hinge point: (1) from 1694 to 1971, central banks operated within physical limits — gold, silver, convertibility, (2) after August 15, 1971, the only limit is institutional judgment, (3) the next fifty-five years test whether that discipline holds. Every QE program, every trillion created from nothing, is possible because of Nixon's announcement.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Paul Volcker",
+      "aliases": ["Volcker", "Chairman Volcker"],
+      "category": "Person",
+      "definition": "Federal Reserve chairman appointed by Jimmy Carter in 1979 who raised the federal funds rate to 20% — the highest in American history — to break 14.8% inflation, deliberately inflicting severe economic pain (10.8% unemployment, manufacturing collapse, farmer bankruptcies) that proved one unelected official sitting in the right chair could reshape the entire American economy.",
+      "role": "The proof that central bank independence can work — at devastating human cost. Volcker's rate hikes broke inflation from 14.8% to below 3% but created the Rust Belt, destroyed the manufacturing heartland, and bankrupted farmers (some committed suicide). His tenure answers the investigation's question: an independent central banker CAN make unpopular decisions that politicians won't. Whether that power should exist is the unresolved tension.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Alan Greenspan",
+      "aliases": ["Greenspan", "The Maestro"],
+      "category": "Person",
+      "definition": "Fed Chair for nineteen years (1987-2006) — the longest tenure since the Fed's founding — who kept rates low after every crisis (1987 crash, 1997 Asian crisis, 2001 dot-com bust), training markets to believe the Fed would always rescue them and creating moral hazard at systemic scale that inflated the housing bubble he left for his successor.",
+      "role": "The cautionary tale of too much market confidence in central bank rescue. Greenspan's tenure created the 'Greenspan Put' — the belief that the Fed would bail out any downturn — which produced moral hazard: banks took bigger risks because they believed the central bank would catch them. The housing bubble inflated between 2003 and 2006, and when Greenspan retired, 'the bomb is already built. His successor will inherit the detonation.'",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Ben Bernanke",
+      "aliases": ["Bernanke", "Chairman Bernanke"],
+      "category": "Person",
+      "definition": "Scholar of the Great Depression who became Fed Chair specifically because he understood what happens when central banks fail to act — and who 'crossed the Rubicon' in 2008 by expanding the Fed from lender of last resort to buyer of last resort, launching quantitative easing that grew the balance sheet from $891 billion to $4.5 trillion.",
+      "role": "The central banker who permanently expanded the role of the institution. Bernanke's 2008 decisions set the precedent that when the crisis is severe enough, the central bank will create trillions from nothing: (1) cut rates to zero, (2) launched QE when that wasn't enough, (3) expanded the Fed's role from lender to buyer to market maker of last resort. The financial system survived but the question of who absorbs the consequences was 'left for later.'",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Mario Draghi",
+      "aliases": ["Draghi"],
+      "category": "Person",
+      "definition": "President of the European Central Bank who in July 2012, with the eurozone fracturing and Greek, Italian, and Spanish bond yields spiking, spoke six words — 'Whatever it takes to preserve the euro' — that collapsed bond yields and ended the crisis without the ECB spending a single euro, demonstrating that central bank credibility is itself a tool.",
+      "role": "The most dramatic demonstration of forward guidance power. Draghi proved that a central banker's words can substitute for trillions in actual spending: (1) markets were pricing in the euro's collapse, (2) six words reversed that pricing, (3) the ECB spent nothing. Three words did the work. This moment demonstrates that central bank power is ultimately about credibility — and that credibility, once established, is the most efficient monetary tool.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Jimmy Carter",
+      "aliases": ["Carter", "President Carter"],
+      "category": "Person",
+      "definition": "President who appointed Paul Volcker as Federal Reserve chairman in August 1979 to fight 14.8% inflation — a decision that would prove politically costly as Volcker's 20% interest rates caused severe recession, demonstrating the tension between presidential appointment power and central bank independence.",
+      "role": "The president whose appointment enabled the most aggressive independent central bank action in American history. Carter appointed Volcker knowing tough measures were needed, but the resulting economic pain contributed to his political difficulties — illustrating that presidents who empower independent central bankers may not survive the political consequences.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Christine Lagarde",
+      "aliases": ["Lagarde"],
+      "category": "Person",
+      "definition": "President of the European Central Bank as of March 2026, holding rates at 2.0% with eurozone inflation at 1.7% — below target — and declaring the ECB in a 'good place' while eighty-five percent of economists expect no change through 2026, managing a stagnation problem rather than an inflation problem.",
+      "role": "The current ECB leader facing the opposite challenge to the Fed. Lagarde's 2026 position demonstrates that central banks across the globe face completely different problems: the Fed fights stubborn inflation, the ECB fights stagnation, the BOJ fights decades of deflation legacy, and the PBOC fights deflation. One global system, four divergent policies.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Jerome Powell",
+      "aliases": ["Powell", "Fed Chair Powell"],
+      "category": "Person",
+      "definition": "Federal Reserve Chair whose term expires May 15, 2026, holding rates at 3.50-3.75% with US inflation stubbornly at 2.4% above the 2% target — the person at the center of the 2026 independence crisis as President Trump nominates Kevin Warsh to replace him.",
+      "role": "The focal point of the 2026 independence test. Powell's situation crystallizes the investigation's central tension: (1) he holds rates based on technocratic judgment, (2) the president wants to replace him with his own nominee, (3) the independence of the Federal Reserve is being tested more directly than at any point since Nixon. Whether Powell's successor serves the economy or the incumbent is the open question.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Recep Tayyip Erdogan",
+      "aliases": ["Erdogan", "President Erdogan"],
+      "category": "Person",
+      "definition": "President of Turkey who fired multiple central bank governors who tried to raise rates, believing high interest rates cause inflation — the opposite of mainstream economics — producing Turkish inflation of 34.9% and serving as the cautionary tale for what happens when political leaders capture central bank policy.",
+      "role": "The cautionary tale of political capture. Erdogan demonstrates Path B of the investigation's futures: (1) president overrides central bank, (2) fires governors who disagree, (3) implements heterodox policy (low rates to fight inflation), (4) inflation hits 34.9%. Turkey is the real-world evidence for why central bank independence exists — and what happens when it doesn't.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Sanae Takaichi",
+      "aliases": ["Takaichi", "Prime Minister Takaichi"],
+      "category": "Person",
+      "definition": "Japanese Prime Minister who won a supermajority of 316 seats in the February 2026 snap election, campaigning on loose monetary policy — creating direct political pressure on Bank of Japan Governor Ueda who is trying to normalize rates at 0.75%, the highest since 1995.",
+      "role": "The Japanese vector of the global independence challenge. Takaichi's supermajority gives her enormous political leverage over the BOJ — illustrating that the independence question is not just an American problem but a global pattern where political leaders want control of rates because loose money wins elections.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Kazuo Ueda",
+      "aliases": ["Ueda", "Governor Ueda"],
+      "category": "Person",
+      "definition": "Bank of Japan Governor trying to normalize interest rates at 0.75% — the highest since 1995 — after forty-five months above the inflation target, while facing political pressure from Prime Minister Takaichi who campaigned on loose monetary policy.",
+      "role": "The technocrat versus the politician. Ueda represents the central banker trying to do what the data says (normalize rates after decades of zero) while elected officials want the opposite (keep rates low). His position is the investigation's independence doctrine under real-time stress test.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Donald Trump",
+      "aliases": ["Trump", "President Trump"],
+      "category": "Person",
+      "definition": "President of the United States who in January 2026 nominated Kevin Warsh to replace Jerome Powell as Fed Chair and placed Stephen Miran on the Fed Board — testing the independence of the Federal Reserve more directly than at any point since Nixon's era.",
+      "role": "The American vector of the global independence challenge. Trump's actions — replacing the Fed Chair with his own nominee, placing allies on the Fed Board — represent the most direct presidential attempt to influence Federal Reserve policy in decades. Whether this constitutes legitimate appointment power or political capture of monetary policy is the investigation's 2026 question.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Kevin Warsh",
+      "aliases": ["Warsh"],
+      "category": "Person",
+      "definition": "President Trump's nominee to replace Jerome Powell as Federal Reserve Chair, whose confirmation has been blocked by Senator Thom Tillis over a Department of Justice investigation of Powell — placing the Fed's leadership transition at the intersection of presidential politics and congressional procedure.",
+      "role": "The person at the center of the 2026 Fed succession crisis. Warsh's blocked nomination demonstrates that the independence question is not just executive versus central bank — Congress has its own leverage through confirmation power, creating a three-way power struggle over who controls monetary policy.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Stephen Miran",
+      "aliases": ["Miran"],
+      "category": "Person",
+      "definition": "Chair of the Council of Economic Advisors whom President Trump placed on the Federal Reserve Board — an appointment that puts a presidential economic advisor directly inside the institution meant to operate independently from presidential economic preferences.",
+      "role": "The structural insertion of presidential influence into the Fed. Miran's placement on the Fed Board is more subtle than replacing the Chair — it puts a presidential loyalist inside the decision-making body, potentially influencing votes on rate decisions from within rather than through external pressure.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Thom Tillis",
+      "aliases": ["Senator Tillis"],
+      "category": "Person",
+      "definition": "US Senator who blocked Kevin Warsh's confirmation as Federal Reserve Chair over a Department of Justice investigation of Jerome Powell — inserting congressional power into the Fed succession process and complicating the president's attempt to install his preferred central banker.",
+      "role": "The congressional check on presidential Fed appointments. Tillis's blocking action demonstrates that the Fed independence system has multiple institutional safeguards — even when a president wants to replace the Fed Chair, Senate confirmation creates a veto point that can be exercised for institutional or political reasons.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "United States",
+      "aliases": ["US", "America"],
+      "category": "Place",
+      "definition": "The country that resisted central banking for seventy-seven years (1836-1913) — the only major industrial economy without one — before the Federal Reserve was designed in secret and signed into law, and which in 2026 has moved to prohibit a government digital dollar while allowing privately issued stablecoins, choosing the opposite path from China on digital money.",
+      "role": "The primary national setting and the country whose relationship with central banking defines the investigation. America's trajectory — resistance (Hamilton/Jefferson/Jackson) → crisis (1907) → secret design (Jekyll Island) → law (1913) → gold constraint (Bretton Woods) → untethering (Nixon) → unlimited power (2008/COVID) → political capture attempt (2026) — IS the investigation's arc.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "China",
+      "aliases": ["People's Republic of China", "PRC"],
+      "category": "Place",
+      "definition": "Country leading the central bank digital currency revolution — the digital yuan has processed $2.38 trillion through 2.25 billion wallets — while fighting deflation with a 'moderately loose' monetary stance for the first time since 2011, representing the state-maximalist model of digital money where the central bank can see every transaction.",
+      "role": "One pole of the digital money divergence. China represents Path A for digital currency: government-issued, maximum state visibility, programmable money. The United States represents the opposite: privately issued stablecoins with government regulation. The architecture of money itself is diverging along geopolitical lines, and China is building the surveillance-capable model.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Japan",
+      "aliases": ["State of Japan"],
+      "category": "Place",
+      "definition": "Country that experienced forty-five consecutive months above its inflation target as of 2026, with the yen trading at 154-157 to the dollar — the case study of what happens after decades of zero interest rates when a central bank tries to normalize while political leaders want rates low.",
+      "role": "The laboratory for central bank policy at its extreme. Japan has been the global experiment in ultra-loose monetary policy for decades — and its current challenge (normalizing after zero rates while politicians resist) previews what other countries may face after their own QE periods.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Turkey",
+      "aliases": ["Republic of Turkey"],
+      "category": "Place",
+      "definition": "Country where President Erdogan fired multiple central bank governors who tried to raise rates and imposed his heterodox belief that high rates cause inflation — producing 34.9% inflation and serving as the real-world demonstration of what political capture of monetary policy produces.",
+      "role": "The cautionary tale. Turkey is the investigation's Exhibit A for Path B — political capture of the central bank. Every argument for central bank independence points to Turkey: when the political leader controls rates, the result is 34.9% inflation, currency collapse, and economic instability.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "England",
+      "aliases": ["Kingdom of England"],
+      "category": "Place",
+      "definition": "Country where the world's first central bank was created in 1694 when King William III needed £1.2 million to fight France — establishing the template that central banks are born from the intersection of sovereign war-funding needs and private capital's desire for money-creation privileges.",
+      "role": "The birthplace of central banking. England's 1694 creation of the Bank of England established the founding template: war creates the need, private capital provides the means, money-creation power is the exchange. Every subsequent central bank — including the Federal Reserve — follows some version of this pattern.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "France",
+      "aliases": ["Kingdom of France"],
+      "category": "Place",
+      "definition": "The country whose war against England in 1694 created the fiscal pressure that led King William III to accept London merchants' proposal — the enemy whose military threat inadvertently catalyzed the creation of the world's first central bank.",
+      "role": "The war that necessitated the Bank of England. France's role is causal but indirect — without the war against France, William III would not have needed £1.2 million, and the Bank of England might not have been created in 1694.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Jekyll Island",
+      "aliases": ["Jekyll Island Club"],
+      "category": "Place",
+      "definition": "Private island off the coast of Georgia, owned by J.P. Morgan and associates, where six men met in secret for nine days in November 1910 under assumed names — telling reporters they were going duck hunting — to design what would become the Federal Reserve system, denying the meeting for twenty-five years.",
+      "role": "The physical site of the Federal Reserve's secret creation. Jekyll Island embodies the investigation's origin tension: the most powerful financial institution in American history was designed at a private club owned by the bankers it would regulate, in meetings denied for a quarter century. The secrecy is not incidental — it reflects the founders' understanding that public knowledge of who designed the system would undermine it.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Bretton Woods",
+      "aliases": ["Bretton Woods Conference", "New Hampshire"],
+      "category": "Place",
+      "definition": "Town in New Hampshire where forty-four nations met in July 1944 to formalize the postwar monetary order — pegging every currency to the US dollar and the dollar to gold at $35 per ounce — creating the system of physical constraint on central bank money creation that held for twenty-seven years until Nixon closed the gold window.",
+      "role": "The geographic anchor of the gold-constrained monetary order. Bretton Woods represents the era when central banks could not print freely — every dollar created had to be backed by gold. The conference formalized central banks' role in the postwar order and created the constraint that Nixon would remove in 1971.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Europe",
+      "aliases": ["Eurozone"],
+      "category": "Place",
+      "definition": "Region sharing the euro whose central bank (ECB) holds rates at 2.0% with inflation at 1.7% below target in March 2026 — facing stagnation rather than inflation, demonstrating that the four major central banking regions face completely different economic problems within one interconnected global system.",
+      "role": "The stagnation case study. While the US fights inflation and Japan normalizes, Europe faces the opposite: insufficient growth and below-target inflation. Europe's monetary position illustrates that central banking is not one global challenge but multiple divergent challenges connected by capital flows.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "New York",
+      "aliases": ["New York City", "Wall Street"],
+      "category": "Place",
+      "definition": "Financial capital of the United States where J.P. Morgan summoned bank heads to his private library during the 1907 Panic and where the Federal Reserve Bank of New York operates — the geographic center of American financial power where central bank policy decisions have their most immediate market impact.",
+      "role": "The financial nerve center. New York is where central bank policy hits markets first — Wall Street reacts before Main Street feels anything. Morgan's 1907 library meeting and the ongoing centrality of New York financial markets to Fed policy transmission make it the physical location where central banking power is most concentrated.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "London",
+      "aliases": ["City of London"],
+      "category": "Place",
+      "definition": "Financial center where merchants proposed the deal that created the Bank of England in 1694 — lending £1.2 million to the Crown in exchange for banknote-issuing privileges — the birthplace of the private-capital-for-money-creation-power exchange that defines central banking.",
+      "role": "The origin site of central banking. London merchants' 1694 proposal established the template: private capital lends to the state, receives money-creation power in return. London remains one of the world's two dominant financial centers alongside New York.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Washington DC",
+      "aliases": ["Washington", "The Capitol"],
+      "category": "Place",
+      "definition": "US capital where the Federal Reserve Act was signed into law on December 23, 1913 — two days before Christmas when many members of Congress had already left — and where in 2026 the political battle over Fed independence plays out between the White House, Congress, and the Federal Reserve Board.",
+      "role": "The political arena where central bank independence is contested. Washington is where the Jekyll Island design became law, and where the 2026 independence crisis unfolds — presidential nominees, Senate blockades, and Fed Board appointments all converge in the capital.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "New Jersey",
+      "aliases": ["State of New Jersey"],
+      "category": "Place",
+      "definition": "State where six men boarded a private railcar at a train station in November 1910, traveling under assumed names and telling reporters they were going duck hunting — the departure point for the secret journey to Jekyll Island that would result in the Federal Reserve's design.",
+      "role": "The departure point for the Jekyll Island conspiracy. New Jersey is where the cover story began — six men lying about their destination to design the most powerful financial institution in American history.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Georgia",
+      "aliases": ["State of Georgia"],
+      "category": "Place",
+      "definition": "US state off whose coast Jekyll Island sits — the private club owned by J.P. Morgan and associates where the Federal Reserve was secretly designed in nine days of meetings in November 1910.",
+      "role": "The geographic context for Jekyll Island. Georgia's coast hosted the private island where America's central bank was born in secret — a detail that grounds the conspiracy in physical geography.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Madison Avenue",
+      "aliases": ["Morgan's Library"],
+      "category": "Place",
+      "definition": "Location of J.P. Morgan's private library in New York where he summoned the heads of major banks during the 1907 Panic, locked the doors, and refused to let anyone leave until they agreed to contribute money to stop the financial crisis — one private citizen stabilizing the financial system from his personal residence.",
+      "role": "The physical site of private-sector crisis management. Madison Avenue's library is where Morgan demonstrated that a single person could do what a central bank does — and proved that this model was unsustainable, creating the political impetus for the Federal Reserve.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Russia",
+      "aliases": ["Russian Federation"],
+      "category": "Place",
+      "definition": "Country launching its own central bank digital currency in 2026, alongside Brazil — part of the global CBDC movement where nations are building government-issued digital money systems, following China's lead rather than the American model of private stablecoins.",
+      "role": "Part of the CBDC expansion wave. Russia's 2026 digital currency launch demonstrates that the digital money divergence is not just US versus China — multiple nations are choosing the government-issued model, potentially fragmenting the global monetary system along geopolitical lines.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Brazil",
+      "aliases": ["Federative Republic of Brazil"],
+      "category": "Place",
+      "definition": "Country launching its own central bank digital currency in 2026 alongside Russia — part of the BRICS-aligned nations building government-issued digital money systems that could create alternatives to the dollar-dominated global payment infrastructure.",
+      "role": "Part of the CBDC expansion alongside Russia. Brazil's digital currency launch reinforces the geopolitical pattern: nations outside the US alliance are building state-controlled digital currencies, potentially challenging dollar dominance in international settlements.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Main Street",
+      "aliases": ["Main Street Economy", "Real Economy"],
+      "category": "Concept",
+      "definition": "Conceptual shorthand for the ordinary economy — mortgages, hiring, small businesses, consumer spending — that receives central bank policy benefits last because the transmission mechanism flows through financial markets first, reaching asset owners immediately and everyone else eventually.",
+      "role": "The investigation's measure of who benefits last from central bank action. Main Street versus Wall Street is the plumbing problem: (1) Fed cuts rates or launches QE, (2) bond and stock prices rise immediately, (3) by the time cheaper borrowing reaches Main Street, months or years have passed. The people who benefit first own financial assets. This is not conspiracy — it is plumbing.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "J.P. Morgan & Company",
+      "aliases": ["Morgan Bank", "House of Morgan"],
+      "category": "Organization",
+      "definition": "The most powerful banking house in early twentieth-century America, whose senior partner Henry Davison was one of the six Jekyll Island conspirators and whose founder's private island hosted the secret meetings — the institution most directly connected to the Federal Reserve's creation.",
+      "role": "The banking empire at the center of the Fed's origin. J.P. Morgan & Company's involvement was structural — Davison represented Morgan interests, Jekyll Island was owned by Morgan associates, and the 1907 Panic that created the political need for a central bank was resolved by the firm's founder personally. The Fed was built within the Morgan orbit.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "National City Bank",
+      "aliases": ["Citibank", "City Bank"],
+      "category": "Organization",
+      "definition": "The largest bank in America at the time of the Jekyll Island meeting, whose president Frank Vanderlip was one of the six conspirators — now known as Citibank, demonstrating the direct lineage between the Fed's secret designers and today's largest financial institutions.",
+      "role": "The largest bank's voice at Jekyll Island. National City Bank's presence through Vanderlip ensured that America's dominant bank had direct input into the central bank's design — a bank that would later evolve into Citibank, one of the institutions the Fed regulates.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Kuhn, Loeb & Co.",
+      "aliases": ["Kuhn Loeb"],
+      "category": "Organization",
+      "definition": "Investment banking firm where Paul Warburg worked before Jekyll Island — one of America's most powerful banking houses at the turn of the twentieth century, providing the international perspective on central banking through Warburg's study of the Reichsbank and Bank of England.",
+      "role": "The international banking connection at Jekyll Island. Kuhn, Loeb & Co. through Warburg represented the link between American and European banking — ensuring the Federal Reserve design incorporated lessons from the Reichsbank and Bank of England.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Reichsbank",
+      "aliases": ["German Central Bank"],
+      "category": "Organization",
+      "definition": "Germany's central bank studied by Paul Warburg before the Jekyll Island meeting — one of the European models that informed the Federal Reserve's design, demonstrating that America's central bank was adapted from European templates rather than designed from scratch.",
+      "role": "One of the European models imported to America through Warburg. The Reichsbank's structure — along with the Bank of England's — provided the institutional template that the Jekyll Island six adapted for the American context.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Senate Finance Committee",
+      "aliases": ["Senate Finance"],
+      "category": "Organization",
+      "definition": "Congressional committee chaired by Nelson Aldrich — father-in-law of John D. Rockefeller Jr. — that provided the legislative channel for the Federal Reserve Act, with its chairman secretly designing the central bank at Jekyll Island before shepherding it through Congress.",
+      "role": "The legislative vehicle for the Fed's creation. The Senate Finance Committee under Aldrich represents the private-public nexus: the committee chairman who would sponsor the legislation was simultaneously designing it in secret with the bankers his committee was supposed to oversee.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "US Congress",
+      "aliases": ["Congress"],
+      "category": "Organization",
+      "definition": "Legislative body that signed the Federal Reserve Act into law on December 23, 1913 — two days before Christmas when many members had already left Washington — and which in 2026 holds confirmation power over Fed appointments through the Senate, creating a check on presidential attempts to control monetary policy.",
+      "role": "The democratic body that both created and constrains the Fed. Congress's role illustrates the democratic tension: (1) it created an unelected institution with enormous power, (2) it did so when many members were absent, (3) in 2026, Senate confirmation power (Tillis blocking Warsh) serves as an institutional check on presidential capture.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "US Treasury",
+      "aliases": ["Treasury", "Department of the Treasury"],
+      "category": "Organization",
+      "definition": "Government department whose Assistant Secretary (A. Piatt Andrew) participated in the Jekyll Island meetings and which historically represents the government's fiscal arm — the institutional counterpart to the Federal Reserve's monetary arm, with tensions between the two defining much of American economic policy.",
+      "role": "The government's financial arm, distinct from but intertwined with the central bank. The Treasury's presence at Jekyll Island through Andrew shows that even the Fed's secret design included government participation — the boundary between fiscal and monetary policy has always been porous.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Lehman Brothers",
+      "aliases": ["Lehman"],
+      "category": "Organization",
+      "definition": "Investment bank whose September 2008 collapse froze the global financial system — banks stopped lending, credit markets seized — triggering the chain of Federal Reserve interventions that expanded the central bank's role from lender of last resort to buyer of last resort and launched the era of quantitative easing.",
+      "role": "The trigger event for the central bank's permanent expansion. Lehman Brothers' collapse is the investigation's inflection point: before Lehman, the Fed was a backstop; after Lehman, the Fed became a market maker willing to create trillions from nothing. Everything that followed — QE, $8 trillion in asset purchases, the COVID response — traces back to the precedent set after Lehman fell.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Silicon Valley Bank",
+      "aliases": ["SVB"],
+      "category": "Organization",
+      "definition": "Bank that failed in March 2023 as a consequence of the fastest rate-tightening cycle since Volcker — from near-zero to over 5% in eighteen months — demonstrating that the whiplash from unlimited QE to aggressive tightening produces its own casualties.",
+      "role": "Evidence of the cost of monetary whiplash. SVB's failure shows that the cycle from zero rates and unlimited QE to the fastest tightening in forty years doesn't end cleanly — institutions built for the zero-rate era collapse when rates normalize. The reversal creates its own crises.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Council of Economic Advisors",
+      "aliases": ["CEA"],
+      "category": "Organization",
+      "definition": "Presidential advisory body whose chair Stephen Miran was placed by President Trump on the Federal Reserve Board in 2026 — inserting a direct presidential economic advisor into the institution meant to operate independently from presidential preferences.",
+      "role": "The vehicle for presidential influence inside the Fed. The CEA chair's placement on the Fed Board represents a structural challenge to independence — not replacing the Fed Chair from outside, but inserting presidential economic thinking inside the decision-making body.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Department of Justice",
+      "aliases": ["DOJ"],
+      "category": "Organization",
+      "definition": "Federal law enforcement agency whose investigation of Jerome Powell became the basis for Senator Thom Tillis blocking Kevin Warsh's confirmation as Fed Chair — introducing criminal investigation dynamics into the central bank succession process.",
+      "role": "The legal institution whose investigation intersects with Fed appointments. The DOJ's role in the Warsh blockade demonstrates that the central bank independence system involves multiple institutional actors — not just the president and the central bank, but Congress and law enforcement as well.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "US House of Representatives",
+      "aliases": ["House", "The House"],
+      "category": "Organization",
+      "definition": "Legislative chamber that passed the Anti-CBDC Surveillance State Act in July 2025, prohibiting federal agencies from developing a digital dollar — representing the American political decision to reject government-issued digital currency in favor of regulated private stablecoins.",
+      "role": "The legislative body that chose the American path on digital money. The House's anti-CBDC legislation represents a political choice with monetary architecture consequences: the US will not build a government digital dollar, instead allowing private-sector digital tokens with government regulation — the opposite of China's approach.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "First Bank of the United States",
+      "aliases": ["First Bank", "Hamilton's Bank"],
+      "category": "Organization",
+      "definition": "America's first central bank, created by Alexander Hamilton in 1791 and opposed by Thomas Jefferson as an unconstitutional concentration of financial power — its charter expired in 1811, establishing the pattern of American resistance to centralized banking that would continue for over a century.",
+      "role": "America's first attempt at central banking and the origin of the constitutional debate. The First Bank established the terms of argument: Hamilton (centralization enables coordination) versus Jefferson (centralization concentrates power unconstitutionally). This debate reappears with the Second Bank, lies dormant during the Fed era, and resurfaces in 2026.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Second Bank of the United States",
+      "aliases": ["Second Bank"],
+      "category": "Organization",
+      "definition": "America's second central bank, chartered in 1816 and killed by Andrew Jackson in 1836 when he withdrew all federal deposits — leaving the United States without a central bank for seventy-seven years, the only major industrial economy without one.",
+      "role": "The institution whose death created the gap that led to the Federal Reserve. Jackson's destruction of the Second Bank proved America could function without a central bank — but at the cost of requiring private actors (ultimately J.P. Morgan) to resolve every financial crisis. The seventy-seven-year gap is what made Jekyll Island politically necessary.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Federal Open Market Committee",
+      "aliases": ["FOMC"],
+      "category": "Organization",
+      "definition": "The twelve-member committee within the Federal Reserve that meets eight times a year and sets the price of money for 330 million Americans — the specific body whose interest rate decisions determine whether businesses hire or fire, families afford homes, and the rest of the world adjusts its capital flows.",
+      "role": "The most powerful committee in global finance. Twelve people, eight meetings a year, and their decisions on the federal funds rate ripple through every loan, mortgage, and credit card in America — and then globally as capital flows toward the highest return. The FOMC is where central bank power concentrates into its most actionable form.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Quantitative Easing",
+      "aliases": ["QE", "Money Printing"],
+      "category": "System",
+      "definition": "Central bank tool where new money is created electronically — conjured into existence on a balance sheet — to buy financial assets (government bonds, mortgage-backed securities), pushing down long-term interest rates and flooding the financial system with cash. The Fed's balance sheet went from $891 billion (2007) to $8.8 trillion (2022), with $4.6 trillion created in two years during COVID alone.",
+      "role": "The tool that changed everything — and the mechanism through which the largest upward wealth transfer in modern history occurred. QE's mechanics: (1) central bank creates money from nothing, (2) uses it to buy financial assets, (3) asset prices rise — stocks, bonds, real estate, (4) the top 10% own 89% of stocks, so wealth concentrates upward, (5) 'not by design — by plumbing.' QE saved the financial system in 2008 and 2020 but the mechanism ensures benefits reach asset owners first and everyone else eventually.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Central Bank Independence",
+      "aliases": ["Independence Doctrine", "Monetary Independence"],
+      "category": "Concept",
+      "definition": "The doctrine that politicians cannot be trusted with the money supply — that independent central bankers appointed for long terms and insulated from electoral pressure can make unpopular decisions like raising rates when politicians want them low — governing central banking for four decades but containing a democratic tension that has never been fully resolved.",
+      "role": "The investigation's central doctrine under attack. Independence rests on the logic: (1) presidents want cheap money before elections, (2) inflationary consequences arrive after, (3) independent central bankers can make unpopular decisions. But the counter-argument is equally powerful: the most consequential economic decisions affecting hundreds of millions are made by officials nobody elected, using tools nobody voted on, with mandates nobody can recall. Turkey shows what happens without independence. The democratic deficit shows what happens with it.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Forward Guidance",
+      "aliases": ["Central Bank Communication"],
+      "category": "System",
+      "definition": "The central bank tool of telling markets what the bank plans to do — where a single word change in a statement can move billions in bond markets, the difference between 'patient' and 'vigilant' is worth hundreds of basis points, and Mario Draghi's six words ended the eurozone crisis without spending a euro.",
+      "role": "The discovery that central banks do not always need to act — sometimes they just need to speak. Forward guidance demonstrates that central bank power ultimately rests on credibility: if markets believe the central bank will act, the statement alone does the work. Draghi's 'whatever it takes' is the purest demonstration — three words substituted for trillions.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Bretton Woods System",
+      "aliases": ["Gold-Dollar Standard", "Postwar Monetary Order"],
+      "category": "System",
+      "definition": "International monetary framework established in 1944 where every currency was pegged to the US dollar and the dollar was pegged to gold at $35 per ounce — the system of physical constraint on central bank money creation that worked for twenty-seven years until Nixon closed the gold window in 1971.",
+      "role": "The constraint era of central banking. The Bretton Woods System represents the period when central banks could not print freely — every dollar created had to be backed by gold. This physical constraint made the system stable but inflexible. When Nixon broke the constraint, central banks entered the era of pure institutional discipline as the only limit on money creation.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Gold Standard",
+      "aliases": ["Gold Convertibility", "Gold Constraint"],
+      "category": "System",
+      "definition": "Monetary constraint under which every dollar created by the Federal Reserve had to be backed by gold — the physical limit on money creation that governed central banking from 1694 to 1971, ended by Nixon's announcement that the US would no longer convert dollars to gold.",
+      "role": "The physical limit that central banking has operated without since 1971. The gold standard's significance: (1) from 1694 to 1971, central banks operated within physical limits, (2) the constraint prevented unlimited money creation, (3) after August 15, 1971, the only constraint is institutional discipline, (4) the next fifty-five years test whether that discipline holds. Every trillion dollars created since 1971 would have been impossible under the gold standard.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Fiat Currency",
+      "aliases": ["Fiat Money", "Unbacked Currency"],
+      "category": "Concept",
+      "definition": "Money not backed by any physical commodity — existing purely because the government declares it legal tender and people trust the institution behind it — the monetary reality since Nixon closed the gold window in 1971, where the only limit on money creation is the central bank's own judgment about inflation.",
+      "role": "The monetary regime that makes unlimited QE possible. Fiat currency is the post-1971 operating system: (1) money is created by institutional decision, not constrained by gold reserves, (2) this enables crisis response at any scale (creating $4.6 trillion in two years), (3) but it also removes the physical check on money creation, (4) the result depends entirely on whether institutional discipline holds. Every argument about central bank power is ultimately an argument about whether fiat currency can be managed responsibly.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Greenspan Put",
+      "aliases": ["Fed Put", "Central Bank Moral Hazard"],
+      "category": "Concept",
+      "definition": "Market belief — formed during Alan Greenspan's nineteen-year tenure — that the Federal Reserve would always rescue markets by flooding the system with cheap money after every crisis, creating moral hazard at systemic scale where banks take bigger risks because they believe the central bank will bail them out.",
+      "role": "The concept that explains how rescue creates the next crisis. The Greenspan Put's mechanics: (1) Fed floods cheap money after each crisis, (2) markets learn the lesson: the Fed always rescues, (3) banks take bigger risks, (4) the housing bubble inflates between 2003 and 2006 as subprime mortgages are packaged as AAA securities, (5) when Greenspan retires, 'the bomb is already built.' The Greenspan Put demonstrates that central bank rescue, repeated often enough, creates the conditions for the next catastrophe.",
+      "first_appearance_index": 4
+    },
+    {
+      "name": "Digital Yuan",
+      "aliases": ["e-CNY", "Chinese CBDC"],
+      "category": "Technology",
+      "definition": "China's central bank digital currency that has processed $2.38 trillion in cumulative transactions through 2.25 billion wallets — as of 2026 paying interest — giving China's central bank the ability to see every transaction, adjust money supply in real time, and potentially program how money is spent.",
+      "role": "The most advanced CBDC in the world and the technology embodying state-maximalist digital money. The digital yuan gives the PBOC capabilities no previous central bank possessed: real-time transaction visibility, programmable spending restrictions, and instant money supply adjustment. It represents one model for the future of money — government-issued, fully surveilled, centrally controllable.",
+      "first_appearance_index": 6
+    },
+    {
+      "name": "Great Depression",
+      "aliases": ["1930s Depression"],
+      "category": "Event",
+      "definition": "Economic catastrophe of the 1930s that Ben Bernanke studied extensively before becoming Fed Chair — understanding what happens when central banks fail to act — and the standard against which every subsequent crisis is measured to justify central bank intervention.",
+      "role": "The historical benchmark for central bank failure. The Great Depression's lesson — that central bank inaction can turn recession into catastrophe — justifies every subsequent expansion of central bank power. Bernanke became Fed Chair specifically because he understood this lesson, and his 2008 interventions were explicitly informed by what went wrong in the 1930s.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "World War II",
+      "aliases": ["WWII", "Second World War"],
+      "category": "Event",
+      "definition": "Global conflict whose end in 1945 created the conditions for the Bretton Woods monetary conference, where forty-four nations formalized the dollar-gold peg and the role of central banks in the postwar order — the event that established the modern framework for international monetary cooperation.",
+      "role": "The catalyst for the modern monetary order. World War II's significance: (1) the war's devastation required a new international financial architecture, (2) Bretton Woods emerged from the ashes, (3) the dollar-gold peg and fixed exchange rates created the constraint era of central banking. The postwar order's stability came from the trauma of war — a reminder that monetary systems are rebuilt after catastrophes.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Panic of 1907",
+      "aliases": ["1907 Financial Crisis", "Bankers' Panic"],
+      "category": "Event",
+      "definition": "Financial crisis where banks failed, depositors lined up to withdraw, and the stock market collapsed — with no central bank and no government mechanism to act — resolved only when J.P. Morgan personally summoned bank heads to his library and locked the doors until they agreed to contribute money, proving the system needed a government mechanism for the next crisis.",
+      "role": "The crisis that made the Federal Reserve politically necessary. The Panic of 1907 demonstrated that (1) America needed a crisis mechanism, (2) relying on one private citizen was unsustainable, (3) the political conclusion was immediate: the next crisis needs a government mechanism. But the solution was designed by Morgan's associates — the people who resolved the crisis also designed its institutional replacement.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "2008 Financial Crisis",
+      "aliases": ["Global Financial Crisis", "Great Financial Crisis"],
+      "category": "Event",
+      "definition": "Global crisis triggered by Lehman Brothers' September 2008 collapse, during which banks stopped lending, credit markets seized, and Ben Bernanke 'crossed the Rubicon' — cutting rates to zero, launching QE, and expanding the Fed's balance sheet from $891 billion to $4.5 trillion — permanently transforming the central bank from lender of last resort to buyer of last resort.",
+      "role": "The crisis that permanently expanded central bank power. The 2008 crisis established the precedent: when the crisis is severe enough, the central bank will create trillions from nothing. Without the Fed's intervention, the Great Recession would likely have become the Second Great Depression. The financial system survived but the precedent was set — and the COVID response ($4.6 trillion in two years) was possible because 2008 proved it could be done.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Great Recession",
+      "aliases": ["Post-2008 Recession"],
+      "category": "Event",
+      "definition": "Economic downturn following the 2008 financial crisis that would likely have become the Second Great Depression without the Federal Reserve's intervention — the crisis that justified the expansion of central bank power and set the template for the even larger COVID response.",
+      "role": "The evidence that central bank intervention works — at a cost. The Great Recession was contained because Bernanke acted, but the containment mechanism (QE) produced the wealth concentration effects that the investigation tracks: asset prices recovered faster than wages, and the plumbing of central bank policy ensured benefits reached asset owners first.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Wealth Inequality Mechanism",
+      "aliases": ["QE Wealth Transfer", "The Plumbing Problem"],
+      "category": "System",
+      "definition": "The structural transmission problem of central bank policy: when the Fed cuts rates or launches QE, money flows through financial markets first — bond prices, stock prices, real estate rise immediately — while cheaper borrowing reaches ordinary people months or years later. The top 10% own 89% of stock market wealth; between 2020 and 2022, billionaire wealth increased by $1.7 trillion while bottom 50% wages barely kept pace with inflation.",
+      "role": "The investigation's core critique of central banking mechanics. This is not conspiracy but plumbing: (1) policy transmits through asset markets, (2) those closest to the pipes get the water first, (3) QE was the largest upward wealth transfer in modern history — not by design, but by mechanism. The tool works. The plumbing is the issue. The question is whether an institution that systematically benefits asset owners first can claim to serve the entire economy.",
+      "first_appearance_index": 5
+    },
+    {
+      "name": "Rubicon",
+      "aliases": ["Crossing the Rubicon"],
+      "category": "Event",
+      "definition": "Historical reference to Julius Caesar's 49 BC crossing of the Rubicon River — a point of no return — used by Ben Bernanke to describe the Federal Reserve's 2008 expansion from lender of last resort to buyer of last resort, acknowledging that the central bank had permanently expanded its role beyond any previous mandate.",
+      "role": "The metaphor for irreversible expansion of central bank power. Bernanke's use of 'crossed the Rubicon' is an admission: the Fed did something that cannot be undone. Once a central bank demonstrates willingness to create trillions and buy assets at unlimited scale, the expectation is permanent. Markets now price in the assumption that the Fed will act this way again.",
+      "first_appearance_index": 5
+    }
+  ]
+}

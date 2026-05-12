@@ -1,0 +1,15 @@
+{
+  "name": "@nitanics/web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --cwd ./frontend dev",
+    "dev:frontend": "bun run --cwd ./frontend dev",
+    "dev:graph": "bun run --cwd ./modules/graph-studio dev",
+    "build": "bun run --cwd ./frontend build",
+    "build:frontend": "bun run --cwd ./frontend build",
+    "build:graph": "bun run --cwd ./modules/graph-studio build",
+    "preview": "bun run --cwd ./frontend preview"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "temporal_phases": [
+    {
+      "index": 1,
+      "label": "Problem Context",
+      "period": "Phase 1"
+    },
+    {
+      "index": 2,
+      "label": "Method And Evidence",
+      "period": "Phase 2"
+    },
+    {
+      "index": 3,
+      "label": "Validation And Implications",
+      "period": "Phase 3"
+    }
+  ],
+  "entities": [
+    {
+      "name": "PathGene Benchmark",
+      "aliases": [
+        "PathGene"
+      ],
+      "category": "Resource",
+      "definition": "PathGene is a multicentre benchmark resource for lung cancer histopathology and mutation analysis, designed to support more standardized external validation and comparison of mutation-prediction systems across institutions.",
+      "role": "Functions as an external evaluation target and benchmark infrastructure node.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Histopathology Images",
+      "aliases": [
+        "H&E Images",
+        "Whole-Slide Images"
+      ],
+      "category": "Resource",
+      "definition": "Histopathology images are stained tissue slides and derived tiles used in computational pathology to analyze tumour morphology, tissue architecture, and cellular texture for downstream tasks linked to molecular or clinical states.",
+      "role": "Acts as the primary imaging modality shared across mutation-prediction studies and benchmark discussions.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Somatic Gene Mutation",
+      "aliases": [
+        "Mutation Status",
+        "Tumour Mutation"
+      ],
+      "category": "Concept",
+      "definition": "Somatic gene mutation refers to tumour-acquired genetic alterations that influence growth, therapy response, resistance, and disease progression, making mutation status a central target in precision oncology and pathology-genomics research.",
+      "role": "Provides the core prediction target that links imaging methods to molecular oncology.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "Precision Oncology",
+      "aliases": [
+        "Personalized Oncology"
+      ],
+      "category": "Concept",
+      "definition": "Precision oncology is the clinical practice of tailoring treatment decisions to the molecular and biological characteristics of a patient\u2019s tumour, often relying on biomarkers, mutation profiles, and multimodal evidence to guide targeted therapy selection.",
+      "role": "Supplies the clinical rationale for mutation-prediction systems and faster molecular screening pipelines.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "Patient-Level Generalization",
+      "aliases": [
+        "New-Patient Generalization",
+        "External Generalization"
+      ],
+      "category": "Metric",
+      "definition": "Patient-level generalization measures whether a model performs well on entirely unseen individuals or external cohorts rather than only on held-out images from patients already represented during training.",
+      "role": "Captures the main validation standard that separates promising internal results from stronger translational evidence.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "External Validation",
+      "aliases": [
+        "Out-of-Cohort Validation"
+      ],
+      "category": "Process",
+      "definition": "External validation tests a model on data from different cohorts, sites, or institutions than those used for training, making it one of the strongest indicators that a pathology AI system may generalize beyond internal experimental conditions.",
+      "role": "Provides the operational standard for stronger translational confidence.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "DeepGEM Collaboration",
+      "aliases": [
+        "DeepGEM"
+      ],
+      "category": "Organization",
+      "definition": "The DeepGEM Collaboration is the large multicentre lung-cancer mutation-prediction effort cited as a state-of-the-art benchmark for histology-driven mutation inference with stronger cohort scale and validation breadth than small internal studies.",
+      "role": "Represents the high-performance large-cohort frontier within lung-cancer mutation prediction.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "TCGA LUAD/LUSC Cohort",
+      "aliases": [
+        "TCGA",
+        "TCGA Lung Cancer Cohort"
+      ],
+      "category": "Resource",
+      "definition": "The TCGA LUAD and LUSC cohort is a widely used lung cancer resource pairing histopathology imagery and mutation information, making it a foundational dataset for early and modern studies in computational mutation prediction.",
+      "role": "Functions as a recurring benchmark dataset used to ground and compare several lung-cancer studies.",
+      "first_appearance_index": 2
+    },
+    {
+      "name": "Attention-Based MIL",
+      "aliases": [
+        "MIL",
+        "Multiple Instance Learning"
+      ],
+      "category": "Technology",
+      "definition": "Attention-based multiple instance learning is a weakly supervised approach that learns which image regions within a slide or patient bag contribute most strongly to the target outcome, helping align coarse labels with localized visual evidence.",
+      "role": "Acts as an important future-direction and comparative method for overcoming tile-label inheritance noise.",
+      "first_appearance_index": 3
+    },
+    {
+      "name": "EGFR",
+      "aliases": [
+        "Epidermal Growth Factor Receptor"
+      ],
+      "category": "Concept",
+      "definition": "EGFR is a clinically actionable gene whose mutation status strongly influences targeted therapy options in lung cancer, making it a recurring molecular target in pathology-based mutation prediction studies.",
+      "role": "Functions as a representative actionable mutation target in lung-cancer literature.",
+      "first_appearance_index": 1
+    },
+    {
+      "name": "KRAS",
+      "aliases": [
+        "Kirsten Rat Sarcoma"
+      ],
+      "category": "Concept",
+      "definition": "KRAS is a major oncogenic driver frequently studied in computational oncology because its mutation status shapes tumour behaviour and therapeutic options, making it a common target in pathology-genomics and multimodal mutation research.",
+      "role": "Acts as a recurrent gene target shared across mutation-prediction studies.",
+      "first_appearance_index": 2
+    }
+  ]
+}

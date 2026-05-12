@@ -1,0 +1,381 @@
+
+
+ 
+ 
+EQUITY RESEARCH 
+REPORT ESSENTIALS 
+      
+
+An equity research report can include varying levels of detail, and although there is no industry 
+standard when it comes to format, there are common elements to all thorough and effective equity 
+research reports. This guide includes some fundamental features and information that should be 
+considered essential to every research report, as well as some tips for making your analysis and 
+report as effective as possible. 
+ 
+BASIC INFORMATION 
+The research report should begin with some basic information about the firm, including the company’s 
+ticker symbol, the primary exchange where its shares are traded, the primary sector and industry 
+where it operates, the investment recommendation, the current stock price and market capitalization, 
+and the target stock price.  
+ 
+In addition, the liquidity and float of a security are important considerations for the equity analyst. The 
+liquidity of a stock refers to the degree to which it can be purchased and sold without affecting the 
+price. The analyst should understand that periods of financial stress can affect the liquidity of a 
+security. A stock’s float refers to the number of shares that are publicly owned and available for 
+trading and generally excludes restricted shares and the holdings of insiders. The float of a stock can 
+be significantly smaller than its market capitalization and thus is an important consideration for large 
+institutional investors, especially when it comes to investing in companies with smaller market 
+capitalizations. Consequently, a relatively small float deserves mention. Finally, it is good practice to 
+identify the major shareholders of a firm. 
+ 
+BUSINESS DESCRIPTION 
+This section should include a detailed description of the company and its products and services. It 
+should convey a clear understanding of the company’s economics, including a discussion of the key 
+drivers of revenues and expenses. Much of this information can be sourced from the company itself 
+and via its regulatory filings as well as industry publications.  
+ 
+INDUSTRY OVERVIEW AND COMPETITIVE POSITIONING 
+This section should include an overview of the industry dynamics, including a competitive analysis of 
+the industry. Most firms’ annual reports include some discussion of the competitive environment. A 
+group of peer companies should be developed for a competitive analysis. The “Porter’s Five Forces” 
+framework for industry analysis is an effective tool for examining the health and competitive intensity 
+of an industry. Production capacity levels, pricing, distribution, and stability of market share are also 
+important considerations.  
+ 
+It is important to note that there are different paths to success. Strength of brand, cost leadership, and 
+access to protected technology or resources are just some of the ways in which companies set 
+themselves apart from the competition. Famed investor Warren Buffett describes a firm’s competitive 
+advantage as an economic “moat.” He says, “In business, I look for economic castles protected by 
+unbreachable moats.” 
+ 
+INVESTMENT SUMMARY 
+This section should include a brief description of the company, significant recent developments, an 
+earnings forecast, a valuation summary, and the recommended investment action. If the purchase or 
+sale of a security is being advised, there should be a clear and concise explanation as to why the 
+security is deemed to be mispriced. That is, what is the market currently not properly discounting in 
+the stock’s price, and what will prompt the market to re-price the security?  
+ 
+VALUATION 
+This section should include a thorough valuation analysis of the company using conventional 
+valuation metrics and formulas. Equity valuation models can derive either absolute or relative values. 
+Absolute valuation models derive an asset’s intrinsic value and generally take the form of discounted 
+cash flow models. Relative equity valuation models estimate a stock’s value relative to another stock 
+CFA Institute  EQUITY RESEARCH REPORT ESSENTIALS SEPTEMBER 2020 
+ 
+and can be based on a number of different metrics, including price/sales, price/earnings, price/cash 
+flow, and price/book value. Because model outputs can vary, more than one valuation model should 
+be used.  
+ 
+FINANCIAL ANALYSIS 
+This section should include a detailed analysis of the company’s historical financial performance and 
+a forecast of future performance. Financial results are commonly manipulated to portray firms in the 
+most favorable light. It is the responsibility of the analyst to understand the underlying financial reality. 
+Accordingly, a careful reading of the footnotes of a company’s financial disclosures is an essential 
+part of any examination of earnings quality. Nonrecurring events, the use of off-balance-sheet 
+financing, income and reserve recognition, and depreciation policies are all examples of items that 
+can distort a firm’s financial results.   
+ 
+Financial modeling of future financial results helps to measure the effects of changes in certain inputs 
+on the various financial statements. Analysts should be especially careful, however, about 
+extrapolating past trends into the future. This is especially important in the case of cyclical firms. 
+Projecting forward from the top or bottom of a business cycle is a common mistake.  
+ 
+Finally, it can be informative to use industry-specific financial ratios as part of the financial analysis. 
+Examples include proven reserves/share for oil companies, revenue/subscriber for cable or wireless 
+companies, and revenue/available rooms for the hotel industry.  
+ 
+INVESTMENT RISKS 
+This section should address potential negative industry and company developments that could pose a 
+risk to the investment thesis. Risks can be operational or financial or related to regulatory issues or 
+legal proceedings.   
+ 
+Although companies are generally obligated to discuss risks in their regulatory disclosures, risks are 
+often subjective and hard to quantify (e.g., the threat of a competing technology). It is the job of the 
+analyst to make these determinations. Of course, disclosures of “qualified opinions” from auditors and 
+“material weakness in internal control over financial reporting” should be automatic red flags for 
+analysts. 
+ 
+ENVIRONMENTAL, SOCIAL & GOVERNANCE (ESG) 
+This section should include information on how the company manages the relationships related to 
+Environmental, Social and Governance. Below are some examples within these three areas that can 
+have a lasting impact on the company’s short and long term prospects. 
+ 
+Environmental – how is the company working towards the conservation of the natural world? This can 
+include climate change and carbon emissions, air and water pollution, energy efficiency, waste 
+management and more. 
+ 
+Social – how does the company consider people and relationships? This can include community 
+relations, human rights, gender and diversity, labor standards, customer satisfaction and employee 
+engagement. 
+ 
+Governance – what are the standards for running the company? This can include board composition, 
+audit committee structure, executive compensation, succession planning, leadership experience and 
+bribery and corruption policies. 
+ 
+ 
+CFA INSTITUTE RESOURCES 
+ 
+The following CFA Institute resources codify the ethical standards and best practices that are the 
+responsibility of all investment professionals. 
+CFA Institute  EQUITY RESEARCH REPORT ESSENTIALS SEPTEMBER 2020 
+ 
+ 
+CFA Institute Code of Ethics and Standards of Professional Conduct 
+ 
+Best Practice Guidelines Governing Analyst/Corporate Issuer Relations
+ 
+ 
+
+ 
+ 
+ 
+ 
+ICICI Securities – Retail Equity Research 
+ 
+ 
+Shubh Nivesh 
+ 
+CMP: ₹ 2469 Target: ₹ 3060 (24%)     Target Period:  12  months  BUY 
+April 13, 2026 
+Mazagon Dock Shipbuilders (MAZDOC) 
+ 
+Scaling up capacity; strong order pipeline to drive growth…  
+About the stock : Mazagon Dock Shipbuilders (MDL)  is the on ly p ublic sector 
+defence shipyard constructing destroyers & s ubmarines. Currently, MDL has 
+capacity of building 11 Submarines & 10 warships (including destroyers, frigates & 
+other vessels) concurrently 
+ 
+ 
+• Order book stands at Rs 23,758 crore as of Dec-25  
+Investment Rationale: 
+• C urrent order backlog to be executed over next 2 -2.5 years; new orders 
+to drive growth from FY28E: Company’s revenue growth has moderated 
+to ~11% YoY during 9MFY26 after witnessing strong growth over the last 
+4 years (~30% CAGR over FY21-25). This is mainly on account of depleting 
+order-book (OB), which has come down gradually over the last 5 -6 years 
+(OB stands at Rs 23,758 crore as of Dec-25 vs FY21’s end OB of Rs 49700 
+crore) At 1.9x TTM revenue, current OB mainly consist of contracts like P -
+17A frigates (~42% of total) and other including post commissioning 
+contracts and refit orders etc. Major part of these contracts is expected to 
+be concluded in the next 2 -3 years, which would help company’s revenue 
+growth during FY26 E-FY27E. However, we believe that revenue growth 
+beyond FY27E is expected to surge again post the placement of large 
+contracts like 3 additional submarines and 6 next generation submarines 
+(expected to be placed in coming months). We e stimate revenue growth 
+at ~12% CAGR over FY25-28E 
+• O
+rder pipeline remains robust; longer -term growth outlook intact: Order 
+pipeline remains strong for the company, considering the opportunities 
+from both defence & commercial segments. Contracts like six next -
+generation submarines under P-75I (expected value ~Rs 99000 crore) and 
+additional three Kalvari class submarines (expected order size Rs 30000 
+40000 crore) have already been cleared from govt and expected to be 
+concluded in coming months . O ther major contract like next- generation 
+corvettes is also likely to be signed in coming months ( MDL’s associate 
+company) - Goa Shipyard is L2 with share of ~Rs 13500 crore). Moreover, 
+next-generation frigates (P-17B) & next generation destroyers (P-18) with 
+an expected value ~₹ 1,55,000 crore are also to be finalised in the coming 
+years. Management has also recently signed an MoU with Swan Defence 
+where-in they would together bid for Landing Platform Dock. Company is 
+also expanding its shipbuilding capacity by potentially setting up new 
+facilities or partnering in projects at  Tamil Nadu  with an investment of 
+₹15,000 crore. We believe that these large naval defence projects (along 
+with huge opportunity in commercial shipbuilding across  both domestic 
+and exports markets provide longer term order inflow visibility for MDL.  
+ 
+Rating and Target Price 
+• Current order-book would drive growth over the next 2-3 years. However, 
+timely placement of large contracts like submarines, frigates, destroyers 
+etc would drive growth from FY28E onwards  
+• We estimate revenue CAGR of 11.5% over FY25-28E with EBITDA margin 
+sustaining at 18.5-19%. We recommend BUY on MDL with TP at  ₹ 3060 
+per share (based on 35x FY28E EPS) 
+ 
+(Rs crore) FY23 FY24 FY25  3 Year CAGR 
+(FY22-25) FY26E FY27E FY28E  3 Year CAGR 
+(FY25-28E) 
+Revenues 7,827                  9,467                  11,432               25.9                    12,855               14,141               15,837               11.5                      
+EBITDA 798                     1,412                  2,060                  68.0                    2,405                  2,683                  3,053                  14.0                      
+EBITDA margin (%) 10.2                    14.9                    18.0                    18.7                    19.0                    19.3                    
+Net Profit 1,119                  1,937                  2,414                  58.1                    2,778                  3,108                  3,529                  13.5                      
+Diluted EPS (Rs) 55.5                    96.0                    59.8                    68.9                    77.0                    87.5                    
+P/E (x) 44.5                    25.7                    41.3                    35.9                    32.0                    28.2                    
+EV/EBITDA (x) 108.2                  60.5                    40.5                    33.5                    29.0                    24.3                    
+RoCE (%) 29.6                    38.9                    38.6                    35.6                    32.6                    30.7                    
+RoE (%) 23.5                    31.0                    30.4                    28.0                    25.6                    24.1                     
+Source: Company, ICICI Direct Research 
+ 
+Particulars  
+Particular Amount (Rs Crore)
+Market Capitalisation                       99,595 
+FY25 Debt                                -   
+FY25 Cash                       16,150 
+EV                       83,445 
+52 Week H/L 3778 / 2057
+Equity Capital 202
+Face Value 5  
+ 
+Shareholding pattern  
+Mar-25 Jun-25 Sep-25 Dec-25
+Promoter 84.8 81.2 81.2 81.2
+FII 2.3 2.6 2.0 1.8
+DII 1.7 5.2 5.7 5.4
+Others 11.2 11.0 11.2 11.6  
+ 
+Price Chart  
+ 
+Key risks        
+i) Dependent on govt contracts 
+ii) High working capital requirement 
+iii) Availability of key raw materials   
+Research Analyst        
+Vijay Goel 
+vijay.goel@icicisecurities.com 
+Kush Bhandari 
+kush.bhandari@icicisecurities.com 
+ 
+ 
+0
+500
+1,000
+1,500
+2,000
+2,500
+3,000
+3,500
+4,000
+0
+5000
+10000
+15000
+20000
+25000
+30000
+Apr-24
+Jul-24
+Oct-24
+Jan-25
+Apr-25
+Jul-25
+Oct-25
+Jan-26
+Apr-26
+NSE 500(LHS) MAZAGON DOCK SHIPBUILDERS (RHS)
+Key Financial Summary 
+  
+ICICI Securities | Retail Research  2 
+  ICICI Direct Research 
+ 
+Shubh Nivesh  | Bharat Electronics  
+ 
+ 
+ 
+RATING RATIONALE  
+ICICI Direct endeavours to provide objective opinions and recommendations. ICICI Direct assigns ratings to its 
+stocks according to their notional target price vs. current market price and then categorizes them as Buy, Hold, 
+Reduce and Sell. The performance horizon is two years unless specified and the notional target price is defined 
+as the analysts' valuation for a stock 
+Buy: >15%  
+Hold: -5% to 15%; 
+Reduce: -15% to -5%; 
+Sell: <-15% 
+ 
+ 
+Pankaj Pandey  Head – Research pankaj.pandey@icicisecurities.com  
+  
+ICICI Direct Research Desk,  
+ICICI Securities Limited,  
+Third Floor, Brillanto House,  
+Road No 13, MIDC,  
+Andheri (East)  
+Mumbai – 400 093 
+ 
+ research@icicidirect.com   
+ 
+ 
+ 
+  
+ICICI Securities | Retail Research  3 
+  ICICI Direct Research 
+ 
+Shubh Nivesh  | Bharat Electronics  
+ 
+ANALYST CERTIFICATION 
+I/We, Kaustubh Pawaskar, PGDBA (Finance), Abhishek Shankar, PGDM-RM, Research Analysts, authors and the names subscribed to this report, hereby certify that all of the views expressed 
+in this research report accurately reflect our views about the subject issuer(s) or securities. We also certify that no part of our compensation was, is, or will be directly or indir ectly related to 
+the specific recommendation(s) or view(s) in this report. It is also confirmed that above mentioned Analysts of this report h ave not received any compensation from the companies mentioned 
+in the report in the preceding twelve months and do not serve as an officer, director or employee of the companies mentioned in the report. 
+Terms & conditions and other disclosures:  
+ICICI Securities Limited (ICICI Securities) is a full-service, integrated investment banking and is, inter alia, engaged in the business of stock brokering and distribution of financial products. 
+ICICI Securities is Sebi registered stock broker, merchant banker, investment adviser, portfolio manager and Research Analyst . ICICI Securities is registered with Insurance Regulatory 
+Development Authority of India Limited (IRDAI) as a composite corporate agent and with PFRDA as a Point of Presence. ICICI Securities Limited Research Analyst SEBI Registration Number 
+– INH000000990. ICICI Securities Limited SEBI Registration is INZ000183631 for stock broker. Registered Office Address: ICICI Venture House, Appasaheb Marathe Marg, Prabhadevi, Mumbai 
+- 400 025. CIN: L67120MH1995PLC086241, Tel: (91 22) 6807 7100.  ICICI Securities is a subsidiary of ICICI Bank which is India’s  largest private sector bank and has its various subsidiaries 
+engaged in businesses of ho using finance, asset management, life insurance, general insurance, venture capital fund management, etc. (“associates”), the details in respect of which are 
+available on www.icicibank.com.  
+Investments in securities market are subject to market risks. Read all the related documents carefully before 
+investing.  
+Registration granted by Sebi and certification from NISM in no way guarantee performance of the intermediary or provide any a ssurance of returns to investors. None of the research 
+recommendations promise or guarantee any assured, minimum or risk-free return to the investors. 
+Name of the Compliance officer (Research Analyst): Mr. Atul Agrawal 
+Contact number: 022-40701000 E-mail Address: complianceofficer@icicisecurities.com 
+For any queries or grievances: Mr. Jeetu Jawrani Email address: headservicequality@icicidirect.com Contact Number: 18601231122 
+ICICI Securities is one of the leading merchant bankers/ underwriters of securities and participate in virtually all securities trading markets in India. We and our associates might have investment 
+banking and other business relationship with a significant  percentage of companies covered by our Investment Research Department. ICICI Securities and its analysts, persons reporting t o 
+analysts and their relatives are generally prohibited from maintaining a financial interest in the securities or derivatives of any companies that the analysts cover. 
+Recommendation in reports based on technical and derivative analysis centre on studying charts of a stock's price movement, outstanding positions, trading volume etc as opposed to focusing 
+on a company's fundamentals and, as such, may not match with the re commendation in fundamental reports. Investors may visit icicidirect.com to view the Fundamental and Technical 
+Research Reports. 
+ 
+Our proprietary trading and investment businesses may make investment decisions that are inconsistent with the recommendations expressed herein.  
+ICICI Securities Limited has two independent equity research groups: Institutional Research and Retail Research. This report has been prepared by the Retail Research. The views and opinions 
+expressed in this document may or may not match or may be contrary with the views, estimates, rating, and target price of the Institutional Research. 
+ 
+The information and opinions in this report have been prepared by ICICI Securities and are subject to change without any noti ce. The report and information contained herein is strictly 
+confidential and meant solely for the selected recipient and may not be  altered in any way, transmitted to, copied or distributed, in part or in whole, to any other person or to the media or 
+reproduced in any form, without prior written consent of ICICI Securities. While we would endeavour to update the information  herein on a reasonable basis, ICICI Securities is under no 
+obligation to update or keep the information current. Also, there may be regulatory, compliance or other reasons that may prevent ICICI Securities from doing so. Non-rated securities indicate 
+that rating on a particular security has been suspended temporarily and such suspension is in compliance with applicable regulations and/or ICICI Securities policies, in circumstances where 
+ICICI Securities might be acting in an advisory capacity to this company, or in certain other circumstances.  
+ 
+This report is based on information obtained from public sources and sources believed to be reliable, but no independent veri fication has been made nor is its accuracy or completeness 
+guaranteed. This report and information herein is solely for informational purpose and shall not be used or considered as an offer document or solicitation of offer to buy or sell or subscribe for 
+securities or other financial instruments. Though disseminated to all the customers simultaneously, not all customers may rec eive this report at the same time. ICICI Securities will not treat 
+recipients as customers by virtue of their receiving this report. Nothing in this report constitutes investment, legal, accounting and tax advice or a representation that any investment or strategy 
+is suitable or appropriate to your specific circumstances. The securities discussed and opinions expressed in this report may not be suitable for all investors, who must make their own investment 
+decisions, based on their own investment objectives, financial positions and needs of specific recipient. This may not be taken in substitution for the exercise of independent judgme nt by any 
+recipient. The recipient should independently evaluate the investment risks. The value and return on investment may vary because of changes in interest rates, foreign exchange rates or any 
+other reason. ICICI Securities accepts no liabilities whatsoever for any loss or damage of any kind arising out of the use of  this report. Past performance is not necessarily a guide to fu ture 
+performance. Investors are advised to see Risk Disclosure Document to understand the risks associated before investing in the  securities markets. Actual results may differ materially from 
+those set forth in projections. Forward-looking statements are not predictions and may be subject to change without notice.  
+ 
+ICICI Securities or its associates might have managed or co-managed public offering of securities for the subject company or might have been mandated by the subject company for any other 
+assignment in the past twelve months.  
+ 
+ICICI Securities or its associates might have received any compensation from the companies mentioned in the report during the period preceding twelve months from the date of this report for 
+services in respect of managing or co -managing public offerings, c orporate finance, investment banking or merchant banking, brokerage services or other advisory service in a merger or 
+specific transaction.  
+ 
+ICICI Securities or its associates might have received any compensation for products or services other than investment banking or merchant banking or brokerage services from the companies 
+mentioned in the report in the past twelve months. 
+ 
+ICICI Securities encourages independence in research report preparation and strives to minimize conflict in preparation of re search report. ICICI Securities or its associates or its analysts did 
+not receive any compensation or other benefits from the compa nies mentioned in the report or third party in connection with preparation of the research report. Accordingly, neither ICICI  
+Securities nor Research Analysts and their relatives have any material conflict of interest at the time of publication of this report.  
+ 
+Compensation of our Research Analysts is not based on any specific merchant banking, investment banking or brokerage service transactions.  
+ 
+ICICI Securities or its subsidiaries collectively or Research Analysts or their relatives do not own 1% or more of the equity  securities of the Company mentioned in the report as of the last day 
+of the month preceding the publication of the research report.  
+ 
+Since associates of ICICI Securities and ICICI Securities as a entity are engaged in various financial service businesses, they might have financial interests or actual/beneficial ownership of one 
+percent or more or other material conflict of interest various companies including the subject company/companies mentioned in this report.  
+ 
+ICICI Securities may have issued other reports that are inconsistent with and reach different conclusion from the information presented in this report.  
+ICICI Securities Limited has not used any Artificial Intelligence tools for preparation of this Research Report 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,13 @@
+{
+  "name": "@nitanics/ingestion-pipeline",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Python ingestion pipeline bridged to Turborepo via uv",
+  "scripts": {
+    "dev": "uv sync && echo 'Python environment synced'",
+    "build": "uv sync && uv lock",
+    "test": "uv run pytest",
+    "lint": "uv run ruff check .",
+    "format": "uv run ruff format ."
+  }
+}
