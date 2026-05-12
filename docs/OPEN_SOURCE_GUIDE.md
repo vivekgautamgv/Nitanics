@@ -132,47 +132,53 @@ bun run dev:mcp          # MCP server (optional, for AI clients)
 
 ## Step 5 - Create Your Own Knowledge Graph
 
-This is the core workflow. You bring documents, an AI agent processes them through the ingestion pipeline, and the results appear in Graph Studio.
+This is the core workflow. You bring a document, your AI agent extracts the graph, and it appears live in Graph Studio.
 
-### 5a. Prepare your source document
+### 5a. Create your project folder
 
-Place your source text under:
-
-```
-apps/ingestion-pipeline/data/projects/<your-project-slug>/script.md
-```
-
-This can be any document - a research paper, article, report, transcript, or notes.
-
-### 5b. Run the ingestion with your AI agent
-
-Open the repo in your preferred AI coding tool (Claude, Codex, Cursor, Antigravity, Windsurf, or any MCP-compatible client) and give it this prompt:
+All graph data lives in the `graphs/` folder at the root of the repo. Create a folder for your new project:
 
 ```
-You are working in the Nitanics repo.
-
-Read docs/ARCHITECTURE.md and apps/ingestion-pipeline/skills/extraction-agent.md.
-
-Create a new graph project from the document at:
-apps/ingestion-pipeline/data/projects/<your-project-slug>/script.md
-
-Use the existing Nitanics artifact schema.
-Generate extraction artifacts under apps/ingestion-pipeline/data/extracted/<your-project-slug>/.
-Validate the project before upload.
-Upload it into Neo4j without deleting or replacing existing collections.
+graphs/
+└── <your-collection>/          ← group name (e.g. "ai-research", "market-reports")
+    └── <your-project>/         ← one folder per document (e.g. "openai-2025-report")
+        └── source.md           ← paste your document here
 ```
 
-The agent will:
-1. Read the source document
-2. Run NLP candidate extraction
-3. Perform LLM-assisted semantic extraction
-4. Generate 6 structured artifact files
-5. Validate them against the schema
-6. Upload entities, relationships, and causal chains into Neo4j
+Create the folder and add your source document as `source.md`. This can be any text — a research paper, article, report, transcript, or notes.
+
+### 5b. Run the extraction with your AI agent
+
+Open this repo in your preferred AI coding tool (Claude, Codex, Cursor, Antigravity, Windsurf, or any MCP-compatible client) and give it this prompt:
+
+```
+Read docs/INGESTION_FOR_AGENTS.md.
+
+Source document: graphs/<your-collection>/<your-project>/source.md
+Collection: <your-collection>
+Project slug: <your-project>
+
+Generate all 6 extraction artifacts in the same folder.
+Validate before upload.
+Upload to Neo4j without deleting or replacing existing collections.
+```
+
+The agent will generate these files inside your project folder:
+
+| File | What it contains |
+|------|-----------------|
+| `01_html.html` | Formatted HTML of your document |
+| `02_placement.json` | Collection + directory metadata |
+| `03_nlp_entities.json` | NLP candidate extraction |
+| `04_all_entities.json` | Full entity list with definitions |
+| `05_embeddings.json` | Entity embedding vectors |
+| `06_extraction.json` | Final graph: entities, relationships, causal chains |
 
 ### 5c. View your graph
 
-Refresh `http://127.0.0.1:5174` and open your collection in Graph Studio. Your entities, relationships, bridge connections, and causal chains are now visualized in the interactive force-directed graph.
+Refresh `http://127.0.0.1:5174` and open your collection in Graph Studio. Your entities, relationships, bridge connections, and causal chains are now live in the interactive force-directed graph.
+
+> See `graphs/README.md` for the full folder convention and examples.
 
 ---
 
