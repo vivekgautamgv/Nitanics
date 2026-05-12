@@ -66,8 +66,8 @@ nitanics/
 ## Quick Start
 
 ```bash
-git clone https://github.com/vivekgautamgv/MT-v4.git
-cd MT-v4
+git clone https://github.com/vivekgautamgv/nitanics.git
+cd nitanics
 bun install
 bun run neo4j:ensure   # starts Neo4j via Docker
 bun run dev            # starts the web app

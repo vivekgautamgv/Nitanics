@@ -21,7 +21,7 @@ Complete setup instructions for running Nitanics locally from a fresh clone.
 ## Step 1 - Clone and Install
 
 ```bash
-git clone https://github.com/nitanics/nitanics.git
+git clone https://github.com/vivekgautamgv/nitanics.git
 cd nitanics
 bun install
 ```
