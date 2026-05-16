@@ -11,14 +11,28 @@ Open-source local knowledge graph workspace. Bring your documents, use your AI a
 
 ## Features at a Glance
 
-- **Interactive Graph Studio:** Explore your documents as force-directed node graphs.
-- **Path Finder:** Find direct and hidden connections between different entities across your graph.
-- **Bridge View:** Automatically discover bridge entities that span across multiple separate documents or projects.
-- **Entity Inspector:** Click on any node to get rich information at your fingertips, including definitions, relationships, and causal chains.
-- **AI Agent Integration:** Use your favorite LLM or AI coding agent to easily expand your graph database. The ingestion pipeline does the heavy lifting.
-- **Portable Exports:** Graph data can be exported as portable JSON collections. Use these exports to share your knowledge bases with others or easily seed a new Neo4j database on another machine. 
+- **Interactive Graph Studio:** Explore your documents as force-directed node graphs, visualizing relationships, entities, and complex datasets instantly.
+- **Path Finder:** Find direct and hidden connections between different entities across your graph up to 8 hops away. Uncover hidden ties that a standard text search would miss.
+- **Bridge View:** Automatically discover "bridge entities" that span across multiple separate documents or projects, helping you tie disparate research together.
+- **Entity Inspector:** Click on any node to get rich information at your fingertips, including definitions, relationships, categorizations, and causal chains in a detailed side panel.
+- **AI Agent Integration:** Use your favorite LLM (Claude, ChatGPT, etc.) or AI coding agent to effortlessly expand your graph database. The ingestion pipeline does the heavy lifting to extract structured knowledge.
+- **Portable Exports:** Graph data can be exported as portable JSON collections. Use these exports to:
+  - Share specific knowledge bases with your team or community.
+  - Back up important collections.
+  - Instantly seed a new Neo4j database on another machine without re-ingesting documents.
 - **MCP Server Support:** Native Model Context Protocol support allows AI agents to directly query your graph data for context.
-- **Local-first with Docker:** Runs entirely on your machine via Docker; no cloud dependencies, no data leaves your laptop. 
+- **Local-first with Docker:** Runs entirely on your machine via Docker; no cloud dependencies, no data leaves your laptop. Keep your sensitive data completely private.
+- **Fast Search & Filtering:** Powerful full-text search and interactive filtering by node importance, projects, categories, and edge types.
+
+## Use Cases
+
+Nitanics is designed to turn flat folders of documents into living, interconnected knowledge bases. Here's how you can use it:
+
+- **Research & Academic Study:** Digest dozens of research papers. Nitanics will automatically find the common methodologies, cited authors, and recurring concepts across all papers, presenting them in the Bridge View.
+- **Financial & Market Analysis:** Analyze earnings call transcripts, market reports, and news. Map out the relationships between companies, market trends (like inflation or supply chains), and geopolitical events to see the hidden ripple effects.
+- **Legal Case Preparation:** Ingest case files, testimonies, and evidence. Use the Path Finder to visualize the connections between people of interest, locations, and events.
+- **Personal Knowledge Management (PKM):** Replace your standard notes app. Drop your daily notes, articles, and ideas into the workspace, and let the AI build a graph of your entire "second brain."
+- **Corporate Intelligence & Onboarding:** Create a collection of company documentation, architecture specs, and domain knowledge. Export this graph and share it with new hires so they can visually explore how different internal systems and teams relate to each other.
 
 ## View
 
