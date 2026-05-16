@@ -1,6 +1,14 @@
-# Nitanics
+# Nitanics: The Ultimate LLM Context Engine
 
-Open-source local knowledge graph workspace. Bring your documents, use your AI agent to extract structured graph data, explore it in an interactive graph UI backed by Neo4j.
+### 100 Documents Re-read vs. 100 Words Re-read.
+
+Store massive chat histories or hundreds of research documents in a single, living knowledge graph. When you query an LLM, standard RAG systems force the AI to blindly re-read all 100 documents, burning through tokens and context limits. Nitanics solves the context window problem by fetching only the exact graph entities and relationships relevant to your query. 
+
+It acts as a flawless long-term memory retrieval system, automatically connects complex concepts, and **saves up to 70% in token costs**.
+
+---
+
+Open-source local knowledge graph workspace. Bring your documents, use your AI agent to extract structured graph data, and explore it in an interactive UI backed by Neo4j.
 
 ## What It Does
 
@@ -16,7 +24,7 @@ Nitanics isn't just a static dashboard; it is a **living knowledge layer**. Our 
 - **Eminently Readable:** The interactive UI and Entity Inspector turn complex data into intuitive visual stories. It's designed to be explored naturally, not queried via complex code.
 - **Endlessly Expandable:** You are never locked in. You can dynamically grow your graph anytime by pointing your AI agent at new documents. The ingestion pipeline merges new entities into the existing graph seamlessly.
 - **Fully Modifiable:** Don't like how the AI classified a relationship? Since the graph is stored in a local Neo4j database, you have complete control to modify, delete, or refine nodes and edges as your understanding evolves.
-- **The Ultimate LLM Context Engine (Our Core USP):** You can store massive chat histories or hundreds of research documents in a single graph. When you query your LLM, standard systems force the AI to blindly re-read all 100 documents, burning through tokens. Nitanics solves the context window problem by fetching only the relevant graph entities and relationships based on your query. **It's 100 documents re-read vs. 100 words re-read.** This provides flawless long-term memory retrieval, connects complex concepts automatically, and saves up to 70% in token costs.
+- **The Ultimate LLM Context Engine:** By feeding structured graphs back to your LLM instead of raw text, you completely bypass the classic LLM context window problem, achieving flawless long-term memory retrieval while slashing token costs.
 
 ## Features at a Glance
 
