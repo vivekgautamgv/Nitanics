@@ -20,7 +20,7 @@ Open-source local knowledge graph workspace. Bring your documents, use your AI a
 - **MCP Server Support:** Native Model Context Protocol support allows AI agents to directly query your graph data for context.
 - **Local-first with Docker:** Runs entirely on your machine via Docker; no cloud dependencies, no data leaves your laptop. 
 
-## Screenshots
+## View
 
 ![Main Screen](docs/assets/Main%20Screen.png)
 
