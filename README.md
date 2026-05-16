@@ -9,6 +9,14 @@ Open-source local knowledge graph workspace. Bring your documents, use your AI a
 - Stores durable graph memory in Neo4j instead of repeatedly re-reading raw documents
 - Works with any AI coding agent — Claude, Codex, Cursor, Antigravity, Windsurf, or any MCP-compatible tool
 
+## Our Uniqueness (Why Nitanics?)
+
+Nitanics isn't just a static dashboard; it is a **living knowledge layer**. Our uniqueness lies in how we treat graph data:
+- **Highly Sharable:** Because graphs are structured as portable JSON exports, you can easily package up a research collection and share it with colleagues or the community. They can load it instantly without needing the original raw documents.
+- **Eminently Readable:** The interactive UI and Entity Inspector turn complex data into intuitive visual stories. It's designed to be explored naturally, not queried via complex code.
+- **Endlessly Expandable:** You are never locked in. You can dynamically grow your graph anytime by pointing your AI agent at new documents. The ingestion pipeline merges new entities into the existing graph seamlessly.
+- **Fully Modifiable:** Don't like how the AI classified a relationship? Since the graph is stored in a local Neo4j database, you have complete control to modify, delete, or refine nodes and edges as your understanding evolves.
+
 ## Features at a Glance
 
 - **Interactive Graph Studio:** Explore your documents as force-directed node graphs, visualizing relationships, entities, and complex datasets instantly.
