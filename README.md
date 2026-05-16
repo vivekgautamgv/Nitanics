@@ -9,6 +9,15 @@ Open-source local knowledge graph workspace. Bring your documents, use your AI a
 - Stores durable graph memory in Neo4j instead of repeatedly re-reading raw documents
 - Works with any AI coding agent — Claude, Codex, Cursor, Antigravity, Windsurf, or any MCP-compatible tool
 
+## Screenshots
+
+<p float="left">
+  <img src="docs/assets/screenshot1.png" width="49%" />
+  <img src="docs/assets/screenshot2.png" width="49%" />
+  <img src="docs/assets/screenshot3.png" width="49%" />
+  <img src="docs/assets/screenshot4.png" width="49%" />
+</p>
+
 ## How It Works
 
 ```
@@ -97,6 +106,16 @@ Generate all artifacts in the same folder. Upload to Neo4j.
 
 See `graphs/README.md` for the full folder convention and `docs/INGESTION_FOR_AGENTS.md` for the agent prompt.
 
+## Features at a Glance
+
+- **Interactive Graph Studio:** Explore your documents as force-directed node graphs.
+- **Path Finder:** Find direct and hidden connections between different entities across your graph.
+- **Bridge View:** Automatically discover bridge entities that span across multiple separate documents or projects.
+- **Entity Inspector:** Click on any node to get rich information at your fingertips, including definitions, relationships, and causal chains.
+- **AI Agent Integration:** Use your favorite LLM or AI coding agent to easily expand your graph database. The ingestion pipeline does the heavy lifting.
+- **Portable Exports:** Graph data can be exported as portable JSON collections. Use these exports to share your knowledge bases with others or easily seed a new Neo4j database on another machine.
+- **MCP Server Support:** Native Model Context Protocol support allows AI agents to directly query your graph data for context.
+
 ## Core Commands
 
 ```bash
@@ -123,6 +142,11 @@ bun run build:mcp        # Build MCP bundle
 - Hosted multi-tenant SaaS
 - Managed cloud ingestion
 - Production authentication and billing
+
+## Team Members
+- [Vivek Gautam](https://www.linkedin.com/in/vivek-gautam-670017225/)
+- [Ajay Pawar](https://www.linkedin.com/in/ajay-pawar-data-detective/)
+- [Vipin Bhati](https://www.linkedin.com/in/vipin-bhati-6a18781b7/)
 
 ## License
 
