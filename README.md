@@ -19,15 +19,16 @@ Open-source local knowledge graph workspace. Bring your documents, use your AI a
 - **Portable Exports:** Graph data can be exported as portable JSON collections. Use these exports to share your knowledge bases with others or easily seed a new Neo4j database on another machine. 
 - **MCP Server Support:** Native Model Context Protocol support allows AI agents to directly query your graph data for context.
 - **Local-first with Docker:** Runs entirely on your machine via Docker; no cloud dependencies, no data leaves your laptop. 
-- 
+
 ## Screenshots
 
-<p float="left">
-  <img src="docs/assets/screenshot1.png" width="49%" />
-  <img src="docs/assets/screenshot2.png" width="49%" />
-  <img src="docs/assets/screenshot3.png" width="49%" />
-  <img src="docs/assets/screenshot4.png" width="49%" />
-</p>
+![Graph Studio View](docs/assets/screenshot1.png)
+
+![Project Directory](docs/assets/screenshot2.png)
+
+![Entity Inspector](docs/assets/screenshot3.png)
+
+![Bridge View](docs/assets/screenshot4.png)
 
 ## How It Works
 
