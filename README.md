@@ -148,7 +148,7 @@ bun run build:mcp        # Build MCP bundle
 - Production authentication and billing
 
 ## Team Members
-- [Vivek Gautam](https://www.linkedin.com/in/vivek-gautam-670017225/) - [Ajay Pawar](https://www.linkedin.com/in/ajay-pawar-data-detective/) - [Vipin Bhati](https://www.linkedin.com/in/vipin-bhati-6a18781b7/)
+-[Vivek Gautam](https://www.linkedin.com/in/vivek-gautam-670017225/) - [Ajay Pawar](https://www.linkedin.com/in/ajay-pawar-data-detective/) - [Vipin Bhati](https://www.linkedin.com/in/vipin-bhati-6a18781b7/)
 
 
 
