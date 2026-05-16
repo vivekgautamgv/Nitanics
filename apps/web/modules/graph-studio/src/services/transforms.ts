@@ -57,16 +57,16 @@ export function toGraphData(
     }
   }
 
-  // Step 2: Build links (deduplicate by source+target+relType+projectId)
-  const linkKey = (sourceId: string, targetId: string, relType: string, projectId: string) =>
-    `${sourceId}|${targetId}|${relType}|${projectId}`
+  // Step 2: Build links (deduplicate by source+target+relType+causalClassification to prevent edge spam)
+  const linkKey = (sourceId: string, targetId: string, relType: string, causal: string) =>
+    `${sourceId}|${targetId}|${relType}|${causal}`
   const seenLinks = new Set<string>()
   const links: GraphLink[] = []
 
   for (const row of rows) {
     if (!row.rel || !row.targetId) continue
     const sourceId = row.entity.entityId
-    const key = linkKey(sourceId, row.targetId, row.rel.relType, row.rel.projectId)
+    const key = linkKey(sourceId, row.targetId, row.rel.relType, row.rel.causalClassification)
     if (seenLinks.has(key)) continue
     seenLinks.add(key)
 
