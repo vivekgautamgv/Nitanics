@@ -16,7 +16,7 @@ Nitanics isn't just a static dashboard; it is a **living knowledge layer**. Our 
 - **Eminently Readable:** The interactive UI and Entity Inspector turn complex data into intuitive visual stories. It's designed to be explored naturally, not queried via complex code.
 - **Endlessly Expandable:** You are never locked in. You can dynamically grow your graph anytime by pointing your AI agent at new documents. The ingestion pipeline merges new entities into the existing graph seamlessly.
 - **Fully Modifiable:** Don't like how the AI classified a relationship? Since the graph is stored in a local Neo4j database, you have complete control to modify, delete, or refine nodes and edges as your understanding evolves.
-- **The Ultimate LLM Context Engine (Our Core USP):** You can feed these extracted, structured graphs back to your LLM and chat with your entire knowledge base. This solves the classic LLM context window problem, acts as a flawless long-term memory retrieval system, and **saves up to 70% in token costs** compared to repeatedly passing raw, unstructured documents.
+- **The Ultimate LLM Context Engine (Our Core USP):** You can store massive chat histories or hundreds of research documents in a single graph. When you query your LLM, standard systems force the AI to blindly re-read all 100 documents, burning through tokens. Nitanics solves the context window problem by fetching only the relevant graph entities and relationships based on your query. **It's 100 documents re-read vs. 100 words re-read.** This provides flawless long-term memory retrieval, connects complex concepts automatically, and saves up to 70% in token costs.
 
 ## Features at a Glance
 
