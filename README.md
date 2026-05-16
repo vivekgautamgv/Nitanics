@@ -22,13 +22,13 @@ Open-source local knowledge graph workspace. Bring your documents, use your AI a
 
 ## Screenshots
 
-![Graph Studio View](docs/assets/screenshot1.png)
+![Main Screen](docs/assets/Main%20Screen.png)
 
-![Project Directory](docs/assets/screenshot2.png)
+![Main Info Dashboard](docs/assets/Main%20Info%20dashboard.png)
 
-![Entity Inspector](docs/assets/screenshot3.png)
+![Dashboard View - Graph](docs/assets/Dashboard%20View%20-%20Graph.png)
 
-![Bridge View](docs/assets/screenshot4.png)
+![Graph View - Side bar details](docs/assets/Graph%20View%20-%20Side%20bar%20details.png)
 
 ## How It Works
 
