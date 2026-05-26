@@ -1,4 +1,4 @@
-﻿import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { useGraphStore } from '../../stores/graph-store'
 import { useUIStore } from '../../stores/ui-store'
 import { useSelectionStore } from '../../stores/selection-store'
@@ -141,7 +141,7 @@ export default function PathFinder() {
           disabled={pathEntities.length >= 5}
           className="w-full rounded-2xl px-3 py-2.5 text-[13px] outline-none"
           style={{
-            background: 'rgba(255,255,255,0.92)',
+            background: 'var(--surface)',
             color: 'var(--text-primary)',
             border: '1px solid var(--border)',
             opacity: pathEntities.length >= 5 ? 0.5 : 1,
@@ -237,7 +237,7 @@ export default function PathFinder() {
             {pathResults.length} path{pathResults.length !== 1 ? 's' : ''} found
           </p>
           {pathResults.map((path, i) => (
-            <div key={`${path.from}-${path.to}-${i}`} className="overflow-hidden rounded-2xl" style={{ background: 'rgba(255,255,255,0.92)', border: '1px solid var(--border)' }}>
+            <div key={`${path.from}-${path.to}-${i}`} className="overflow-hidden rounded-2xl" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
               <button
                 onClick={() => handlePathClick(path)}
                 className="flex w-full items-center justify-between px-3 py-3 text-left"
@@ -248,7 +248,7 @@ export default function PathFinder() {
                 <span className="text-[12px] font-semibold" style={{ color: 'var(--text-primary)' }}>
                   {path.from} <span style={{ color: 'var(--text-muted)' }}>?</span> {path.to}
                 </span>
-                <span className="rounded-full px-2 py-1 text-[10px] font-semibold" style={{ background: 'rgba(17,24,39,0.06)', color: 'var(--text-secondary)' }}>
+                <span className="rounded-full px-2 py-1 text-[10px] font-semibold" style={{ background: 'var(--surface-hover)', color: 'var(--text-secondary)' }}>
                   {path.hops} hop{path.hops !== 1 ? 's' : ''}
                 </span>
               </button>

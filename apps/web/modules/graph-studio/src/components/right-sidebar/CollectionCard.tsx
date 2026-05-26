@@ -101,7 +101,7 @@ export default function CollectionCard() {
 
 function StatCard({ label, value }: { label: string; value: string | number }) {
   return (
-    <div style={{ borderRadius: 16, padding: '12px 12px 11px', background: 'rgba(250,250,248,0.96)', border: '1px solid var(--border)' }}>
+    <div style={{ borderRadius: 16, padding: '12px 12px 11px', background: 'var(--surface-hover)', border: '1px solid var(--border)' }}>
       <div style={{ fontSize: 22, fontWeight: 700, lineHeight: 1, color: 'var(--text-primary)', marginBottom: 6 }}>{value}</div>
       <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>{label}</div>
     </div>
@@ -110,7 +110,7 @@ function StatCard({ label, value }: { label: string; value: string | number }) {
 
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div style={{ borderRadius: 18, padding: 14, background: 'rgba(250,250,248,0.9)', border: '1px solid var(--border-subtle)' }}>
+    <div style={{ borderRadius: 18, padding: 14, background: 'var(--surface)', border: '1px solid var(--border-subtle)' }}>
       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 10 }}>{title}</div>
       {children}
     </div>

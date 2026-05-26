@@ -39,6 +39,8 @@ export function routeToHash(route: Route): string {
       return `#/source?path=${encodeURIComponent(route.htmlPath)}`
     case 'settings':
       return '#/settings'
+    case 'ingest':
+      return '#/ingest'
   }
 }
 
@@ -74,6 +76,8 @@ export function hashToRoute(hash: string): Route {
     }
     case 'settings':
       return { page: 'settings' }
+    case 'ingest':
+      return { page: 'ingest' }
     default:
       return { page: 'home' }
   }
@@ -112,6 +116,8 @@ export function buildBreadcrumbs(route: Route): BreadcrumbSegment[] {
       return [home, { label: 'Source', route: null }]
     case 'settings':
       return [home, { label: 'Settings', route: null }]
+    case 'ingest':
+      return [home, { label: 'Ingest Documents', route: null }]
   }
 }
 

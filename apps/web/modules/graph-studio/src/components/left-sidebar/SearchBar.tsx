@@ -99,7 +99,7 @@ export default function SearchBar() {
             placeholder="Search entities"
             className="w-full outline-none"
             style={{
-              background: 'rgba(250,250,248,0.96)',
+              background: 'var(--surface)',
               color: 'var(--text-primary)',
               border: '1px solid var(--border)',
               borderRadius: 14,
@@ -144,7 +144,7 @@ export default function SearchBar() {
                   gap: 10,
                   padding: '9px 10px',
                   borderRadius: 12,
-                  background: 'rgba(255,255,255,0.72)',
+                  background: 'var(--surface-hover)',
                   border: '1px solid var(--border-subtle)',
                   cursor: 'pointer',
                 }}

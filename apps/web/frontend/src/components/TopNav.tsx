@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigationStore } from '../stores/navigation-store'
 import { useDirectoryStore } from '../stores/directory-store'
 
@@ -88,7 +88,7 @@ export default function TopNav() {
             cursor: 'pointer',
             fontSize: 13,
             fontWeight: 600,
-            background: onGraphPage ? 'rgba(17,24,39,0.05)' : 'rgba(255,255,255,0.92)',
+            background: onGraphPage ? 'var(--surface-hover)' : 'rgba(255,255,255,0.05)',
             color: 'var(--text-primary)',
           }}
         >
@@ -183,10 +183,45 @@ export default function TopNav() {
       </div>
 
       <button
+        onClick={() => navigate({ page: 'ingest' })}
+        title="Ingest Documents"
+        style={{
+          background: route.page === 'ingest' ? 'var(--surface-hover)' : 'rgba(255,255,255,0.05)',
+          border: '1px solid var(--border)',
+          cursor: 'pointer',
+          color: 'var(--text-muted)',
+          padding: '9px 12px',
+          borderRadius: 999,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          fontSize: 13,
+          fontWeight: 600,
+          transition: 'color 0.15s, background-color 0.15s',
+          flexShrink: 0,
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.color = 'var(--text-primary)'
+          e.currentTarget.style.background = 'var(--surface-hover)'
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.color = 'var(--text-muted)'
+          e.currentTarget.style.background = route.page === 'ingest' ? 'var(--surface-hover)' : 'rgba(255,255,255,0.05)'
+        }}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+          <polyline points="17 8 12 3 7 8" />
+          <line x1="12" y1="3" x2="12" y2="15" />
+        </svg>
+        Ingest
+      </button>
+
+      <button
         onClick={() => navigate({ page: 'settings' })}
         title="Settings"
         style={{
-          background: 'rgba(255,255,255,0.92)',
+          background: route.page === 'settings' ? 'var(--surface-hover)' : 'rgba(255,255,255,0.05)',
           border: '1px solid var(--border)',
           cursor: 'pointer',
           color: 'var(--text-muted)',
@@ -203,7 +238,7 @@ export default function TopNav() {
         }}
         onMouseLeave={e => {
           e.currentTarget.style.color = 'var(--text-muted)'
-          e.currentTarget.style.background = 'rgba(255,255,255,0.92)'
+          e.currentTarget.style.background = route.page === 'settings' ? 'var(--surface-hover)' : 'rgba(255,255,255,0.05)'
         }}
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

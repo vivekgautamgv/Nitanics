@@ -39,7 +39,7 @@ export default function CollapsibleSection({
         style={{
           padding: '12px 14px',
           color: 'var(--text-primary)',
-          background: isOpen ? 'rgba(17,24,39,0.035)' : 'transparent',
+          background: isOpen ? 'var(--surface-hover)' : 'transparent',
           cursor: 'pointer',
           border: 'none',
         }}
@@ -51,14 +51,14 @@ export default function CollapsibleSection({
               height: 18,
               borderRadius: 999,
               border: '1px solid var(--border)',
-              background: 'rgba(255,255,255,0.86)',
+              background: 'var(--surface-hover)',
               display: 'grid',
               placeItems: 'center',
               color: 'var(--text-muted)',
               fontSize: 10,
               transition: 'transform 0.15s ease',
               transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
-              boxShadow: '0 1px 3px rgba(15,23,42,0.04)',
+              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.2)',
             }}
           >
             {'>'}
@@ -68,7 +68,7 @@ export default function CollapsibleSection({
         {count !== undefined && (
           <span style={{
             color: 'var(--text-secondary)',
-            background: 'rgba(17,24,39,0.05)',
+            background: 'var(--surface-hover)',
             border: '1px solid var(--border-subtle)',
             fontSize: 10,
             fontWeight: 700,

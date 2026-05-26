@@ -25,7 +25,7 @@ export default function Legend() {
     <div
       className="flex items-center gap-2 px-4 py-2 flex-shrink-0 overflow-x-auto"
       style={{
-        background: 'rgba(255,255,255,0.88)',
+        background: 'var(--surface-raised)',
         borderTop: '1px solid var(--border)',
         scrollbarWidth: 'none',
       }}
@@ -45,7 +45,7 @@ export default function Legend() {
               padding: '6px 10px',
               borderRadius: 999,
               border: '1px solid var(--border-subtle)',
-              background: active ? 'rgba(17,24,39,0.04)' : 'transparent',
+              background: active ? 'var(--surface-hover)' : 'transparent',
               flexShrink: 0,
               cursor: 'pointer',
             }}

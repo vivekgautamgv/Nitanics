@@ -29,7 +29,8 @@ export default function RightSidebar() {
       className="h-full overflow-y-auto flex-shrink-0"
       style={{
         width: 380,
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(250,250,248,0.96) 100%)',
+        background: 'rgba(15, 17, 26, 0.85)',
+        backdropFilter: 'blur(16px)',
         borderLeft: '1px solid var(--border)',
       }}
     >
@@ -37,8 +38,8 @@ export default function RightSidebar() {
         <div style={{
           borderRadius: 18,
           border: '1px solid var(--border)',
-          background: 'rgba(255,255,255,0.94)',
-          boxShadow: '0 10px 24px rgba(15,23,42,0.04)',
+          background: 'var(--surface-raised)',
+          boxShadow: '0 10px 24px rgba(0, 0, 0, 0.3)',
           overflow: 'hidden',
           flex: 1,
         }}>
@@ -55,7 +56,7 @@ export default function RightSidebar() {
               onClick={clearAll}
               style={{
                 color: 'var(--text-muted)',
-                background: 'rgba(17,24,39,0.04)',
+                background: 'var(--surface-hover)',
                 border: '1px solid var(--border)',
                 borderRadius: 12,
                 padding: '6px 10px',

@@ -20,14 +20,14 @@ export default function StatusBar() {
     <div
       className="absolute bottom-3 left-3 right-3 flex items-center justify-between"
       style={{
-        background: 'rgba(255,255,255,0.90)',
+        background: 'var(--surface-raised)',
         border: '1px solid var(--border)',
         borderRadius: 16,
         color: 'var(--text-secondary)',
         zIndex: 10,
         backdropFilter: 'blur(10px)',
         padding: '8px 10px',
-        boxShadow: '0 10px 24px rgba(15,23,42,0.06)',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)',
       }}
     >
       <div className="flex items-center gap-3" style={{ pointerEvents: 'none', fontSize: 12 }}>
@@ -45,7 +45,7 @@ export default function StatusBar() {
           <button
             onClick={() => unpinAllNodes?.()}
             style={{
-              background: 'rgba(17,24,39,0.04)',
+              background: 'var(--surface-hover)',
               color: 'var(--text-secondary)',
               border: '1px solid var(--border)',
               borderRadius: 10,
@@ -60,7 +60,7 @@ export default function StatusBar() {
           <button
             onClick={() => reheatSimulation?.()}
             style={{
-              background: 'rgba(17,24,39,0.04)',
+              background: 'var(--surface-hover)',
               color: 'var(--text-secondary)',
               border: '1px solid var(--border)',
               borderRadius: 10,

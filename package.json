@@ -16,7 +16,7 @@
   "scripts": {
     "neo4j:ensure": "node scripts/ensure-neo4j.mjs",
     "dev": "bun run dev:web",
-    "dev:web": "concurrently -k -n FRONTEND,GRAPH -c cyan,magenta \"bun run dev:frontend\" \"bun run dev:graph\"",
+    "dev:web": "concurrently -k -n FRONTEND,GRAPH,API -c cyan,magenta,yellow \"bun run dev:frontend\" \"bun run dev:graph\" \"bun run dev:api\"",
     "dev:frontend": "bun run --cwd apps/web/frontend dev",
     "dev:graph": "bun run --cwd apps/web/modules/graph-studio dev",
     "dev:api": "bun run --cwd apps/api dev",

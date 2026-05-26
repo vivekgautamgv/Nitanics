@@ -1,4 +1,4 @@
-﻿/**
+/**
  * SourcePage â€” Displays source HTML document in an iframe.
  * The Vite plugin serves docs at /source-viewer/ (from C01 ingestion data).
  * Source of truth: DESIGN-SPEC.md Section 11
@@ -12,7 +12,7 @@ export default function SourcePage({ htmlPath }: { htmlPath: string }) {
   // Build the URL via adapter so source document routing stays centralized.
   const sourceUrl = resolveSourceUrl(htmlPath)
 
-  // Inject light theme into iframe after load
+  // Inject dark theme into iframe after load
   useEffect(() => {
     const iframe = iframeRef.current
     if (!iframe) return
@@ -22,12 +22,12 @@ export default function SourcePage({ htmlPath }: { htmlPath: string }) {
         const doc = iframe.contentDocument
         if (!doc) return
 
-        // Inject light theme CSS
+        // Inject dark theme CSS
         const style = doc.createElement('style')
         style.textContent = `
           html, body {
-            background: #F8FAFC !important;
-            color: #172033 !important;
+            background: #0f111a !important;
+            color: #f8fafc !important;
             font-family: 'Segoe UI Variable', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.7;
             padding: 24px 32px;
@@ -35,38 +35,38 @@ export default function SourcePage({ htmlPath }: { htmlPath: string }) {
             margin: 0 auto;
           }
           h1, h2, h3, h4, h5, h6 {
-            color: #172033 !important;
-            border-bottom: 1px solid #E2E8F0;
+            color: #f8fafc !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 8px;
             margin-top: 24px;
           }
-          a { color: #2563EB !important; }
+          a { color: #38bdf8 !important; }
           pre, code {
-            background: #EEF2FF !important;
-            color: #172033 !important;
-            border: 1px solid #D8E0EF !important;
+            background: rgba(255, 255, 255, 0.03) !important;
+            color: #f8fafc !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
             border-radius: 6px;
             padding: 2px 6px;
           }
           pre { padding: 12px 16px !important; overflow-x: auto; }
           blockquote {
-            border-left: 3px solid #2563EB !important;
+            border-left: 3px solid #38bdf8 !important;
             padding-left: 16px !important;
-            color: #475467 !important;
+            color: #94a3b8 !important;
           }
           img { max-width: 100%; border-radius: 8px; }
           table { border-collapse: collapse; width: 100%; }
           th, td {
-            border: 1px solid #D8E0EF !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
             padding: 8px 12px !important;
             text-align: left;
           }
-          th { background: #EEF2FF !important; color: #172033 !important; }
-          hr { border-color: #D8E0EF !important; }
+          th { background: rgba(255, 255, 255, 0.03) !important; color: #f8fafc !important; }
+          hr { border-color: rgba(255, 255, 255, 0.08) !important; }
         `
         doc.head.appendChild(style)
       } catch {
-        // Cross-origin â€” can't inject styles, will show raw HTML
+        // Cross-origin — can't inject styles, will show raw HTML
       }
     }
 
@@ -110,7 +110,7 @@ export default function SourcePage({ htmlPath }: { htmlPath: string }) {
           flex: 1,
           width: '100%',
           border: 'none',
-          background: '#F8FAFC',
+          background: 'var(--surface)',
         }}
       />
     </div>

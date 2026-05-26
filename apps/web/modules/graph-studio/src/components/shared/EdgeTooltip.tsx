@@ -43,9 +43,9 @@ export default function EdgeTooltip({ data }: Props) {
         left,
         top,
         width: tooltipWidth,
-        background: 'rgba(255,255,255,0.97)',
-        border: '1px solid rgba(15, 23, 42, 0.08)',
-        boxShadow: '0 18px 46px rgba(15, 23, 42, 0.14)',
+        background: 'var(--surface-raised)',
+        border: '1px solid var(--border)',
+        boxShadow: '0 18px 46px rgba(0, 0, 0, 0.45)',
         backdropFilter: 'blur(18px)',
       }}
     >
@@ -55,9 +55,9 @@ export default function EdgeTooltip({ data }: Props) {
           left: 24,
           width: 14,
           height: 14,
-          background: 'rgba(255,255,255,0.97)',
-          borderLeft: '1px solid rgba(15, 23, 42, 0.08)',
-          borderTop: '1px solid rgba(15, 23, 42, 0.08)',
+          background: 'var(--surface-raised)',
+          borderLeft: '1px solid var(--border)',
+          borderTop: '1px solid var(--border)',
           transform: 'rotate(45deg)',
           top: showArrowOnTop ? -7 : undefined,
           bottom: showArrowOnTop ? undefined : -7,
@@ -88,7 +88,7 @@ export default function EdgeTooltip({ data }: Props) {
       </div>
 
       <div className="mb-2 flex items-center gap-2">
-        <span className="rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ background: 'rgba(17,24,39,0.05)', color: 'var(--text-secondary)' }}>
+        <span className="rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ background: 'var(--surface-hover)', color: 'var(--text-secondary)' }}>
           {data.relType}
         </span>
         {data.magnitude && (

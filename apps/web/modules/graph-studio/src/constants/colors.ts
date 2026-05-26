@@ -54,16 +54,16 @@ export const EVIDENCE_COLORS: Record<string, string> = {
 }
 
 export const THEME = {
-  bg:            '#f6f6f4',
-  surface:       '#ffffff',
-  surfaceHover:  '#f1f1ed',
-  border:        '#d9d7d1',
-  textPrimary:   '#171717',
-  textSecondary: '#4b5563',
-  textMuted:     '#6b7280',
-  accent:        '#111827',
-  warning:       '#b45309',
-  error:         '#b42318',
+  bg:            '#07080b',
+  surface:       '#0f111a',
+  surfaceHover:  '#161a29',
+  border:        'rgba(255, 255, 255, 0.08)',
+  textPrimary:   '#f8fafc',
+  textSecondary: '#94a3b8',
+  textMuted:     '#64748b',
+  accent:        '#38bdf8',
+  warning:       '#f59e0b',
+  error:         '#f43f5e',
 } as const
 
 export const PROJECT_NODE_COLOR = '#9ca3af'

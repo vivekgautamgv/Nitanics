@@ -94,7 +94,7 @@ export function useNodePainter(options: PainterOptions) {
     const isInStack = explorationStackIds.has(node.id)
 
     if (isSelected || isInStack) {
-      ctx.strokeStyle = isSelected ? '#111827' : 'rgba(15, 23, 42, 0.4)'
+      ctx.strokeStyle = isSelected ? '#38bdf8' : 'rgba(255, 255, 255, 0.25)'
       ctx.lineWidth = (isSelected ? 2 : 1.2) / globalScale
       ctx.beginPath()
       if (node.__type === 'project') {
@@ -115,7 +115,7 @@ export function useNodePainter(options: PainterOptions) {
     }
 
     if (isInPath) {
-      ctx.strokeStyle = '#111827'
+      ctx.strokeStyle = '#38bdf8'
       ctx.lineWidth = 2 / globalScale
       ctx.beginPath()
       ctx.arc(x, y, radius + 3, 0, TWO_PI)
@@ -125,14 +125,14 @@ export function useNodePainter(options: PainterOptions) {
     if (isInChain) {
       const chainGlowRadius = radius + 6
       const gradient = ctx.createRadialGradient(x, y, radius, x, y, chainGlowRadius)
-      gradient.addColorStop(0, 'rgba(15, 23, 42, 0.18)')
-      gradient.addColorStop(1, 'rgba(15, 23, 42, 0)')
+      gradient.addColorStop(0, 'rgba(56, 189, 248, 0.12)')
+      gradient.addColorStop(1, 'rgba(56, 189, 248, 0)')
       ctx.fillStyle = gradient
       ctx.beginPath()
       ctx.arc(x, y, chainGlowRadius, 0, TWO_PI)
       ctx.fill()
 
-      ctx.strokeStyle = '#475569'
+      ctx.strokeStyle = '#a78bfa'
       ctx.lineWidth = 2 / globalScale
       ctx.beginPath()
       ctx.arc(x, y, radius + 3, 0, TWO_PI)
@@ -152,10 +152,10 @@ export function useNodePainter(options: PainterOptions) {
     if (showLabel && globalScale >= LOD_THRESHOLDS.dot) {
       const fontSize = Math.max(3.2, Math.min(11.5, 10.5 / globalScale + 1.25))
       ctx.font = `500 ${fontSize}px Inter, ui-sans-serif, system-ui, sans-serif`
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.82)'
+      ctx.fillStyle = 'rgba(248, 250, 252, 0.85)'
       ctx.textAlign = 'center'
       ctx.textBaseline = 'top'
-      ctx.shadowColor = 'rgba(255, 255, 255, 0.88)'
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.95)'
       ctx.shadowBlur = 6 / globalScale
       ctx.fillText(node.name, x, y + radius + 2 / globalScale)
       ctx.shadowBlur = 0

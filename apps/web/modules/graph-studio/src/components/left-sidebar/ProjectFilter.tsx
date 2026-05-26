@@ -17,7 +17,7 @@ export default function ProjectFilter() {
         <button
           onClick={allSelected ? deselectAll : selectAll}
           className="rounded-full border px-3 py-1 text-[11px] font-medium transition-colors hover:bg-[var(--surface-hover)]"
-          style={{ color: 'var(--text-secondary)', borderColor: 'var(--border)', background: 'rgba(255,255,255,0.88)' }}
+          style={{ color: 'var(--text-secondary)', borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
         >
           {allSelected ? 'Hide All' : 'Show All'}
         </button>
@@ -31,8 +31,8 @@ export default function ProjectFilter() {
               key={p.uniqueId}
               className="flex cursor-pointer items-center gap-3 rounded-2xl border px-3 py-2.5 transition-colors hover:bg-[var(--surface-hover)]"
               style={{
-                borderColor: active ? 'rgba(17, 24, 39, 0.14)' : 'var(--border)',
-                background: active ? 'rgba(255,255,255,0.92)' : 'rgba(248,250,252,0.78)',
+                borderColor: active ? 'rgba(56, 189, 248, 0.25)' : 'var(--border-subtle)',
+                background: active ? 'var(--surface-hover)' : 'var(--surface-raised)',
               }}
             >
               <input

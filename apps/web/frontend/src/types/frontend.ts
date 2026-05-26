@@ -14,6 +14,7 @@ export type Route =
   | { page: 'graph'; collectionName: string }
   | { page: 'source'; htmlPath: string }
   | { page: 'settings' }
+  | { page: 'ingest' }
 
 export interface BreadcrumbSegment {
   label: string

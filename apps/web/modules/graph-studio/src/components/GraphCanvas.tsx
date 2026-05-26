@@ -157,14 +157,14 @@ export default function GraphCanvas({ width, height }: Props) {
 
   const linkColor = useCallback((link: GraphLink) => {
     if (pathActive) {
-      if (isLinkOnPath(link)) return '#111827'
+      if (isLinkOnPath(link)) return '#38bdf8'
       return 'rgba(120, 126, 138, 0.10)'
     }
 
     if (chainSet.size > 0) {
       const srcName = typeof link.source === 'object' ? link.source.name : ''
       const tgtName = typeof link.target === 'object' ? link.target.name : ''
-      if (chainSet.has(srcName) && chainSet.has(tgtName)) return '#4b5563'
+      if (chainSet.has(srcName) && chainSet.has(tgtName)) return '#c084fc'
     }
 
     const inNeighborhood = isLinkInNeighborhood(link)

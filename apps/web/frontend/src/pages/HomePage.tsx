@@ -92,15 +92,15 @@ export default function HomePage() {
           overflow: 'hidden',
           borderRadius: 30,
           border: '1px solid var(--border)',
-          background: 'linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(251,250,247,0.98) 100%)',
-          boxShadow: '0 24px 60px rgba(15,23,42,0.06)',
+          background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-raised) 100%)',
+          boxShadow: '0 24px 60px rgba(0,0,0,0.37)',
           padding: isDense ? '20px' : '30px',
           marginBottom: 18,
         }}>
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'radial-gradient(circle at top right, rgba(17,24,39,0.05), transparent 34%), radial-gradient(circle at bottom left, rgba(83,103,150,0.08), transparent 28%)',
+            background: 'radial-gradient(circle at top right, rgba(56,189,248,0.08), transparent 34%), radial-gradient(circle at bottom left, rgba(124,58,237,0.08), transparent 28%)',
             pointerEvents: 'none',
           }} />
 
@@ -118,7 +118,7 @@ export default function HomePage() {
                 gap: 8,
                 padding: '7px 12px',
                 borderRadius: 999,
-                background: 'rgba(17,24,39,0.04)',
+                background: 'rgba(255,255,255,0.04)',
                 border: '1px solid var(--border-subtle)',
                 color: 'var(--text-muted)',
                 fontSize: 11,
@@ -189,8 +189,8 @@ export default function HomePage() {
             <aside style={{
               borderRadius: 26,
               border: '1px solid var(--border)',
-              background: 'rgba(255,255,255,0.92)',
-              boxShadow: '0 18px 44px rgba(15,23,42,0.05)',
+              background: 'var(--surface-raised)',
+              boxShadow: '0 18px 44px rgba(0,0,0,0.25)',
               padding: isDense ? '18px' : '22px',
               display: 'flex',
               flexDirection: 'column',
@@ -277,8 +277,8 @@ export default function HomePage() {
           <div style={{
             borderRadius: 24,
             border: '1px solid var(--border)',
-            background: 'rgba(255,255,255,0.9)',
-            boxShadow: '0 14px 36px rgba(15,23,42,0.04)',
+            background: 'var(--surface)',
+            boxShadow: '0 14px 36px rgba(0,0,0,0.2)',
             padding: isDense ? '18px' : '22px',
           }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 10 }}>
@@ -314,8 +314,8 @@ export default function HomePage() {
           <div style={{
             borderRadius: 24,
             border: '1px solid var(--border)',
-            background: 'rgba(255,255,255,0.9)',
-            boxShadow: '0 14px 36px rgba(15,23,42,0.04)',
+            background: 'var(--surface)',
+            boxShadow: '0 14px 36px rgba(0,0,0,0.2)',
             padding: isDense ? '18px' : '22px',
             display: 'flex',
             flexDirection: 'column',
@@ -346,7 +346,7 @@ export default function HomePage() {
                     textAlign: 'left',
                     borderRadius: 18,
                     border: '1px solid var(--border)',
-                    background: 'linear-gradient(180deg, rgba(255,255,255,0.98), rgba(249,248,244,0.94))',
+                    background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-raised) 100%)',
                     padding: '14px 16px',
                     cursor: 'pointer',
                   }}
@@ -370,8 +370,8 @@ export default function HomePage() {
           <div style={{
             marginBottom: 18,
             padding: '12px 16px',
-            background: 'rgba(220,38,38,0.05)',
-            border: '1px solid rgba(220,38,38,0.16)',
+            background: 'rgba(244,63,94,0.05)',
+            border: '1px solid rgba(244,63,94,0.16)',
             borderRadius: 16,
             display: 'flex',
             justifyContent: 'space-between',
@@ -397,7 +397,7 @@ export default function HomePage() {
         {showCreateCol && (
           <FormCard title="Create Collection" subtitle="Launch a new knowledge graph workspace.">
             <input className="input" placeholder="Collection name" value={newColName} onChange={e => setNewColName(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleCreateCol()} autoFocus style={{ marginBottom: 10 }} />
-            <select className="input" value={newColDir} onChange={e => setNewColDir(e.target.value)} style={{ marginBottom: 12 }}>
+            <select className="input" value={newColDir} onChange={e => setNewColDir(e.target.value)} style={{ marginBottom: 12, background: 'var(--surface)', border: '1px solid var(--border)', color: '#fff' }}>
               <option value="">No directory</option>
               {directories.map(d => <option key={d.name} value={d.name}>{d.name}</option>)}
             </select>
@@ -473,9 +473,9 @@ function DirectorySection({
   return (
     <section style={{
       borderRadius: 26,
-      background: 'rgba(255,255,255,0.9)',
+      background: 'var(--surface)',
       border: '1px solid var(--border)',
-      boxShadow: '0 14px 36px rgba(15,23,42,0.04)',
+      boxShadow: '0 14px 36px rgba(0,0,0,0.2)',
       padding: compact ? '18px' : '22px',
     }}>
       <div style={{
@@ -545,9 +545,9 @@ function CollectionCard({
     <div style={{
       borderRadius: 22,
       padding: '18px',
-      background: 'linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(249,248,244,0.94) 100%)',
+      background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-raised) 100%)',
       border: '1px solid var(--border)',
-      boxShadow: '0 10px 26px rgba(15,23,42,0.04)',
+      boxShadow: '0 10px 26px rgba(0,0,0,0.15)',
       display: 'flex',
       flexDirection: 'column',
       gap: 14,
@@ -565,7 +565,7 @@ function CollectionCard({
           minWidth: 68,
           height: 68,
           borderRadius: 18,
-          background: 'rgba(17,24,39,0.04)',
+          background: 'rgba(255,255,255,0.04)',
           border: '1px solid var(--border-subtle)',
           display: 'flex',
           alignItems: 'center',
@@ -604,8 +604,8 @@ function GraphPreviewCard({ compact }: { compact?: boolean }) {
     <div style={{
       borderRadius: 24,
       border: '1px solid rgba(31,41,55,0.08)',
-      background: 'linear-gradient(180deg, rgba(251,250,247,0.98) 0%, rgba(244,243,239,0.98) 100%)',
-      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.7)',
+      background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-raised) 100%)',
+      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05)',
       padding: compact ? '16px' : '18px',
       minHeight: compact ? 240 : 280,
       position: 'relative',
@@ -619,7 +619,7 @@ function GraphPreviewCard({ compact }: { compact?: boolean }) {
         height: compact ? 160 : 188,
         borderRadius: 20,
         border: '1px solid var(--border-subtle)',
-        background: 'radial-gradient(circle at top, rgba(56,65,93,0.04), rgba(255,255,255,0.74) 48%, rgba(255,255,255,0.96) 100%)',
+        background: 'radial-gradient(circle at top, rgba(56,189,248,0.06), rgba(15,17,26,0.74) 48%, rgba(15,17,26,0.96) 100%)',
       }}>
         <GraphNode left="12%" top="56%" size={18} tone="#7f87a7" />
         <GraphNode left="28%" top="30%" size={16} tone="#6c7592" />
@@ -704,7 +704,7 @@ function MetricPanel({ label, value }: { label: string; value: number }) {
       padding: '14px 14px 16px',
       borderRadius: 18,
       border: '1px solid var(--border-subtle)',
-      background: 'rgba(249,248,244,0.8)',
+      background: 'var(--surface-hover)',
     }}>
       <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>
         {label}
@@ -724,13 +724,13 @@ function FeaturePill({ label }: { label: string }) {
       gap: 8,
       padding: '8px 12px',
       borderRadius: 999,
-      background: 'rgba(17,24,39,0.04)',
-      border: '1px solid var(--border-subtle)',
+      background: 'var(--surface-raised)',
+      border: '1px solid var(--border)',
       color: 'var(--text-secondary)',
       fontSize: 12,
       fontWeight: 600,
     }}>
-      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#111827' }} />
+      <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)', boxShadow: '0 0 8px var(--accent)' }} />
       {label}
     </span>
   )
@@ -740,9 +740,11 @@ function InsightCard({ title, body }: { title: string; body: string }) {
   return (
     <div style={{
       borderRadius: 18,
-      border: '1px solid var(--border-subtle)',
-      background: 'rgba(252,251,248,0.92)',
+      border: '1px solid var(--border)',
+      borderLeft: '3px solid var(--accent)',
+      background: 'var(--surface-raised)',
       padding: '16px 16px 18px',
+      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
     }}>
       <div style={{ fontSize: 17, lineHeight: 1.15, letterSpacing: '-0.03em', color: 'var(--text-primary)', marginBottom: 8, fontWeight: 600 }}>
         {title}
@@ -761,9 +763,10 @@ function FormCard({ title, subtitle, children }: { title: string; subtitle: stri
       marginBottom: 18,
       borderRadius: 22,
       padding: 20,
-      background: 'rgba(255,255,255,0.9)',
+      background: 'var(--surface-raised)',
+      backdropFilter: 'blur(16px)',
       border: '1px solid var(--border)',
-      boxShadow: '0 14px 36px rgba(15,23,42,0.05)',
+      boxShadow: '0 14px 36px rgba(0, 0, 0, 0.3)',
     }}>
       <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--text-primary)', marginBottom: 4 }}>{title}</div>
       <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 16 }}>{subtitle}</div>
@@ -786,15 +789,31 @@ function EmptyState() {
   return (
     <div style={{
       borderRadius: 24,
-      background: 'rgba(255,255,255,0.9)',
-      border: '1px solid var(--border)',
-      boxShadow: '0 14px 36px rgba(15,23,42,0.04)',
+      background: 'var(--surface)',
+      border: '1px dashed var(--border)',
+      boxShadow: '0 14px 36px rgba(0, 0, 0, 0.25)',
       textAlign: 'center',
       padding: '60px 24px',
       color: 'var(--text-muted)',
     }}>
+      <div style={{
+        width: 54,
+        height: 54,
+        borderRadius: '50%',
+        background: 'var(--accent-dim)',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 16,
+        color: 'var(--accent)',
+      }}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 8v8M8 12h8" />
+        </svg>
+      </div>
       <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8 }}>No directories yet</div>
-      <div style={{ fontSize: 14, lineHeight: 1.7 }}>Create a directory or collection to start building a more presentable graph workspace.</div>
+      <div style={{ fontSize: 14, lineHeight: 1.7, maxWidth: 420, margin: '0 auto' }}>Create a directory or collection to start building a more presentable graph workspace.</div>
     </div>
   )
 }

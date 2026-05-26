@@ -14,6 +14,7 @@ import EntityPage from '../pages/EntityPage'
 import GraphPage from '../pages/GraphPage'
 import SourcePage from '../pages/SourcePage'
 import SettingsPage from '../pages/SettingsPage'
+import IngestPage from '../pages/IngestPage'
 
 export default function Router() {
   const route = useNavigationStore(s => s.route)
@@ -45,6 +46,7 @@ export default function Router() {
     case 'graph':      return <GraphPage collectionName={route.collectionName} />
     case 'source':     return <SourcePage htmlPath={route.htmlPath} />
     case 'settings':   return <SettingsPage />
+    case 'ingest':     return <IngestPage />
     default:           return <HomePage />
   }
 }

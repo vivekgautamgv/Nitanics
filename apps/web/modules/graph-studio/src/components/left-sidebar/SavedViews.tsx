@@ -44,7 +44,7 @@ export default function SavedViews() {
             key={preset.name}
             onClick={preset.apply}
             className="w-full rounded-2xl border px-3 py-3 text-left transition-colors hover:bg-[var(--surface-hover)]"
-            style={{ background: 'rgba(255,255,255,0.92)', borderColor: 'var(--border)' }}
+            style={{ background: 'var(--surface-raised)', borderColor: 'var(--border)' }}
           >
             <div className="text-[13px] font-semibold" style={{ color: 'var(--text-primary)' }}>{preset.name}</div>
             <div style={{ color: 'var(--text-muted)', fontSize: '11px', marginTop: 3 }}>{preset.description}</div>

@@ -16,9 +16,9 @@ export default function CollectionHeader() {
       style={{
         border: '1px solid var(--border)',
         borderRadius: 18,
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(247,247,244,0.96) 100%)',
+        background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-raised) 100%)',
         padding: '16px 16px 14px',
-        boxShadow: '0 10px 24px rgba(15,23,42,0.04)',
+        boxShadow: '0 10px 24px rgba(0, 0, 0, 0.3)',
         cursor: 'pointer',
       }}
       onClick={openCollectionCard}
@@ -36,9 +36,9 @@ export default function CollectionHeader() {
           minWidth: 42,
           height: 42,
           borderRadius: 14,
-          background: 'rgba(17,24,39,0.05)',
+          background: 'var(--surface-hover)',
           color: 'var(--text-primary)',
-          border: '1px solid rgba(17,24,39,0.08)',
+          border: '1px solid var(--border)',
           display: 'grid',
           placeItems: 'center',
           fontSize: 12,
@@ -62,7 +62,7 @@ function HeaderMetric({ label, value }: { label: string; value: string | number 
     <div style={{
       borderRadius: 14,
       padding: '10px 10px 9px',
-      background: 'rgba(255,255,255,0.88)',
+      background: 'var(--surface-hover)',
       border: '1px solid var(--border-subtle)',
     }}>
       <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1, marginBottom: 4 }}>

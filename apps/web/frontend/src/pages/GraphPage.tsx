@@ -82,9 +82,10 @@ export default function GraphPage({ collectionName }: { collectionName: string }
         gap: 12,
         padding: '10px 12px',
         borderRadius: 18,
-        background: 'rgba(255,255,255,0.92)',
+        background: 'var(--surface-raised)',
+        backdropFilter: 'blur(16px)',
         border: '1px solid var(--border)',
-        boxShadow: '0 8px 22px rgba(15,23,42,0.04)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
         flexShrink: 0,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0, flexWrap: 'wrap' }}>
@@ -97,7 +98,7 @@ export default function GraphPage({ collectionName }: { collectionName: string }
             </div>
           </div>
 
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', padding: 4, borderRadius: 999, background: 'rgba(17,24,39,0.035)', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', padding: 4, borderRadius: 999, background: 'var(--surface)', border: '1px solid var(--border-subtle)' }}>
             {(Object.entries(MODE_CONFIG) as [GraphMode, typeof MODE_CONFIG[GraphMode]][]).map(([key, cfg]) => (
               <button
                 key={key}
@@ -109,8 +110,8 @@ export default function GraphPage({ collectionName }: { collectionName: string }
                   padding: '8px 12px',
                   borderRadius: 999,
                   border: 'none',
-                  background: mode === key ? 'rgba(255,255,255,0.96)' : 'transparent',
-                  boxShadow: mode === key ? '0 1px 2px rgba(15,23,42,0.06)' : 'none',
+                  background: mode === key ? 'var(--surface-hover)' : 'transparent',
+                  boxShadow: mode === key ? '0 2px 8px rgba(0, 0, 0, 0.4)' : 'none',
                   color: 'var(--text-primary)',
                   cursor: 'pointer',
                   fontSize: 13,
@@ -155,9 +156,9 @@ export default function GraphPage({ collectionName }: { collectionName: string }
         minHeight: 0,
         borderRadius: 22,
         overflow: 'hidden',
-        background: 'rgba(255,255,255,0.88)',
+        background: 'var(--bg)',
         border: '1px solid var(--border)',
-        boxShadow: '0 14px 36px rgba(15,23,42,0.06)',
+        boxShadow: '0 14px 36px rgba(0, 0, 0, 0.4)',
       }}>
         <GraphStudioAdapter
           collectionName={activeCollection}
@@ -174,8 +175,8 @@ function MetricChip({ label, value, accent }: { label: string; value: string | n
     <div style={{
       padding: '8px 12px',
       borderRadius: 16,
-      background: 'rgba(248,250,252,0.92)',
-      border: '1px solid var(--border)',
+      background: 'var(--surface)',
+      border: '1px solid var(--border-subtle)',
       minWidth: 88,
       fontFamily: 'inherit',
     }}>
@@ -198,6 +199,5 @@ const selectStyle: React.CSSProperties = {
   color: 'var(--text-primary)',
   cursor: 'pointer',
   minWidth: 220,
-  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6)',
   fontFamily: 'Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
 }
