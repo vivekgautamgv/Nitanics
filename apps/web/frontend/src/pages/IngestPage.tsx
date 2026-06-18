@@ -34,8 +34,8 @@ export default function IngestPage() {
   useEffect(() => {
     loadDirectories()
     loadAllCollections()
-    const savedProvider = localStorage.getItem('nitanics_api_provider')
-    const savedKey = localStorage.getItem('nitanics_api_key')
+    const savedProvider = localStorage.getItem('nexari_api_provider') || localStorage.getItem('nitanics_api_provider')
+    const savedKey = localStorage.getItem('nexari_api_key') || localStorage.getItem('nitanics_api_key')
     if (savedProvider) setApiProvider(savedProvider as any)
     if (savedKey) setApiKey(savedKey)
   }, [loadDirectories, loadAllCollections])
@@ -142,6 +142,8 @@ export default function IngestPage() {
     }
 
     // Save provider & key to localStorage for developer comfort
+    localStorage.setItem('nexari_api_provider', apiProvider)
+    localStorage.setItem('nexari_api_key', apiKey)
     localStorage.setItem('nitanics_api_provider', apiProvider)
     localStorage.setItem('nitanics_api_key', apiKey)
 

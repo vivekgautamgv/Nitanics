@@ -159,6 +159,97 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Endpoint: POST /api/export
+  if (req.method === 'POST' && pathname === '/api/export') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk;
+    });
+    req.on('end', () => {
+      try {
+        const data = JSON.parse(body);
+        const { collection } = data;
+
+        if (!collection) {
+          sendJSON(res, 400, { error: 'Missing required field: collection' });
+          return;
+        }
+
+        const processId = 'export_' + Date.now().toString();
+
+        // Spawn python export script
+        const pythonProcess = spawn(
+          'uv',
+          [
+            'run',
+            'python',
+            'neo4j/export_collection.py',
+            collection
+          ],
+          {
+            cwd: path.join(__dirname, '..', '..', 'ingestion-pipeline'),
+            env: process.env
+          }
+        );
+
+        const procInfo = {
+          status: 'running',
+          logs: `[API] Spawning export process for collection "${collection}"...\n`,
+          exitCode: null,
+          downloadUrl: null
+        };
+        activeProcesses.set(processId, procInfo);
+
+        pythonProcess.stdout.on('data', (data) => {
+          procInfo.logs += data.toString();
+        });
+
+        pythonProcess.stderr.on('data', (data) => {
+          procInfo.logs += `[STDERR] ${data.toString()}`;
+        });
+
+        pythonProcess.on('close', (code) => {
+          procInfo.exitCode = code;
+          procInfo.status = code === 0 ? 'success' : 'failed';
+          procInfo.logs += `\n[API] Export process finished with exit code ${code}.\n`;
+          if (code === 0) {
+            const slug = collection.toLowerCase().replace(/ /g, '-').replace(/:/g, '').replace(/--/g, '-').replace(/^-+|-+$/g, '');
+            procInfo.downloadUrl = `/api/download?file=${slug}.zip`;
+          }
+        });
+
+        sendJSON(res, 202, { processId, status: 'running' });
+      } catch (err) {
+        sendJSON(res, 400, { error: 'Invalid JSON payload: ' + err.message });
+      }
+    });
+    return;
+  }
+
+  // Endpoint: GET /api/download?file=<filename.zip>
+  if (req.method === 'GET' && pathname === '/api/download') {
+    const filename = parsedUrl.searchParams.get('file');
+    if (!filename) {
+      sendJSON(res, 400, { error: 'Missing file parameter' });
+      return;
+    }
+    const safeFilename = path.basename(filename);
+    const filePath = path.join(__dirname, '..', '..', 'exports', safeFilename);
+    
+    if (!fs.existsSync(filePath)) {
+      sendJSON(res, 404, { error: 'File not found' });
+      return;
+    }
+    
+    res.writeHead(200, {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/zip',
+      'Content-Disposition': `attachment; filename="${safeFilename}"`
+    });
+    fs.createReadStream(filePath).pipe(res);
+    return;
+  }
+
   // Catch-all
   sendJSON(res, 404, { error: 'Route not found' });
 });

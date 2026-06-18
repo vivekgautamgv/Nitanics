@@ -105,7 +105,7 @@ export default function SettingsPage() {
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>App</span>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>Nitanics</span>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>Nexari Labs</span>
           </div>
           <div className="flex items-center justify-between">
             <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>Version</span>

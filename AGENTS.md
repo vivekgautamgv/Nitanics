@@ -9,7 +9,7 @@ Read these first:
 - `docs/INGESTION_FOR_AGENTS.md`
 - `CLAUDE.md`
 
-Do not reintroduce Electron desktop packaging in this public version.
+Do not reintroduce Electron desktop     packaging in this public version.
 
 When adding graph data:
 

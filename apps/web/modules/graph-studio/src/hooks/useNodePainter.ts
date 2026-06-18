@@ -1,7 +1,8 @@
 import { useCallback } from 'react'
-import { CATEGORY_COLORS, PROJECT_NODE_COLOR, BRIDGE_COLORS, THEME } from '../constants/colors'
+import { CATEGORY_COLORS, BRIDGE_COLORS } from '../constants/colors'
 import { LOD_THRESHOLDS } from '../constants/config'
 import type { GraphNode } from '../types/graph'
+import { useThemeActive } from './useThemeActive'
 
 const TWO_PI = 2 * Math.PI
 
@@ -26,12 +27,17 @@ export function useNodePainter(options: PainterOptions) {
     explorationStackIds,
   } = options
 
+  const theme = useThemeActive()
+  const isLight = theme === 'light'
+  const accentColor = isLight ? '#d97706' : '#fbbf24'
+  const warningColor = isLight ? '#ca8a04' : '#eab308'
+
   return useCallback((node: GraphNode, ctx: CanvasRenderingContext2D, globalScale: number) => {
     const x = node.x ?? 0
     const y = node.y ?? 0
     const radius = node.__radius || 8
     const color = node.__type === 'project'
-      ? PROJECT_NODE_COLOR
+      ? accentColor
       : (CATEGORY_COLORS[node.category] || '#6B7280')
 
     const hasActiveHighlight = highlightSet !== null && highlightSet.size > 0
@@ -78,64 +84,115 @@ export function useNodePainter(options: PainterOptions) {
     }
 
     if (node.__type === 'project') {
-      const side = radius * 2
       ctx.beginPath()
-      ctx.roundRect(x - radius, y - radius, side, side, 4)
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i
+        const hx = x + radius * Math.cos(angle)
+        const hy = y + radius * Math.sin(angle)
+        if (i === 0) ctx.moveTo(hx, hy)
+        else ctx.lineTo(hx, hy)
+      }
+      ctx.closePath()
       ctx.fillStyle = color
       ctx.fill()
+      ctx.strokeStyle = isLight ? 'rgba(0, 0, 0, 0.15)' : '#ffffffaa'
+      ctx.lineWidth = 1.2 / globalScale
+      ctx.stroke()
     } else {
       ctx.beginPath()
       ctx.arc(x, y, radius, 0, TWO_PI)
-      ctx.fillStyle = color
+      ctx.fillStyle = `${color}25`
       ctx.fill()
+      ctx.strokeStyle = color
+      ctx.lineWidth = 1.6 / globalScale
+      ctx.stroke()
     }
 
     const isSelected = node.id === selectedNodeId
     const isInStack = explorationStackIds.has(node.id)
 
     if (isSelected || isInStack) {
-      ctx.strokeStyle = isSelected ? '#38bdf8' : 'rgba(255, 255, 255, 0.25)'
+      ctx.strokeStyle = isSelected ? accentColor : (isLight ? 'rgba(0, 0, 0, 0.15)' : 'rgba(255, 255, 255, 0.25)')
       ctx.lineWidth = (isSelected ? 2 : 1.2) / globalScale
       ctx.beginPath()
       if (node.__type === 'project') {
-        const side = (radius + 1) * 2
-        ctx.roundRect(x - radius - 1, y - radius - 1, side, side, 5)
+        for (let i = 0; i < 6; i++) {
+          const angle = (Math.PI / 3) * i
+          const hx = x + (radius + 2) * Math.cos(angle)
+          const hy = y + (radius + 2) * Math.sin(angle)
+          if (i === 0) ctx.moveTo(hx, hy)
+          else ctx.lineTo(hx, hy)
+        }
+        ctx.closePath()
       } else {
-        ctx.arc(x, y, radius + 1, 0, TWO_PI)
+        ctx.arc(x, y, radius + 2, 0, TWO_PI)
       }
       ctx.stroke()
     }
 
     if (searchHighlights.has(node.name)) {
-      ctx.strokeStyle = THEME.warning
+      ctx.strokeStyle = warningColor
       ctx.lineWidth = 1.5 / globalScale
       ctx.beginPath()
-      ctx.arc(x, y, radius + 3, 0, TWO_PI)
+      if (node.__type === 'project') {
+        for (let i = 0; i < 6; i++) {
+          const angle = (Math.PI / 3) * i
+          const hx = x + (radius + 3) * Math.cos(angle)
+          const hy = y + (radius + 3) * Math.sin(angle)
+          if (i === 0) ctx.moveTo(hx, hy)
+          else ctx.lineTo(hx, hy)
+        }
+        ctx.closePath()
+      } else {
+        ctx.arc(x, y, radius + 3, 0, TWO_PI)
+      }
       ctx.stroke()
     }
 
     if (isInPath) {
-      ctx.strokeStyle = '#38bdf8'
+      ctx.strokeStyle = accentColor
       ctx.lineWidth = 2 / globalScale
       ctx.beginPath()
-      ctx.arc(x, y, radius + 3, 0, TWO_PI)
+      if (node.__type === 'project') {
+        for (let i = 0; i < 6; i++) {
+          const angle = (Math.PI / 3) * i
+          const hx = x + (radius + 3) * Math.cos(angle)
+          const hy = y + (radius + 3) * Math.sin(angle)
+          if (i === 0) ctx.moveTo(hx, hy)
+          else ctx.lineTo(hx, hy)
+        }
+        ctx.closePath()
+      } else {
+        ctx.arc(x, y, radius + 3, 0, TWO_PI)
+      }
       ctx.stroke()
     }
 
     if (isInChain) {
       const chainGlowRadius = radius + 6
       const gradient = ctx.createRadialGradient(x, y, radius, x, y, chainGlowRadius)
-      gradient.addColorStop(0, 'rgba(56, 189, 248, 0.12)')
-      gradient.addColorStop(1, 'rgba(56, 189, 248, 0)')
+      gradient.addColorStop(0, 'rgba(251, 191, 36, 0.15)')
+      gradient.addColorStop(1, 'rgba(251, 191, 36, 0)')
       ctx.fillStyle = gradient
       ctx.beginPath()
       ctx.arc(x, y, chainGlowRadius, 0, TWO_PI)
       ctx.fill()
 
-      ctx.strokeStyle = '#a78bfa'
+      ctx.strokeStyle = '#f59e0b'
       ctx.lineWidth = 2 / globalScale
       ctx.beginPath()
-      ctx.arc(x, y, radius + 3, 0, TWO_PI)
+      if (node.__type === 'project') {
+        for (let i = 0; i < 6; i++) {
+          const angle = (Math.PI / 3) * i
+          const hx = x + (radius + 3) * Math.cos(angle)
+          const hy = y + (radius + 3) * Math.sin(angle)
+          if (i === 0) ctx.moveTo(hx, hy)
+          else ctx.lineTo(hx, hy)
+        }
+        ctx.closePath()
+      } else {
+        ctx.arc(x, y, radius + 3, 0, TWO_PI)
+      }
       ctx.stroke()
     }
 
@@ -152,10 +209,10 @@ export function useNodePainter(options: PainterOptions) {
     if (showLabel && globalScale >= LOD_THRESHOLDS.dot) {
       const fontSize = Math.max(3.2, Math.min(11.5, 10.5 / globalScale + 1.25))
       ctx.font = `500 ${fontSize}px Inter, ui-sans-serif, system-ui, sans-serif`
-      ctx.fillStyle = 'rgba(248, 250, 252, 0.85)'
+      ctx.fillStyle = isLight ? 'rgba(17, 24, 39, 0.9)' : 'rgba(248, 250, 252, 0.85)'
       ctx.textAlign = 'center'
       ctx.textBaseline = 'top'
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.95)'
+      ctx.shadowColor = isLight ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.95)'
       ctx.shadowBlur = 6 / globalScale
       ctx.fillText(node.name, x, y + radius + 2 / globalScale)
       ctx.shadowBlur = 0
@@ -165,5 +222,6 @@ export function useNodePainter(options: PainterOptions) {
   }, [
     selectedNodeId, hoveredNodeId, searchHighlights,
     pathSet, chainSet, highlightSet, explorationStackIds,
+    isLight,
   ])
 }

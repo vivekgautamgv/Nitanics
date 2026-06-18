@@ -26,8 +26,8 @@ export default function SourcePage({ htmlPath }: { htmlPath: string }) {
         const style = doc.createElement('style')
         style.textContent = `
           html, body {
-            background: #0f111a !important;
-            color: #f8fafc !important;
+            background: #12141f !important;
+            color: #faf9f6 !important;
             font-family: 'Segoe UI Variable', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.7;
             padding: 24px 32px;
@@ -35,24 +35,24 @@ export default function SourcePage({ htmlPath }: { htmlPath: string }) {
             margin: 0 auto;
           }
           h1, h2, h3, h4, h5, h6 {
-            color: #f8fafc !important;
+            color: #faf9f6 !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 8px;
             margin-top: 24px;
           }
-          a { color: #38bdf8 !important; }
+          a { color: #fbbf24 !important; }
           pre, code {
             background: rgba(255, 255, 255, 0.03) !important;
-            color: #f8fafc !important;
+            color: #faf9f6 !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
             border-radius: 6px;
             padding: 2px 6px;
           }
           pre { padding: 12px 16px !important; overflow-x: auto; }
           blockquote {
-            border-left: 3px solid #38bdf8 !important;
+            border-left: 3px solid #fbbf24 !important;
             padding-left: 16px !important;
-            color: #94a3b8 !important;
+            color: #d1cbd4 !important;
           }
           img { max-width: 100%; border-radius: 8px; }
           table { border-collapse: collapse; width: 100%; }

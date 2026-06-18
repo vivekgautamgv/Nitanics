@@ -1,8 +1,8 @@
-# Nitanics: The Ultimate LLM Context Engine
+# Nexari Labs: The Ultimate LLM Context Engine
 
 ### Query High-Density Graphs, Not Raw Text.
 
-Store massive chat histories or hundreds of research documents in a single, living knowledge graph. When you query an LLM, standard RAG systems force the AI to blindly re-read all 100 documents, burning through tokens and context limits. Nitanics solves the context window problem by fetching only the exact graph entities and relationships relevant to your query. 
+Store massive chat histories or hundreds of research documents in a single, living knowledge graph. When you query an LLM, standard RAG systems force the AI to blindly re-read all 100 documents, burning through tokens and context limits. Nexari Labs solves the context window problem by fetching only the exact graph entities and relationships relevant to your query. 
 
 It acts as a flawless long-term memory retrieval system, automatically connects complex concepts, and **saves up to 70% in token costs**.
 

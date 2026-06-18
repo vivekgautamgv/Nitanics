@@ -5,7 +5,8 @@ import { useNodePainter } from '../hooks/useNodePainter'
 import { useGraphStore } from '../stores/graph-store'
 import { useSelectionStore } from '../stores/selection-store'
 import { useUIStore } from '../stores/ui-store'
-import { CAUSAL_COLORS, THEME, MENTIONED_IN_COLOR } from '../constants/colors'
+import { CAUSAL_COLORS, MENTIONED_IN_COLOR } from '../constants/colors'
+import { useThemeActive } from '../hooks/useThemeActive'
 import {
   FORCE_CONFIG, MAGNITUDE_WIDTH, ARROW_LENGTH, ARROW_REL_POS,
   EVIDENCE_DASH, MENTIONED_IN_CLASSIFICATION, MENTIONED_IN_WIDTH, MENTIONED_IN_DASH,
@@ -22,6 +23,11 @@ export default function GraphCanvas({ width, height }: Props) {
   const [edgeTooltip, setEdgeTooltip] = useState<EdgeTooltipData | null>(null)
   const graphData = useGraphData()
   const fgRef = useRef<ForceGraphMethods<GraphNode, GraphLink> | undefined>(undefined)
+
+  const theme = useThemeActive()
+  const isLight = theme === 'light'
+  const accentColor = isLight ? '#d97706' : '#fbbf24'
+  const bgColor = isLight ? '#f5f6fa' : '#090a0f'
 
   const searchHighlights = useGraphStore(s => s.searchHighlights)
   const highlightedPath = useGraphStore(s => s.highlightedPath)
@@ -157,7 +163,7 @@ export default function GraphCanvas({ width, height }: Props) {
 
   const linkColor = useCallback((link: GraphLink) => {
     if (pathActive) {
-      if (isLinkOnPath(link)) return '#38bdf8'
+      if (isLinkOnPath(link)) return accentColor
       return 'rgba(120, 126, 138, 0.10)'
     }
 
@@ -172,7 +178,7 @@ export default function GraphCanvas({ width, height }: Props) {
 
     if (link.causalClassification === MENTIONED_IN_CLASSIFICATION) return MENTIONED_IN_COLOR
     return CAUSAL_COLORS[link.causalClassification] || '#9aa0a8'
-  }, [pathActive, isLinkOnPath, chainSet, isLinkInNeighborhood])
+  }, [pathActive, isLinkOnPath, chainSet, isLinkInNeighborhood, accentColor])
 
   const linkWidth = useCallback((link: GraphLink) => {
     if (pathActive) return isLinkOnPath(link) ? 2.4 : 0.35
@@ -300,7 +306,7 @@ export default function GraphCanvas({ width, height }: Props) {
         linkLineDash={linkLineDash}
         linkDirectionalArrowLength={linkArrowLength}
         linkDirectionalArrowRelPos={ARROW_REL_POS}
-        backgroundColor={THEME.bg}
+        backgroundColor={bgColor}
         enableNodeDrag={true}
         onNodeClick={handleNodeClick}
         onNodeRightClick={handleNodeRightClick}

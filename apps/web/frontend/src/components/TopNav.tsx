@@ -13,6 +13,20 @@ export default function TopNav() {
   const gsRef = useRef<HTMLDivElement>(null)
   const onGraphPage = route.page === 'graph'
 
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark'
+  })
+
+  useEffect(() => {
+    const root = document.documentElement
+    if (theme === 'light') {
+      root.classList.add('light-theme')
+    } else {
+      root.classList.remove('light-theme')
+    }
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
 
   useEffect(() => {
     if (gsOpen && allCollections.length === 0) loadAllCollections()
@@ -47,10 +61,10 @@ export default function TopNav() {
           }}
         >
           <span style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.04em', lineHeight: 1 }}>
-            Nitanics
+            Nexari Labs
           </span>
           <span style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.16em', fontWeight: 700 }}>
-            Knowledge Graph Platform
+            Intelligence Graph Network
           </span>
         </button>
 
@@ -215,6 +229,49 @@ export default function TopNav() {
           <line x1="12" y1="3" x2="12" y2="15" />
         </svg>
         Ingest
+      </button>
+
+      <button
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        title={theme === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        style={{
+          background: 'rgba(255,255,255,0.05)',
+          border: '1px solid var(--border)',
+          cursor: 'pointer',
+          color: 'var(--text-muted)',
+          padding: '9px 10px',
+          borderRadius: 999,
+          display: 'flex',
+          alignItems: 'center',
+          transition: 'color 0.15s, background-color 0.15s',
+          flexShrink: 0,
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.color = 'var(--text-primary)'
+          e.currentTarget.style.background = 'var(--surface-hover)'
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.color = 'var(--text-muted)'
+          e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+        }}
+      >
+        {theme === 'dark' ? (
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        ) : (
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+        )}
       </button>
 
       <button
