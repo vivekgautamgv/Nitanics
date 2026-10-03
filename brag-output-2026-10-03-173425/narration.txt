@@ -1,0 +1,15 @@
+Nitanics connects papers, reports, and notes in a knowledge graph for researchers, analysts, students, and technical teams.
+
+Upload Markdown, text, or text-based PDFs through the UI. Choose an extraction API provider and follow the job’s progress.
+
+Or open the cloned repository in Claude Code or Codex. Attach complete documents and use the provided prompt. Your local agent creates, validates, and uploads the graph.
+
+Both routes feed Neo4j running in Docker. Refresh the app to see your documents and connections.
+
+Explore Graph Studio, search concepts, and use Bridges to compare shared entities. Here, the Federal Reserve connects three finance sources.
+
+Inspect document roles, then read the original sources. Compare research findings or technical reports, and check AI-generated claims against the evidence.
+
+Export collections as JSON, or query graph context from compatible AI clients through optional MCP.
+
+Clone Nitanics, start the local app, and add your sources. Your knowledge, connected.

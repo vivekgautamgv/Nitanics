@@ -1,0 +1,15 @@
+Nitanics connects papers and reports for researchers, analysts, students, and technical teams.
+
+Upload Markdown, text, or text-based PDFs through the UI. Choose an extraction API provider and follow the job’s progress.
+
+Or open the cloned repository in Claude Code or Codex. Attach complete documents and use the provided prompt. Your local agent creates, validates, and uploads the graph.
+
+Both feed the same graph in Docker, ready to explore.
+
+Explore Graph Studio, search concepts, and use Bridges to compare shared entities. Here, the Federal Reserve connects three finance sources.
+
+Inspect document roles, then read the original sources. Compare research findings or technical reports, and check AI-generated claims against the evidence.
+
+After ingestion, retrieve relevant graph context through MCP. Reusing entities and connections can reduce repeated document reading and input tokens. Initial extraction still uses tokens; savings vary by workload.
+
+Clone Nitanics, start the local app, and add your sources. Your knowledge, connected.

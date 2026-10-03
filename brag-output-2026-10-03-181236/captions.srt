@@ -1,0 +1,63 @@
+1
+00:00:00,250 --> 00:00:05,531
+Nitanics connects papers and reports for researchers, analysts, students, and technical teams.
+
+2
+00:00:06,250 --> 00:00:09,932
+Upload Markdown, text, or text-based PDFs through the UI.
+
+3
+00:00:10,032 --> 00:00:13,352
+Choose an extraction API provider and follow the job’s progress.
+
+4
+00:00:14,250 --> 00:00:16,959
+Or open the cloned repository in Claude Code or Codex.
+
+5
+00:00:17,046 --> 00:00:19,538
+Attach complete documents and use the provided prompt.
+
+6
+00:00:19,625 --> 00:00:22,763
+Your local agent creates, validates, and uploads the graph.
+
+7
+00:00:23,250 --> 00:00:25,923
+Both feed the same graph in Docker, ready to explore.
+
+8
+00:00:27,250 --> 00:00:31,605
+Explore Graph Studio, search concepts, and use Bridges to compare shared entities.
+
+9
+00:00:31,704 --> 00:00:34,726
+Here, the Federal Reserve connects three finance sources.
+
+10
+00:00:35,250 --> 00:00:38,165
+Inspect document roles, then read the original sources.
+
+11
+00:00:38,253 --> 00:00:42,751
+Compare research findings or technical reports, and check AI-generated claims against the evidence.
+
+12
+00:00:43,250 --> 00:00:46,442
+After ingestion, retrieve relevant graph context through MCP.
+
+13
+00:00:46,527 --> 00:00:50,306
+Reusing entities and connections can reduce repeated document reading and input tokens.
+
+14
+00:00:50,391 --> 00:00:53,762
+Initial extraction still uses tokens; savings vary by workload.
+
+15
+00:00:54,250 --> 00:00:57,730
+Clone Nitanics, start the local app, and add your sources.
+
+16
+00:00:57,830 --> 00:00:59,317
+Your knowledge, connected.

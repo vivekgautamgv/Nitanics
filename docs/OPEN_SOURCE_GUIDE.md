@@ -26,6 +26,23 @@ Run these commands from a terminal. They work in PowerShell and typical macOS/Li
 git clone https://github.com/vivekgautamgv/nitanics.git
 cd nitanics
 bun install
+```
+
+Before creating Neo4j, choose your own local password and export it in the shell that will run the helper and development servers. Replace the placeholder in the appropriate command:
+
+```powershell
+# PowerShell
+$env:MT_NEO4J_PASSWORD = 'YOUR_LOCAL_NEO4J_PASSWORD'
+```
+
+```bash
+# macOS/Linux
+export MT_NEO4J_PASSWORD='YOUR_LOCAL_NEO4J_PASSWORD'
+```
+
+Then continue from the same terminal:
+
+```text
 bun run neo4j:ensure
 bun run nlp:setup
 bun run dev
@@ -131,7 +148,7 @@ Validation checks structure, entity references, source evidence, and real embedd
 
 ## Database configuration
 
-The Docker helper defaults to `neo4j:5.26.0-community`, container `memorytonic-neo4j`, Bolt port `7687`, HTTP port `7474`, user `neo4j`, password `12345678`, and database `memorytonic`. These defaults are for local development.
+The Docker helper uses a pinned Neo4j Community image, persistent volumes, and local database configuration. Choose your own password through `MT_NEO4J_PASSWORD` before first setup; do not rely on legacy fallback credentials in the code. The default database/container names retain `memorytonic` for compatibility. They are repository conventions, not a requirement for an existing server.
 
 See [Docker and Neo4j Setup](../README.md#docker-and-neo4j-setup) for first-run shell overrides, matching environment-file templates, and alignment checks. The helper preserves existing files and container settings: changing `MT_NEO4J_*` alone does not reconfigure an existing container or overwrite app credentials. All consumers must target the same server/database; changing only the web UI connection does not change the pipeline or agent destination.
 
@@ -180,7 +197,7 @@ Configure your MCP client to launch the built stdio server, using an absolute re
       "env": {
         "NEO4J_URI": "neo4j://127.0.0.1:7687",
         "NEO4J_USER": "neo4j",
-        "NEO4J_PASSWORD": "12345678",
+        "NEO4J_PASSWORD": "YOUR_LOCAL_NEO4J_PASSWORD",
         "NEO4J_DATABASE": "memorytonic"
       }
     }

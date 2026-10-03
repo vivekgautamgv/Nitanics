@@ -1,0 +1,125 @@
+[
+  {
+    "scene": "intro",
+    "time_adjustment": 1.0,
+    "sentences": [
+      {
+        "sentence": "Nitanics connects papers, reports, and notes in a knowledge graph for researchers, analysts, students, and technical teams.",
+        "start": 0.25,
+        "end": 7.315
+      }
+    ]
+  },
+  {
+    "scene": "api",
+    "time_adjustment": 1.0,
+    "sentences": [
+      {
+        "sentence": "Upload Markdown, text, or text-based PDFs through the UI.",
+        "start": 8.25,
+        "end": 11.872
+      },
+      {
+        "sentence": "Choose an extraction API provider and follow the job\u2019s progress.",
+        "start": 12.032,
+        "end": 15.292
+      }
+    ]
+  },
+  {
+    "scene": "agent",
+    "time_adjustment": 1.0,
+    "sentences": [
+      {
+        "sentence": "Or open the cloned repository in Claude Code or Codex.",
+        "start": 16.25,
+        "end": 19.122
+      },
+      {
+        "sentence": "Attach complete documents and use the provided prompt.",
+        "start": 19.282,
+        "end": 21.923
+      },
+      {
+        "sentence": "Your local agent creates, validates, and uploads the graph.",
+        "start": 22.083,
+        "end": 25.434
+      }
+    ]
+  },
+  {
+    "scene": "local",
+    "time_adjustment": 1.0,
+    "sentences": [
+      {
+        "sentence": "Both routes feed Neo4j running in Docker.",
+        "start": 26.25,
+        "end": 28.47
+      },
+      {
+        "sentence": "Refresh the app to see your documents and connections.",
+        "start": 28.63,
+        "end": 31.123
+      }
+    ]
+  },
+  {
+    "scene": "graph",
+    "time_adjustment": 1.005,
+    "sentences": [
+      {
+        "sentence": "Explore Graph Studio, search concepts, and use Bridges to compare shared entities.",
+        "start": 32.25,
+        "end": 36.545
+      },
+      {
+        "sentence": "Here, the Federal Reserve connects three finance sources.",
+        "start": 36.704,
+        "end": 39.666
+      }
+    ]
+  },
+  {
+    "scene": "evidence",
+    "time_adjustment": 1.0848,
+    "sentences": [
+      {
+        "sentence": "Inspect document roles, then read the original sources.",
+        "start": 40.25,
+        "end": 43.105
+      },
+      {
+        "sentence": "Compare research findings or technical reports, and check AI-generated claims against the evidence.",
+        "start": 43.253,
+        "end": 47.691
+      }
+    ]
+  },
+  {
+    "scene": "reuse",
+    "time_adjustment": 1.0172,
+    "sentences": [
+      {
+        "sentence": "Export collections as JSON, or query graph context from compatible AI clients through optional MCP.",
+        "start": 48.25,
+        "end": 53.692
+      }
+    ]
+  },
+  {
+    "scene": "outro",
+    "time_adjustment": 1.0,
+    "sentences": [
+      {
+        "sentence": "Clone Nitanics, start the local app, and add your sources.",
+        "start": 54.25,
+        "end": 57.67
+      },
+      {
+        "sentence": "Your knowledge, connected.",
+        "start": 57.83,
+        "end": 59.257
+      }
+    ]
+  }
+]

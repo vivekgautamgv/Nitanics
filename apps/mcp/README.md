@@ -18,7 +18,7 @@ A local AI client should launch the compiled entry point directly:
   "mcpServers": {
     "nitanics": {
       "command": "node",
-      "args": ["D:/nitanics/apps/mcp/dist/index.js"],
+      "args": ["/absolute/path/to/nitanics/apps/mcp/dist/index.js"],
       "env": {
         "NEO4J_URI": "neo4j://127.0.0.1:7687",
         "NEO4J_USER": "neo4j",

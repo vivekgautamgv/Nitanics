@@ -1,0 +1,21 @@
+{
+  "duration_seconds": 60,
+  "frames": 1800,
+  "fps": 30,
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "video_codec": "H.264",
+  "pixel_format": "yuv420p",
+  "audio": "AAC stereo, 48 kHz",
+  "narration": "Microsoft Mark, locally generated",
+  "spoken_sentences": 16,
+  "captions": "burned-in, plus external SRT",
+  "integrated_loudness_lufs": -15.9,
+  "true_peak_dbfs": -4.2,
+  "minimum_narration_above_music_db": 19.64,
+  "poster_frame0_mean_absolute_error": 1.356,
+  "full_decode": "passed",
+  "bytes": 6299447
+}

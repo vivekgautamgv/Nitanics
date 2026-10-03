@@ -1,0 +1,31 @@
+{
+  "status": "read-only graph context retrieval passed",
+  "entityLookup": {
+    "entity": "Federal Reserve",
+    "returnedFields": [
+      "entity",
+      "projects",
+      "relationships",
+      "chainLinks",
+      "similar"
+    ]
+  },
+  "focusedQuery": {
+    "entity": "Federal Reserve",
+    "collection": "Global Finance Systems",
+    "sourceRows": 3,
+    "returnedFields": [
+      "entity",
+      "category",
+      "source",
+      "role"
+    ],
+    "includesCompleteRawSources": false
+  },
+  "recallCheck": {
+    "status": "failed",
+    "code": "Neo.ClientError.Statement.ArgumentError",
+    "detail": "Neo4j rejected a JS numeric LIMIT as a floating-point value; repository source was preserved."
+  },
+  "tokenBenchmark": "not performed; no percent or billing savings claim"
+}

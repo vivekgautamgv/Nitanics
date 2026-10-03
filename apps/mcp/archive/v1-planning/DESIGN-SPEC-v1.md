@@ -1123,7 +1123,7 @@ import neo4j, { type Driver, Integer } from 'neo4j-driver';
 const config = {
   uri: process.env.NEO4J_URI ?? 'bolt://localhost:7687',
   user: process.env.NEO4J_USER ?? 'neo4j',
-  password: process.env.NEO4J_PASSWORD ?? '12345678',
+  password: process.env.NEO4J_PASSWORD, // Supply credentials through the local environment.
   database: process.env.NEO4J_DATABASE ?? 'memorytonic',
 };
 

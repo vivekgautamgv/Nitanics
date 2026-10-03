@@ -6,6 +6,8 @@ Run with `bun run dev:api` from the repository root. The server binds to `127.0.
 
 Install Node.js 20+, Bun 1.3+, uv, and Docker Desktop. Start Docker Desktop, then run these commands from the cloned repository root:
 
+For a new Docker database, first choose and export your own `MT_NEO4J_PASSWORD` in this terminal using the [Quick Start](../../README.md#quick-start). Preserve an existing server's configuration. Never include real credentials in shared documentation or prompts.
+
 ```text
 bun install
 bun run neo4j:ensure

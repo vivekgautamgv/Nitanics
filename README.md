@@ -1,16 +1,10 @@
-<<<<<<< HEAD
 # Nitanics — Local knowledge graphs for documents and research
-=======
-# Nitanics Labs: The Ultimate LLM Context Engine
->>>>>>> 559ddb2a7380f49ddaeac0c790fff82d4602f627
 
 An open-source web workspace for turning papers, reports, and notes into connected research. Upload documents in the UI with an extraction API key, or open the cloned repository in an AI coding agent and attach your documents in its chat. Both routes save to the same local Neo4j database and appear in Graph Studio.
 
-<<<<<<< HEAD
 Explore entities, relationships, shared concepts, and source evidence across your documents. Use the original sources to verify generated claims: extraction can miss or misinterpret information.
-=======
-Store massive chat histories or hundreds of research documents in a single, living knowledge graph. When you query an LLM, standard RAG systems force the AI to blindly re-read all 100 documents, burning through tokens and context limits. Nitanics Labs solves the context window problem by fetching only the exact graph entities and relationships relevant to your query. 
->>>>>>> 559ddb2a7380f49ddaeac0c790fff82d4602f627
+
+Compatible AI clients can retrieve relevant graph context through the optional MCP server. This can reduce repeated source reading; the effect on context size and cost depends on the workload.
 
 ## Two Ways to Create a Graph
 
@@ -55,6 +49,23 @@ Install Git, **Bun 1.3+**, **Node.js 20+**, **uv**, and **Docker Desktop**. Star
 git clone https://github.com/vivekgautamgv/nitanics.git
 cd nitanics
 bun install
+```
+
+Choose a password for your own local Neo4j instance. Set it in the same terminal using the command for your shell, replacing the placeholder:
+
+```powershell
+# PowerShell
+$env:MT_NEO4J_PASSWORD = 'YOUR_LOCAL_NEO4J_PASSWORD'
+```
+
+```bash
+# macOS/Linux
+export MT_NEO4J_PASSWORD='YOUR_LOCAL_NEO4J_PASSWORD'
+```
+
+Then start the workspace from that terminal:
+
+```bash
 bun run nlp:setup
 bun run neo4j:ensure
 bun run dev
@@ -74,55 +85,24 @@ node scripts/import-collection-export.mjs apps/exports/global-finance-systems-ex
 
 ## Docker and Neo4j Setup
 
-Every person cloning Nitanics runs their own workspace. `localhost` refers to **their machine**. Their UI, ingestion pipeline, coding agent, and optional MCP client must all target the same Neo4j server and database with matching credentials.
+The web UI, ingestion pipeline, coding agent, and optional MCP client must connect to the same Neo4j server and database. Loopback addresses such as `localhost` refer to the machine running the workspace. Examples in this guide are configuration templates; replace placeholders with your own values.
 
 ### Fresh clone: let the helper configure the local database
 
 1. Install and open Docker Desktop. Run `docker info` to confirm the Docker engine is reachable.
-2. Run the Quick Start commands above. `bun run neo4j:ensure` pulls the Neo4j image when needed, creates or starts its container with persistent Docker volumes, enables APOC/GDS plugins, waits for the database, and runs an idempotent schema bootstrap.
+2. Follow Quick Start, including setting your own password before the first helper run. `bun run neo4j:ensure` pulls the Neo4j image when needed, creates or starts its container with persistent Docker volumes, enables APOC/GDS plugins, waits for the database, and runs an idempotent schema bootstrap.
 3. The helper creates missing application `.env` files with matching connection settings. Existing files are preserved, so an older configuration must be reviewed rather than assumed to match.
 4. Start the app with `bun run dev`, then check the database connection before adding documents.
 
 This route runs Neo4j inside Docker; no separate Neo4j Desktop installation is needed.
 
-The helper's **local development defaults** are:
+The helper coordinates the local container, database, and missing app configuration files. Keep your chosen `MT_NEO4J_PASSWORD` set in the shell used for `bun run dev`, since the development scripts also run the helper. Do not rely on the legacy fallback password in the code.
 
-| Setting | Default |
-|---|---|
-| Docker image | `neo4j:5.26.0-community` |
-| Container | `memorytonic-neo4j` |
-| Browser/driver connection | `bolt://127.0.0.1:7687` |
-| Pipeline HTTP endpoint | `http://127.0.0.1:7474` |
-| Username / password | `neo4j` / `12345678` |
-| Database | `memorytonic` |
-
-The `memorytonic` database/container names are compatibility defaults; the product is Nitanics. The password above is a local development default. Choose your own password for a new setup.
-
-Before the first helper run, export `MT_NEO4J_PASSWORD` in your shell to choose a password. To avoid occupied database ports, also export `MT_NEO4J_BOLT_PORT` and `MT_NEO4J_HTTP_PORT`. For example, use **one** of these shell-specific forms and keep the variables set when running `bun run dev`:
-
-```powershell
-# PowerShell — replace the password before running
-$env:MT_NEO4J_PASSWORD = 'YOUR_LOCAL_PASSWORD'
-$env:MT_NEO4J_BOLT_PORT = '17687'
-$env:MT_NEO4J_HTTP_PORT = '17474'
-bun run neo4j:ensure
-bun run dev
-```
-
-```bash
-# macOS/Linux — replace the password before running
-export MT_NEO4J_PASSWORD='YOUR_LOCAL_PASSWORD'
-export MT_NEO4J_BOLT_PORT=17687
-export MT_NEO4J_HTTP_PORT=17474
-bun run neo4j:ensure
-bun run dev
-```
-
-The root [.env.example](.env.example) lists all helper overrides. Copying it to a root `.env` does not configure the helper: it reads exported shell variables. Changing these variables does not change an existing container's password, port mappings, or database, and does not overwrite existing app configuration. Use the existing-server instructions below for an established setup.
+For custom container names, database names, or occupied ports, see [.env.example](.env.example) and the [database configuration guide](docs/OPEN_SOURCE_GUIDE.md#database-configuration). Export helper overrides in your shell; a root `.env` is not loaded by the helper. Changing overrides does not rotate an existing database password, change container port mappings, or overwrite existing application `.env` files. Use the existing-server instructions for an established setup.
 
 ### Existing Neo4j: align the app, pipeline, and agent
 
-If you already run Neo4j in Docker, Neo4j Desktop, or a service, use that server's actual host, exposed ports, credentials, and existing database. Do not launch another container on the same ports. Docker is not required to run a second database when an accessible server already exists.
+If Neo4j already runs in Docker, Neo4j Desktop, or a service, use that server's host, exposed ports, credentials, and existing database. This route does not require creating another container.
 
 | Consumer | Configuration | Required variables |
 |---|---|---|
@@ -149,7 +129,7 @@ NEO4J_PASSWORD=YOUR_NEO4J_PASSWORD
 NEO4J_DATABASE=YOUR_EXISTING_DATABASE
 ```
 
-Use the same server and database in both templates. Bolt and HTTP addresses use different protocols and ports; the pipeline needs an accessible HTTP transaction endpoint. Use the server's actual TLS scheme when required. Confirm the database exists in your Neo4j edition, and enable the APOC/GDS plugins used by the graph workflow. An existing Community database may be named `neo4j`; use its real name rather than assuming `memorytonic` exists.
+Use the same server and database in both templates. Bolt and HTTP addresses use different protocols and ports; the pipeline needs an accessible HTTP transaction endpoint. Use the server's actual TLS scheme when required. Confirm the database exists in your Neo4j edition, and enable the APOC/GDS plugins used by the graph workflow. Use the existing database's real name rather than assuming a name from an example.
 
 Shell `NEO4J_*` variables override the pipeline file, so check the environment inherited by the API and coding agent too. The API does not load `apps/api/.env`, and MCP credentials should be supplied explicitly in the client configuration. Changing only the UI connection does not update the ingestion destination.
 
@@ -263,7 +243,11 @@ Configure your client to launch the compiled entry point with an absolute path a
 
 Graph storage, the web workspace, NLP, and embeddings run on your machine. UI extraction sends source text to the selected hosted provider; agent attachments are handled by your chosen agent service. Settings can save provider keys in browser local storage. Collection exports can include source content, so review them before sharing.
 
-Nitanics currently targets a local research workspace. Hosted multi-user authentication, billing, and Electron desktop packaging are outside this version's scope. Keep the web app, API, and database in the documented local setup.
+Keep credentials in local configuration and exclude them from commits, screenshots, prompts, and shared exports. Local `.env` files are ignored by Git; `.env.example` contains templates only. Source files under `graphs/` are not ignored automatically, so review staged files before publishing private research.
+
+The browser connects directly to Neo4j. `VITE_*` connection credentials are available to the browser and included in frontend builds; they are not server-side secrets. Use a private local workspace and trusted device. Do not publish a frontend build containing private database credentials or expose this development setup as a public service.
+
+Nitanics currently targets a local research workspace. Hosted multi-user authentication, billing, and Electron desktop packaging are outside this version's scope.
 
 ## Repository Structure
 
@@ -313,26 +297,6 @@ For ingestion code changes, run `uv run python -m unittest discover -s tests` fr
 | [Ingestion Pipeline](apps/ingestion-pipeline/README.md) | Python pipeline internals |
 | [Local API](apps/api/README.md) | Ingestion/export endpoints and job lifecycle |
 | [Optional MCP](apps/mcp/README.md) | Client setup, tools, and integration limits |
-
-## Screenshots
-
-<details>
-<summary>Earlier UI screenshots</summary>
-
-These screenshots show an earlier version. The current UI uses Nitanics branding and the research and ingestion workflows described above.
-
-![Main Screen](docs/assets/Main%20Screen.png)
-![Main Info Dashboard](docs/assets/Main%20Info%20dashboard.png)
-![Dashboard Graph](docs/assets/Dashboard%20View%20-%20Graph.png)
-![Graph Inspector](docs/assets/Graph%20View%20-%20Side%20bar%20details.png)
-
-</details>
-
-## Team Members
-
-- [Vivek Gautam](https://www.linkedin.com/in/vivek-gautam-670017225/)
-- [Ajay Pawar](https://www.linkedin.com/in/ajay-pawar-data-detective/)
-- [Vipin Bhati](https://www.linkedin.com/in/vipin-bhati-6a18781b7/)
 
 ## License
 

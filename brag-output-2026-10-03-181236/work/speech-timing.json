@@ -1,0 +1,130 @@
+[
+  {
+    "scene": "intro",
+    "time_adjustment": 1.0,
+    "sentences": [
+      {
+        "sentence": "Nitanics connects papers and reports for researchers, analysts, students, and technical teams.",
+        "start": 0.25,
+        "end": 5.471
+      }
+    ]
+  },
+  {
+    "scene": "api",
+    "time_adjustment": 1.0,
+    "sentences": [
+      {
+        "sentence": "Upload Markdown, text, or text-based PDFs through the UI.",
+        "start": 6.25,
+        "end": 9.872
+      },
+      {
+        "sentence": "Choose an extraction API provider and follow the job\u2019s progress.",
+        "start": 10.032,
+        "end": 13.292
+      }
+    ]
+  },
+  {
+    "scene": "agent",
+    "time_adjustment": 1.0889,
+    "sentences": [
+      {
+        "sentence": "Or open the cloned repository in Claude Code or Codex.",
+        "start": 14.25,
+        "end": 16.899
+      },
+      {
+        "sentence": "Attach complete documents and use the provided prompt.",
+        "start": 17.046,
+        "end": 19.478
+      },
+      {
+        "sentence": "Your local agent creates, validates, and uploads the graph.",
+        "start": 19.625,
+        "end": 22.703
+      }
+    ]
+  },
+  {
+    "scene": "local",
+    "time_adjustment": 1.0,
+    "sentences": [
+      {
+        "sentence": "Both feed the same graph in Docker, ready to explore.",
+        "start": 23.25,
+        "end": 25.863
+      }
+    ]
+  },
+  {
+    "scene": "graph",
+    "time_adjustment": 1.005,
+    "sentences": [
+      {
+        "sentence": "Explore Graph Studio, search concepts, and use Bridges to compare shared entities.",
+        "start": 27.25,
+        "end": 31.545
+      },
+      {
+        "sentence": "Here, the Federal Reserve connects three finance sources.",
+        "start": 31.704,
+        "end": 34.666
+      }
+    ]
+  },
+  {
+    "scene": "evidence",
+    "time_adjustment": 1.0848,
+    "sentences": [
+      {
+        "sentence": "Inspect document roles, then read the original sources.",
+        "start": 35.25,
+        "end": 38.105
+      },
+      {
+        "sentence": "Compare research findings or technical reports, and check AI-generated claims against the evidence.",
+        "start": 38.253,
+        "end": 42.691
+      }
+    ]
+  },
+  {
+    "scene": "reuse",
+    "time_adjustment": 1.1041,
+    "sentences": [
+      {
+        "sentence": "After ingestion, retrieve relevant graph context through MCP.",
+        "start": 43.25,
+        "end": 46.382
+      },
+      {
+        "sentence": "Reusing entities and connections can reduce repeated document reading and input tokens.",
+        "start": 46.527,
+        "end": 50.246
+      },
+      {
+        "sentence": "Initial extraction still uses tokens; savings vary by workload.",
+        "start": 50.391,
+        "end": 53.702
+      }
+    ]
+  },
+  {
+    "scene": "outro",
+    "time_adjustment": 1.0,
+    "sentences": [
+      {
+        "sentence": "Clone Nitanics, start the local app, and add your sources.",
+        "start": 54.25,
+        "end": 57.67
+      },
+      {
+        "sentence": "Your knowledge, connected.",
+        "start": 57.83,
+        "end": 59.257
+      }
+    ]
+  }
+]

@@ -8,6 +8,8 @@ Keep development focused on `apps/web/frontend`, `apps/web/modules/graph-studio`
 
 ## Local setup
 
+Follow [Docker and Neo4j Setup](README.md#docker-and-neo4j-setup) first. For a new Docker instance, choose and export your own `MT_NEO4J_PASSWORD` in the shell used below. Preserve existing server configuration and never include passwords in prompts or reports.
+
 ```bash
 bun install
 bun run nlp:setup

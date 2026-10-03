@@ -8,6 +8,8 @@ The agent must be able to read local files or chat attachments, write into this 
 
 From the repository root:
 
+Complete [Docker and Neo4j Setup](../README.md#docker-and-neo4j-setup) first, including choosing and exporting your own `MT_NEO4J_PASSWORD` for a new Docker instance. Preserve an existing server's configuration. Keep passwords out of prompts and reports.
+
 ```bash
 bun install
 bun run nlp:setup

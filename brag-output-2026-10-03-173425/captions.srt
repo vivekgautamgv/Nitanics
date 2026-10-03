@@ -1,0 +1,59 @@
+1
+00:00:00,250 --> 00:00:07,375
+Nitanics connects papers, reports, and notes in a knowledge graph for researchers, analysts, students, and technical teams.
+
+2
+00:00:08,250 --> 00:00:11,932
+Upload Markdown, text, or text-based PDFs through the UI.
+
+3
+00:00:12,032 --> 00:00:15,352
+Choose an extraction API provider and follow the job’s progress.
+
+4
+00:00:16,250 --> 00:00:19,182
+Or open the cloned repository in Claude Code or Codex.
+
+5
+00:00:19,282 --> 00:00:21,983
+Attach complete documents and use the provided prompt.
+
+6
+00:00:22,083 --> 00:00:25,494
+Your local agent creates, validates, and uploads the graph.
+
+7
+00:00:26,250 --> 00:00:28,530
+Both routes feed Neo4j running in Docker.
+
+8
+00:00:28,630 --> 00:00:31,183
+Refresh the app to see your documents and connections.
+
+9
+00:00:32,250 --> 00:00:36,605
+Explore Graph Studio, search concepts, and use Bridges to compare shared entities.
+
+10
+00:00:36,704 --> 00:00:39,726
+Here, the Federal Reserve connects three finance sources.
+
+11
+00:00:40,250 --> 00:00:43,165
+Inspect document roles, then read the original sources.
+
+12
+00:00:43,253 --> 00:00:47,751
+Compare research findings or technical reports, and check AI-generated claims against the evidence.
+
+13
+00:00:48,250 --> 00:00:53,752
+Export collections as JSON, or query graph context from compatible AI clients through optional MCP.
+
+14
+00:00:54,250 --> 00:00:57,730
+Clone Nitanics, start the local app, and add your sources.
+
+15
+00:00:57,830 --> 00:00:59,317
+Your knowledge, connected.

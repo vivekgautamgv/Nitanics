@@ -22,3 +22,7 @@ Identity: the live UI, native three-node logo, blue #2563eb, neutral backgrounds
 Narration is generated using the installed Microsoft Mark voice, with sentence-level WAV stems. Captions follow those sentence boundaries. Speech is trimmed and gently time-adjusted only when needed to fit a scene; the background score stays below narration. Each scene and transition is inspected before rendering, then encoded frames, the full decode, duration, audio levels, and poster/frame-0 consistency are checked.
 
 Deliverables: brag.mp4, brag.jpg, share-copy.txt, narration.txt, captions.srt. All intermediates and reproducible scripts are in work/. No application source or graph data is changed.
+
+Verified export: exactly 60.00 seconds, 1,800 frames at 30 fps, 1920 × 1080 H.264/yuv420p, and AAC stereo at 48 kHz. Full decode passed. The final mix measures -15.8 LUFS with -3.6 dBFS true peak; narration remains at least 19.63 dB above the score during spoken sentences. All 15 narration/caption sentences are present. Encoded scene stills were inspected; frame 0 matches the JPEG poster within expected compression loss. Size: 6,043,647 bytes. Details are in work/verification.json.
+
+To reproduce on this Windows machine, run work/make_narration.ps1 in the current PowerShell runtime, then use the bundled Python runtime for work/render_walkthrough.py --render and work/verify_walkthrough.py. The FFmpeg runtime is reused from the earlier teaser's work/deps folder. To rebuild visuals without regenerating audio, add --reuse-audio to the renderer.
