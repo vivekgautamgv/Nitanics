@@ -1,16 +1,10 @@
-<<<<<<< HEAD
+
 # Nitanics — Local knowledge graphs for documents and research
-=======
-# Nitanics Labs: The Ultimate LLM Context Engine
->>>>>>> 559ddb2a7380f49ddaeac0c790fff82d4602f627
 
 An open-source web workspace for turning papers, reports, and notes into connected research. Upload documents in the UI with an extraction API key, or open the cloned repository in an AI coding agent and attach your documents in its chat. Both routes save to the same local Neo4j database and appear in Graph Studio.
 
-<<<<<<< HEAD
-Explore entities, relationships, shared concepts, and source evidence across your documents. Use the original sources to verify generated claims: extraction can miss or misinterpret information.
-=======
 Store massive chat histories or hundreds of research documents in a single, living knowledge graph. When you query an LLM, standard RAG systems force the AI to blindly re-read all 100 documents, burning through tokens and context limits. Nitanics Labs solves the context window problem by fetching only the exact graph entities and relationships relevant to your query. 
->>>>>>> 559ddb2a7380f49ddaeac0c790fff82d4602f627
+
 
 ## Two Ways to Create a Graph
 
@@ -328,11 +322,6 @@ These screenshots show an earlier version. The current UI uses Nitanics branding
 
 </details>
 
-## Team Members
-
-- [Vivek Gautam](https://www.linkedin.com/in/vivek-gautam-670017225/)
-- [Ajay Pawar](https://www.linkedin.com/in/ajay-pawar-data-detective/)
-- [Vipin Bhati](https://www.linkedin.com/in/vipin-bhati-6a18781b7/)
 
 ## License
 
