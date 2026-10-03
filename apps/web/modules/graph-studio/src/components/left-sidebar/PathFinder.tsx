@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { useGraphStore } from '../../stores/graph-store'
 import { useUIStore } from '../../stores/ui-store'
 import { useSelectionStore } from '../../stores/selection-store'
-import { findShortestPath } from '../../services/queries'
+import { findGraphPath } from '../../utils/graph-paths'
 import { CATEGORY_COLORS, CAUSAL_COLORS } from '../../constants/colors'
 import CollapsibleSection from '../shared/CollapsibleSection'
 import type { PathResult } from '../../types/graph'
@@ -11,11 +11,13 @@ export default function PathFinder() {
   const [inputValue, setInputValue] = useState('')
   const [suggestions, setSuggestions] = useState<Array<{ name: string; category: string }>>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
+  const [includeDocuments, setIncludeDocuments] = useState(false)
+  const [hasComputed, setHasComputed] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const suggestionsRef = useRef<HTMLDivElement>(null)
 
   const allNodes = useGraphStore(s => s.allNodes)
-  const collection = useGraphStore(s => s.collection)
+  const allLinks = useGraphStore(s => s.allLinks)
   const setHighlightedPath = useGraphStore(s => s.setHighlightedPath)
   const clearPath = useGraphStore(s => s.clearPath)
 
@@ -36,11 +38,17 @@ export default function PathFinder() {
     }
     const lower = inputValue.toLowerCase()
     const matches = allNodes
-      .filter(n => n.name.toLowerCase().includes(lower) && !pathEntities.includes(n.name))
+      .filter(n => (includeDocuments || n.__type === 'entity') && n.name.toLowerCase().includes(lower) && !pathEntities.includes(n.name))
       .slice(0, 8)
       .map(n => ({ name: n.name, category: n.category }))
     setSuggestions(matches)
-  }, [inputValue, allNodes, pathEntities])
+  }, [inputValue, allNodes, pathEntities, includeDocuments])
+
+  useEffect(() => {
+    setHasComputed(false)
+    setPathResults([])
+    clearPath()
+  }, [pathEntities, allNodes, allLinks, includeDocuments, setPathResults, clearPath])
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
@@ -69,7 +77,7 @@ export default function PathFinder() {
     }
   }
 
-  const computePaths = useCallback(async () => {
+  const computePaths = useCallback(() => {
     if (pathEntities.length < 2) return
 
     setIsComputingPaths(true)
@@ -86,7 +94,7 @@ export default function PathFinder() {
     }
 
     try {
-      const results = await Promise.all(pairs.map(([a, b]) => findShortestPath(a, b, collection)))
+      const results = pairs.map(([a, b]) => findGraphPath(allNodes, allLinks, a, b, includeDocuments))
       const validResults = results.filter((r): r is PathResult => r !== null)
       setPathResults(validResults)
 
@@ -97,12 +105,13 @@ export default function PathFinder() {
         }
       }
       setHighlightedPath([...allPathEntities])
+      setHasComputed(true)
     } catch (err) {
       console.error('Path computation failed:', err)
     } finally {
       setIsComputingPaths(false)
     }
-  }, [pathEntities, collection, setIsComputingPaths, setPathResults, clearPath, setHighlightedPath])
+  }, [pathEntities, allNodes, allLinks, includeDocuments, setIsComputingPaths, setPathResults, clearPath, setHighlightedPath])
 
   const handleClearAll = useCallback(() => {
     exitPathMode()
@@ -137,7 +146,8 @@ export default function PathFinder() {
           }}
           onFocus={() => inputValue.length >= 1 && setShowSuggestions(true)}
           onKeyDown={handleKeyDown}
-          placeholder={pathEntities.length >= 5 ? 'Max 5 entities' : 'Add entity or project'}
+          aria-label="Add an endpoint for path finding"
+          placeholder={pathEntities.length >= 5 ? 'Max 5 entities' : includeDocuments ? 'Add entity or document' : 'Add an entity'}
           disabled={pathEntities.length >= 5}
           className="w-full rounded-2xl px-3 py-2.5 text-[13px] outline-none"
           style={{
@@ -179,6 +189,21 @@ export default function PathFinder() {
           </div>
         )}
       </div>
+
+      <label className="mb-3 flex items-center gap-2 text-[12px]" style={{ color: 'var(--text-secondary)' }}>
+        <input type="checkbox" checked={includeDocuments} onChange={e => {
+          setIncludeDocuments(e.target.checked)
+          if (!e.target.checked) {
+            for (const name of pathEntities) {
+              if (allNodes.find(node => node.name === name)?.__type === 'project') removePathEntity(name)
+            }
+          }
+        }} style={{ accentColor: 'var(--accent)' }} />
+        Include document connections
+      </label>
+      <p className="mb-3 text-[11px]" style={{ color: 'var(--text-muted)' }}>
+        Paths follow relationships in either direction within this graph.
+      </p>
 
       {pathEntities.length > 0 && (
         <div className="mb-3 flex flex-wrap gap-2">
@@ -246,7 +271,7 @@ export default function PathFinder() {
                 onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
               >
                 <span className="text-[12px] font-semibold" style={{ color: 'var(--text-primary)' }}>
-                  {path.from} <span style={{ color: 'var(--text-muted)' }}>?</span> {path.to}
+                  {path.from} <span style={{ color: 'var(--text-muted)' }}>↔</span> {path.to}
                 </span>
                 <span className="rounded-full px-2 py-1 text-[10px] font-semibold" style={{ background: 'var(--surface-hover)', color: 'var(--text-secondary)' }}>
                   {path.hops} hop{path.hops !== 1 ? 's' : ''}
@@ -271,11 +296,11 @@ export default function PathFinder() {
 
                       {relType && j < path.entities.length - 1 && (
                         <div className="flex items-center gap-2 pl-3 py-1">
-                          <span style={{ color: relColor, fontSize: 11 }}>¦</span>
+                          <span style={{ color: relColor, fontSize: 11 }}>↕</span>
                           <span className="rounded-full px-2 py-1 text-[10px] font-medium" style={{ color: relColor, background: `${relColor}15` }}>
                             {relType}
                           </span>
-                          <span style={{ color: relColor, fontSize: 11 }}>?</span>
+                          <span style={{ color: relColor, fontSize: 11 }}>↕</span>
                         </div>
                       )}
                     </div>
@@ -289,7 +314,9 @@ export default function PathFinder() {
 
       {pathEntities.length >= 2 && pathResults.length === 0 && !isComputingPaths && pathEntities.length > 0 && (
         <p className="text-[12px]" style={{ color: 'var(--text-muted)' }}>
-          Click Find Paths to surface the strongest connections.
+          {hasComputed
+            ? 'No connection within 8 hops in this graph. Try including document connections or switch to Collection view.'
+            : 'Find the shortest connections within this graph, up to 8 hops.'}
         </p>
       )}
     </CollapsibleSection>

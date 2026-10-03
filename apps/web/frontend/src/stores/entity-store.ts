@@ -3,6 +3,7 @@
  * Source of truth: DESIGN-SPEC.md Section 16
  */
 import { create } from 'zustand'
+import { describeDataError } from '../adapters/neo4j-service'
 import { fetchEntityProfile } from '../services/frontend-queries'
 import type {
   EntityProjectMention, EntityRelationship, EntityChainLink, SimilarEntity,
@@ -33,18 +34,22 @@ interface EntityStore {
   loadEntity: (name: string) => Promise<void>
 }
 
+let loadVersion = 0
+
 export const useEntityStore = create<EntityStore>((set) => ({
   profile: null,
   isLoading: false,
   error: null,
 
   loadEntity: async (name: string) => {
+    const version = ++loadVersion
     set({ isLoading: true, error: null, profile: null })
     try {
       const profile = await fetchEntityProfile(name)
-      set({ profile, isLoading: false })
+      if (version !== loadVersion) return
+      set({ profile, isLoading: false, error: profile ? null : 'This entity could not be found. Refresh the workspace and choose another entity.' })
     } catch (err) {
-      set({ error: String(err), isLoading: false })
+      if (version === loadVersion) set({ error: describeDataError(err), isLoading: false })
     }
   },
 }))

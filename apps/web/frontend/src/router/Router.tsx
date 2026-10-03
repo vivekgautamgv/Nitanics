@@ -40,11 +40,11 @@ export default function Router() {
   switch (route.page) {
     case 'home':       return <HomePage />
     case 'directory':  return <DirectoryPage name={route.name} />
-    case 'collection': return <CollectionPage name={route.name} />
+    case 'collection': return <CollectionPage key={route.name} name={route.name} />
     case 'project':    return <ProjectPage uniqueId={route.uniqueId} fromCollection={route.fromCollection} />
     case 'entity':     return <EntityPage name={route.name} />
     case 'graph':      return <GraphPage collectionName={route.collectionName} />
-    case 'source':     return <SourcePage htmlPath={route.htmlPath} />
+    case 'source':     return <SourcePage key={route.htmlPath} htmlPath={route.htmlPath} />
     case 'settings':   return <SettingsPage />
     case 'ingest':     return <IngestPage />
     default:           return <HomePage />

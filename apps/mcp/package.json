@@ -8,8 +8,9 @@
     "neo4j:ensure": "node ../../scripts/ensure-neo4j.mjs",
     "build": "tsc",
     "bundle": "tsc && node esbuild.config.mjs",
-    "start": "bun run neo4j:ensure && node dist/index.js",
-    "dev": "bun run neo4j:ensure && tsc --watch"
+    "start": "node dist/index.js",
+    "dev": "bun run build && node dist/index.js",
+    "watch": "tsc --watch"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

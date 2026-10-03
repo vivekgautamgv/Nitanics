@@ -1,182 +1,331 @@
-# Nexari Labs: The Ultimate LLM Context Engine
+# Nitanics — Local knowledge graphs for documents and research
 
-### Query High-Density Graphs, Not Raw Text.
+An open-source web workspace for turning papers, reports, and notes into connected research. Upload documents in the UI with an extraction API key, or open the cloned repository in an AI coding agent and attach your documents in its chat. Both routes save to the same local Neo4j database and appear in Graph Studio.
 
-Store massive chat histories or hundreds of research documents in a single, living knowledge graph. When you query an LLM, standard RAG systems force the AI to blindly re-read all 100 documents, burning through tokens and context limits. Nexari Labs solves the context window problem by fetching only the exact graph entities and relationships relevant to your query. 
+Explore entities, relationships, shared concepts, and source evidence across your documents. Use the original sources to verify generated claims: extraction can miss or misinterpret information.
 
-It acts as a flawless long-term memory retrieval system, automatically connects complex concepts, and **saves up to 70% in token costs**.
+## Two Ways to Create a Graph
 
----
+| Workflow | What you provide | What happens |
+|---|---|---|
+| **Web UI + API** | Complete Markdown, text, or text-based PDF files and Gemini, OpenAI, or Anthropic API access | **Add documents → Upload with API** runs extraction, local NLP and embeddings, validation, and upload. Progress and failures appear in the UI. |
+| **Local AI coding agent** | This cloned repository and documents attached to the agent chat, or local document paths | Claude Code, Codex, or another coding agent reads the sources, creates artifacts with its own model and local tools, validates them, and uploads to Neo4j. **Add documents → Use AI agent** provides a customized prompt to copy. |
 
-Open-source local knowledge graph workspace. Bring your documents, use your AI agent to extract structured graph data, and explore it in an interactive UI backed by Neo4j.
+The agent route requires repository access, command execution, and access to the configured Neo4j database. It needs no separate Nitanics extraction API key; your agent still needs its own model access. A hosted chat needs connected tools to update a local workspace. The optional MCP server provides graph tools for compatible local clients.
 
-## What It Does
+## Features
 
-- Organizes knowledge into collections, projects, entities, relationships, and causal chains
-- Lets you explore your graph in collection, project, and bridge views
-- Stores durable graph memory in Neo4j instead of repeatedly re-reading raw documents
-- Works with any AI coding agent — Claude, Codex, Cursor, Antigravity, Windsurf, or any MCP-compatible tool
+| Feature | What you can do |
+|---|---|
+| **Research dashboard** | See unique document and entity totals, search collection names and descriptions, filter by workspace, sort collections, and refresh results. |
+| **Documents and source reader** | Search document titles, domains, and tags; inspect findings and relationship evidence; open the saved source to check its context. Missing sources have explicit recovery or error states. |
+| **Graph Studio** | Switch between Collection, Document, and Bridges scopes. Document mode isolates one source. Search and filter the loaded graph, fit the view, use full screen, and open responsive inspector panels. |
+| **Bridges** | Find entities shared by multiple documents in a collection and follow their connections back to the sources. |
+| **Path Finder** | Explore shortest undirected paths within the loaded graph, up to eight hops. Use semantic relationships by default or include document membership connections. |
+| **Entity Inspector and Chains** | Inspect entity definitions, roles, relationships, project evidence, and extracted reasoning chains. Connections shared by several projects retain their evidence. |
+| **Document ingestion** | Add complete files to an existing or new collection, track extraction stages, resume progress after navigation or reload, and inspect failed jobs. |
+| **Portable exports** | Download a collection ZIP containing graph data, embeddings, and available source artifacts. Its manifest records missing source files. Import the included sample export to explore a populated workspace. |
+| **Optional MCP** | Let compatible AI clients query graph context, submit structured extractions, and use collection and maintenance tools through a local stdio server. |
 
-## Our Uniqueness (Why Nitanics?)
+Shared mentions do not establish that two papers agree. Graph paths are exploratory connections; they do not prove causality. Verify extracted chains and relationship claims against their source evidence.
 
-Nitanics isn't just a static dashboard; it is a **living knowledge layer**. Our uniqueness lies in how we treat graph data:
-- **Highly Sharable:** Because graphs are structured as portable JSON exports, you can easily package up a research collection and share it with colleagues or the community. They can load it instantly without needing the original raw documents.
-- **Eminently Readable:** The interactive UI and Entity Inspector turn complex data into intuitive visual stories. It's designed to be explored naturally, not queried via complex code.
-- **Endlessly Expandable:** You are never locked in. You can dynamically grow your graph anytime by pointing your AI agent at new documents. The ingestion pipeline merges new entities into the existing graph seamlessly.
-- **Fully Modifiable:** Don't like how the AI classified a relationship? Since the graph is stored in a local Neo4j database, you have complete control to modify, delete, or refine nodes and edges as your understanding evolves.
-- **The Ultimate LLM Context Engine:** By feeding structured graphs back to your LLM instead of raw text, you completely bypass the classic LLM context window problem, achieving flawless long-term memory retrieval while slashing token costs.
+## Research Workflow
 
-## Features at a Glance
+1. Create a collection for a research question and add the relevant papers and reports.
+2. Open **Documents** to find sources and read their findings alongside the original text.
+3. Open **Bridges** to compare recurring concepts, organizations, methods, or people across sources.
+4. Use **Graph** and **Path Finder** to investigate connections, then inspect the supporting project evidence.
+5. Add more documents as the research grows and export the collection for backup or sharing.
 
-- **Interactive Graph Studio:** Explore your documents as force-directed node graphs, visualizing relationships, entities, and complex datasets instantly.
-- **Path Finder:** Find direct and hidden connections between different entities across your graph up to 8 hops away. Uncover hidden ties that a standard text search would miss.
-- **Bridge View:** Automatically discover "bridge entities" that span across multiple separate documents or projects, helping you tie disparate research together.
-- **Entity Inspector:** Click on any node to get rich information at your fingertips, including definitions, relationships, categorizations, and causal chains in a detailed side panel.
-- **AI Agent Integration:** Use your favorite LLM (Claude, ChatGPT, etc.) or AI coding agent to effortlessly expand your graph database. The ingestion pipeline does the heavy lifting to extract structured knowledge.
-- **Portable Exports:** Graph data can be exported as portable JSON collections. Use these exports to:
-  - Share specific knowledge bases with your team or community.
-  - Back up important collections.
-  - Instantly seed a new Neo4j database on another machine without re-ingesting documents.
-- **MCP Server Support:** Native Model Context Protocol support allows AI agents to directly query your graph data for context.
-- **Local-first with Docker:** Runs entirely on your machine via Docker; no cloud dependencies, no data leaves your laptop. Keep your sensitive data completely private.
-- **Fast Search & Filtering:** Powerful full-text search and interactive filtering by node importance, projects, categories, and edge types.
-
-## Use Cases
-
-Nitanics is designed to turn flat folders of documents into living, interconnected knowledge bases. Here's how you can use it:
-
-- **Research & Academic Study:** Digest dozens of research papers. Nitanics will automatically find the common methodologies, cited authors, and recurring concepts across all papers, presenting them in the Bridge View.
-- **Financial & Market Analysis:** Analyze earnings call transcripts, market reports, and news. Map out the relationships between companies, market trends (like inflation or supply chains), and geopolitical events to see the hidden ripple effects.
-- **Legal Case Preparation:** Ingest case files, testimonies, and evidence. Use the Path Finder to visualize the connections between people of interest, locations, and events.
-- **Personal Knowledge Management (PKM):** Replace your standard notes app. Drop your daily notes, articles, and ideas into the workspace, and let the AI build a graph of your entire "second brain."
-- **Corporate Intelligence & Onboarding:** Create a collection of company documentation, architecture specs, and domain knowledge. Export this graph and share it with new hires so they can visually explore how different internal systems and teams relate to each other.
-
-## View
-
-![Main Screen](docs/assets/Main%20Screen.png)
-
-![Main Info Dashboard](docs/assets/Main%20Info%20dashboard.png)
-
-![Dashboard View - Graph](docs/assets/Dashboard%20View%20-%20Graph.png)
-
-![Graph View - Side bar details](docs/assets/Graph%20View%20-%20Side%20bar%20details.png)
-
-## How It Works
-
-```
-You add a document → AI agent extracts the graph → Neo4j stores it → Web app visualizes it
-```
-
-1. Drop your source document into `graphs/<collection>/<project>/source.md`
-2. Ask your AI agent to run the extraction (see `docs/INGESTION_FOR_AGENTS.md`)
-3. The agent generates 6 structured JSON artifacts and uploads them to Neo4j
-4. Open the web app — your graph is live in Graph Studio
-
-## Repository Structure
-
-```
-nitanics/
-├── graphs/                         ← YOUR GRAPH WORKSPACE (start here)
-│   └── <collection>/
-│       └── <project>/
-│           ├── source.md           ← your document (you add this)
-│           ├── 01_html.html        ← agent generates
-│           ├── 02_placement.json   ← agent generates
-│           ├── 03_nlp_entities.json
-│           ├── 04_all_entities.json
-│           ├── 05_embeddings.json
-│           └── 06_extraction.json  ← uploaded to Neo4j
-│
-├── apps/
-│   ├── web/
-│   │   ├── frontend/               ← Main React web app
-│   │   └── modules/graph-studio/   ← Force-directed graph visualization
-│   ├── ingestion-pipeline/         ← Upload + validation scripts (Python)
-│   ├── mcp/                        ← Optional MCP server for AI clients
-│   └── exports/                    ← Portable sample collection exports
-│
-├── docs/
-│   ├── OPEN_SOURCE_GUIDE.md        ← Full setup guide (start here)
-│   ├── ARCHITECTURE.md             ← System architecture and graph model
-│   └── INGESTION_FOR_AGENTS.md     ← How AI agents should create graphs
-│
-└── scripts/
-    ├── ensure-neo4j.mjs            ← Neo4j Docker bootstrap
-    └── import-collection-export.mjs ← Import a portable export
-```
-
-## Prerequisites
-
-| Tool | Version | Purpose |
-|------|---------|---------|
-| Bun | 1.3+ | Package manager and task runner |
-| Node.js | 20+ | Runtime |
-| Python | 3.10+ | Ingestion pipeline |
-| uv | latest | Python dependency manager |
-| Docker Desktop | latest | Runs Neo4j locally |
+The same workflow can organize technical documentation, market reports, and personal research notes. See the [Research workflow guide](docs/RESEARCH_WORKFLOW.md) for a detailed walkthrough.
 
 ## Quick Start
+
+Install Git, **Bun 1.3+**, **Node.js 20+**, **uv**, and **Docker Desktop**. Start Docker Desktop before running the Neo4j helper. The pipeline pins Python **3.12**; uv can install that interpreter. Initial dependency and model downloads need internet access.
 
 ```bash
 git clone https://github.com/vivekgautamgv/nitanics.git
 cd nitanics
 bun install
-bun run neo4j:ensure   # starts Neo4j via Docker
-bun run dev            # starts the web app
+bun run nlp:setup
+bun run neo4j:ensure
+bun run dev
 ```
 
-Open `http://127.0.0.1:5174`
+Open the web UI URL printed by the development server. The default is [http://127.0.0.1:5174](http://127.0.0.1:5174); use the actual address if your host or port differs.
 
-**Seed sample data** (so you have something to explore immediately):
+`bun install` also installs the Python dependencies through uv. `nlp:setup` checks the English spaCy model and caches the MiniLM embedding model in the pipeline environment. After setup, NLP and embeddings run locally. Use `bun run nlp:setup --check` to verify local readiness without downloads or dependency changes.
+
+`bun run dev` starts the web UI on **5174**, Graph Studio on **5173**, and the local ingestion/export API on **5176** by default. These are application ports; Neo4j has separate database ports. Use the setup instructions below to keep every component connected to the same database.
+
+Optionally import the included sample collection:
 
 ```bash
 node scripts/import-collection-export.mjs apps/exports/global-finance-systems-export
 ```
 
-## Creating Your Own Knowledge Graph
+## Docker and Neo4j Setup
 
-1. Create a folder: `graphs/<your-collection>/<your-project>/`
-2. Add your source document as `source.md` inside it
-3. Open this repo in your AI agent and run:
+Every person cloning Nitanics runs their own workspace. `localhost` refers to **their machine**. Their UI, ingestion pipeline, coding agent, and optional MCP client must all target the same Neo4j server and database with matching credentials.
 
+### Fresh clone: let the helper configure the local database
+
+1. Install and open Docker Desktop. Run `docker info` to confirm the Docker engine is reachable.
+2. Run the Quick Start commands above. `bun run neo4j:ensure` pulls the Neo4j image when needed, creates or starts its container with persistent Docker volumes, enables APOC/GDS plugins, waits for the database, and runs an idempotent schema bootstrap.
+3. The helper creates missing application `.env` files with matching connection settings. Existing files are preserved, so an older configuration must be reviewed rather than assumed to match.
+4. Start the app with `bun run dev`, then check the database connection before adding documents.
+
+This route runs Neo4j inside Docker; no separate Neo4j Desktop installation is needed.
+
+The helper's **local development defaults** are:
+
+| Setting | Default |
+|---|---|
+| Docker image | `neo4j:5.26.0-community` |
+| Container | `memorytonic-neo4j` |
+| Browser/driver connection | `bolt://127.0.0.1:7687` |
+| Pipeline HTTP endpoint | `http://127.0.0.1:7474` |
+| Username / password | `neo4j` / `12345678` |
+| Database | `memorytonic` |
+
+The `memorytonic` database/container names are compatibility defaults; the product is Nitanics. The password above is a local development default. Choose your own password for a new setup.
+
+Before the first helper run, export `MT_NEO4J_PASSWORD` in your shell to choose a password. To avoid occupied database ports, also export `MT_NEO4J_BOLT_PORT` and `MT_NEO4J_HTTP_PORT`. For example, use **one** of these shell-specific forms and keep the variables set when running `bun run dev`:
+
+```powershell
+# PowerShell — replace the password before running
+$env:MT_NEO4J_PASSWORD = 'YOUR_LOCAL_PASSWORD'
+$env:MT_NEO4J_BOLT_PORT = '17687'
+$env:MT_NEO4J_HTTP_PORT = '17474'
+bun run neo4j:ensure
+bun run dev
 ```
-Read docs/INGESTION_FOR_AGENTS.md.
-Process: graphs/<your-collection>/<your-project>/source.md
-Generate all artifacts in the same folder. Upload to Neo4j.
+
+```bash
+# macOS/Linux — replace the password before running
+export MT_NEO4J_PASSWORD='YOUR_LOCAL_PASSWORD'
+export MT_NEO4J_BOLT_PORT=17687
+export MT_NEO4J_HTTP_PORT=17474
+bun run neo4j:ensure
+bun run dev
 ```
 
-4. Refresh the app — your graph is live.
+The root [.env.example](.env.example) lists all helper overrides. Copying it to a root `.env` does not configure the helper: it reads exported shell variables. Changing these variables does not change an existing container's password, port mappings, or database, and does not overwrite existing app configuration. Use the existing-server instructions below for an established setup.
 
-See `graphs/README.md` for the full folder convention and `docs/INGESTION_FOR_AGENTS.md` for the agent prompt.
+### Existing Neo4j: align the app, pipeline, and agent
 
+If you already run Neo4j in Docker, Neo4j Desktop, or a service, use that server's actual host, exposed ports, credentials, and existing database. Do not launch another container on the same ports. Docker is not required to run a second database when an accessible server already exists.
 
+| Consumer | Configuration | Required variables |
+|---|---|---|
+| Main web UI | `apps/web/frontend/.env` | `VITE_NEO4J_URI`, `VITE_NEO4J_USER`, `VITE_NEO4J_PASSWORD`, `VITE_NEO4J_DATABASE` |
+| Graph Studio | `apps/web/modules/graph-studio/.env` | Same `VITE_NEO4J_*` variables |
+| Python pipeline, API jobs, and repository-agent uploads | `apps/ingestion-pipeline/neo4j/.env` | `NEO4J_HTTP`, `NEO4J_USER`, `NEO4J_PASSWORD`, `NEO4J_DATABASE` |
+| Optional MCP | MCP client's process environment | `NEO4J_URI`, `NEO4J_USER`, `NEO4J_PASSWORD`, `NEO4J_DATABASE` |
+
+For both frontend files, use this template with your own values:
+
+```dotenv
+VITE_NEO4J_URI=bolt://YOUR_NEO4J_HOST:YOUR_BOLT_PORT
+VITE_NEO4J_USER=YOUR_NEO4J_USER
+VITE_NEO4J_PASSWORD=YOUR_NEO4J_PASSWORD
+VITE_NEO4J_DATABASE=YOUR_EXISTING_DATABASE
+```
+
+For the pipeline file:
+
+```dotenv
+NEO4J_HTTP=http://YOUR_NEO4J_HOST:YOUR_HTTP_PORT
+NEO4J_USER=YOUR_NEO4J_USER
+NEO4J_PASSWORD=YOUR_NEO4J_PASSWORD
+NEO4J_DATABASE=YOUR_EXISTING_DATABASE
+```
+
+Use the same server and database in both templates. Bolt and HTTP addresses use different protocols and ports; the pipeline needs an accessible HTTP transaction endpoint. Use the server's actual TLS scheme when required. Confirm the database exists in your Neo4j edition, and enable the APOC/GDS plugins used by the graph workflow. An existing Community database may be named `neo4j`; use its real name rather than assuming `memorytonic` exists.
+
+Shell `NEO4J_*` variables override the pipeline file, so check the environment inherited by the API and coding agent too. The API does not load `apps/api/.env`, and MCP credentials should be supplied explicitly in the client configuration. Changing only the UI connection does not update the ingestion destination.
+
+Run schema bootstrap once, then launch these services in **three separate terminals** from the repository root:
+
+```text
+# Bootstrap once; preserves existing graph data
+uv run --directory apps/ingestion-pipeline python neo4j/bootstrap.py
+
+# Terminal 1
+bun run --cwd apps/web/frontend vite
+
+# Terminal 2
+bun run --cwd apps/web/modules/graph-studio vite
+
+# Terminal 3
+bun run dev:api
+```
+
+The direct Vite commands bypass the Docker helper in the normal `dev` scripts. Restart services after editing configuration, and open the actual web UI URL printed by the server. Never use `bootstrap.py --clean` for setup or ingestion. See the [Open Source Guide](docs/OPEN_SOURCE_GUIDE.md#database-configuration) for additional configuration details.
+
+### Verify alignment before uploading
+
+```text
+bun run nlp:setup --check
+uv run --directory apps/ingestion-pipeline python neo4j/bootstrap.py --status
+```
+
+The status command reads database counts and schema state. In **Settings → Database**, verify that the web UI connects to the same server and database. Open Graph Studio and check that existing collections match. An empty fresh database is expected until sample import or document ingestion. The local API's `/api/health` endpoint checks the API process, not its Neo4j connection.
+
+Have the coding agent verify its configured database with read-only queries before ingestion. After upload, report the target collection, new project IDs, graph counts, and the actual running web UI URL. If upload succeeds but the UI is empty, compare the database name, credentials, and endpoints across the components before uploading again.
+
+## Add Your Own Documents
+
+### Upload through the UI
+
+1. Open **Add documents → Upload with API**.
+2. Select complete `.md`, UTF-8 `.txt`, or text-based `.pdf` files. Each batch supports **20 files**, **10 MiB per file**, and **25 MiB total**. Use distinct filenames. Scanned PDFs need OCR first.
+3. Choose the collection and workspace folder, then select Gemini, OpenAI, or Anthropic and enter its API key. A blank key uses that provider's configured environment key.
+4. Start extraction and follow its progress. After a successful upload, choose **View collection** to explore Documents, Graph, Bridges, and source evidence.
+
+PDF ingestion extracts text in page order; it does not interpret page images or figures. Long sources are processed in parts, with a default chunk size of 30,000 characters. A single upload can therefore create multiple projects.
+
+The UI remembers job identity and destination so progress can resume after navigation or reload while the API process remains running. It does not save document contents or API keys in that resume record. Restarting the API clears job status; saved source files and generated artifacts remain on disk.
+
+### Attach documents in your agent's chat
+
+1. Open the cloned repository in your coding agent and attach the complete documents in its chat. If the agent cannot access an attachment, save it locally and provide its path.
+2. Copy the customized prompt from **Add documents → Use AI agent**, or paste this prompt:
+
+```text
+You are working in the Nitanics repository.
+Read README.md, docs/ARCHITECTURE.md, docs/INGESTION_FOR_AGENTS.md, and CLAUDE.md.
+Read the complete contents of all documents attached to this chat or at these paths: <paths>.
+Collection: <collection name>
+Workspace directory: Research
+Before ingestion, verify that the pipeline and web UI target the same Neo4j server/database using the setup guide and read-only queries. Report configuration mismatches without exposing passwords.
+Create one new globally unique project per document under graphs/; preserve existing data.
+Save each complete source.md and all six artifacts.
+Use your own model for semantic extraction and the local NLP/embedding tools.
+Extract only source-supported facts; do not invent quotas or causal chains.
+Validate every project and upload only passing projects with --create-only.
+Report unreadable documents, failed stages, and the collection/project IDs to open in the UI.
+After upload, verify the new projects and graph counts with read-only queries.
+Report the actual Nitanics web UI URL from the running environment; do not assume a default host or port.
+If the UI is not running or its URL cannot be confirmed, provide the startup command instead of guessing.
+```
+
+3. Return to the UI, refresh collections, and open the target collection. Dashboard and graph views also refresh when you return focus to the app.
+
+The [Ingestion for AI Agents guide](docs/INGESTION_FOR_AGENTS.md) covers complete source reading, PDF handling, artifact schemas, local NLP, real embeddings, validation, and upload commands.
+
+## How Data Is Stored and Validated
+
+```text
+UI upload + provider API ─┐
+                         ├→ source + artifacts → validation → Neo4j → web UI
+Agent chat + local repo ─┘
+```
+
+New UI and repository-agent projects keep source text and **six artifacts: one HTML file and five JSON files** under `graphs/<collection>/<unique-project>/`:
+
+| File | Purpose |
+|---|---|
+| `source.md` | Complete source text |
+| `01_html.html` | Readable source document |
+| `02_placement.json` | Workspace, collection, and unique project metadata |
+| `03_nlp_entities.json` | Actual local NLP candidates and co-occurrences |
+| `04_all_entities.json` | Source-supported entities, aliases, definitions, and roles |
+| `05_embeddings.json` | Local model embeddings for every entity and the project |
+| `06_extraction.json` | Summary, supported relationships, and optional causal chains |
+
+Validation checks artifact structure, metadata, entity references, source evidence quotes, and complete finite 384-dimensional embeddings. At least one supported entity is required; relationships, phases, and chains can be empty. There are no graph-density quotas or placeholder vectors. Quote matching checks presence in the source; reviewing whether a quote supports a claim remains necessary.
+
+Uploads run only after validation passes and use unique project IDs with `--create-only`. Existing projects and legacy artifacts are preserved. A database failure during a multi-stage upload can leave partial data, and a failed batch can include successfully uploaded documents. Inspect the logs, artifacts, and database state before retrying.
+
+## Local API and Optional MCP
+
+The loopback API handles ingestion jobs, progress, and collection exports. It supports request IDs to reconnect to existing jobs, limits concurrent jobs, and reports extraction or process failures. See the [API guide](apps/api/README.md) for endpoints, provider environment variables, limits, and status handling.
+
+The optional MCP server exposes **30 tools over stdio** for compatible local AI clients:
+
+```bash
+bun run build:mcp
+bun run start:mcp
+```
+
+Configure your client to launch the compiled entry point with an absolute path and the same Neo4j credentials. MCP extraction accepts structured data prepared by the client's model; it does not upload binary chat attachments. Its legacy artifact storage differs from the canonical six-artifact `graphs/` workflow. See the [MCP guide](apps/mcp/README.md) for configuration and tool behavior.
+
+## Privacy and Scope
+
+Graph storage, the web workspace, NLP, and embeddings run on your machine. UI extraction sends source text to the selected hosted provider; agent attachments are handled by your chosen agent service. Settings can save provider keys in browser local storage. Collection exports can include source content, so review them before sharing.
+
+Nitanics currently targets a local research workspace. Hosted multi-user authentication, billing, and Electron desktop packaging are outside this version's scope. Keep the web app, API, and database in the documented local setup.
+
+## Repository Structure
+
+```text
+nitanics/
+├── graphs/                         # Canonical source and artifact projects
+├── apps/
+│   ├── web/
+│   │   ├── frontend/               # Main React web app
+│   │   └── modules/graph-studio/    # Interactive graph workspace
+│   ├── api/                        # Local ingestion, progress, and exports
+│   ├── ingestion-pipeline/         # Python extraction, validation, and upload
+│   ├── mcp/                        # Optional local MCP server
+│   └── exports/                    # Portable sample collection exports
+├── docs/                           # Setup, architecture, and workflow guides
+└── scripts/
+    ├── ensure-neo4j.mjs             # Neo4j Docker bootstrap
+    ├── setup-nlp.mjs                # Local model setup and readiness checks
+    └── import-collection-export.mjs # Import a portable export
+```
 
 ## Core Commands
 
 ```bash
-bun run dev              # Start frontend + graph studio
-bun run build            # Production build
-bun run neo4j:ensure     # Start or verify local Neo4j
-bun run dev:mcp          # Start optional MCP server for AI clients
-bun run build:mcp        # Build MCP bundle
+bun run dev               # Start frontend, Graph Studio, and local API
+bun run neo4j:ensure      # Start or verify local Neo4j
+bun run nlp:setup         # Install/check local NLP and embedding models
+bun run nlp:setup --check # Check local models without downloads
+bun run build             # Build frontend and Graph Studio
+bun run build:api         # Check and build the local API
+bun run build:mcp         # Compile the optional MCP server
+bun run start:mcp         # Run the compiled MCP server
+bun run dev:mcp           # Compile and run MCP for development
 ```
+
+For ingestion code changes, run `uv run python -m unittest discover -s tests` from `apps/ingestion-pipeline`. The [Research workflow guide](docs/RESEARCH_WORKFLOW.md#verification) lists the API, UI, graph, setup, and MCP checks.
 
 ## Documentation
 
-| File | Purpose |
-|------|---------|
-| `docs/OPEN_SOURCE_GUIDE.md` | Full setup: clone, install, Neo4j, seed, run |
-| `docs/ARCHITECTURE.md` | System architecture and graph model |
-| `docs/INGESTION_FOR_AGENTS.md` | How AI agents create graph projects |
-| `graphs/README.md` | Graph workspace folder convention |
-| `apps/ingestion-pipeline/README.md` | Pipeline internals |
+| Guide | Purpose |
+|---|---|
+| [Open Source Guide](docs/OPEN_SOURCE_GUIDE.md) | Clone, install, configure Neo4j, seed, and run |
+| [Research Workflow](docs/RESEARCH_WORKFLOW.md) | Explore papers, reports, source evidence, and exports |
+| [Architecture](docs/ARCHITECTURE.md) | Application layers and graph model |
+| [Ingestion for AI Agents](docs/INGESTION_FOR_AGENTS.md) | Clone-and-chat workflow and exact artifact/upload commands |
+| [Graph Workspace](graphs/README.md) | Canonical project folder convention |
+| [Ingestion Pipeline](apps/ingestion-pipeline/README.md) | Python pipeline internals |
+| [Local API](apps/api/README.md) | Ingestion/export endpoints and job lifecycle |
+| [Optional MCP](apps/mcp/README.md) | Client setup, tools, and integration limits |
 
+## Screenshots
+
+<details>
+<summary>Earlier UI screenshots</summary>
+
+These screenshots show an earlier version. The current UI uses Nitanics branding and the research and ingestion workflows described above.
+
+![Main Screen](docs/assets/Main%20Screen.png)
+![Main Info Dashboard](docs/assets/Main%20Info%20dashboard.png)
+![Dashboard Graph](docs/assets/Dashboard%20View%20-%20Graph.png)
+![Graph Inspector](docs/assets/Graph%20View%20-%20Side%20bar%20details.png)
+
+</details>
 
 ## Team Members
--[Vivek Gautam](https://www.linkedin.com/in/vivek-gautam-670017225/) - [Ajay Pawar](https://www.linkedin.com/in/ajay-pawar-data-detective/) - [Vipin Bhati](https://www.linkedin.com/in/vipin-bhati-6a18781b7/)
 
-
+- [Vivek Gautam](https://www.linkedin.com/in/vivek-gautam-670017225/)
+- [Ajay Pawar](https://www.linkedin.com/in/ajay-pawar-data-detective/)
+- [Vipin Bhati](https://www.linkedin.com/in/vipin-bhati-6a18781b7/)
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see [LICENSE](LICENSE).

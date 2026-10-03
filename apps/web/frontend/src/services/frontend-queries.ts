@@ -16,6 +16,7 @@ import type {
   EntityProjectMention, EntityRelationship, EntityChainLink, SimilarEntity,
 } from '../types/frontend'
 import { resolveSourceUrl } from '../adapters/source-paths'
+import { int, type Session } from 'neo4j-driver'
 
 // ── Helper: safe number extraction ───────────────────────
 function toNum(val: unknown): number {
@@ -40,6 +41,36 @@ function toStrOrNull(val: unknown): string | null {
 function toStrArray(val: unknown): string[] {
   if (!Array.isArray(val)) return []
   return val.map(v => String(v))
+}
+
+function requireName(value: string, label: string): string {
+  const name = value.trim()
+  if (!name) throw new Error(`${label} cannot be empty.`)
+  return name
+}
+
+/** Similarity is optional on databases imported without a vector index. */
+async function fetchVectorSimilarity(session: Session, entityName: string, limit: number): Promise<SimilarEntity[]> {
+  const indexes = await session.run(`
+    SHOW INDEXES YIELD name, type, state
+    WHERE name = 'entityEmbedding' AND type = 'VECTOR' AND state = 'ONLINE'
+    RETURN name
+  `)
+  if (indexes.records.length === 0) return []
+  const result = await session.run(`
+    MATCH (e:Entity {name: $entityName})
+    WHERE e.embedding IS NOT NULL
+    CALL db.index.vector.queryNodes('entityEmbedding', $candidateCount, e.embedding)
+    YIELD node, score
+    WHERE node.name <> $entityName
+    RETURN node.name AS name, node.category AS category, score AS similarity
+    ORDER BY score DESC
+  `, { entityName, candidateCount: int(limit + 1) })
+  return result.records.slice(0, limit).map(r => ({
+    name: toStr(r.get('name')),
+    category: toStr(r.get('category')),
+    similarity: toNum(r.get('similarity')),
+  }))
 }
 
 // ══════════════════════════════════════════════════════════
@@ -98,11 +129,12 @@ export async function fetchAllCollections(): Promise<CollectionListItem[]> {
 
 /** Q-F19: Create Directory */
 export async function createDirectory(name: string, description: string): Promise<void> {
+  name = requireName(name, 'Directory name')
   const session = getSession()
   try {
     await session.executeWrite(tx =>
       tx.run(
-        'CREATE (d:DirectoryCategory {name: $name, description: $description})',
+        'MERGE (d:DirectoryCategory {name: $name}) ON CREATE SET d.description = $description',
         { name, description }
       )
     )
@@ -115,14 +147,19 @@ export async function createDirectory(name: string, description: string): Promis
 export async function updateDirectory(
   oldName: string, newName: string, description: string
 ): Promise<void> {
+  newName = requireName(newName, 'Directory name')
   const session = getSession()
   try {
-    await session.executeWrite(tx =>
-      tx.run(
-        'MATCH (d:DirectoryCategory {name: $oldName}) SET d.name = $newName, d.description = $description',
+    await session.executeWrite(async tx => {
+      const result = await tx.run(
+        `MATCH (d:DirectoryCategory {name: $oldName})
+         WHERE NOT EXISTS { MATCH (other:DirectoryCategory {name: $newName}) WHERE other <> d }
+         SET d.name = $newName, d.description = $description
+         RETURN d.name AS name`,
         { oldName, newName, description }
       )
-    )
+      if (!result.records.length) throw new Error('The directory no longer exists or that name is already in use.')
+    })
   } finally {
     await session.close()
   }
@@ -450,27 +487,41 @@ export async function fetchProjectRecommendations(collectionName: string): Promi
 export async function addProjectToCollection(uniqueId: string, collectionName: string): Promise<void> {
   const session = getSession()
   try {
-    await session.executeWrite(tx =>
-      tx.run(
-        'MATCH (p:Project {uniqueId: $uid}), (c:Collection {name: $collectionName}) CREATE (p)-[:BELONGS_TO]->(c)',
+    await session.executeWrite(async tx => {
+      const result = await tx.run(
+        `MATCH (p:Project {uniqueId: $uid}), (c:Collection {name: $collectionName})
+         MERGE (p)-[:BELONGS_TO]->(c)
+         RETURN p.uniqueId AS uniqueId`,
         { uid: uniqueId, collectionName }
       )
-    )
+      if (!result.records.length) throw new Error('The project or collection no longer exists. Refresh the workspace and try again.')
+    })
   } finally {
     await session.close()
   }
 }
 
 /** Q-F17: Remove Project from Collection */
-export async function removeProjectFromCollection(uniqueId: string, collectionName: string): Promise<void> {
+export async function removeProjectFromCollection(uniqueId: string, collectionName: string): Promise<boolean> {
   const session = getSession()
   try {
-    await session.executeWrite(tx =>
-      tx.run(
-        'MATCH (p:Project {uniqueId: $uid})-[r:BELONGS_TO]->(c:Collection {name: $collectionName}) DELETE r',
+    return await session.executeWrite(async tx => {
+      // Serialize membership changes on this project before counting collections.
+      // Removing the temporary property retains the write lock until commit.
+      await tx.run(
+        `MATCH (p:Project {uniqueId: $uid})
+         SET p._nitanicsMembershipLock = true
+         REMOVE p._nitanicsMembershipLock`,
+        { uid: uniqueId }
+      )
+      const result = await tx.run(
+        `MATCH (p:Project {uniqueId: $uid})-[r:BELONGS_TO]->(c:Collection {name: $collectionName})
+         WHERE EXISTS { MATCH (p)-[:BELONGS_TO]->(other:Collection) WHERE other <> c }
+         DELETE r`,
         { uid: uniqueId, collectionName }
       )
-    )
+      return result.summary.counters.updates().relationshipsDeleted > 0
+    })
   } finally {
     await session.close()
   }
@@ -481,7 +532,7 @@ export async function getProjectCollectionCount(uniqueId: string): Promise<numbe
   const session = getSession()
   try {
     const result = await session.run(
-      'MATCH (p:Project {uniqueId: $uid})-[:BELONGS_TO]->(c:Collection) RETURN count(c) AS collectionCount',
+      'MATCH (p:Project {uniqueId: $uid})-[:BELONGS_TO]->(c:Collection) RETURN count(DISTINCT c) AS collectionCount',
       { uid: uniqueId }
     )
     return toNum(result.records[0]?.get('collectionCount'))
@@ -507,6 +558,7 @@ export async function updateCollectionDescription(collectionName: string, descri
 
 /** Q-F23: Create Collection (MERGE to prevent duplicates) */
 export async function createCollection(name: string, description: string): Promise<void> {
+  name = requireName(name, 'Collection name')
   const session = getSession()
   try {
     await session.executeWrite(tx =>
@@ -898,21 +950,7 @@ export async function fetchEntityProfile(entityName: string) {
 
     // Fallback: if no SIMILAR_TO edges, use embedding vector similarity
     if (similar.length === 0) {
-      const vecResult = await session.run(`
-        MATCH (e:Entity {name: $entityName})
-        WHERE e.embedding IS NOT NULL
-        CALL db.index.vector.queryNodes('entityEmbedding', 11, e.embedding)
-        YIELD node, score
-        WHERE node.name <> $entityName
-        RETURN node.name AS name, node.category AS category, score AS similarity
-        ORDER BY score DESC
-        LIMIT 10
-      `, { entityName })
-      similar = vecResult.records.map(vr => ({
-        name: toStr(vr.get('name')),
-        category: toStr(vr.get('category')),
-        similarity: toNum(vr.get('similarity')),
-      }))
+      similar = await fetchVectorSimilarity(session, entityName, 10)
     }
 
     // Derive flat collections list from per-project collections
@@ -962,7 +1000,7 @@ export async function exportCollectionZIP(collectionName: string): Promise<Blob>
     const projectResult = await session.run(`
       MATCH (p:Project)-[:BELONGS_TO]->(c:Collection {name: $collectionName})
       OPTIONAL MATCH (p)-[:IN_DIRECTORY]->(d:DirectoryCategory)
-      RETURN p { .name, .uniqueId, .summary, .domain, .subdomain, .tags, .htmlPath, .createdDate } AS project,
+      RETURN p { .name, .uniqueId, .summary, .domain, .subdomain, .baseTags, .tags, .htmlPath, .createdDate } AS project,
         d.name AS directory
       ORDER BY p.name
     `, { collectionName })
@@ -985,7 +1023,7 @@ export async function exportCollectionZIP(collectionName: string): Promise<Blob>
         summary: toStr(p.summary),
         domain: toStr(p.domain),
         subdomain: toStr(p.subdomain),
-        tags: toStrArray(p.tags),
+        tags: toStrArray(p.baseTags ?? p.tags),
         htmlPath: toStr(p.htmlPath),
         createdDate: toStrOrNull(p.createdDate),
         directory: toStr(r.get('directory')),
@@ -1091,7 +1129,7 @@ export async function exportCollectionZIP(collectionName: string): Promise<Blob>
         collection: toStr(meta?.get('name')),
         exported_at: new Date().toISOString(),
         schema_version: '1.0',
-        generator: 'Nitanics v4 Frontend Export',
+        generator: 'Nitanics Frontend Export',
         stats: {
           projects: projects.length,
           entities: entities.length,
@@ -1290,7 +1328,7 @@ export async function fetchProjectInfoCard(
       OPTIONAL MATCH (p)-[:BELONGS_TO]->(c:Collection)
       RETURN p {
         .name, .uniqueId, .domain, .subdomain, .summary,
-        .tags, .htmlPath, .createdDate
+        .baseTags, .tags, .htmlPath, .createdDate
       } AS project,
         d.name AS directory,
         entityCount, relationshipCount, chainCount,
@@ -1380,7 +1418,7 @@ export async function fetchProjectInfoCard(
       domain: toStr(p.domain),
       subdomain: toStr(p.subdomain),
       summary: toStr(p.summary),
-      tags: toStrArray(p.tags),
+      tags: toStrArray(p.baseTags ?? p.tags),
       directory: toStr(ir.get('directory')),
       htmlPath: toStrOrNull(p.htmlPath),
       createdDate: toStrOrNull(p.createdDate),
@@ -1437,20 +1475,7 @@ export async function fetchEntityInfoCard(
     }))
 
     if (similarEntities.length === 0) {
-      const vecResult = await session.run(`
-        MATCH (e:Entity {name: $entityName})
-        WHERE e.embedding IS NOT NULL
-        CALL db.index.vector.queryNodes('entityEmbedding', 9, e.embedding)
-        YIELD node, score
-        WHERE node.name <> $entityName
-        RETURN node.name AS name, node.category AS category, score AS similarity
-        ORDER BY score DESC LIMIT 8
-      `, { entityName })
-      similarEntities = vecResult.records.map(r => ({
-        name: toStr(r.get('name')),
-        category: toStr(r.get('category')),
-        similarity: toNum(r.get('similarity')),
-      }))
+      similarEntities = await fetchVectorSimilarity(session, entityName, 8)
     }
 
     // Pass 3: Global — ALL projects with roles, grouped by collection

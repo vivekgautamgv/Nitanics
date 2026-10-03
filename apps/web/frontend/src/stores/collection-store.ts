@@ -3,6 +3,7 @@
  * Source of truth: DESIGN-SPEC.md Section 16
  */
 import { create } from "zustand";
+import { describeDataError } from "../adapters/neo4j-service";
 import {
   fetchCollectionSummary,
   fetchCollectionProjects,
@@ -13,7 +14,6 @@ import {
   fetchCollectionChains,
   addProjectToCollection,
   removeProjectFromCollection,
-  getProjectCollectionCount,
   updateCollectionDescription,
 } from "../services/frontend-queries";
 import type {
@@ -54,6 +54,9 @@ interface CollectionStore {
   ) => Promise<void>;
 }
 
+let loadVersion = 0;
+let activeCollection: string | null = null;
+
 export const useCollectionStore = create<CollectionStore>((set, get) => ({
   summary: null,
   projects: [],
@@ -66,6 +69,8 @@ export const useCollectionStore = create<CollectionStore>((set, get) => ({
   error: null,
 
   loadCollection: async (name: string) => {
+    const version = ++loadVersion;
+    activeCollection = name;
     set({
       isLoading: true,
       error: null,
@@ -95,6 +100,7 @@ export const useCollectionStore = create<CollectionStore>((set, get) => ({
         fetchCollectionChains(name),
         fetchProjectRecommendations(name),
       ]);
+      if (version !== loadVersion) return;
       set({
         summary,
         projects,
@@ -104,29 +110,28 @@ export const useCollectionStore = create<CollectionStore>((set, get) => ({
         chains,
         recommendations,
         isLoading: false,
+        error: summary ? null : 'This collection could not be found. Refresh the workspace and choose another collection.',
       });
     } catch (err) {
-      set({ error: String(err), isLoading: false });
+      if (version === loadVersion) set({ error: describeDataError(err), isLoading: false });
     }
   },
 
   addProject: async (uniqueId: string, collectionName: string) => {
     await addProjectToCollection(uniqueId, collectionName);
-    await get().loadCollection(collectionName);
+    if (activeCollection === collectionName) await get().loadCollection(collectionName);
   },
 
   removeProject: async (uniqueId: string, collectionName: string) => {
-    const count = await getProjectCollectionCount(uniqueId);
-    if (count <= 1) return false; // Can't remove from last collection
-    await removeProjectFromCollection(uniqueId, collectionName);
-    await get().loadCollection(collectionName);
-    return true;
+    const removed = await removeProjectFromCollection(uniqueId, collectionName);
+    if (removed && activeCollection === collectionName) await get().loadCollection(collectionName);
+    return removed;
   },
 
   updateDescription: async (collectionName: string, description: string) => {
     await updateCollectionDescription(collectionName, description);
     const summary = get().summary;
-    if (summary) {
+    if (summary?.name === collectionName) {
       set({ summary: { ...summary, description } });
     }
   },

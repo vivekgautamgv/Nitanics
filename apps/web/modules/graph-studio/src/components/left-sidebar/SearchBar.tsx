@@ -20,39 +20,44 @@ export default function SearchBar() {
 
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current)
+    let cancelled = false
+    const searchTerm = query.trim()
+    setResults([])
+    setSearchHighlights(new Set())
 
-    if (query.length < 2) {
-      setResults([])
-      setSearchHighlights(new Set())
+    if (searchTerm.length < 2) {
+      setIsSearching(false)
       return
     }
 
+    setIsSearching(true)
     debounceRef.current = setTimeout(async () => {
-      setIsSearching(true)
+      const entities = allNodes.filter(node => node.__type === 'entity')
+      const scopedNames = new Set(entities.map(node => node.name))
+      const lowerQ = searchTerm.toLowerCase()
+      const localMatches: SearchResult[] = entities
+        .filter(node => [node.name, ...(node.aliases ?? [])].some(value => value.toLowerCase().includes(lowerQ)))
+        .slice(0, 20)
+        .map(node => ({ name: node.name, category: node.category, definition: node.definition || '', score: 1 }))
+      const showResults = (matches: SearchResult[]) => {
+        if (cancelled) return
+        const deduplicated = [...new Map(matches.filter(result => scopedNames.has(result.name)).map(result => [result.name, result])).values()].slice(0, 20)
+        setResults(deduplicated)
+        setSearchHighlights(new Set(deduplicated.map(result => result.name)))
+      }
       try {
-        const res = await fulltextSearch(query, collection)
-        setResults(res)
-        setSearchHighlights(new Set(res.map(r => r.name)))
+        const res = await fulltextSearch(searchTerm, collection)
+        showResults([...res, ...localMatches])
       } catch (err) {
-        console.error('Search failed:', err)
-        const lowerQ = query.toLowerCase()
-        const matches = allNodes
-          .filter(n => n.__type === 'entity' && n.name.toLowerCase().includes(lowerQ))
-          .slice(0, 20)
-          .map(n => ({
-            name: n.name,
-            category: n.category,
-            definition: n.definition || '',
-            score: 1,
-          }))
-        setResults(matches)
-        setSearchHighlights(new Set(matches.map(m => m.name)))
+        if (!cancelled) console.error('Search failed; using loaded entities:', err)
+        showResults(localMatches)
       } finally {
-        setIsSearching(false)
+        if (!cancelled) setIsSearching(false)
       }
     }, 300)
 
     return () => {
+      cancelled = true
       if (debounceRef.current) clearTimeout(debounceRef.current)
     }
   }, [query, allNodes, collection, setSearchHighlights])
@@ -68,8 +73,10 @@ export default function SearchBar() {
   }
 
   const handleResultClick = (entityName: string) => {
-    const node = allNodes.find(n => n.name === entityName)
+    const node = allNodes.find(n => n.__type === 'entity' && n.name === entityName)
     if (!node) return
+    const graph = useGraphStore.getState()
+    if (!graph.filteredNodes.some(visible => visible.id === node.id)) graph.resetAllFilters()
     selectNode(node)
     getZoomToNode()?.(node.id)
   }
@@ -92,6 +99,8 @@ export default function SearchBar() {
             <path d="M10.5 10.5L14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
           <input
+            data-graph-search
+            aria-label="Search entities in this graph"
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
@@ -110,6 +119,7 @@ export default function SearchBar() {
           {query && (
             <button
               onClick={handleClear}
+              aria-label="Clear search"
               style={{
                 position: 'absolute',
                 right: 10,
@@ -122,15 +132,16 @@ export default function SearchBar() {
                 fontSize: 14,
               }}
             >
-              �
+              ×
             </button>
           )}
         </div>
       </div>
 
+      {isSearching && <p className="text-xs py-1" role="status" style={{ color: 'var(--text-muted)' }}>Searching...</p>}
+
       {results.length > 0 && (
         <div className="max-h-48 overflow-y-auto" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          {isSearching && <p className="text-xs py-1" style={{ color: 'var(--text-muted)' }}>Searching...</p>}
           {results.map(result => {
             const catColor = CATEGORY_COLORS[result.category] || '#6B7280'
             return (
@@ -167,8 +178,8 @@ export default function SearchBar() {
         </div>
       )}
 
-      {query.length >= 2 && results.length === 0 && !isSearching && (
-        <p className="text-xs" style={{ color: 'var(--text-muted)' }}>No results</p>
+      {query.trim().length >= 2 && results.length === 0 && !isSearching && (
+        <p className="text-xs" role="status" style={{ color: 'var(--text-muted)' }}>No matches in this graph</p>
       )}
     </div>
   )

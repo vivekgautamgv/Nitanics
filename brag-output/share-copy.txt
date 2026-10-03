@@ -1,0 +1,3 @@
+Papers, reports, and notes have connections worth following. Nitanics turns them into a local knowledge graph—add documents with an API or your coding agent, explore shared concepts, and follow the source evidence.
+
+Open source: https://github.com/vivekgautamgv/nitanics

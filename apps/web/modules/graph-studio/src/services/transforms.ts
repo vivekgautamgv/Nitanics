@@ -57,16 +57,16 @@ export function toGraphData(
     }
   }
 
-  // Step 2: Build links (deduplicate by source+target+relType+causalClassification to prevent edge spam)
-  const linkKey = (sourceId: string, targetId: string, relType: string, causal: string) =>
-    `${sourceId}|${targetId}|${relType}|${causal}`
+  // Preserve separate sources when multiple projects support the same relationship.
+  const linkKey = (sourceId: string, targetId: string, relType: string, causal: string, projectId: string) =>
+    JSON.stringify([sourceId, targetId, relType, causal, projectId])
   const seenLinks = new Set<string>()
   const links: GraphLink[] = []
 
   for (const row of rows) {
     if (!row.rel || !row.targetId) continue
     const sourceId = row.entity.entityId
-    const key = linkKey(sourceId, row.targetId, row.rel.relType, row.rel.causalClassification)
+    const key = linkKey(sourceId, row.targetId, row.rel.relType, row.rel.causalClassification, row.rel.projectId)
     if (seenLinks.has(key)) continue
     seenLinks.add(key)
 
@@ -257,7 +257,15 @@ function computeImportanceAndSize(entities: GraphNode[]): void {
   for (let i = 0; i < entities.length; i++) {
     const raw = rawScores[i]!
     // Percentile: % of scores that are <= this score
-    const rank = sorted.filter(s => s <= raw).length
+    // Upper bound preserves tied ranks without scanning every score per entity.
+    let lower = 0
+    let upper = sorted.length
+    while (lower < upper) {
+      const middle = Math.floor((lower + upper) / 2)
+      if (sorted[middle]! <= raw) lower = middle + 1
+      else upper = middle
+    }
+    const rank = lower
     const percentile = Math.round((rank / entities.length) * 100)
 
     entities[i]!.__compositeImportance = percentile

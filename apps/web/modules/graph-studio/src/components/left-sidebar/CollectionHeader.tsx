@@ -15,10 +15,10 @@ export default function CollectionHeader() {
       className="w-full text-left"
       style={{
         border: '1px solid var(--border)',
-        borderRadius: 18,
+        borderRadius: 12,
         background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-raised) 100%)',
         padding: '16px 16px 14px',
-        boxShadow: '0 10px 24px rgba(0, 0, 0, 0.3)',
+        boxShadow: '0 1px 3px rgba(24, 24, 27, 0.08)',
         cursor: 'pointer',
       }}
       onClick={openCollectionCard}

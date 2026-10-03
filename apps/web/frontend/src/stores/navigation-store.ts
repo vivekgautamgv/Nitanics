@@ -3,7 +3,15 @@
  * Source of truth: DESIGN-SPEC.md Section 16
  */
 import { create } from 'zustand'
-import type { Route, BreadcrumbSegment } from '../types/frontend'
+import type { Route, BreadcrumbSegment, CollectionTab } from '../types/frontend'
+
+const VALID_TABS: CollectionTab[] = ['overview', 'documents', 'graph', 'bridges', 'chains']
+
+function parseCollectionTab(queryString: string | undefined): CollectionTab {
+  const tab = new URLSearchParams(queryString || '').get('tab')
+  if (tab && VALID_TABS.includes(tab as CollectionTab)) return tab as CollectionTab
+  return 'overview'
+}
 
 interface NavigationStore {
   route: Route
@@ -22,8 +30,11 @@ export function routeToHash(route: Route): string {
       return '#/'
     case 'directory':
       return `#/directory/${encodeURIComponent(route.name)}`
-    case 'collection':
-      return `#/collection/${encodeURIComponent(route.name)}`
+    case 'collection': {
+      const base = `#/collection/${encodeURIComponent(route.name)}`
+      const tab = route.tab && route.tab !== 'overview' ? route.tab : null
+      return tab ? `${base}?tab=${tab}` : base
+    }
     case 'project': {
       const base = `#/project/${encodeURIComponent(route.uniqueId)}`
       return route.fromCollection
@@ -52,13 +63,16 @@ export function hashToRoute(hash: string): Route {
   if (segments.length === 0) return { page: 'home' }
 
   const page = segments[0]
-  const param = segments[1] ? decodeURIComponent(segments[1]) : ''
+  let param = ''
+  try { param = segments[1] ? decodeURIComponent(segments[1]) : '' } catch { return { page: 'home' } }
 
   switch (page) {
     case 'directory':
       return param ? { page: 'directory', name: param } : { page: 'home' }
     case 'collection':
-      return param ? { page: 'collection', name: param } : { page: 'home' }
+      return param
+        ? { page: 'collection', name: param, tab: parseCollectionTab(queryString) }
+        : { page: 'home' }
     case 'project': {
       if (!param) return { page: 'home' }
       const params = new URLSearchParams(queryString || '')
@@ -68,7 +82,9 @@ export function hashToRoute(hash: string): Route {
     case 'entity':
       return param ? { page: 'entity', name: param } : { page: 'home' }
     case 'graph':
-      return param ? { page: 'graph', collectionName: param } : { page: 'home' }
+      return param
+        ? { page: 'collection', name: param, tab: 'graph' }
+        : { page: 'home' }
     case 'source': {
       const params = new URLSearchParams(queryString || '')
       const path = params.get('path') || ''
@@ -93,31 +109,45 @@ export function buildBreadcrumbs(route: Route): BreadcrumbSegment[] {
       return [{ label: 'Home', route: null }]
     case 'directory':
       return [home, { label: route.name, route: null }]
-    case 'collection':
+    case 'collection': {
+      const tabLabel =
+        route.tab === 'graph' ? 'Graph'
+        : route.tab === 'documents' ? 'Documents'
+        : route.tab === 'bridges' ? 'Bridges'
+        : route.tab === 'chains' ? 'Chains'
+        : null
+      if (tabLabel) {
+        return [
+          home,
+          { label: route.name, route: { page: 'collection', name: route.name, tab: 'overview' } },
+          { label: tabLabel, route: null },
+        ]
+      }
       return [home, { label: route.name, route: null }]
+    }
     case 'project':
       if (route.fromCollection) {
         return [
           home,
-          { label: route.fromCollection, route: { page: 'collection', name: route.fromCollection } },
-          { label: 'Project', route: null },
+          { label: route.fromCollection, route: { page: 'collection', name: route.fromCollection, tab: 'overview' } },
+          { label: 'Document', route: null },
         ]
       }
-      return [home, { label: 'Project', route: null }]
+      return [home, { label: 'Document', route: null }]
     case 'entity':
       return [home, { label: `Entity: ${route.name}`, route: null }]
     case 'graph':
       return [
         home,
-        { label: route.collectionName, route: { page: 'collection', name: route.collectionName } },
-        { label: 'Graph Studio', route: null },
+        { label: route.collectionName, route: { page: 'collection', name: route.collectionName, tab: 'overview' } },
+        { label: 'Graph', route: null },
       ]
     case 'source':
       return [home, { label: 'Source', route: null }]
     case 'settings':
       return [home, { label: 'Settings', route: null }]
     case 'ingest':
-      return [home, { label: 'Ingest Documents', route: null }]
+      return [home, { label: 'Add documents', route: null }]
   }
 }
 

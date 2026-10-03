@@ -33,18 +33,22 @@ export function registerExtractionTools(server: McpServer) {
           project: ['name', 'unique_id', 'summary', 'narrative_flow', 'tags.domain', 'tags.subdomain', 'tags.base_tags'],
         },
         qualityBar: {
-          entityDefinition: '100+ chars, system mechanics',
-          entityRole: 'stance + mechanics + reasoning',
-          edgeDescription: '80+ chars, HOW it works',
-          evidence: 'exact quotes from source',
-          summary: '200+ words, system mechanics',
-          minEntities: 10,
-          minRelationships: 15,
-          minCausalChains: 2,
+          entityDefinition: 'Nonempty, source-supported, proportionate to the document',
+          entityRole: 'Describe the role supported by this source',
+          edgeDescription: 'Explain the connection supported by the evidence',
+          evidence: 'Exact source quotes; provide source_text so validation can check them',
+          summary: 'Nonempty, source-proportionate; no word or character quotas',
+          minEntities: 1,
+          minRelationships: 0,
+          minCausalChains: 0,
+          temporalPhases: 'Optional; use [] and first_appearance_index: null when unsupported',
+          causalChains: 'Optional; every included link must match an evidence-bearing relationship',
+          embeddings: 'Real 384-dimensional vectors for every entity and the project; project label is unique_id',
         },
         traps: [
           'Entity names are case-sensitive. "IMF" ≠ "imf".',
-          'Aliases are CRITICAL for cross-project merge. Always provide 2-3.',
+          'Aliases help cross-project merge. Include only supported aliases; [] is valid.',
+          'Do not invent entities, connections, temporal phases, or causal chains to meet a count.',
           'relType is the specific verb (FUNDS, SANCTIONS). causalClassification is the family (ENABLES, BLOCKS).',
           'Collection assignment is MANDATORY. Claude must suggest or create.',
           'Bridge detection breaks without alias-aware entity merge.',
@@ -106,10 +110,11 @@ export function registerExtractionTools(server: McpServer) {
         'validates, generates embeddings, uploads to Neo4j, and organizes files. ' +
         'Claude must complete entity discovery and extraction BEFORE calling this.',
       inputSchema: z.object({
+        source_text: z.string().min(1).optional().describe('Exact original document text, saved as source.md for evidence quote validation'),
         placement: z.object({
           directory: z.string(),
-          project_name: z.string(),
-          unique_id: z.string(),
+          project_name: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(120).describe('Unique lowercase hyphenated project slug'),
+          unique_id: z.string().regex(/^[a-z0-9][a-z0-9_-]{0,119}$/).describe('New globally unique project ID'),
           collection: z.string(),
           collection_is_new: z.boolean(),
         }),
@@ -126,13 +131,13 @@ export function registerExtractionTools(server: McpServer) {
             category: z.string(),
             definition: z.string(),
             role: z.string(),
-            first_appearance_index: z.number(),
+            first_appearance_index: z.number().nullable(),
           })),
         }),
         extraction: z.object({
           project: z.object({
             name: z.string(),
-            unique_id: z.string(),
+            unique_id: z.string().regex(/^[a-z0-9][a-z0-9_-]{0,119}$/),
             summary: z.string(),
             narrative_flow: z.array(z.string()),
             tags: z.object({
@@ -150,7 +155,7 @@ export function registerExtractionTools(server: McpServer) {
             evidence: z.string(),
             evidenceStrength: z.string(),
             magnitude: z.string(),
-            year: z.string().optional(),
+            year: z.string().default(''),
           })),
           causal_chains: z.array(z.object({
             name: z.string(),
@@ -167,13 +172,25 @@ export function registerExtractionTools(server: McpServer) {
     async (payload) => {
       const startTime = Date.now();
       const slug = payload.placement.project_name;
-      const tempDir = path.resolve(config.c01_dir, 'data', 'temp', slug);
+      const stagingRoot = path.resolve(config.c01_dir, 'data', 'temp');
+      const tempDir = path.join(stagingRoot, slug);
+      const today = new Date().toISOString().slice(0, 10);
+      const permanentRoot = path.resolve(config.c01_dir, 'data', 'sources', today);
+      const permanentDir = path.join(permanentRoot, slug);
+      if (payload.placement.unique_id !== payload.extraction.project.unique_id) {
+        return err('placement.unique_id and extraction.project.unique_id must match. Nothing was uploaded.');
+      }
+      if (fs.existsSync(tempDir) || fs.existsSync(permanentDir)) {
+        return err('A staging or source folder already exists for this project slug. Choose a new slug; existing artifacts were preserved.');
+      }
 
       try {
         // Step 1: Write artifacts to temp directory
-        fs.mkdirSync(tempDir, { recursive: true });
+        fs.mkdirSync(stagingRoot, { recursive: true });
+        fs.mkdirSync(tempDir);
 
         fs.writeFileSync(path.join(tempDir, '01_html.html'), payload.html_content);
+        if (payload.source_text !== undefined) fs.writeFileSync(path.join(tempDir, 'source.md'), payload.source_text);
         fs.writeFileSync(path.join(tempDir, '02_placement.json'), JSON.stringify(payload.placement, null, 2));
         fs.writeFileSync(path.join(tempDir, '04_all_entities.json'), JSON.stringify(payload.entities, null, 2));
         fs.writeFileSync(path.join(tempDir, '06_extraction.json'), JSON.stringify(payload.extraction, null, 2));
@@ -189,7 +206,7 @@ export function registerExtractionTools(server: McpServer) {
             namesToEmbed.push(entity.name);
           }
           textsToEmbed.push(payload.extraction.project.summary);
-          namesToEmbed.push(`__project__${slug}`);
+          namesToEmbed.push(payload.extraction.project.unique_id);
 
           const embedResult = await spawnPythonJSON<{
             embeddings: { name: string; embedding: number[]; dimensions: number }[];
@@ -200,35 +217,29 @@ export function registerExtractionTools(server: McpServer) {
           fs.writeFileSync(path.join(tempDir, '05_embeddings.json'), JSON.stringify(embedResult, null, 2));
           embeddingCount = embedResult.embeddings.length;
         } catch (embedError) {
-          // Embedding failure is non-fatal — write empty embeddings file so validation passes
-          const fallback = { embeddings: [], model: 'none', dimensions: 384 };
-          fs.writeFileSync(path.join(tempDir, '05_embeddings.json'), JSON.stringify(fallback, null, 2));
-          // Log but continue
-          console.error(`Embedding generation failed (non-fatal): ${embedError instanceof Error ? embedError.message : String(embedError)}`);
+          throw new Error(`Embedding generation failed; nothing was uploaded: ${embedError instanceof Error ? embedError.message : String(embedError)}`);
         }
 
         // Step 3: Validate (--import-mode skips 03_nlp_entities.json which MCP pipeline doesn't generate)
         try {
           await spawnPython('neo4j/validate_project.py', ['--import-mode', tempDir]);
         } catch (e) {
-          fs.rmSync(tempDir, { recursive: true, force: true });
-          return err(`Validation failed: ${e instanceof Error ? e.message : String(e)}`);
+          return err(`Validation failed: ${e instanceof Error ? e.message : String(e)}. Review artifacts were preserved in ${tempDir}.`);
         }
 
         // Step 4: Move artifacts from temp → permanent storage
         // upload.py sets htmlPath to data/sources/YYYY-MM-DD/slug/ but doesn't create it
-        const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-        const permanentDir = path.resolve(config.c01_dir, 'data', 'sources', today, slug);
-        fs.mkdirSync(permanentDir, { recursive: true });
+        fs.mkdirSync(permanentRoot, { recursive: true });
+        fs.mkdirSync(permanentDir);
 
         for (const file of fs.readdirSync(tempDir)) {
           fs.renameSync(path.join(tempDir, file), path.join(permanentDir, file));
         }
         // Remove empty temp dir
-        try { fs.rmSync(tempDir, { recursive: true, force: true }); } catch {}
+        try { fs.rmdirSync(tempDir); } catch {}
 
         // Step 5: Upload to Neo4j (reads from permanent path)
-        const uploadResult = await spawnPython('neo4j/upload.py', [permanentDir], undefined, 300_000);
+        const uploadResult = await spawnPython('neo4j/upload.py', [permanentDir, '--create-only'], undefined, 300_000);
 
         const durationMs = Date.now() - startTime;
 
@@ -246,9 +257,7 @@ export function registerExtractionTools(server: McpServer) {
           uploadOutput: uploadResult.stdout,
         });
       } catch (e) {
-        // Cleanup on failure
-        try { fs.rmSync(tempDir, { recursive: true, force: true }); } catch {}
-        return err(`Extraction pipeline failed: ${e instanceof Error ? e.message : String(e)}`);
+        return err(`Extraction pipeline failed: ${e instanceof Error ? e.message : String(e)}. Artifacts were preserved for review in ${tempDir} or ${permanentDir}.`);
       }
     }
   );

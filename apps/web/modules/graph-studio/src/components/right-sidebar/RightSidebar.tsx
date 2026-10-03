@@ -5,12 +5,14 @@ import ProjectCard from './ProjectCard'
 import CollectionCard from './CollectionCard'
 import ExplorationCard from './ExplorationCard'
 
-export default function RightSidebar() {
+export default function RightSidebar({ overlay = false, onClose }: { overlay?: boolean; onClose?: () => void }) {
   const selectedNode = useSelectionStore(s => s.selectedNode)
   const lockedNode = useSelectionStore(s => s.lockedNode)
   const entityDetails = useSelectionStore(s => s.entityDetails)
   const explorationStack = useSelectionStore(s => s.explorationStack)
   const isLoadingDetail = useSelectionStore(s => s.isLoadingDetail)
+  const detailError = useSelectionStore(s => s.detailError)
+  const retryDetail = useSelectionStore(s => s.retryDetail)
   const showCollectionCard = useSelectionStore(s => s.showCollectionCard)
   const removeExplorationCard = useSelectionStore(s => s.removeExplorationCard)
   const toggleExplorationExpanded = useSelectionStore(s => s.toggleExplorationExpanded)
@@ -26,11 +28,11 @@ export default function RightSidebar() {
 
   return (
     <aside
-      className="h-full overflow-y-auto flex-shrink-0"
+      id="nitanics-graph-inspector"
+      aria-label="Graph inspector"
+      className={`nitanics-studio-sidebar nitanics-studio-inspector ${overlay ? 'nitanics-studio-sidebar-overlay' : ''}`}
       style={{
-        width: 380,
-        background: 'rgba(15, 17, 26, 0.85)',
-        backdropFilter: 'blur(16px)',
+        background: 'var(--surface)',
         borderLeft: '1px solid var(--border)',
       }}
     >
@@ -39,7 +41,7 @@ export default function RightSidebar() {
           borderRadius: 18,
           border: '1px solid var(--border)',
           background: 'var(--surface-raised)',
-          boxShadow: '0 10px 24px rgba(0, 0, 0, 0.3)',
+          boxShadow: '0 1px 3px rgba(24, 24, 27, 0.08)',
           overflow: 'hidden',
           flex: 1,
         }}>
@@ -53,7 +55,8 @@ export default function RightSidebar() {
               </div>
             </div>
             <button
-              onClick={clearAll}
+              onClick={onClose ?? clearAll}
+              aria-label="Close graph inspector"
               style={{
                 color: 'var(--text-muted)',
                 background: 'var(--surface-hover)',
@@ -79,6 +82,13 @@ export default function RightSidebar() {
           {!showCollectionCard && isLoadingDetail && !detail && (
             <div className="p-4">
               <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Loading selection...</p>
+            </div>
+          )}
+
+          {!showCollectionCard && detailError && (
+            <div className="p-4" role="alert">
+              <p className="text-xs" style={{ color: 'var(--error)' }}>{detailError}</p>
+              <button onClick={retryDetail} className="mt-3 rounded-full border px-3 py-1.5 text-xs" style={{ color: 'var(--text-primary)', borderColor: 'var(--border)' }}>Retry details</button>
             </div>
           )}
 

@@ -22,7 +22,10 @@ let driver: Driver | null = null
 
 function getDriver(): Driver {
   if (!driver) {
-    driver = neo4j.driver(URI, neo4j.auth.basic(USER, PASSWORD))
+    driver = neo4j.driver(URI, neo4j.auth.basic(USER, PASSWORD), {
+      connectionTimeout: 10_000,
+      connectionAcquisitionTimeout: 15_000,
+    })
   }
   return driver
 }

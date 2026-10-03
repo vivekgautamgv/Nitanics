@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { createReadStream, existsSync, statSync } from 'node:fs'
+import { sourceDocsMiddleware } from '../source-docs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -12,36 +12,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
  * Same pattern as Component 02's serveSourceDocs plugin.
  */
 function serveSourceDocs(): Plugin {
-  const ingestionDir = resolve(__dirname, '..', '..', '..', 'ingestion-pipeline')
+  const repoRoot = resolve(__dirname, '..', '..', '..')
   return {
     name: 'serve-source-docs',
     configureServer(server) {
-      server.middlewares.use('/source-viewer', (req, res) => {
-        const reqUrl = decodeURIComponent((req.url || '').split('?')[0])
-        const filePath = resolve(ingestionDir, reqUrl.startsWith('/') ? reqUrl.slice(1) : reqUrl)
-
-        if (!filePath.startsWith(ingestionDir)) {
-          res.statusCode = 403
-          res.end('Forbidden')
-          return
-        }
-
-        try {
-          if (existsSync(filePath) && statSync(filePath).isFile()) {
-            const ext = filePath.split('.').pop()?.toLowerCase()
-            const contentType = ext === 'html' ? 'text/html; charset=utf-8'
-              : ext === 'json' ? 'application/json; charset=utf-8'
-              : 'application/octet-stream'
-            res.setHeader('Content-Type', contentType)
-            createReadStream(filePath).pipe(res)
-            return
-          }
-        } catch {
-          // fall through to 404
-        }
-        res.statusCode = 404
-        res.end('Source document not found')
-      })
+      server.middlewares.use('/source-viewer', sourceDocsMiddleware(repoRoot))
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use('/source-viewer', sourceDocsMiddleware(repoRoot))
     },
   }
 }
@@ -62,7 +40,7 @@ export default defineConfig({
   },
   resolve: {
     // Force single React instance — C02's components must use C03's React
-    dedupe: ['react', 'react-dom'],
+    dedupe: ['react', 'react-dom', 'neo4j-driver'],
     alias: {
       '@': resolve(__dirname, 'src'),
       '@graph': resolve(__dirname, '..', 'modules', 'graph-studio', 'src'),

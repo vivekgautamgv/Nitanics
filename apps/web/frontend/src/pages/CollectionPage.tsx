@@ -3,7 +3,7 @@
  * Sections: Summary, Projects, Bridge Entities, Categories, Causal Chains, Recommendations
  * Source of truth: DESIGN-SPEC.md Section 7
  */
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useCollectionStore } from '../stores/collection-store'
 import { useNavigationStore } from '../stores/navigation-store'
 import StatsGrid from '../components/StatsGrid'
@@ -16,7 +16,9 @@ import ConfirmDialog from '../components/ConfirmDialog'
 import InfoTag from '../components/InfoTag'
 import { CATEGORY_COLORS } from '../constants/colors'
 import { exportCollectionZIP } from '../services/frontend-queries'
-import type { CausalChainItem } from '../types/frontend'
+import type { CollectionTab, CausalChainItem } from '../types/frontend'
+import Tabs from '../components/ui/Tabs'
+import CollectionGraphPanel from '../components/collection/CollectionGraphPanel'
 
 export default function CollectionPage({ name }: { name: string }) {
   const {
@@ -24,6 +26,20 @@ export default function CollectionPage({ name }: { name: string }) {
     isLoading, error, loadCollection, addProject, removeProject, updateDescription,
   } = useCollectionStore()
   const navigate = useNavigationStore(s => s.navigate)
+  const route = useNavigationStore(s => s.route)
+
+  const activeTab: CollectionTab =
+    route.page === 'collection' && route.name === name ? (route.tab ?? 'overview') : 'overview'
+
+  const setTab = (tab: CollectionTab) => navigate({ page: 'collection', name, tab })
+
+  const collectionTabs: { id: CollectionTab; label: string }[] = [
+    { id: 'overview', label: 'Overview' },
+    { id: 'documents', label: 'Documents' },
+    { id: 'graph', label: 'Graph' },
+    { id: 'bridges', label: 'Bridges' },
+    { id: 'chains', label: 'Chains' },
+  ]
 
   const [removeTarget, setRemoveTarget] = useState<{ uniqueId: string; projectName: string } | null>(null)
   const [removeError, setRemoveError] = useState<string | null>(null)
@@ -33,6 +49,11 @@ export default function CollectionPage({ name }: { name: string }) {
   const [exportStatus, setExportStatus] = useState<'idle' | 'running' | 'success' | 'failed'>('idle')
   const [exportLogs, setExportLogs] = useState('')
   const [exportError, setExportError] = useState('')
+  const [exportDownloadUrl, setExportDownloadUrl] = useState('')
+  const [documentSearch, setDocumentSearch] = useState('')
+  const filteredProjects = useMemo(() => projects.filter(project =>
+    [project.name, project.domain, project.subdomain, ...project.tags].join(' ').toLowerCase().includes(documentSearch.trim().toLowerCase())
+  ), [projects, documentSearch])
 
   useEffect(() => {
     loadCollection(name)
@@ -42,55 +63,55 @@ export default function CollectionPage({ name }: { name: string }) {
   useEffect(() => {
     if (!exportProcessId || exportStatus !== 'running') return
 
-    const timer = setInterval(async () => {
+    let stopped = false
+    let timer: ReturnType<typeof setTimeout>
+    const controller = new AbortController()
+    let failures = 0
+    const poll = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:5176/api/status?id=${exportProcessId}`)
+        const res = await fetch(`http://127.0.0.1:5176/api/status?id=${encodeURIComponent(exportProcessId)}`, { signal: controller.signal })
         if (!res.ok) throw new Error('Failed to query export status')
         const data = await res.json()
+        if (stopped) return
+        failures = 0
         setExportLogs(data.logs || '')
         if (data.status !== 'running') {
+          if (data.status !== 'success' && data.status !== 'failed') throw new Error('Invalid export status received')
           setExportStatus(data.status)
           if (data.status === 'success') {
-            const slug = name.toLowerCase().replace(/ /g, '-').replace(/:/g, '').replace(/--/g, '-').replace(/^-+|-+$/g, '')
-            const downloadUrl = `http://127.0.0.1:5176/api/download?file=${slug}.zip`
-            const a = document.createElement('a')
-            a.href = downloadUrl
-            a.download = `${slug}.zip`
-            document.body.appendChild(a)
-            a.click()
-            document.body.removeChild(a)
-            
-            // Auto close after 2 seconds on success
-            setTimeout(() => {
-              setExporting(false)
-              setExportProcessId(null)
-              setExportStatus('idle')
-              setExportLogs('')
-            }, 2000)
-          }
+            if (!data.downloadUrl) { setExportStatus('failed'); setExportError('The export completed but no download was returned. Try exporting again.') }
+            else setExportDownloadUrl(new URL(data.downloadUrl, 'http://127.0.0.1:5176').href)
+          } else setExportError(data.error || 'The export process failed. See details below.')
+          return
         }
-      } catch (err: any) {
-        setExportLogs(prev => prev + `\n[UI ERROR] Connection to API server lost: ${err.message}\n`)
-        setExportStatus('failed')
-        setExportError(err.message)
-        clearInterval(timer)
+      } catch (err: unknown) {
+        if (stopped) return
+        failures++
+        if (failures >= 4) {
+          setExportStatus('failed')
+          setExportError('Unable to check the export. Verify the API server is running, then retry the status check.')
+          return
+        }
       }
-    }, 1000)
+      if (!stopped) timer = setTimeout(poll, failures ? 2000 * failures : 1200)
+    }
+    poll()
 
-    return () => clearInterval(timer)
+    return () => { stopped = true; clearTimeout(timer); controller.abort() }
   }, [exportProcessId, exportStatus, name])
 
   const handleRemoveProject = async () => {
     if (!removeTarget) return
-    const removed = await removeProject(removeTarget.uniqueId, name)
-    if (!removed) {
-      setRemoveError(`Cannot remove "${removeTarget.projectName}" — it's in no other collection.`)
-    }
+    try {
+      const removed = await removeProject(removeTarget.uniqueId, name)
+      if (!removed) setRemoveError(`Cannot remove "${removeTarget.projectName}" — it's in no other collection.`)
+    } catch (err) { setRemoveError(err instanceof Error ? err.message : String(err)) }
     setRemoveTarget(null)
   }
 
   const handleAddRecommendation = async (uniqueId: string) => {
-    await addProject(uniqueId, name)
+    try { await addProject(uniqueId, name) }
+    catch (err) { setRemoveError(err instanceof Error ? err.message : String(err)) }
   }
 
   const handleExport = async () => {
@@ -98,6 +119,7 @@ export default function CollectionPage({ name }: { name: string }) {
     setExportStatus('running')
     setExportLogs('[UI] Requesting backend collection export...\n')
     setExportError('')
+    setExportDownloadUrl('')
 
     try {
       const res = await fetch('http://127.0.0.1:5176/api/export', {
@@ -147,45 +169,52 @@ export default function CollectionPage({ name }: { name: string }) {
   }
 
   const stats = [
-    { label: 'Projects', value: summary.projectCount },
+    { label: 'Documents', value: summary.projectCount },
     { label: 'Entities', value: summary.entityCount },
     { label: 'Relationships', value: summary.relationshipCount },
     { label: 'Causal Chains', value: summary.causalChainCount },
   ]
 
   return (
+    <>
+    {activeTab === 'graph' ? (
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
+        <div style={{ padding: '12px 16px 0', background: 'var(--surface)', borderBottom: '1px solid var(--border)' }}>
+          <div className="collection-header" style={{ marginBottom: 8 }}>
+            <h1>{summary.name}</h1>
+            <div className="collection-actions">
+              <button type="button" className="btn btn-secondary btn-sm" onClick={() => navigate({ page: 'ingest' })}>Add documents</button>
+              <button type="button" className="btn btn-secondary btn-sm" disabled={exporting} onClick={handleExport}>
+                {exporting ? 'Exporting...' : 'Export'}
+              </button>
+            </div>
+          </div>
+          <Tabs tabs={collectionTabs} active={activeTab} onChange={setTab} />
+        </div>
+        <CollectionGraphPanel collectionName={name} />
+      </div>
+    ) : (
     <div className="page-container">
-      {/* Header */}
-      <div className="flex items-center justify-between" style={{ marginBottom: '8px' }}>
-        <h1 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600 }}>
-          {summary.name}
-        </h1>
-        <div className="flex items-center gap-2">
-          <button
-            className="btn btn-secondary"
-            style={{ fontSize: '13px', padding: '6px 14px' }}
-            disabled={exporting}
-            onClick={handleExport}
-          >
+      <div className="collection-header">
+        <h1>{summary.name}</h1>
+        <div className="collection-actions">
+          <button type="button" className="btn btn-secondary" onClick={() => navigate({ page: 'ingest' })}>Add documents</button>
+          <button type="button" className="btn btn-secondary" disabled={exporting} onClick={handleExport}>
             {exporting ? 'Exporting...' : 'Export'}
           </button>
-          <button
-            className="btn btn-primary"
-            onClick={() => navigate({ page: 'graph', collectionName: name })}
-          >
-            Open Graph Studio
-          </button>
+          <button type="button" className="btn btn-primary" onClick={() => setTab('graph')}>Open graph</button>
         </div>
       </div>
 
-      {/* Editable description */}
-      <div style={{ marginBottom: '16px' }}>
+      <div style={{ marginBottom: 16 }}>
         <EditableText
           value={summary.description}
-          placeholder="Add a description..."
+          placeholder="Add a collection description..."
           onSave={(desc) => updateDescription(name, desc)}
         />
       </div>
+
+      <Tabs tabs={collectionTabs} active={activeTab} onChange={setTab} />
 
       {/* Remove error toast */}
       {removeError && (
@@ -199,262 +228,166 @@ export default function CollectionPage({ name }: { name: string }) {
         </div>
       )}
 
-      {/* Cockpit layout */}
-      <div className="cockpit-container">
-        {/* Left main panel */}
-        <div className="cockpit-left">
-          {/* Projects Section */}
-          <CollapsibleSection title="Projects" count={projects.length}>
-            {projects.length === 0 ? (
-              <div className="empty-state">No projects in this collection.</div>
-            ) : (
-              <table className="data-table">
-                <thead>
-                  <tr>
-                    <th>Project</th>
-                    <th>Domain</th>
-                    <th>Tags</th>
-                    <th>Entities</th>
-                    <th>Source</th>
-                    <th style={{ width: '70px' }}></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {projects.map(p => (
-                    <tr key={p.uniqueId}>
-                      <td>
-                        <span className="data-link" onClick={() => navigate({ page: 'project', uniqueId: p.uniqueId, fromCollection: name })}>
-                          {p.name}
-                        </span>
-                        <InfoTag type="project" name={p.name} scope={{ collection: name, projectUniqueId: p.uniqueId, projectName: p.name }} />
-                      </td>
-                      <td>
-                        <span style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>
-                          {p.domain}
-                          {p.subdomain && <span style={{ color: 'var(--text-muted)' }}> / {p.subdomain}</span>}
-                        </span>
-                      </td>
-                      <td>
-                        <PillList items={p.tags} maxVisible={3} variant="tag" />
-                      </td>
-                      <td>{p.entityCount}</td>
-                      <td>
-                        {p.htmlPath && (
-                          <span className="data-link" style={{ fontSize: '11px' }} onClick={() => navigate({ page: 'source', htmlPath: p.htmlPath })}>
-                            View
-                          </span>
-                        )}
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-danger"
-                          style={{ padding: '2px 8px', fontSize: '11px' }}
-                          onClick={() => setRemoveTarget({ uniqueId: p.uniqueId, projectName: p.name })}
-                        >
-                          Remove
-                        </button>
-                      </td>
-                    </tr>
+      {/* Tab content */}
+      {activeTab === 'overview' && (
+        <div className="cockpit-container">
+          <div className="cockpit-left">
+            <StatsGrid stats={stats} />
+            <CollapsibleSection title="Top Entities" count={topEntities.length} defaultExpanded>
+              {topEntities.length === 0 ? (
+                <div className="empty-state">No entities found.</div>
+              ) : (
+                <div className="flex flex-wrap gap-2">
+                  {topEntities.map(e => (
+                    <span key={e.name} className="pill pill-entity" onClick={() => navigate({ page: 'entity', name: e.name })}>
+                      <CategoryBadge category={e.category} size="sm" />
+                      <span style={{ marginLeft: 4 }}>{e.name}</span>
+                    </span>
                   ))}
-                </tbody>
-              </table>
-            )}
-          </CollapsibleSection>
-
-          {/* Recommendations Section */}
-          <CollapsibleSection title="Recommended Projects" count={recommendations.length} defaultExpanded={recommendations.length > 0}>
-            {recommendations.length === 0 ? (
-              <div className="empty-state">All available projects are already in this collection. Add new projects or create other collections to see cross-collection recommendations.</div>
-            ) : (
-              <table className="data-table">
-                <thead>
-                  <tr>
-                    <th>Project</th>
-                    <th>Domain</th>
-                    <th>Shared Entities</th>
-                    <th style={{ width: '70px' }}></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {recommendations.map(r => (
-                    <tr key={r.uniqueId}>
-                      <td>
-                        <span className="data-link" onClick={() => navigate({ page: 'project', uniqueId: r.uniqueId })}>
-                          {r.name}
-                        </span>
-                        <InfoTag type="project" name={r.name} scope={{ collection: name, projectUniqueId: r.uniqueId, projectName: r.name }} />
-                      </td>
-                      <td>
-                        <span style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>
-                          {r.domain}
-                          {r.subdomain && <span style={{ color: 'var(--text-muted)' }}> / {r.subdomain}</span>}
-                        </span>
-                      </td>
-                      <td>
-                        <PillList
-                          items={r.sharedEntityNames}
-                          maxVisible={3}
-                          variant="entity"
-                          onItemClick={(e) => navigate({ page: 'entity', name: e })}
-                        />
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-primary"
-                          style={{ padding: '2px 8px', fontSize: '11px' }}
-                          onClick={() => handleAddRecommendation(r.uniqueId)}
-                        >
-                          Add
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </CollapsibleSection>
-
-          {/* Causal Chains Section */}
-          <CollapsibleSection title="Causal Chains" count={chains.length} defaultExpanded={chains.length > 0}>
-            {chains.length === 0 ? (
-              <div className="empty-state">No causal chains found.</div>
-            ) : (
-              <div className="flex flex-col gap-4">
-                {chains.map((chain, idx) => (
-                  <CausalChainCard key={idx} chain={chain} onNavigate={navigate} />
-                ))}
-              </div>
-            )}
-          </CollapsibleSection>
+                </div>
+              )}
+            </CollapsibleSection>
+          </div>
+          <div className="cockpit-right">
+            <CollapsibleSection title="Category Breakdown" count={categories.length} defaultExpanded>
+              {categories.length === 0 ? (
+                <div className="empty-state">No entities to categorize.</div>
+              ) : (
+                <div className="flex flex-col gap-2">
+                  {categories.map(c => {
+                    const maxCount = categories[0]?.count || 1
+                    const pct = (c.count / maxCount) * 100
+                    const color = CATEGORY_COLORS[c.category] || CATEGORY_COLORS.Other!
+                    return (
+                      <div key={c.category} className="flex items-center gap-3" style={{ fontSize: 12 }}>
+                        <span style={{ width: 100, flexShrink: 0 }}><CategoryBadge category={c.category} /></span>
+                        <div style={{ flex: 1, height: 6, background: 'var(--surface-subtle)', borderRadius: 3, overflow: 'hidden' }}>
+                          <div style={{ width: `${pct}%`, height: '100%', background: color, borderRadius: 3 }} />
+                        </div>
+                        <span style={{ color: 'var(--text-secondary)', width: 30, textAlign: 'right' }}>{c.count}</span>
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
+            </CollapsibleSection>
+            <CollapsibleSection title="Recommended Documents" count={recommendations.length} defaultExpanded={recommendations.length > 0}>
+              {recommendations.length === 0 ? (
+                <div className="empty-state">No recommendations available.</div>
+              ) : (
+                <table className="data-table">
+                  <thead><tr><th>Document</th><th>Shared</th><th /></tr></thead>
+                  <tbody>
+                    {recommendations.map(r => (
+                      <tr key={r.uniqueId}>
+                        <td><span className="data-link" onClick={() => navigate({ page: 'project', uniqueId: r.uniqueId })}>{r.name}</span></td>
+                        <td>{r.sharedCount}</td>
+                        <td><button className="btn btn-primary btn-sm" onClick={() => handleAddRecommendation(r.uniqueId)}>Add</button></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </CollapsibleSection>
+          </div>
         </div>
+      )}
 
-        {/* Right side panel */}
-        <div className="cockpit-right">
-          {/* Stats Grid */}
-          <StatsGrid stats={stats} />
+      {activeTab === 'documents' && (
+        <CollapsibleSection title="Documents" count={projects.length} defaultExpanded>
+          <p className="research-tab-note">Open a document to inspect its extracted findings, or view the original source to check the evidence.</p>
+          {projects.length > 0 && <div className="research-documents-controls"><input className="input" type="search" aria-label="Search documents" placeholder="Search by title, domain, or tag…" value={documentSearch} onChange={e => setDocumentSearch(e.target.value)} /><span>{filteredProjects.length} of {projects.length}</span></div>}
+          {projects.length === 0 ? (
+            <div className="empty-state">No documents in this collection.</div>
+          ) : filteredProjects.length === 0 ? (
+            <div className="empty-state">No matching documents. Try another title or tag.</div>
+          ) : (
+            <div className="research-table-scroll">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Document</th>
+                  <th>Domain</th>
+                  <th>Tags</th>
+                  <th>Entities</th>
+                  <th>Source</th>
+                  <th style={{ width: 70 }} />
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProjects.map(p => (
+                  <tr key={p.uniqueId}>
+                    <td>
+                      <button type="button" className="data-link" style={{ border: 0, background: 'none', textAlign: 'left', cursor: 'pointer' }} onClick={() => navigate({ page: 'project', uniqueId: p.uniqueId, fromCollection: name })}>{p.name}</button>
+                      <InfoTag type="project" name={p.name} scope={{ collection: name, projectUniqueId: p.uniqueId, projectName: p.name }} />
+                    </td>
+                    <td><span style={{ fontSize: 12 }}>{p.domain}{p.subdomain && <span style={{ color: 'var(--text-muted)' }}> / {p.subdomain}</span>}</span></td>
+                    <td><PillList items={p.tags} maxVisible={3} variant="tag" /></td>
+                    <td>{p.entityCount}</td>
+                    <td>{p.htmlPath && <button type="button" className="btn btn-ghost btn-sm" onClick={() => navigate({ page: 'source', htmlPath: p.htmlPath })}>Read source</button>}</td>
+                    <td><button className="btn btn-danger btn-sm" onClick={() => setRemoveTarget({ uniqueId: p.uniqueId, projectName: p.name })}>Remove</button></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            </div>
+          )}
+        </CollapsibleSection>
+      )}
 
-          {/* Bridge Entities Section */}
-          <CollapsibleSection title="Bridge Entities" count={bridges.length}>
-            {bridges.length === 0 ? (
-              <div className="empty-state">No bridge entities yet (need 2+ projects sharing entities).</div>
-            ) : (
-              <div className="flex flex-col gap-3">
-                {bridges.map(b => (
-                  <div key={b.name} className="card" style={{ padding: '12px 16px' }}>
-                    <div className="flex items-center justify-between" style={{ marginBottom: '8px' }}>
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="data-link"
-                          style={{ fontSize: '14px', fontWeight: 600 }}
-                          onClick={() => navigate({ page: 'entity', name: b.name })}
-                        >
-                          {b.name}
-                        </span>
-                        <InfoTag type="entity" name={b.name} scope={{ collection: name }} />
-                        <CategoryBadge category={b.category} />
-                        <BridgeBadge tier={b.tier} />
-                      </div>
-                      <div className="flex items-center gap-3" style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-                        <span>{b.projectCount} projects</span>
-                        <span>PR: {b.pageRank.toFixed(2)}</span>
-                      </div>
+      {activeTab === 'bridges' && (
+        <CollapsibleSection title="Bridge Entities" count={bridges.length} defaultExpanded>
+          <p className="research-tab-note">Shared entities connect two or more documents in this collection. Compare the linked sources to see where their findings overlap; a shared mention alone does not establish agreement.</p>
+          {bridges.length === 0 ? (
+            <div className="empty-state">No bridge entities yet (need 2+ documents sharing entities).</div>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {bridges.map(b => (
+                <div key={b.name} className="card" style={{ padding: '12px 16px' }}>
+                  <div className="flex items-center justify-between" style={{ marginBottom: 8 }}>
+                    <div className="flex items-center gap-2">
+                      <span className="data-link" style={{ fontWeight: 600 }} onClick={() => navigate({ page: 'entity', name: b.name })}>{b.name}</span>
+                      <CategoryBadge category={b.category} />
+                      <BridgeBadge tier={b.tier} />
                     </div>
-                    {/* Show which projects this bridge connects */}
-                    {b.projectNames && b.projectNames.length > 0 && (
-                      <div style={{ marginBottom: '6px' }}>
-                        <span style={{ color: 'var(--text-muted)', fontSize: '11px' }}>Connects: </span>
-                        <PillList
-                          items={b.projectNames}
-                          maxVisible={5}
-                          variant="collection"
-                          onItemClick={(p) => {
-                            const proj = projects.find(pr => pr.name === p)
-                            if (proj) navigate({ page: 'project', uniqueId: proj.uniqueId })
-                          }}
-                        />
-                      </div>
-                    )}
-                    {/* Show connected entities */}
-                    {b.connectedEntities && b.connectedEntities.length > 0 && (
-                      <div style={{ marginTop: '4px' }}>
-                        <span style={{ color: 'var(--text-muted)', fontSize: '11px' }}>Related to: </span>
-                        <span style={{ fontSize: '12px' }}>
-                          {b.connectedEntities.slice(0, 6).map((ce, i) => (
-                            <span key={ce}>
-                              {i > 0 && <span style={{ color: 'var(--text-muted)' }}>, </span>}
-                              <span className="data-link" onClick={() => navigate({ page: 'entity', name: ce })}>{ce}</span>
-                              <InfoTag type="entity" name={ce} scope={{ collection: name }} />
-                            </span>
-                          ))}
-                          {b.connectedEntities.length > 6 && (
-                            <span style={{ color: 'var(--text-muted)' }}> +{b.connectedEntities.length - 6} more</span>
-                          )}
-                        </span>
-                      </div>
-                    )}
+                    <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>{b.projectCount} documents</span>
                   </div>
-                ))}
-              </div>
-            )}
-          </CollapsibleSection>
+                  {b.projectNames && b.projectNames.length > 0 && (
+                    <PillList items={b.projectNames} maxVisible={5} variant="collection" onItemClick={(p) => {
+                      const proj = projects.find(pr => pr.name === p)
+                      if (proj) navigate({ page: 'project', uniqueId: proj.uniqueId })
+                    }} />
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </CollapsibleSection>
+      )}
 
-          {/* Category Breakdown Section */}
-          <CollapsibleSection title="Category Breakdown" count={categories.length} defaultExpanded={true}>
-            {categories.length === 0 ? (
-              <div className="empty-state">No entities to categorize.</div>
-            ) : (
-              <div className="flex flex-col gap-2">
-                {categories.map(c => {
-                  const maxCount = categories[0]?.count || 1
-                  const pct = (c.count / maxCount) * 100
-                  const color = CATEGORY_COLORS[c.category] || CATEGORY_COLORS.Other!
-                  return (
-                    <div key={c.category} className="flex items-center gap-3" style={{ fontSize: '12px' }}>
-                      <span style={{ width: '100px', flexShrink: 0 }}>
-                        <CategoryBadge category={c.category} />
-                      </span>
-                      <div style={{ flex: 1, height: '6px', background: 'var(--surface-hover)', borderRadius: '3px', overflow: 'hidden' }}>
-                        <div style={{ width: `${pct}%`, height: '100%', background: color, borderRadius: '3px', transition: 'width 0.3s ease' }} />
-                      </div>
-                      <span style={{ color: 'var(--text-secondary)', width: '30px', textAlign: 'right', flexShrink: 0 }}>
-                        {c.count}
-                      </span>
-                    </div>
-                  )
-                })}
-              </div>
-            )}
-          </CollapsibleSection>
+      {activeTab === 'chains' && (
+        <CollapsibleSection title="Causal Chains" count={chains.length} defaultExpanded>
+          <p className="research-tab-note">Explore the reasoning extracted from each source. Follow the linked document to verify the evidence and its context.</p>
+          {chains.length === 0 ? (
+            <div className="empty-state">No causal chains found.</div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              {chains.map((chain, idx) => (
+                <CausalChainCard key={idx} chain={chain} onNavigate={navigate} />
+              ))}
+            </div>
+          )}
+        </CollapsibleSection>
+      )}
 
-          {/* Top Entities Section */}
-          <CollapsibleSection title="Top Entities" count={topEntities.length} defaultExpanded={true}>
-            {topEntities.length === 0 ? (
-              <div className="empty-state">No entities found.</div>
-            ) : (
-              <div className="flex flex-wrap gap-2">
-                {topEntities.map(e => (
-                  <span
-                    key={e.name}
-                    className="pill pill-entity"
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => navigate({ page: 'entity', name: e.name })}
-                  >
-                    <CategoryBadge category={e.category} size="sm" />
-                    <span style={{ marginLeft: '4px' }}>{e.name}</span>
-                    <InfoTag type="entity" name={e.name} scope={{ collection: name }} />
-                  </span>
-                ))}
-              </div>
-            )}
-          </CollapsibleSection>
-        </div>
-      </div>
+    </div>
+    )}
 
-      {/* Remove Project Confirmation */}
+      {/* Remove Document Confirmation */}
       <ConfirmDialog
         open={!!removeTarget}
-        title="Remove Project"
-        message={`Remove "${removeTarget?.projectName}" from this collection? The project itself won't be deleted.`}
+        title="Remove Document"
+        message={`Remove "${removeTarget?.projectName}" from this collection? The document itself won't be deleted.`}
         confirmLabel="Remove"
         danger
         onConfirm={handleRemoveProject}
@@ -489,9 +422,10 @@ export default function CollectionPage({ name }: { name: string }) {
               <h2 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text-primary)' }}>
                 Exporting Collection: {name}
               </h2>
-              {exportStatus === 'failed' && (
+              {exportStatus !== 'running' && (
                 <button
                   className="btn btn-secondary"
+                  aria-label="Close export"
                   style={{ padding: '4px 12px', fontSize: '12px' }}
                   onClick={() => {
                     setExporting(false)
@@ -507,7 +441,7 @@ export default function CollectionPage({ name }: { name: string }) {
             
             <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.5 }}>
               {exportStatus === 'running' && 'Compiling Neo4j knowledge graph, raw embeddings, and styled HTML documents into a portable ZIP package...'}
-              {exportStatus === 'success' && 'Export successful! Downloading your collection ZIP archive...'}
+              {exportStatus === 'success' && 'Your portable collection is ready. Download the archive to back up or share these research sources.'}
               {exportStatus === 'failed' && `Export failed: ${exportError || 'Check process logs below.'}`}
             </p>
             
@@ -530,11 +464,13 @@ export default function CollectionPage({ name }: { name: string }) {
 
             <div className="flex justify-between items-center">
               <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-                {exportStatus === 'running' && 'Executing export_collection.py...'}
+                {exportStatus === 'running' && 'Preparing your collection…'}
                 {exportStatus === 'success' && 'Finished successfully.'}
                 {exportStatus === 'failed' && 'Process exited with error.'}
               </span>
               <div className="flex gap-2">
+                {exportStatus === 'success' && exportDownloadUrl && <a className="btn btn-primary" href={exportDownloadUrl} download>Download ZIP</a>}
+                {exportStatus === 'failed' && exportProcessId && <button type="button" className="btn btn-secondary" onClick={() => { setExportError(''); setExportStatus('running') }}>Check again</button>}
                 {exportStatus === 'failed' && (
                   <button
                     className="btn btn-secondary"
@@ -559,7 +495,7 @@ export default function CollectionPage({ name }: { name: string }) {
           </div>
         </div>
       )}
-    </div>
+    </>
   )
 }
 

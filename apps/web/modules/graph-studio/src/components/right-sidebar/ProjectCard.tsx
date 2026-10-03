@@ -13,6 +13,7 @@ import { fetchCausalChains } from '../../services/queries'
 import { CATEGORY_COLORS } from '../../constants/colors'
 import type { ProjectSummary, CausalChain, GraphNode } from '../../types/graph'
 import { resolveSourceUrl } from '../../utils/paths'
+import { LockGlyph } from './PrimaryCard'
 
 interface Props {
   project: ProjectSummary
@@ -117,11 +118,11 @@ export default function ProjectCard({ project }: Props) {
       <div className="flex items-start gap-2">
         <button
           onClick={() => isLocked ? unlockNode() : lockNode()}
-          className="mt-0.5 text-sm"
-          title={isLocked ? 'Unlock' : 'Lock'}
-          style={{ color: isLocked ? 'var(--accent)' : 'var(--text-muted)' }}
+          className="mt-0.5"
+          title={isLocked ? 'Unpin focus' : 'Pin focus'}
+          style={{ color: isLocked ? 'var(--accent)' : 'var(--text-muted)', display: 'flex' }}
         >
-          {isLocked ? '🔒' : '🔓'}
+          <LockGlyph locked={isLocked} />
         </button>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">

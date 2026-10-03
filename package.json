@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "neo4j:ensure": "node scripts/ensure-neo4j.mjs",
+    "nlp:setup": "node scripts/setup-nlp.mjs",
     "dev": "bun run dev:web",
     "dev:web": "concurrently -k -n FRONTEND,GRAPH,API -c cyan,magenta,yellow \"bun run dev:frontend\" \"bun run dev:graph\" \"bun run dev:api\"",
     "dev:frontend": "bun run --cwd apps/web/frontend dev",

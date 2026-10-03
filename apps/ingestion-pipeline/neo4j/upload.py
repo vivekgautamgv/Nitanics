@@ -24,8 +24,23 @@ import os
 import json
 import uuid
 from datetime import datetime
+from pathlib import Path
 
-from db import run_cypher, run_batch, check_connection
+from db import run_cypher as _run_cypher, run_batch as _run_batch, check_connection
+
+
+def run_cypher(statement, params=None):
+    result = _run_cypher(statement, params)
+    if not result['ok']:
+        raise RuntimeError(f"Neo4j rejected the upload statement: {result['errors']}")
+    return result
+
+
+def run_batch(statements):
+    result = _run_batch(statements)
+    if not result['ok']:
+        raise RuntimeError(f"Neo4j rejected the upload batch: {result['errors']}")
+    return result
 
 
 def load_artifacts(project_dir):
@@ -57,7 +72,7 @@ def generate_id(prefix=""):
 # Upload Steps (batched)
 # ---------------------------------------------------------------
 
-def create_scaffold(extraction, placement):
+def create_scaffold(extraction, placement, html_path=None):
     """Create DateTime, Collection, Project nodes and all structural links.
     Single batch for all scaffold operations."""
     now = datetime.now()
@@ -67,7 +82,7 @@ def create_scaffold(extraction, placement):
     project = extraction["project"]
     project_name = placement["project_name"]
     today = now.strftime("%Y-%m-%d")
-    html_path = f"data/sources/{today}/{project_name}/01_html.html"
+    html_path = html_path or f"data/sources/{today}/{project_name}/01_html.html"
 
     # Phase 1: Create date + time + project, find/create collection (1 HTTP call)
     batch = [
@@ -122,36 +137,18 @@ def create_scaffold(extraction, placement):
 
     # Phase 2: Collection (may need lookup first)
     collection_name = placement["collection"]
-    is_new = placement.get("collection_is_new", False)
-
-    if is_new:
-        collection_id = generate_id("col")
-        r = run_cypher(
-            "CREATE (c:Collection {collectionId: $cid, name: $name, createdAt: datetime()}) RETURN c.collectionId",
-            {"cid": collection_id, "name": collection_name},
-        )
-        if not r["ok"]:
-            return None, None, r["errors"]
-        print(f"  Created collection: {collection_name} ({collection_id})")
-    else:
-        r = run_cypher(
-            "MATCH (c:Collection {name: $name}) RETURN c.collectionId",
-            {"name": collection_name},
-        )
-        if r["ok"] and r["data"][0]["data"]:
-            collection_id = r["data"][0]["data"][0]["row"][0]
-            print(f"  Found collection: {collection_name} ({collection_id})")
-        else:
-            collection_id = generate_id("col")
-            run_cypher(
-                "CREATE (c:Collection {collectionId: $cid, name: $name, createdAt: datetime()}) RETURN c.collectionId",
-                {"cid": collection_id, "name": collection_name},
-            )
-            print(f"  Created collection (fallback): {collection_name} ({collection_id})")
+    r = run_cypher(
+        """MERGE (c:Collection {name: $name})
+           ON CREATE SET c.collectionId = $cid, c.createdAt = datetime()
+           RETURN c.collectionId""",
+        {"cid": generate_id("col"), "name": collection_name},
+    )
+    collection_id = r["data"][0]["data"][0]["row"][0]
+    print(f"  Collection: {collection_name} ({collection_id})")
 
     # Phase 3: All structural links (1 HTTP call)
     links = [
-        ("MATCH (p:Project {projectId: $pid}), (d:DirectoryCategory {name: $dir}) MERGE (p)-[:IN_DIRECTORY]->(d)",
+        ("MATCH (p:Project {projectId: $pid}) MERGE (d:DirectoryCategory {name: $dir}) MERGE (p)-[:IN_DIRECTORY]->(d)",
          {"pid": project_id, "dir": placement["directory"]}),
         ("MATCH (p:Project {projectId: $pid}), (d:DateTime {datetimeId: $did}) MERGE (p)-[:CREATED_ON]->(d)",
          {"pid": project_id, "did": date_id}),
@@ -207,11 +204,11 @@ def create_entity_nodes(entities_data, project_id):
     for i, entity in enumerate(entities):
         name = entity["name"]
         if i in existing:
-            # Merge: increment projectCount on existing entity
+            # Project counts are recomputed from actual membership below.
             eid = existing[i]
             entity_map[name] = eid
             mutations.append((
-                "MATCH (e:Entity {entityId: $eid}) SET e.projectCount = coalesce(e.projectCount, 1) + 1",
+                "MATCH (e:Entity {entityId: $eid}) RETURN e.entityId",
                 {"eid": eid},
             ))
         else:
@@ -249,7 +246,12 @@ def create_entity_nodes(entities_data, project_id):
         links.append((
             """
             MATCH (e:Entity {entityId: $eid}), (p:Project {projectId: $pid})
-            MERGE (e)-[:MENTIONED_IN {role: $role}]->(p)
+            MERGE (e)-[m:MENTIONED_IN]->(p)
+            SET m.role = $role
+            WITH e
+            MATCH (e)-[:MENTIONED_IN]->(mentioned:Project)
+            WITH e, count(DISTINCT mentioned) AS projectCount
+            SET e.projectCount = projectCount
             """,
             {"eid": eid, "pid": project_id, "role": entity["role"]},
         ))
@@ -499,7 +501,7 @@ def main():
         print("Usage: python neo4j/upload.py <project-dir>")
         sys.exit(1)
 
-    project_dir = sys.argv[1]
+    project_dir = os.path.abspath(sys.argv[1])
     if not os.path.isdir(project_dir):
         print(f"[ERROR] Not a directory: {project_dir}")
         sys.exit(1)
@@ -519,9 +521,25 @@ def main():
     embeddings_data = artifacts["embeddings"]
     extraction = artifacts["extraction"]
 
+    # Bulk ingestion creates a new project every time; reject accidental reuse.
+    if '--create-only' in sys.argv:
+        existing = run_cypher(
+            'MATCH (p:Project {uniqueId: $uid}) RETURN p.uniqueId',
+            {'uid': extraction['project']['unique_id']},
+        )
+        if existing['data'][0]['data']:
+            print('[ERROR] A project with this ID already exists. Nothing was uploaded.')
+            sys.exit(1)
+
+    repository_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+    graphs_root = os.path.join(repository_root, 'graphs')
+    html_path = None
+    if Path(project_dir).resolve().is_relative_to(Path(graphs_root).resolve()):
+        html_path = os.path.relpath(os.path.join(project_dir, '01_html.html'), repository_root).replace(os.sep, '/')
+
     # Step 1-3: Scaffold (DateTime + Collection + Project + links) — ~3 HTTP calls
     print("[STEP 1-3] Creating scaffold (DateTime, Collection, Project)...")
-    project_id, collection_id, err = create_scaffold(extraction, placement)
+    project_id, collection_id, err = create_scaffold(extraction, placement, html_path=html_path)
     if err:
         print(f"  [ERROR] {err}")
         sys.exit(1)

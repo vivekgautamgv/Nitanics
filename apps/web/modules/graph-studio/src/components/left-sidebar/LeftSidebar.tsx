@@ -9,20 +9,25 @@ import PathFinder from './PathFinder'
 import SavedViews from './SavedViews'
 import ExportButton from './ExportButton'
 
-export default function LeftSidebar() {
+export default function LeftSidebar({ overlay = false, hidden = false, onClose }: { overlay?: boolean; hidden?: boolean; onClose?: () => void }) {
   return (
     <aside
-      className="h-full overflow-y-auto flex-shrink-0"
+      id="nitanics-graph-filters"
+      hidden={hidden}
+      aria-label="Graph filters and search"
+      className={`nitanics-studio-sidebar nitanics-studio-filters ${overlay ? 'nitanics-studio-sidebar-overlay' : ''}`}
       style={{
-        width: 292,
-        background: 'rgba(15, 17, 26, 0.85)',
-        backdropFilter: 'blur(16px)',
+        background: 'var(--surface)',
         borderRight: '1px solid var(--border)',
       }}
     >
       <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div className="nitanics-studio-panel-heading">
+          <span>Filters and search</span>
+          {onClose && <button type="button" className="nitanics-studio-panel-close" onClick={onClose} aria-label="Close graph filters">Close</button>}
+        </div>
         <CollectionHeader />
-        <div style={{ borderRadius: 18, overflow: 'hidden', border: '1px solid var(--border)', background: 'var(--surface)', boxShadow: '0 10px 24px rgba(0, 0, 0, 0.3)' }}>
+        <div style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid var(--border)', background: 'var(--surface)', boxShadow: '0 1px 3px rgba(24, 24, 27, 0.08)' }}>
           <SearchBar />
           <ImportanceSlider />
           <ProjectFilter />

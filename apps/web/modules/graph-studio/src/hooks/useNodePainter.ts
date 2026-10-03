@@ -29,7 +29,7 @@ export function useNodePainter(options: PainterOptions) {
 
   const theme = useThemeActive()
   const isLight = theme === 'light'
-  const accentColor = isLight ? '#d97706' : '#fbbf24'
+  const accentColor = isLight ? '#2563EB' : '#60A5FA'
   const warningColor = isLight ? '#ca8a04' : '#eab308'
 
   return useCallback((node: GraphNode, ctx: CanvasRenderingContext2D, globalScale: number) => {
@@ -171,8 +171,8 @@ export function useNodePainter(options: PainterOptions) {
     if (isInChain) {
       const chainGlowRadius = radius + 6
       const gradient = ctx.createRadialGradient(x, y, radius, x, y, chainGlowRadius)
-      gradient.addColorStop(0, 'rgba(251, 191, 36, 0.15)')
-      gradient.addColorStop(1, 'rgba(251, 191, 36, 0)')
+      gradient.addColorStop(0, 'rgba(37, 99, 235, 0.12)')
+      gradient.addColorStop(1, 'rgba(37, 99, 235, 0)')
       ctx.fillStyle = gradient
       ctx.beginPath()
       ctx.arc(x, y, chainGlowRadius, 0, TWO_PI)

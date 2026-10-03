@@ -5,10 +5,12 @@
 
 // ── Route Types ──────────────────────────────────────────
 
+export type CollectionTab = 'overview' | 'documents' | 'graph' | 'bridges' | 'chains'
+
 export type Route =
   | { page: 'home' }
   | { page: 'directory'; name: string }
-  | { page: 'collection'; name: string }
+  | { page: 'collection'; name: string; tab?: CollectionTab }
   | { page: 'project'; uniqueId: string; fromCollection?: string }
   | { page: 'entity'; name: string }
   | { page: 'graph'; collectionName: string }

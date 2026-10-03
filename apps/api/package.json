@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node ./src/index.js",
-    "build": "echo \"api build not yet implemented\""
+    "build": "node --check ./src/index.js",
+    "test": "node --test test/*.test.js"
   }
 }

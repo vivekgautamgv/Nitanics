@@ -1,94 +1,60 @@
 # Nitanics Agent Guide
 
-Use this file as the starting context when working with AI coding agents.
+Nitanics is an open-source local web workspace for knowledge graphs. The web UI supports document uploads with an extraction API key. Users can also clone this repository, attach complete documents to a local coding agent's chat, and ask that agent to generate graphs with its own model and local NLP tools. Both routes feed the same Neo4j database and Graph Studio.
 
-## Current Product Scope
+## Product scope
 
-Nitanics is an open-source local web workspace for knowledge graphs.
+Keep development focused on `apps/web/frontend`, `apps/web/modules/graph-studio`, `apps/ingestion-pipeline`, `apps/api`, and the optional `apps/mcp` server. Do not reintroduce Electron packaging. Hosted SaaS infrastructure, billing, and multi-tenant authentication are outside the current scope.
 
-Active scope:
-
-- `apps/web/frontend`
-- `apps/web/modules/graph-studio`
-- `apps/ingestion-pipeline`
-- `apps/api`
-- `apps/mcp` as an optional integration
-
-Out of scope for this repository phase:
-
-- Electron desktop packaging
-- hosted SaaS infrastructure
-- billing
-- multi-tenant authentication
-
-## Core Principle
-
-Do not replace existing graph data when adding new projects. New documents should create additional projects, entities, relationships, and bridge links while preserving previous collections.
-
-## Local Run Flow
+## Local setup
 
 ```bash
 bun install
+bun run nlp:setup
 bun run neo4j:ensure
 bun run dev
 ```
 
-Open `http://127.0.0.1:5174`.
+Open the web UI URL printed by the development server (`http://127.0.0.1:5174` by default); use the actual configured host and port. Docker runs Neo4j. The agent route requires local file access, command execution, and access to the configured database; a remote chat needs connected tools. No separate extraction API key is required when the agent uses its own model.
 
-## Ingestion Flow
+## Document ingestion
 
-Read these files before creating or modifying graph artifacts:
+Read these before working on graph artifacts:
 
+- `README.md`
 - `docs/ARCHITECTURE.md`
 - `docs/INGESTION_FOR_AGENTS.md`
 - `apps/ingestion-pipeline/skills/extraction-agent.md`
 - `apps/ingestion-pipeline/skills/extraction-skill.md`
 
-The pipeline produces:
+Read every attached or local document completely. If an attachment is inaccessible, use a saved local file; report unreadable/scanned documents that need OCR. Create one new unique project per document under `graphs/<collection>/<unique-project>/`. Keep a complete `source.md` and all six artifacts in that folder. Preserve all earlier collections, projects, legacy `data/` artifacts, and reproducible samples.
 
-```text
-01_html.html
-02_placement.json
-03_nlp_entities.json
-04_all_entities.json
-05_embeddings.json
-06_extraction.json
-```
+Use actual local NLP output and actual model embeddings. Extract only source-supported facts and exact relationship evidence. Graph size follows the document; relationships, phases, narrative flow, and causal chains may be empty. Do not invent entities or claims to meet a density quota.
 
-Validate before upload:
+From `apps/ingestion-pipeline`, validate and upload:
 
 ```bash
-cd apps/ingestion-pipeline
-python neo4j/validate_project.py data/extracted/<project-slug>
-python neo4j/upload.py data/extracted/<project-slug>
+uv run python neo4j/bootstrap.py --status
+uv run python neo4j/bootstrap.py
+uv run python neo4j/validate_project.py --human ../../graphs/<collection>/<unique-project>
+uv run python neo4j/upload.py ../../graphs/<collection>/<unique-project> --create-only
 ```
 
-## Development Rules
+After successful batch uploads, run `uv run python neo4j/gds.py` to refresh metrics and similarity links. Report metric failures separately from completed uploads.
 
-- Keep the public web app cloneable and easy to run.
-- Keep docs current with the open-source web scope.
-- Do not reintroduce Electron scripts or desktop-only UI.
-- Treat MCP as optional, not required for the web app.
-- Prefer small focused changes over broad rewrites.
-- Preserve sample graph data unless explicitly asked to remove it.
+Never use `bootstrap.py --clean` for ingestion. If an upload fails, report the failed stage and inspect partial state before retrying. Preserve canonical artifacts in `graphs/`; the source HTML path is served from there. After a successful upload, refresh the UI or return to it, then inspect the target collection's Documents, Graph, and Bridges.
 
-## Verification
+## Development and verification
 
-For web changes:
+Keep the public web app cloneable, setup instructions current, and MCP optional. Prefer focused changes and preserve user work.
 
 ```bash
 bun run build
-```
-
-For optional MCP changes:
-
-```bash
 bun run build:mcp
 ```
 
-For ingestion changes:
+For ingestion code changes, run the relevant Python unit tests from `apps/ingestion-pipeline`:
 
 ```bash
-cd apps/ingestion-pipeline
-python neo4j/bootstrap.py --status
+uv run python -m unittest discover -s tests
 ```

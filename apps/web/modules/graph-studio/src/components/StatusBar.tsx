@@ -11,6 +11,7 @@ export default function StatusBar() {
   const currentZoom = useUIStore(s => s.currentZoom)
   const unpinAllNodes = useUIStore(s => s.unpinAllNodes)
   const reheatSimulation = useUIStore(s => s.reheatSimulation)
+  const fitGraph = useUIStore(s => s.fitGraph)
 
   const entityCount = filteredNodes.filter(n => n.__type === 'entity').length
   const projectCount = filteredNodes.filter(n => n.__type === 'project').length
@@ -18,30 +19,31 @@ export default function StatusBar() {
 
   return (
     <div
-      className="absolute bottom-3 left-3 right-3 flex items-center justify-between"
+      className="nitanics-studio-status absolute bottom-3 left-3 right-3 flex items-center justify-between"
       style={{
         background: 'var(--surface-raised)',
         border: '1px solid var(--border)',
-        borderRadius: 16,
+        borderRadius: 12,
         color: 'var(--text-secondary)',
         zIndex: 10,
         backdropFilter: 'blur(10px)',
         padding: '8px 10px',
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)',
+        boxShadow: '0 1px 3px rgba(24, 24, 27, 0.1)',
       }}
     >
-      <div className="flex items-center gap-3" style={{ pointerEvents: 'none', fontSize: 12 }}>
+      <div className="nitanics-studio-status-metrics flex items-center gap-3" style={{ pointerEvents: 'none', fontSize: 12 }}>
         <span>{entityCount} entities</span>
         <span>{projectCount} projects</span>
         <span>{filteredLinks.length} edges</span>
         {isFiltered && <span style={{ color: 'var(--text-muted)' }}>filtered from {allNodes.length}/{allLinks.length}</span>}
       </div>
 
-      <div className="flex items-center gap-2" style={{ fontSize: 12 }}>
+      <div className="nitanics-studio-status-actions flex items-center gap-2" style={{ fontSize: 12 }}>
         {searchHighlights.size > 0 && <span style={{ color: 'var(--warning)', pointerEvents: 'none' }}>{searchHighlights.size} matches</span>}
         {highlightedPath.length > 0 && <span style={{ color: 'var(--text-primary)', pointerEvents: 'none' }}>Path {highlightedPath.length}</span>}
         <span style={{ pointerEvents: 'none', fontVariantNumeric: 'tabular-nums', color: 'var(--text-muted)' }}>{currentZoom.toFixed(1)}x</span>
         <div className="flex gap-1 ml-1" style={{ pointerEvents: 'auto' }}>
+          <button type="button" onClick={() => fitGraph?.()} title="Fit all visible nodes into the canvas" style={{ background: 'var(--surface-hover)', color: 'var(--text-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: '6px 10px', cursor: 'pointer', fontSize: 12 }}>Fit view</button>
           <button
             onClick={() => unpinAllNodes?.()}
             style={{

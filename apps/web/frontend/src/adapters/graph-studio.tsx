@@ -8,6 +8,7 @@
  */
 import { Component, type ReactNode } from 'react'
 import GraphStudioApp from '@graph/App'
+export { useRefreshOnFocus } from '@graph/hooks/useRefreshOnFocus'
 
 interface Props {
   collectionName: string

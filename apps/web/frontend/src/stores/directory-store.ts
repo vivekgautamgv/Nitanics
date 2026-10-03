@@ -3,6 +3,7 @@
  * Source of truth: DESIGN-SPEC.md Section 16
  */
 import { create } from 'zustand'
+import { describeDataError } from '../adapters/neo4j-service'
 import {
   fetchAllDirectories, fetchAllCollections,
   createDirectory as createDir, updateDirectory as updateDir, deleteDirectory as deleteDir,
@@ -39,6 +40,10 @@ interface DirectoryStore {
   deleteDirectory: (name: string) => Promise<boolean>
 }
 
+let directoriesVersion = 0
+let collectionsVersion = 0
+let detailVersion = 0
+
 export const useDirectoryStore = create<DirectoryStore>((set, get) => ({
   directories: [],
   allCollections: [],
@@ -48,25 +53,28 @@ export const useDirectoryStore = create<DirectoryStore>((set, get) => ({
   isLoadingDetail: false,
 
   loadDirectories: async () => {
+    const version = ++directoriesVersion
     set({ isLoading: true, error: null })
     try {
       const directories = await fetchAllDirectories()
-      set({ directories, isLoading: false })
+      if (version === directoriesVersion) set({ directories, isLoading: false })
     } catch (err) {
-      set({ error: String(err), isLoading: false })
+      if (version === directoriesVersion) set({ error: describeDataError(err), isLoading: false })
     }
   },
 
   loadAllCollections: async () => {
+    const version = ++collectionsVersion
     try {
       const allCollections = await fetchAllCollections()
-      set({ allCollections })
+      if (version === collectionsVersion) set({ allCollections })
     } catch (err) {
-      set({ error: String(err) })
+      if (version === collectionsVersion) set({ error: describeDataError(err) })
     }
   },
 
   loadDirectoryDetail: async (name: string) => {
+    const version = ++detailVersion
     set({ isLoadingDetail: true, error: null, directoryDetail: null })
     try {
       const [collections, projects, entities] = await Promise.all([
@@ -74,6 +82,7 @@ export const useDirectoryStore = create<DirectoryStore>((set, get) => ({
         fetchDirectoryProjects(name),
         fetchDirectoryEntities(name),
       ])
+      if (version !== detailVersion) return
       const dir = get().directories.find(d => d.name === name)
       set({
         directoryDetail: {
@@ -86,7 +95,7 @@ export const useDirectoryStore = create<DirectoryStore>((set, get) => ({
         isLoadingDetail: false,
       })
     } catch (err) {
-      set({ error: String(err), isLoadingDetail: false })
+      if (version === detailVersion) set({ error: describeDataError(err), isLoadingDetail: false })
     }
   },
 

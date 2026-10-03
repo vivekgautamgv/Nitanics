@@ -282,10 +282,18 @@ async function tryBootstrap() {
 
   log('[neo4j] Running schema bootstrap (idempotent)')
   await new Promise((resolveRun, rejectRun) => {
-    const proc = spawn('python', ['neo4j/bootstrap.py'], {
+    const proc = spawn('uv', ['run', '--locked', 'python', 'neo4j/bootstrap.py'], {
       cwd: paths.bootstrapCwd,
       stdio: 'inherit',
-      shell: process.platform === 'win32',
+      shell: false,
+      windowsHide: true,
+      env: {
+        ...process.env,
+        NEO4J_HTTP: `http://${cfg.boltHost}:${cfg.httpPort}`,
+        NEO4J_USER: cfg.user,
+        NEO4J_PASSWORD: cfg.password,
+        NEO4J_DATABASE: cfg.database,
+      },
     })
     proc.once('error', rejectRun)
     proc.once('exit', (code) => {

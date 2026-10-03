@@ -6,6 +6,7 @@ import argparse
 import subprocess
 import urllib.request
 import urllib.error
+import html
 from datetime import datetime
 
 # Valid schemas for Nitanics validation compatibility
@@ -31,6 +32,8 @@ def slugify(text):
 
 # Wrap text in dark-themed HTML template
 def wrap_html(title, content):
+    title = html.escape(title)
+    content = html.escape(content)
     css_block = """
 /* MemoryTonic Investigation Viewer — v1 */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -282,7 +285,7 @@ def call_llm(prompt, system_instruction=None, model="gemini-2.5-flash"):
         req = urllib.request.Request(url, data=json.dumps(payload).encode('utf-8'), headers=headers, method='POST')
         for attempt in range(max_retries):
             try:
-                with urllib.request.urlopen(req) as res:
+                with urllib.request.urlopen(req, timeout=120) as res:
                     response = json.loads(res.read().decode('utf-8'))
                     text_out = response['candidates'][0]['content']['parts'][0]['text']
                     return text_out
@@ -339,7 +342,7 @@ def call_llm(prompt, system_instruction=None, model="gemini-2.5-flash"):
         req = urllib.request.Request(url, data=json.dumps(payload).encode('utf-8'), headers=headers, method='POST')
         for attempt in range(max_retries):
             try:
-                with urllib.request.urlopen(req) as res:
+                with urllib.request.urlopen(req, timeout=120) as res:
                     response = json.loads(res.read().decode('utf-8'))
                     text_out = response['choices'][0]['message']['content']
                     return text_out
@@ -383,7 +386,7 @@ def call_llm(prompt, system_instruction=None, model="gemini-2.5-flash"):
         req = urllib.request.Request(url, data=json.dumps(payload).encode('utf-8'), headers=headers, method='POST')
         for attempt in range(max_retries):
             try:
-                with urllib.request.urlopen(req) as res:
+                with urllib.request.urlopen(req, timeout=120) as res:
                     response = json.loads(res.read().decode('utf-8'))
                     text_out = response['content'][0]['text']
                     return text_out
@@ -520,6 +523,8 @@ def clean_and_load_json(raw_text):
 
 # Segment a long document into logical parts
 def chunk_document(text, chunk_size):
+    if chunk_size < 1:
+        raise ValueError("Chunk size must be positive.")
     if len(text) <= chunk_size:
         return [text]
     
@@ -529,673 +534,240 @@ def chunk_document(text, chunk_size):
     current_chunk = []
     current_size = 0
     
-    for p in paragraphs:
+    bounded_paragraphs = []
+    for paragraph in paragraphs:
+        while len(paragraph) > chunk_size:
+            boundary = paragraph.rfind(' ', 0, chunk_size + 1)
+            if boundary < chunk_size // 2:
+                boundary = chunk_size
+            bounded_paragraphs.append(paragraph[:boundary])
+            paragraph = paragraph[boundary:].lstrip()
+        if paragraph:
+            bounded_paragraphs.append(paragraph)
+
+    for p in bounded_paragraphs:
         p_len = len(p)
-        if current_size + p_len > chunk_size and current_chunk:
+        if current_size + p_len + (2 if current_chunk else 0) > chunk_size and current_chunk:
             chunks.append('\n\n'.join(current_chunk))
             current_chunk = [p]
             current_size = p_len
         else:
             current_chunk.append(p)
-            current_size += p_len + 2 # account for double newline
+            current_size += p_len + (2 if len(current_chunk) > 1 else 0)
             
     if current_chunk:
         chunks.append('\n\n'.join(current_chunk))
         
     return chunks
 
+def reserve_project_directory(cwd, collection, project_slug):
+    """Give every upload a new identity and preserve any earlier graph artifacts."""
+    import uuid
+    import hashlib
+    collection_slug = slugify(collection) or "collection-" + hashlib.sha256(collection.encode()).hexdigest()[:12]
+    graphs_root = os.path.abspath(os.path.join(cwd, "..", "..", "graphs"))
+    unique_id = (slugify(project_slug) or "document")[:100] + "-" + uuid.uuid4().hex[:12]
+    project_dir = os.path.join(graphs_root, collection_slug[:100], unique_id)
+    os.makedirs(project_dir, exist_ok=False)
+    return project_dir, unique_id
+
+
+def run_json_script(cwd, script, payload, output_path):
+    """Use the same Python environment; avoid shell redirection and shell quoting."""
+    result = subprocess.run(
+        [sys.executable, script], cwd=cwd, input=json.dumps(payload),
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        text=True, encoding="utf-8", check=True,
+    )
+    if result.stderr:
+        print(result.stderr, file=sys.stderr)
+    # Fail on malformed output rather than writing a broken artifact.
+    data = json.loads(result.stdout)
+    with open(output_path, "w", encoding="utf-8") as output:
+        json.dump(data, output, indent=2)
+    return data
+
+
 def process_project(project_name, project_slug, text, collection, directory, cwd, model):
-    print(f"\n--- Starting Ingestion Pipeline for: {project_name} ({project_slug}) ---")
-    temp_dir = os.path.join(cwd, "data", "temp", project_slug)
-    os.makedirs(temp_dir, exist_ok=True)
-    
-    # Step 0: Save script.md
-    print("Step 0: Saving raw text script...")
-    with open(os.path.join(temp_dir, "script.md"), "w", encoding='utf-8') as f:
-        f.write(f"# {project_name}\n\n{text}")
-        
-    # Step 1: HTML & Placement
-    print("Step 1: Generating HTML and placement metadata...")
-    with open(os.path.join(temp_dir, "01_html.html"), "w", encoding='utf-8') as f:
-        f.write(wrap_html(project_name, text))
-        
+    project_dir, unique_id = reserve_project_directory(cwd, collection, project_slug)
+    print(f"\n--- Ingesting {project_name} as new project {unique_id} ---")
+    print(f"Artifacts: {project_dir}")
+    # Keep the source and completed artifacts available when any later step fails.
+    with open(os.path.join(project_dir, "source.md"), "w", encoding="utf-8") as source:
+        source.write(text)
+    with open(os.path.join(project_dir, "01_html.html"), "w", encoding="utf-8") as output:
+        output.write(wrap_html(project_name, text))
     placement = {
-        "directory": directory,
-        "project_name": project_slug,
-        "unique_id": project_slug,
-        "collection": collection,
-        "collection_is_new": False
+        "directory": directory, "project_name": unique_id, "unique_id": unique_id,
+        "collection": collection, "collection_is_new": False,
     }
-    with open(os.path.join(temp_dir, "02_placement.json"), "w", encoding='utf-8') as f:
-        json.dump(placement, f, indent=2)
-        
-    # Step 2: NLP preprocessing
-    print("Step 2: Performing NLP preprocessing...")
-    with open(os.path.join(temp_dir, "input.json"), "w", encoding='utf-8') as f:
-        json.dump({"text": text, "title": project_name}, f)
-        
-    try:
-        subprocess.run(
-            f"uv run python nlp/preprocess.py < data/temp/{project_slug}/input.json > data/temp/{project_slug}/03_nlp_entities.json",
-            cwd=cwd, shell=True, check=True
-        )
-    except subprocess.CalledProcessError as e:
-        print(f"Warning: NLP preprocessing failed ({e}). Generating fallback empty candidates.")
-        with open(os.path.join(temp_dir, "03_nlp_entities.json"), "w", encoding='utf-8') as f:
-            json.dump({"entity_candidates": [], "keywords": []}, f, indent=2)
-            
-    # Read NLP candidates
-    with open(os.path.join(temp_dir, "03_nlp_entities.json"), "r", encoding='utf-8') as f:
-        nlp_data = json.load(f)
-    nlp_candidates = nlp_data.get("entity_candidates", [])
-    
-    # Step 3: Entity Discovery via LLM
-    print("Step 3: Discovering high-quality entities via LLM...")
-    entity_system_prompt = (
-        "You are an expert NLP and knowledge graph architect. Your goal is to analyze the source document "
-        "and return a list of discovered entities and temporal phases in strict JSON format.\n"
-        "Rules:\n"
-        "1. Every real, non-noise candidate from the provided NLP candidate list MUST be preserved (NLP reconciliation).\n"
-        "2. Add LLM-only entities (concepts, systems, processes) that the simple NLP scanner missed.\n"
-        "3. Write a highly detailed definition (100+ characters) explaining system mechanics for each entity.\n"
-        "4. Write a role (describing stance, mechanics, and reasoning) for each entity.\n"
-        "5. Group categories strictly into: Person, Organization, Place, Event, Concept, System, Process, "
-        "Technology, Law, Agreement, Metric, Document, Resource, Other.\n"
-        "6. Provide 1-3 aliases for each entity (critical for cross-project merging).\n"
-        "7. Map entities to temporal phases with a first_appearance_index."
+    with open(os.path.join(project_dir, "02_placement.json"), "w", encoding="utf-8") as output:
+        json.dump(placement, output, indent=2)
+
+    print("Step 2: NLP candidate extraction...")
+    nlp_data = run_json_script(cwd, "nlp/preprocess.py", {"text": text, "title": project_name},
+                               os.path.join(project_dir, "03_nlp_entities.json"))
+    grounding = (
+        "Use only facts supported by this source document. Do not fabricate entities, aliases, "
+        "relationships, temporal phases, summaries, or causal links to satisfy a count or length. "
+        "Mark uncertain interpretations as uncertain. Return strict JSON without Markdown."
     )
-    
-    entity_prompt = f"""
-Source text:
-\"\"\"
-{text}
-\"\"\"
-
-NLP Candidate List:
-{json.dumps(nlp_candidates, indent=2)}
-
-Return a JSON object in this exact schema (no other text):
-{{
-  "temporal_phases": [
-    {{ "index": 1, "label": "Phase Label", "period": "Timeframe" }}
-  ],
-  "entities": [
-    {{
-      "name": "Exact Entity Name",
-      "aliases": ["Alias A", "Alias B"],
-      "category": "Concept",
-      "definition": "100+ characters detailing the system mechanics...",
-      "role": "Stance, mechanics, and reasoning...",
-      "first_appearance_index": 1
-    }}
-  ]
-}}
-"""
-    raw_entities = call_llm(entity_prompt, entity_system_prompt, model)
-    entities_data = clean_and_load_json(raw_entities)
-    
-    # Ensure entities_data is a dictionary
-    if not isinstance(entities_data, dict):
-        entities_data = {"entities": [], "temporal_phases": []}
-    if "entities" not in entities_data or not isinstance(entities_data["entities"], list):
-        entities_data["entities"] = []
-        
-    # Ensure temporal_phases has at least 2 phases to pass validation checks
-    phases = entities_data.get("temporal_phases")
-    if not isinstance(phases, list) or len(phases) < 2:
-        if not isinstance(phases, list) or len(phases) == 0:
-            phases = [
-                {"index": 1, "label": "Initial Phase", "period": "Start"},
-                {"index": 2, "label": "Subsequent Phase", "period": "Ongoing"}
-            ]
-        else:
-            first_phase = phases[0]
-            first_idx = 1
-            if isinstance(first_phase, dict) and "index" in first_phase and isinstance(first_phase["index"], int):
-                first_idx = first_phase["index"]
-            else:
-                if isinstance(first_phase, dict):
-                    first_phase["index"] = 1
-                    if "label" not in first_phase:
-                        first_phase["label"] = "Initial Phase"
-                    if "period" not in first_phase:
-                        first_phase["period"] = "Start"
-                else:
-                    phases[0] = {"index": 1, "label": "Initial Phase", "period": "Start"}
-            phases.append({"index": first_idx + 1, "label": "Subsequent Phase", "period": "Ongoing"})
-    entities_data["temporal_phases"] = phases
-    
-    # Extract phase indices
-    phase_indices = {p["index"] for p in phases if isinstance(p, dict) and "index" in p}
-    if not phase_indices:
-        for idx, p in enumerate(phases):
-            if isinstance(p, dict):
-                p["index"] = idx + 1
-        phase_indices = {p["index"] for p in phases}
-        
-    # Deduplicate entities (case-insensitive) and normalize categories
-    seen_entities_lower = set()
-    clean_entities = []
-    for ent in entities_data["entities"]:
-        if not isinstance(ent, dict):
-            continue
-        name = ent.get("name")
-        if not name or not isinstance(name, str):
-            continue
-        name_clean = name.strip()
-        name_lower = name_clean.lower()
-        
-        if name_lower in seen_entities_lower:
-            print(f"Skipping duplicate discovered entity: '{name_clean}'")
-            continue
-            
-        seen_entities_lower.add(name_lower)
-        ent["name"] = name_clean
-        
-        if ent.get("category") not in VALID_CATEGORIES:
-            ent["category"] = "Concept"
-            
-        # Ensure definition is >= 100 characters to pass validation checks
-        definition = ent.get("definition", "")
-        if not isinstance(definition, str):
-            definition = ""
-        if len(definition) < 100:
-            padding = f" Specific operational entity or role '{name_clean}' identified and defined within the scope of the {project_name} project domain."
-            definition += padding
-            if len(definition) < 100:
-                definition += " " + " ".join([f"word-{i}" for i in range(20)])
-            ent["definition"] = definition
-            
-        # Ensure role is present
-        if not ent.get("role") or not isinstance(ent.get("role"), str):
-            ent["role"] = f"General conceptual role for '{name_clean}'."
-            
-        # Ensure aliases is present and is a list
-        if "aliases" not in ent or not isinstance(ent.get("aliases"), list):
-            ent["aliases"] = []
-            
-        # Ensure first_appearance_index maps to a valid phase index
-        fai = ent.get("first_appearance_index")
-        if not isinstance(fai, int) or fai not in phase_indices:
-            ent["first_appearance_index"] = min(phase_indices) if phase_indices else 1
-            
-        clean_entities.append(ent)
-        
-    # Ensure at least 10 entities to pass validation
-    if len(clean_entities) < 10:
-        fai = min(phase_indices) if phase_indices else 1
-        for idx in range(len(clean_entities), 10):
-            stub_name = f"Concept Parameter {idx + 1}"
-            clean_entities.append({
-                "name": stub_name,
-                "aliases": [],
-                "category": "Concept",
-                "definition": f"Self-healed placeholder parameter {idx + 1} generated to satisfy minimum entity requirements for project '{project_name}' schema compliance.",
-                "role": "General conceptual node used for structural completeness.",
-                "first_appearance_index": fai
-            })
-            
-    entities_data["entities"] = clean_entities
-            
-    with open(os.path.join(temp_dir, "04_all_entities.json"), "w", encoding='utf-8') as f:
-        json.dump(entities_data, f, indent=2)
-        
-    # Step 4: Relationship & Causal Chain Extraction via LLM
-    print("Step 4: Extracting relationships and causal chains via LLM...")
-    extraction_system_prompt = (
-        "You are an expert knowledge graph architect. Your goal is to analyze the source document and the "
-        "provided entities, and construct a high-density, valid graph representation in strict JSON format.\n"
-        "Rules:\n"
-        "1. Write a detailed summary (200+ words) of the document's system mechanics.\n"
-        "2. Provide narrative_flow as an array of strings (4+ key moments).\n"
-        "3. Provide project tags (domain, subdomain, 3+ base_tags).\n"
-        "4. Construct 15+ RELATES_TO relationships. Every relationship source and target MUST exactly match one of the entity names from the provided list.\n"
-        "5. The causalClassification must be exactly one of: CAUSES, ENABLES, BLOCKS, INFLUENCES, DEPENDS_ON, CONTRADICTS, SUPPORTS, PRECEDES, COMPETES_WITH, COOPERATES_WITH, REGULATES, TRANSFORMS, PRODUCES, CONSUMES, IMPLEMENTS.\n"
-        "6. Edge descriptions must be 80+ characters detailing HOW the relationship works, and include an exact quote as evidence.\n"
-        "7. Include 2+ causal chains (each with 3+ links) showing sequencing of operational effects."
+    entity_prompt = (
+        "Extract entities and any temporal phases from the source. Return an object with "
+        "'temporal_phases': [{index: integer, label: string, period: string}] and "
+        "'entities': [{name: string, aliases: string[], category: string, definition: string, "
+        "role: string, first_appearance_index: integer or null}]. "
+        "Categories: " + ", ".join(VALID_CATEGORIES) + ". "
+        "Definitions should concisely explain the entity's role using only details supported by this source. "
+        "Use a temporal phase only when supported. Use null for first_appearance_index when no supported phase applies. "
+        "Empty arrays are appropriate for missing facts.\n"
+        f"NLP candidates:\n{json.dumps(nlp_data.get('entity_candidates', []))}\nSource:\n{text}"
     )
-    
-    entity_names = [e["name"] for e in entities_data.get("entities", [])]
-    extraction_prompt = f"""
-Source text:
-\"\"\"
-{text}
-\"\"\"
+    print("Step 3: Source-grounded entity discovery...")
+    entities_data = clean_and_load_json(call_llm(entity_prompt, grounding, model))
+    if not isinstance(entities_data, dict) or not isinstance(entities_data.get("entities"), list):
+        raise ValueError("Entity extraction returned an invalid schema. Saved source artifacts are available for review.")
+    # Safe normalization does not supply any missing factual content.
+    entities = []
+    seen = set()
+    for entity in entities_data["entities"]:
+        if not isinstance(entity, dict) or not isinstance(entity.get("name"), str) or not entity["name"].strip():
+            raise ValueError("Entity extraction returned an unnamed entity.")
+        entity["name"] = entity["name"].strip()
+        if entity["name"].casefold() not in seen:
+            entities.append(entity)
+            seen.add(entity["name"].casefold())
+    entities_data["entities"] = entities
+    with open(os.path.join(project_dir, "04_all_entities.json"), "w", encoding="utf-8") as output:
+        json.dump(entities_data, output, indent=2)
 
-Discovered Entity Names:
-{json.dumps(entity_names, indent=2)}
+    extraction_prompt = (
+        "Return exactly {project: {name: string, unique_id: string, summary: string, "
+        "narrative_flow: string[], tags: {domain: string, subdomain: string, base_tags: string[]}}, "
+        "relationships: [{source: string, target: string, relType: string, causalClassification: string, "
+        "description: string, evidence: string, evidenceStrength: string, magnitude: string, year: string}], "
+        "causal_chains: [{name: string, description: string, links: [{source: string, target: string, explanation: string}]}]}. "
+        "All relationship and chain names must exactly match an extracted entity. "
+        "Evidence must be an exact source quote. Use empty arrays when the source does not support a relationship or chain. "
+        "Use an empty year string when the date is unknown. "
+        "Causal classifications: " + ", ".join(VALID_CAUSAL) + ". "
+        "Evidence strengths: " + ", ".join(VALID_EVIDENCE_STRENGTH) + ". "
+        "Magnitudes: " + ", ".join(VALID_MAGNITUDE) + ". "
+        "Write a source-proportionate summary, supported narrative flow, and specific tags. Do not pad short sources.\n"
+        f"Project name: {project_name}\nUnique ID: {unique_id}\n"
+        f"Entities:\n{json.dumps(entities, ensure_ascii=False)}\nSource:\n{text}"
+    )
+    print("Step 4: Evidence-based relationship extraction...")
+    extraction = clean_and_load_json(call_llm(extraction_prompt, grounding, model))
+    if not isinstance(extraction, dict) or not isinstance(extraction.get("project"), dict):
+        raise ValueError("Relationship extraction returned an invalid project wrapper.")
+    extraction["project"]["name"] = project_name
+    extraction["project"]["unique_id"] = unique_id
+    with open(os.path.join(project_dir, "06_extraction.json"), "w", encoding="utf-8") as output:
+        json.dump(extraction, output, indent=2)
+    normalized_source = " ".join(text.split())
+    for relationship in extraction.get("relationships", []):
+        evidence = relationship.get("evidence")
+        if not isinstance(evidence, str) or not evidence.strip() or " ".join(evidence.split()) not in normalized_source:
+            raise ValueError("A relationship has missing or unsupported source evidence. Review 06_extraction.json; nothing was uploaded.")
 
-Return a JSON object in this exact schema (no other text, must include the "project" wrapper):
-{{
-  "project": {{
-    "name": "{project_name}",
-    "unique_id": "{project_slug}",
-    "summary": "200+ words detailing system mechanics...",
-    "narrative_flow": [
-      "Key moment 1 as a string",
-      "Key moment 2 as a string"
-    ],
-    "tags": {{
-      "domain": "Economics",
-      "subdomain": "Finance",
-      "base_tags": ["tag1", "tag2", "tag3"]
-    }}
-  }},
-  "relationships": [
-    {{
-      "source": "Entity A",
-      "target": "Entity B",
-      "relType": "SPECIFIC_VERB",
-      "causalClassification": "ENABLES",
-      "description": "80+ characters explaining the mechanic in detail...",
-      "evidence": "Exact quote from text",
-      "evidenceStrength": "established",
-      "magnitude": "foundational",
-      "year": "1974"
-    }}
-  ],
-  "causal_chains": [
-    {{
-      "name": "Chain Name",
-      "description": "What this chain traces",
-      "links": [
-        {{
-          "source": "Entity A",
-          "target": "Entity B",
-          "explanation": "HOW and WHY"
-        }}
-      ]
-    }}
-  ]
-}}
-"""
-    raw_extraction = call_llm(extraction_prompt, extraction_system_prompt, model)
-    extraction_data = clean_and_load_json(raw_extraction)
-       # Reconcile entity names and auto-create stubs for missing references
-    entities_list = entities_data.get("entities", [])
-    entity_names_set = set(entity_names)
-    
-    # We track any completely new entities that we need to generate stubs for
-    new_stubs = {}
-
-    def reconcile_name(name):
-        if not name:
-            return None
-        name_clean = name.strip()
-        name_lower = name_clean.lower()
-        # 1. Exact match
-        if name_clean in entity_names_set:
-            return name_clean
-        if name_clean in new_stubs:
-            return name_clean
-        # 2. Case-insensitive name match
-        for ent in entities_list:
-            if ent['name'].lower() == name_lower:
-                return ent['name']
-        # 3. Alias match
-        for ent in entities_list:
-            for alias in ent.get('aliases', []):
-                if alias.lower() == name_lower:
-                    return ent['name']
-        # 4. Length-filtered substring similarity
-        for ent in entities_list:
-            ent_lower = ent['name'].lower()
-            if name_lower in ent_lower or ent_lower in name_lower:
-                if abs(len(name_lower) - len(ent_lower)) < 8:
-                    return ent['name']
-        return None
-
-    def get_or_create_entity(name):
-        reconciled = reconcile_name(name)
-        if reconciled:
-            return reconciled
-        
-        # If not reconcilable, we register it as a new stub entity
-        name_clean = name.strip()
-        if name_clean not in new_stubs and name_clean not in entity_names_set:
-            # Safely determine a valid phase index to map to
-            fai = 1
-            phases = entities_data.get("temporal_phases")
-            if phases and isinstance(phases, list) and len(phases) > 0:
-                first_phase = phases[0]
-                if isinstance(first_phase, dict) and "index" in first_phase:
-                    fai = first_phase["index"]
-
-            new_stubs[name_clean] = {
-                "name": name_clean,
-                "aliases": [],
-                "category": "Concept",
-                "definition": f"Stub entity representing '{name_clean}', dynamically reconciled during causal chain extraction for project '{project_name}'. This is generated to maintain relational integrity in the knowledge graph.",
-                "role": "Connectivity stub.",
-                "first_appearance_index": fai
-            }
-        return name_clean
-
-    # Ensure extraction_data is a valid dict with required project details
-    if not isinstance(extraction_data, dict):
-        extraction_data = {}
-        
-    if "project" not in extraction_data or not isinstance(extraction_data["project"], dict):
-        extraction_data["project"] = {
-            "name": project_name,
-            "unique_id": project_slug,
-            "summary": f"This is an automated fallback summary generated for the project '{project_name}' because the LLM did not structure the project wrapper object correctly. " + " ".join([f"Filler word {i}" for i in range(210)]),
-            "narrative_flow": ["Document ingestion sequence initiated.", "Text segments parsed and preprocessed.", "Entities extracted and reconciled.", "Graph uploaded to Neo4j database."],
-            "tags": {
-                "domain": directory,
-                "subdomain": "General",
-                "base_tags": ["ingestion", "metadata", "auto-generated"]
-            }
-        }
-    else:
-        # Enforce unique_id matches project_slug
-        extraction_data["project"]["unique_id"] = project_slug
-        
-        # Enforce project name matches project_name
-        extraction_data["project"]["name"] = project_name
-        
-        # Check summary word count
-        summary = extraction_data["project"].get("summary", "")
-        summary_words = len(summary.split()) if isinstance(summary, str) else 0
-        if summary_words < 200:
-            extraction_data["project"]["summary"] = (summary if isinstance(summary, str) else "") + " " + " ".join([f"word-{i}" for i in range(210 - summary_words)])
-        
-        # Check narrative_flow
-        nf = extraction_data["project"].get("narrative_flow")
-        if not isinstance(nf, list) or len(nf) < 4:
-            extraction_data["project"]["narrative_flow"] = ["Initial document chunk loaded.", "Entity discovery and reconciliation completed.", "Graph relationship structure resolved.", "Neo4j transaction committed successfully."]
-            
-        # Check tags
-        tags = extraction_data["project"].get("tags")
-        if not isinstance(tags, dict):
-            extraction_data["project"]["tags"] = {
-                "domain": directory,
-                "subdomain": "General",
-                "base_tags": ["ingestion", "analysis", "reconciliation"]
-            }
-        else:
-            if not isinstance(tags.get("domain"), str):
-                tags["domain"] = directory
-            if not isinstance(tags.get("subdomain"), str):
-                tags["subdomain"] = "General"
-            bt = tags.get("base_tags")
-            if not isinstance(bt, list) or len(bt) < 3:
-                tags["base_tags"] = ["analysis", "processing", "reconciliation"]
-
-    # Reconcile relationships
-    clean_relationships = []
-    for rel in extraction_data.get("relationships", []):
-        if not isinstance(rel, dict):
-            continue
-        src = rel.get("source")
-        tgt = rel.get("target")
-        if src and tgt:
-            # Reconcile or auto-create stub
-            rel["source"] = get_or_create_entity(src)
-            rel["target"] = get_or_create_entity(tgt)
-            
-            if rel.get("causalClassification") not in VALID_CAUSAL:
-                rel["causalClassification"] = "INFLUENCES"
-            if rel.get("evidenceStrength") not in VALID_EVIDENCE_STRENGTH:
-                rel["evidenceStrength"] = "claimed"
-            if rel.get("magnitude") not in VALID_MAGNITUDE:
-                rel["magnitude"] = "significant"
-                
-            # Guarantee description length >= 80 chars
-            desc = rel.get("description", "")
-            if not isinstance(desc, str) or len(desc) < 80:
-                rel["description"] = (desc if isinstance(desc, str) else "") + f" Dynamic relationship describing the interaction between {rel['source']} and {rel['target']} as analyzed from the source documentation."
-                
-            # Guarantee evidence is present
-            if "evidence" not in rel or not rel["evidence"]:
-                rel["evidence"] = f"Interaction evidence identified between '{rel['source']}' and '{rel['target']}' in document."
-                
-            # Guarantee year is present
-            if "year" not in rel or not rel["year"]:
-                rel["year"] = "ongoing"
-                
-            clean_relationships.append(rel)
-            
-    # Ensure at least 15 relationships to pass validation
-    if len(clean_relationships) < 15:
-        ent_names = [e["name"] for e in entities_data.get("entities", [])]
-        if len(ent_names) >= 2:
-            idx = 0
-            while len(clean_relationships) < 15:
-                src = ent_names[idx % len(ent_names)]
-                tgt = ent_names[(idx + 1) % len(ent_names)]
-                # Avoid self loops
-                if src == tgt:
-                    idx += 1
-                    continue
-                # Check if already exists
-                exists = False
-                for rel in clean_relationships:
-                    if rel.get("source") == src and rel.get("target") == tgt:
-                        exists = True
-                        break
-                if not exists:
-                    clean_relationships.append({
-                        "source": src,
-                        "target": tgt,
-                        "relType": "INFLUENCES",
-                        "causalClassification": "INFLUENCES",
-                        "description": f"Dynamic relationship between '{src}' and '{tgt}' generated to meet the minimum relationship validation count constraint.",
-                        "evidence": "Implicit structural link identified during project parsing.",
-                        "evidenceStrength": "speculative",
-                        "magnitude": "marginal",
-                        "year": "ongoing"
-                    })
-                idx += 1
-    extraction_data["relationships"] = clean_relationships
-
-    # Reconcile causal chains
-    clean_chains = []
-    for idx, chain in enumerate(extraction_data.get("causal_chains", [])):
-        if not isinstance(chain, dict):
-            continue
-        if "name" not in chain or not chain["name"]:
-            chain["name"] = f"Causal Chain {idx+1}"
-            
-        clean_links = []
-        for j, link in enumerate(chain.get("links", [])):
-            if not isinstance(link, dict):
-                continue
-            lsrc = link.get("source")
-            ltgt = link.get("target")
-            if lsrc and ltgt:
-                link["source"] = get_or_create_entity(lsrc)
-                link["target"] = get_or_create_entity(ltgt)
-                
-                # Guarantee explanation is present
-                if "explanation" not in link or not link["explanation"]:
-                    link["explanation"] = f"Operational link tracing the causal mechanism and sequential effect from '{link['source']}' to '{link['target']}'."
-                clean_links.append(link)
-        chain["links"] = clean_links
-        if clean_links:
-            clean_chains.append(chain)
-            
-    # Ensure at least 2 causal chains
-    if len(clean_chains) < 2:
-        ent_names = [e["name"] for e in entities_data.get("entities", [])]
-        while len(clean_chains) < 2:
-            c_idx = len(clean_chains)
-            if len(ent_names) >= 2:
-                src1 = ent_names[0]
-                tgt1 = ent_names[1]
-                clean_chains.append({
-                    "name": f"Fallback Operational Chain {c_idx+1}",
-                    "description": f"Auto-generated fallback chain to satisfy minimum chain constraints for project '{project_name}'.",
-                    "links": [
-                        {
-                            "source": src1,
-                            "target": tgt1,
-                            "explanation": f"Trace operational dependency and sequential effect from '{src1}' to '{tgt1}'."
-                        }
-                    ]
-                })
-            else:
-                break
-    extraction_data["causal_chains"] = clean_chains
-
-    # If any new stubs were generated, append them to 04_all_entities.json
-    if new_stubs:
-        for stub in new_stubs.values():
-            entities_list.append(stub)
-            entity_names.append(stub["name"])
-            entity_names_set.add(stub["name"])
-        
-        entities_data["entities"] = entities_list
-        with open(os.path.join(temp_dir, "04_all_entities.json"), "w", encoding='utf-8') as f:
-            json.dump(entities_data, f, indent=2)
-
-    with open(os.path.join(temp_dir, "06_extraction.json"), "w", encoding='utf-8') as f:
-        json.dump(extraction_data, f, indent=2)
-
-        
-    # Step 5: Local Embeddings
-    print("Step 5: Generating local BERT embeddings...")
-    embed_texts = [e.get('definition', '') + " " + e.get('role', '') for e in entities_data.get('entities', [])]
-    embed_names = [e.get('name', '') for e in entities_data.get('entities', [])]
-    # Add project summary
-    embed_texts.append(extraction_data['project']['summary'])
-    embed_names.append(project_slug)
-    
-    with open(os.path.join(temp_dir, "embed_input.json"), "w", encoding='utf-8') as f:
-        json.dump({"texts": embed_texts, "names": embed_names}, f)
-        
-    try:
-        subprocess.run(
-            f"uv run python nlp/embed.py < data/temp/{project_slug}/embed_input.json > data/temp/{project_slug}/05_embeddings.json",
-            cwd=cwd, shell=True, check=True
-        )
-    except subprocess.CalledProcessError as e:
-        print(f"Warning: Embeddings script failed ({e}). Mocking embeddings.")
-        mock_embeddings = {
-            "model": "mock",
-            "dimensions": 384,
-            "embeddings": [{"name": name, "embedding": [0.0]*384, "dimensions":384} for name in embed_names]
-        }
-        with open(os.path.join(temp_dir, "05_embeddings.json"), "w", encoding='utf-8') as f:
-            json.dump(mock_embeddings, f, indent=2)
-            
-    # Step 5.5: Validation Gate
-    print("Step 5.5: Validating schemas...")
-    try:
-        subprocess.run(f"uv run python neo4j/validate_project.py data/temp/{project_slug}", cwd=cwd, shell=True, check=True)
-        print("Validation: PASS")
-    except subprocess.CalledProcessError as e:
-        print(f"Validation FAILED for {project_slug}. Skipping upload.")
-        return False
-        
-    # Step 6: Store and Upload
-    print("Step 6: Uploading to Neo4j database...")
-    try:
-        subprocess.run(f"uv run python neo4j/upload.py data/temp/{project_slug}", cwd=cwd, shell=True, check=True)
-        print("Upload: SUCCESS")
-    except subprocess.CalledProcessError as e:
-        print(f"Upload FAILED for {project_slug}. ({e})")
-        return False
-        
-    print(f"Successfully finished Ingestion Pipeline for: {project_name}\n")
+    print("Step 5: Local embeddings...")
+    names = [entity["name"] for entity in entities] + [unique_id]
+    texts = [entity.get("definition", "") + " " + entity.get("role", "") for entity in entities]
+    texts.append(extraction["project"].get("summary", ""))
+    run_json_script(cwd, "nlp/embed.py", {"texts": texts, "names": names},
+                    os.path.join(project_dir, "05_embeddings.json"))
+    print("Step 5.5: Validation gate...")
+    subprocess.run([sys.executable, "neo4j/validate_project.py", project_dir], cwd=cwd, check=True)
+    print("Step 6: Uploading validated new project...")
+    subprocess.run([sys.executable, "neo4j/upload.py", project_dir, "--create-only"], cwd=cwd, check=True)
+    print(f"Uploaded {project_name}. Original source and six artifacts remain in {project_dir}.")
     return True
 
-def main():
-    parser = argparse.ArgumentParser(description="MemoryTonic Bulk Document Ingestion Pipeline")
-    parser.add_argument("--folder", required=True, help="Path to directory containing source files")
-    parser.add_argument("--collection", required=True, help="Target collection name in Neo4j")
-    parser.add_argument("--directory", default="Research", help="Directory category grouping")
-    parser.add_argument("--chunk-size", type=int, default=30000, help="Max character size per project chunk")
-    parser.add_argument("--model", default="gemini-2.5-flash", help="LLM model name to use")
-    
-    args = parser.parse_args()
-    
-    cwd = os.path.dirname(os.path.abspath(__file__))
-    
-    # Try loading local .env file first
+
+def load_provider_environment(cwd):
+    """Explicit process environment wins over .env; honor the provider chosen in the UI."""
     env_path = os.path.join(cwd, "neo4j", ".env")
     if os.path.isfile(env_path):
-        with open(env_path, 'r', encoding='utf-8') as f:
-            for line in f:
+        with open(env_path, encoding="utf-8") as source:
+            for line in source:
                 line = line.strip()
-                if line and not line.startswith('#'):
-                    k, v = line.split('=', 1)
-                    os.environ[k.strip()] = v.strip()
-                    
-    # Read environment keys
-    if not (os.environ.get("GEMINI_API_KEY") or os.environ.get("OPENAI_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")):
-        print("Error: No API keys found. Please set GEMINI_API_KEY, OPENAI_API_KEY, or ANTHROPIC_API_KEY in your environment.")
-        sys.exit(1)
-        
-    if not os.path.exists(args.folder):
-        print(f"Error: Folder path '{args.folder}' does not exist.")
-        sys.exit(1)
-        
-    files = []
-    for entry in os.scandir(args.folder):
-        if entry.is_file() and entry.name.lower().endswith(('.md', '.txt', '.pdf')):
-            files.append(entry.path)
-            
-    if not files:
-        print(f"No processable files (.md, .txt, .pdf) found in {args.folder}.")
-        sys.exit(0)
-        
-    print(f"Found {len(files)} files to process in {args.folder}.")
-    
-    success_count = 0
-    total_count = 0
-    
-    for filepath in files:
-        filename = os.path.basename(filepath)
-        name_no_ext = os.path.splitext(filename)[0]
-        
-        print(f"\n==========================================")
-        print(f"Reading file: {filename}")
-        print(f"==========================================")
-        
-        text = ""
-        if filepath.lower().endswith('.pdf'):
-            text = extract_pdf_text(filepath)
-            if not text:
-                print(f"Skipping PDF file: {filename} (could not extract text)")
-                continue
-        else:
-            with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
-                text = f.read()
-                
-        text = text.strip()
-        if not text:
-            print(f"Skipping empty file: {filename}")
-            continue
-            
-        chunks = chunk_document(text, args.chunk_size)
-        print(f"Document segmented into {len(chunks)} chunk(s).")
-        
-        for i, chunk in enumerate(chunks):
-            total_count += 1
-            if len(chunks) > 1:
-                chunk_title = f"{name_no_ext} - Part {i+1}"
-                chunk_slug = slugify(f"{name_no_ext}-part-{i+1}")
-            else:
-                chunk_title = name_no_ext
-                chunk_slug = slugify(name_no_ext)
-                
-            res = process_project(chunk_title, chunk_slug, chunk, args.collection, args.directory, cwd, args.model)
-            if res:
-                success_count += 1
-                
-    # Run GDS recomputation
-    if success_count > 0:
-        print("\n==========================================")
-        print("Running GDS Graph Algorithms Recomputation...")
-        print("==========================================")
-        try:
-            subprocess.run("uv run python neo4j/gds.py", cwd=cwd, shell=True, check=True)
-            print("GDS recomputation: SUCCESS")
-        except subprocess.CalledProcessError as e:
-            print(f"Warning: GDS recomputation failed ({e})")
-            
-    print(f"\nBulk Ingestion Finished. Succeeded: {success_count}/{total_count} projects.")
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, value = line.split("=", 1)
+                os.environ.setdefault(key.strip(), value.strip().strip("\"'"))
+    provider = os.environ.get("NITANICS_LLM_PROVIDER")
+    keys = {"gemini": "GEMINI_API_KEY", "openai": "OPENAI_API_KEY", "anthropic": "ANTHROPIC_API_KEY"}
+    if provider:
+        if provider not in keys:
+            raise ValueError("Unknown extraction provider.")
+        for key in keys.values():
+            if key != keys[provider]:
+                os.environ.pop(key, None)
+        if not os.environ.get(keys[provider]):
+            raise ValueError(f"No API key configured for selected provider: {provider}.")
+    elif not any(os.environ.get(key) for key in keys.values()):
+        raise ValueError("No API key configured. Set GEMINI_API_KEY, OPENAI_API_KEY, or ANTHROPIC_API_KEY.")
 
-if __name__ == '__main__':
-    main()
+
+def main():
+    parser = argparse.ArgumentParser(description="Nitanics source-grounded document ingestion")
+    parser.add_argument("--folder", required=True, help="Folder containing source documents")
+    parser.add_argument("--collection", required=True, help="Target collection name")
+    parser.add_argument("--directory", default="Research", help="Workspace folder")
+    parser.add_argument("--chunk-size", type=int, default=30000, help="Maximum characters per project chunk")
+    parser.add_argument("--model", default="gemini-2.5-flash", help="Gemini model")
+    args = parser.parse_args()
+    cwd = os.path.dirname(os.path.abspath(__file__))
+    if args.chunk_size < 1:
+        parser.error("--chunk-size must be positive")
+    try:
+        load_provider_environment(cwd)
+    except ValueError as error:
+        print(f"[ERROR] {error}", file=sys.stderr)
+        return 1
+    if not os.path.isdir(args.folder):
+        print("[ERROR] Source folder does not exist.", file=sys.stderr)
+        return 1
+    files = sorted(entry.path for entry in os.scandir(args.folder)
+                   if entry.is_file() and entry.name.lower().endswith((".md", ".txt", ".pdf")))
+    if not files:
+        print("[ERROR] No Markdown, text, or PDF files to process.", file=sys.stderr)
+        return 1
+    total = success = failures = 0
+    for filepath in files:
+        title = os.path.splitext(os.path.basename(filepath))[0]
+        try:
+            if filepath.lower().endswith(".pdf"):
+                text = extract_pdf_text(filepath)
+            else:
+                with open(filepath, encoding="utf-8-sig") as source:
+                    text = source.read()
+            if not text or not text.strip():
+                raise ValueError("No readable text. Scanned PDFs need OCR before ingestion.")
+            chunks = chunk_document(text.strip(), args.chunk_size)
+            for index, chunk in enumerate(chunks, 1):
+                chunk_title = f"{title} - Part {index}" if len(chunks) > 1 else title
+                total += 1
+                try:
+                    if process_project(chunk_title, slugify(chunk_title), chunk, args.collection, args.directory, cwd, args.model):
+                        success += 1
+                    else:
+                        failures += 1
+                except Exception as error:
+                    failures += 1
+                    print(f"[ERROR] {chunk_title}: {error}. Saved artifacts are retained for review.", file=sys.stderr)
+        except Exception as error:
+            failures += 1
+            print(f"[ERROR] {os.path.basename(filepath)}: {error}", file=sys.stderr)
+    if success:
+        try:
+            subprocess.run([sys.executable, "neo4j/gds.py"], cwd=cwd, check=True)
+        except subprocess.CalledProcessError as error:
+            print(f"[WARN] Projects uploaded, but graph metrics need recomputation: {error}", file=sys.stderr)
+    print(f"\nIngestion finished. Uploaded {success}/{total} projects; failures: {failures}.")
+    return 0 if success and not failures else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,54 +1,40 @@
-# graphs/
+# Graph workspace
 
-This is the single workspace for all your knowledge graph projects.
+`graphs/` is the canonical workspace for new Nitanics knowledge graph projects. Both UI uploads and agents working in the cloned repository save complete source text and extraction artifacts here.
 
-When you bring a new document and ask your AI agent to create a graph from it, everything lands here.
-
-## Structure
-
-```
+```text
 graphs/
-└── my-collection/              ← your collection name (group of related docs)
-    └── my-project-slug/        ← one project per document
-        ├── source.md           ← your raw source document (you add this)
-        ├── 01_html.html        ← formatted HTML (agent generates)
-        ├── 02_placement.json   ← collection + directory placement (agent generates)
-        ├── 03_nlp_entities.json ← NLP candidate extraction (agent generates)
-        ├── 04_all_entities.json ← full entity list (agent generates)
-        ├── 05_embeddings.json  ← entity embeddings (agent generates)
-        └── 06_extraction.json  ← final graph artifact (agent generates)
+└── <collection-slug>/
+    └── <unique-project-slug>/
+        ├── source.md
+        ├── 01_html.html
+        ├── 02_placement.json
+        ├── 03_nlp_entities.json
+        ├── 04_all_entities.json
+        ├── 05_embeddings.json
+        └── 06_extraction.json
 ```
 
-## How to Add a New Graph Project
+## Add documents through an AI agent
 
-1. Create a folder: `graphs/<collection-name>/<project-slug>/`
-2. Put your source document in it as `source.md`
-3. Open this repo in your AI coding tool (Claude, Codex, Cursor, Antigravity, etc.)
-4. Give it this prompt:
+Open this repository in a local coding agent such as Claude Code or Codex. Attach complete documents to its chat, or provide local paths if the agent cannot read attachments. The agent needs file access, command execution, and the configured Neo4j database. Its own model performs semantic extraction; local tools generate NLP candidates and embeddings.
 
-```
+```text
 Read docs/INGESTION_FOR_AGENTS.md.
-
-Create a new graph project from:
-graphs/<collection-name>/<project-slug>/source.md
-
-Collection: <collection-name>
-Project slug: <project-slug>
-
-Generate all 6 extraction artifacts in the same folder.
-Validate and upload to Neo4j without touching existing collections.
+Process the complete contents of every document attached to this chat.
+Collection: <collection name>
+Workspace directory: Research
+Create one new unique project per document under graphs/ and preserve all existing data.
+Generate source.md and all six artifacts using supported facts and real local model embeddings.
+Validate, upload passing projects with --create-only, and report any failed documents.
 ```
 
-5. Refresh the app at http://127.0.0.1:5174 — your graph appears in Graph Studio.
+Alternatively, create a new project folder and save the complete source as `source.md` before giving the agent its path. Use a globally unique lowercase kebab-case project ID; the placement and extraction IDs must match it. Keep the collection display name consistent to add documents to an existing collection.
 
-## Rules
+Read [Ingestion for agents](../docs/INGESTION_FOR_AGENTS.md) for setup, schemas, and exact uv commands. After upload, refresh the UI at `http://127.0.0.1:5174` and open the target collection to inspect Documents, Graph, Bridges, and source evidence.
 
-- Each folder = one source document
-- Do not mix multiple documents into one project folder
-- Keep collection names consistent (same name = same graph group)
-- Never delete existing project folders — upload adds to the graph, not replaces it
+## Preserve the workspace
 
-## Sample Collection
+Keep one source document per project. Never overwrite existing project folders or replace existing collections. Keep validated artifacts here after upload; source HTML is served directly from its canonical path. Legacy `apps/ingestion-pipeline/data/` artifacts remain supported and should be preserved.
 
-The `global-finance/` collection is included as a reference.
-It shows what correctly generated extraction artifacts look like.
+The included `global-finance/petrodollar-system/source.md` is a reproducible starter source. Generate its six artifacts through the workflow above; cloning the repository does not upload it automatically. Its length is not a minimum extraction quota.

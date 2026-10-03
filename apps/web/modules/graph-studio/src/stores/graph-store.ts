@@ -9,7 +9,7 @@
  *   3. Category Filter → category in active set
  *   4. Bridge Filter → bridge tier in active set
  *   5. Edge Type Filter → applied to links, not nodes
- *   Project nodes always pass steps 1-3.
+ *   Project nodes respect the project filter and bypass entity-only filters.
  */
 
 import { create } from 'zustand'
@@ -19,6 +19,9 @@ import {
   fetchProjectGraph, fetchBridgeGraph,
 } from '../services/queries'
 import { toGraphData } from '../services/transforms'
+
+// A newer scope request supersedes an older request, including its errors.
+let graphLoadId = 0
 
 export type GraphMode = 'collection' | 'project' | 'bridge'
 
@@ -99,14 +102,12 @@ function computeFiltered(state: {
 
   // Step 1-4: Filter nodes
   const filteredNodes = allNodes.filter(node => {
-    // Project nodes always pass
-    if (node.__type === 'project') return true
+    if (node.__type === 'project') return projectFilter.has(node.id)
 
     // Step 1: Project filter — entity must be in at least one checked project
-    if (projectFilter.size > 0) {
-      const inAnyProject = node.__projects.some(pid => projectFilter.has(pid))
-      if (!inAnyProject && node.__projects.length > 0) return false
-    }
+    if (projectFilter.size === 0) return false
+    const inAnyProject = node.__projects.some(pid => projectFilter.has(pid))
+    if (!inAnyProject && node.__projects.length > 0) return false
 
     // Step 2: Importance bandwidth
     if (node.__compositeImportance < bandwidthRange[0] ||
@@ -129,6 +130,7 @@ function computeFiltered(state: {
     const sourceId = typeof link.source === 'string' ? link.source : link.source.id
     const targetId = typeof link.target === 'string' ? link.target : link.target.id
     if (!visibleNodeIds.has(sourceId) || !visibleNodeIds.has(targetId)) return false
+    if (link.projectId && !projectFilter.has(link.projectId)) return false
     if (link.causalClassification && !edgeTypeFilter.has(link.causalClassification)) return false
     return true
   })
@@ -180,9 +182,13 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
   // ── Load ────────────────────────────────────────────────
 
   loadCollection: async (name: string) => {
-    const state = get()
-    if (state.isLoading) return
-    set({ isLoading: true, error: null })
+    const requestId = ++graphLoadId
+    set({
+      collection: name, graphMode: 'collection', selectedProjectId: null,
+      isLoading: true, error: null, allNodes: [], allLinks: [],
+      filteredNodes: [], filteredLinks: [], projects: [],
+      searchHighlights: new Set(), highlightedPath: [], highlightedChain: [],
+    })
 
     try {
       const [rows, projects, bridges, mentionedIn] = await Promise.all([
@@ -192,6 +198,7 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
         fetchMentionedInEdges(name),
       ])
 
+      if (requestId !== graphLoadId) return
       const { nodes, links } = toGraphData(rows, projects, bridges, mentionedIn)
 
       const allCategories = new Set(nodes.map(n => n.category))
@@ -210,10 +217,13 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
         projectFilter: allProjectIds,
         categoryFilter: allCategories,
         edgeTypeFilter: allEdgeTypes,
+        bandwidthRange: [0, 100],
+        bridgeFilter: new Set(['gold', 'silver', 'bronze', 'none']),
       })
 
       if (import.meta.env.DEV) console.log(`Graph loaded: ${nodes.length} nodes, ${links.length} links`)
     } catch (err) {
+      if (requestId !== graphLoadId) return
       const msg = err instanceof Error ? err.message : String(err)
       set({ isLoading: false, error: msg })
       console.error('Failed to load collection:', msg)
@@ -223,23 +233,33 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
   // ── Load Project Graph (Project mode) ─────────────────────
 
   loadProjectGraph: async (projectUniqueId: string, collectionName: string) => {
-    if (get().isLoading) return
-    set({ isLoading: true, error: null, graphMode: 'project', selectedProjectId: projectUniqueId })
+    const requestId = ++graphLoadId
+    set({
+      collection: collectionName, graphMode: 'project', selectedProjectId: projectUniqueId,
+      isLoading: true, error: null, allNodes: [], allLinks: [],
+      filteredNodes: [], filteredLinks: [], projects: [],
+      searchHighlights: new Set(), highlightedPath: [], highlightedChain: [],
+    })
     try {
       const [rows, projects, mentionedIn] = await Promise.all([
         fetchProjectGraph(projectUniqueId),
-        fetchCollectionProjects(collectionName),   // still need all projects for the picker UI
+        fetchCollectionProjects(collectionName),
         fetchMentionedInEdges(collectionName),
       ])
-      // Bridge data is empty in project mode — no cross-project bridges shown
-      const { nodes, links } = toGraphData(rows, projects, [], mentionedIn)
+      if (requestId !== graphLoadId) return
+      const scopedProjects = projects.filter(p => p.uniqueId === projectUniqueId)
+      if (scopedProjects.length === 0) throw new Error('The selected project is not in this collection.')
+      // Project nodes and membership edges must have the same scope as entities.
+      const { nodes, links } = toGraphData(
+        rows, scopedProjects, [], mentionedIn.filter(m => m.projectUniqueId === projectUniqueId),
+      )
       const allCategories = new Set(nodes.map(n => n.category))
       const allEdgeTypes = new Set(links.map(l => l.causalClassification).filter(Boolean))
       set({
         collection: collectionName,
         allNodes: nodes,
         allLinks: links,
-        projects,
+        projects: scopedProjects,
         isLoading: false,
         error: null,
         filteredNodes: nodes,
@@ -247,9 +267,12 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
         projectFilter: new Set([projectUniqueId]),  // locked to this project
         categoryFilter: allCategories,
         edgeTypeFilter: allEdgeTypes,
+        bandwidthRange: [0, 100],
+        bridgeFilter: new Set(['gold', 'silver', 'bronze', 'none']),
       })
       if (import.meta.env.DEV) console.log(`[Project Graph] ${nodes.length} nodes, ${links.length} links for project: ${projectUniqueId}`)
     } catch (err) {
+      if (requestId !== graphLoadId) return
       const msg = err instanceof Error ? err.message : String(err)
       set({ isLoading: false, error: msg })
       console.error('Failed to load project graph:', msg)
@@ -259,8 +282,13 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
   // ── Load Bridge Graph (Bridge mode) ──────────────────────────
 
   loadBridgeGraph: async (collectionName: string) => {
-    if (get().isLoading) return
-    set({ isLoading: true, error: null, graphMode: 'bridge', selectedProjectId: null })
+    const requestId = ++graphLoadId
+    set({
+      collection: collectionName, graphMode: 'bridge', selectedProjectId: null,
+      isLoading: true, error: null, allNodes: [], allLinks: [],
+      filteredNodes: [], filteredLinks: [], projects: [],
+      searchHighlights: new Set(), highlightedPath: [], highlightedChain: [],
+    })
     try {
       const [rows, projects, bridges, mentionedIn] = await Promise.all([
         fetchBridgeGraph(collectionName),
@@ -268,7 +296,12 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
         fetchBridgeEntities(collectionName),
         fetchMentionedInEdges(collectionName),
       ])
-      const { nodes, links } = toGraphData(rows, projects, bridges, mentionedIn)
+      if (requestId !== graphLoadId) return
+      const bridgeIds = new Set(rows.map(row => row.entity.entityId))
+      const scopedMemberships = mentionedIn.filter(m => bridgeIds.has(m.entityId))
+      const connectedProjectIds = new Set(scopedMemberships.map(m => m.projectUniqueId))
+      const scopedProjects = projects.filter(p => connectedProjectIds.has(p.uniqueId))
+      const { nodes, links } = toGraphData(rows, scopedProjects, bridges, scopedMemberships)
       // In bridge mode, only show bridge tiers — hide 'none' tier by default
       const allCategories = new Set(nodes.map(n => n.category))
       const allEdgeTypes = new Set(links.map(l => l.causalClassification).filter(Boolean))
@@ -276,18 +309,20 @@ export const useGraphStore = create<GraphStore>((set, get) => ({
         collection: collectionName,
         allNodes: nodes,
         allLinks: links,
-        projects,
+        projects: scopedProjects,
         isLoading: false,
         error: null,
         filteredNodes: nodes,
         filteredLinks: links,
-        projectFilter: new Set(projects.map(p => p.uniqueId)),
+        projectFilter: connectedProjectIds,
         categoryFilter: allCategories,
         bridgeFilter: new Set(['gold', 'silver', 'bronze']),  // hide 'none' in bridge mode
         edgeTypeFilter: allEdgeTypes,
+        bandwidthRange: [0, 100],
       })
       if (import.meta.env.DEV) console.log(`[Bridge Graph] ${nodes.length} bridge nodes, ${links.length} links for: ${collectionName}`)
     } catch (err) {
+      if (requestId !== graphLoadId) return
       const msg = err instanceof Error ? err.message : String(err)
       set({ isLoading: false, error: msg })
       console.error('Failed to load bridge graph:', msg)

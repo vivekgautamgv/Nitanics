@@ -277,14 +277,16 @@ export async function fetchBridgeGraph(collectionName: string): Promise<Q1Row[]>
   const session = getSession()
   try {
     const result = await session.run(
-      `MATCH (e:Entity)-[:MENTIONED_IN]->(p:Project)-[:BELONGS_TO]->(c:Collection {name: $collectionName})
-       WITH e, count(DISTINCT p) AS projectsInCollection, collect(DISTINCT p.uniqueId) AS projectIds
+      `MATCH (scopeProject:Project)-[:BELONGS_TO]->(:Collection {name: $collectionName})
+       WITH collect(DISTINCT scopeProject.uniqueId) AS projectIds
+       MATCH (e:Entity)-[:MENTIONED_IN]->(p:Project)-[:BELONGS_TO]->(:Collection {name: $collectionName})
+       WITH projectIds, e, count(DISTINCT p) AS projectsInCollection
        WHERE projectsInCollection > 1
        // e is a bridge entity — collect them all
-       WITH collect(e) AS bridgeEntities, collect(DISTINCT projectIds) AS allPIds
+       WITH projectIds, collect(e) AS bridgeEntities
        UNWIND bridgeEntities AS e1
        OPTIONAL MATCH (e1)-[r:RELATES_TO]->(e2)
-       WHERE e2 IN bridgeEntities
+       WHERE e2 IN bridgeEntities AND (r.projectId IS NULL OR r.projectId IN projectIds)
        RETURN e1 {
          .entityId, .name, .category, .definition, .aliases,
          .pageRank, .betweenness, .degree, .projectCount
@@ -336,11 +338,15 @@ export async function fetchEntityDetail(entityName: string, collectionName: stri
   const session = getSession()
   try {
     const result = await session.run(
-      `MATCH (e:Entity {name: $entityName})
+      `MATCH (e:Entity {name: $entityName})-[:MENTIONED_IN]->(:Project)-[:BELONGS_TO]->(scopeCollection:Collection {name: $collectionName})
+       WITH DISTINCT e, scopeCollection
+       MATCH (scopeProject:Project)-[:BELONGS_TO]->(scopeCollection)
+       WITH e, collect(DISTINCT scopeProject.uniqueId) AS projectIds
        OPTIONAL MATCH (e)-[m:MENTIONED_IN]->(p:Project)-[:BELONGS_TO]->(:Collection {name: $collectionName})
-       WITH e, collect(DISTINCT {name: p.name, uniqueId: p.uniqueId, role: m.role}) AS projects
+       WITH e, projectIds, collect(DISTINCT {name: p.name, uniqueId: p.uniqueId, role: m.role}) AS projects
        OPTIONAL MATCH (e)-[r:RELATES_TO]-(other:Entity)
        WHERE (other)-[:MENTIONED_IN]->(:Project)-[:BELONGS_TO]->(:Collection {name: $collectionName})
+         AND (r.projectId IS NULL OR r.projectId IN projectIds)
        WITH e, projects, collect(DISTINCT {
          entityName: other.name, relType: r.relType,
          causalClassification: r.causalClassification,
@@ -438,7 +444,8 @@ export async function fulltextSearch(query: string, collectionName: string): Pro
        RETURN DISTINCT node.name AS name, node.category AS category,
          node.definition AS definition, score
        ORDER BY score DESC LIMIT 20`,
-      { searchTerm: query + '*', collectionName }
+      // Treat punctuation as literal input instead of Lucene query syntax.
+      { searchTerm: query.trim().replace(/[+\-&|!(){}\[\]^"~*?:\\/]/g, '\\$&') + '*', collectionName }
     )
 
     return result.records.map((rec: Neo4jRecord) => ({

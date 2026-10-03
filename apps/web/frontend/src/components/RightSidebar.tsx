@@ -5,7 +5,7 @@
  * Renders EntityInfoCard or ProjectInfoCard based on rsb-store state.
  * Auto-closes on route change. Closes on Escape key.
  */
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 import { useRSBStore } from '../stores/rsb-store'
 import { useNavigationStore } from '../stores/navigation-store'
 import EntityInfoCard from './rsb/EntityInfoCard'
@@ -18,12 +18,20 @@ export default function RightSidebar() {
   const scope = useRSBStore(s => s.scope)
   const close = useRSBStore(s => s.close)
   const route = useNavigationStore(s => s.route)
+  const previousRouteRef = useRef<string | null>(null)
 
   // Auto-close when route changes
   useEffect(() => {
-    close()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [route])
+    const routeKey = JSON.stringify(route)
+    if (previousRouteRef.current === null) {
+      previousRouteRef.current = routeKey
+      return
+    }
+    if (previousRouteRef.current !== routeKey) {
+      previousRouteRef.current = routeKey
+      close()
+    }
+  }, [route, close])
 
   // Escape key closes RSB
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -55,7 +63,7 @@ export default function RightSidebar() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <div className="rsb-header-title">{name}</div>
             <div className="rsb-header-subtitle">
-              {cardType === 'entity' ? 'Entity' : 'Project'} {scopeLabel}
+              {cardType === 'entity' ? 'Entity' : 'Document'} {scopeLabel}
             </div>
           </div>
           <button className="rsb-close" onClick={close} title="Close (Esc)">

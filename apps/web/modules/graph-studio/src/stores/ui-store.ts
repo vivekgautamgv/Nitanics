@@ -28,6 +28,7 @@ interface UIStore {
   // Canvas control callbacks (registered by GraphCanvas)
   unpinAllNodes: (() => void) | null
   reheatSimulation: (() => void) | null
+  fitGraph: (() => void) | null
 
   // Actions
   setSearchQuery: (query: string) => void
@@ -54,10 +55,11 @@ export const useUIStore = create<UIStore>((set) => ({
   zoomToNode: null,
   unpinAllNodes: null,
   reheatSimulation: null,
+  fitGraph: null,
 
   setSearchQuery: (query) => set({ searchQuery: query }),
   setSearchResults: (results) => set({ searchResults: results }),
-  exitPathMode: () => set({ pathMode: false, pathEntities: [], pathResults: [] }),
+  exitPathMode: () => set({ pathMode: false, pathEntities: [], pathResults: [], isComputingPaths: false }),
   addPathEntity: (name) => set(s => ({
     pathEntities: s.pathEntities.length >= 5
       ? s.pathEntities

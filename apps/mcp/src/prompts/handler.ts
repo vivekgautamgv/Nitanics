@@ -62,12 +62,12 @@ export function registerPrompts(server: McpServer) {
                 '1. Read the document carefully\n' +
                 '2. Call memorytonic_extraction_guide for field reference\n' +
                 '3. Call memorytonic_nlp_preprocess with the raw text\n' +
-                '4. Discover entities (10+ entities, 100+ char definitions, aliases, categories)\n' +
-                '5. Build relationships (15+, 80+ char descriptions, exact evidence quotes)\n' +
-                '6. Write causal chains (2+, system mechanics)\n' +
+                '4. Discover only source-supported entities; use concise definitions and supported aliases (at least one entity; [] aliases allowed)\n' +
+                '5. Build only supported relationships with exact evidence quotes; [] is valid\n' +
+                '6. Include only supported causal chains and temporal phases; [] is valid and unsupported first_appearance_index is null\n' +
                 '7. Call memorytonic_collection({ action: "suggestions" }) for placement\n' +
-                '8. Call memorytonic_extract with complete payload\n' +
-                '9. Call memorytonic_admin({ action: "recompute" }) to update graph metrics\n\n' +
+                '8. Call memorytonic_extract with the complete payload and source_text for quote validation; use a new globally unique project ID\n' +
+                '9. Call memorytonic_recompute({}) to update graph metrics\n\n' +
                 '---\n\n' +
                 skills.join('\n\n---\n\n'),
             },

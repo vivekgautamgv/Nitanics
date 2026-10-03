@@ -1,0 +1,1 @@
+Nitanics connects papers, reports, and notes in a local knowledge graph. Add full documents through the web UI with an API or through your local coding agent, compare shared concepts, and follow the original source evidence. This one-minute walkthrough shows who it helps and how to use it: https://github.com/vivekgautamgv/nitanics

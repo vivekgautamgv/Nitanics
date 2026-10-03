@@ -27,7 +27,8 @@ import os
 import sys
 import zipfile
 import hashlib
-from datetime import datetime
+from pathlib import Path
+from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from db import run_cypher, run_batch, check_connection
@@ -89,7 +90,7 @@ def pull_collection_graph(collection_name):
         (
             "MATCH (p:Project)-[:BELONGS_TO]->(c:Collection) "
             "WHERE toLower(c.name) = toLower($name) "
-            "RETURN p.name AS name, p.domain AS domain, p.subdomain AS subdomain, "
+            "RETURN DISTINCT p.name AS name, p.uniqueId AS uniqueId, p.projectId AS projectId, p.domain AS domain, p.subdomain AS subdomain, "
             "p.summary AS summary, p.baseTags AS tags, p.narrativeFlow AS narrative_flow, "
             "p.htmlPath AS htmlPath, p.createdAt AS created",
             {"name": collection_name}
@@ -113,11 +114,12 @@ def pull_collection_graph(collection_name):
             "MATCH (e1:Entity)-[:MENTIONED_IN]->(p) "
             "MATCH (e2:Entity)-[:MENTIONED_IN]->(p) "
             "MATCH (e1)-[r:RELATES_TO]->(e2) "
+            "WHERE r.projectId IS NULL OR EXISTS { MATCH (owner:Project {projectId: r.projectId})-[:BELONGS_TO]->(c) } "
             "RETURN DISTINCT e1.name AS source, e2.name AS target, "
             "r.relType AS relType, r.causalClassification AS causalClassification, "
             "r.description AS description, r.evidence AS evidence, "
             "r.evidenceStrength AS evidenceStrength, r.magnitude AS magnitude, "
-            "r.year AS year",
+            "r.year AS year, r.projectId AS projectId",
             {"name": collection_name}
         ),
         # 3: Causal chains
@@ -125,12 +127,13 @@ def pull_collection_graph(collection_name):
             "MATCH (p:Project)-[:BELONGS_TO]->(c:Collection) "
             "WHERE toLower(c.name) = toLower($name) "
             "MATCH (cc:CausalChain)-[:BELONGS_TO_PROJECT]->(p) "
-            "OPTIONAL MATCH (cc)-[cl:CHAIN_LINK]->(target:Entity) "
-            "WITH cc, p, cl, target ORDER BY cl.linkOrder "
-            "WITH cc, p.name AS project, "
-            "collect({source: cl.sourceName, target: target.name, "
-            "explanation: cl.explanation, order: cl.linkOrder}) AS links "
-            "RETURN cc.name AS name, cc.description AS description, project, links",
+            "OPTIONAL MATCH (source:Entity)-[cl:CHAIN_LINK]->(target:Entity) "
+            "WHERE cl.chainId = cc.chainId "
+            "WITH cc, p, cl, source, target ORDER BY cl.orderIndex "
+            "WITH cc, p, collect(CASE WHEN source IS NULL THEN null ELSE {source: source.name, target: target.name, "
+            "explanation: cl.explanation, order: cl.orderIndex} END) AS links "
+            "RETURN cc.name AS name, cc.chainId AS chainId, cc.description AS description, "
+            "p.name AS project, p.uniqueId AS projectUniqueId, links",
             {"name": collection_name}
         ),
         # 4: Temporal events
@@ -276,7 +279,7 @@ def build_graph_json(collection, graph_data):
     rel_seen = set()
     relationships = []
     for r in graph_data["relationships"]:
-        key = (r["source"], r["target"], r["relType"])
+        key = (r["source"], r["target"], r["relType"], r.get("projectId"), r.get("evidence"), r.get("description"))
         if key not in rel_seen:
             rel_seen.add(key)
             relationships.append({
@@ -289,17 +292,19 @@ def build_graph_json(collection, graph_data):
                 "evidenceStrength": r.get("evidenceStrength"),
                 "magnitude": r.get("magnitude"),
                 "year": r.get("year"),
+                "projectId": r.get("projectId"),
             })
 
-    # Build causal chains (links come from extraction files, not Neo4j)
-    # Neo4j only stores chain metadata; link details live in 06_extraction.json
+    # Preserve graph links; adjacent extraction artifacts can enrich older data.
     causal_chains = []
     for cc in graph_data["causal_chains"]:
         causal_chains.append({
             "name": cc["name"],
             "description": cc.get("description") or "",
             "project": cc.get("project") or "",
-            "links": [],  # Populated later from extraction files
+            "projectUniqueId": cc.get("projectUniqueId"),
+            "chainId": cc.get("chainId"),
+            "links": cc.get("links") or [],
         })
 
     # Group temporal events by project
@@ -323,6 +328,8 @@ def build_graph_json(collection, graph_data):
         slug = parts[-2] if len(parts) >= 2 else slugify(p["name"])
         projects.append({
             "name": p["name"],
+            "uniqueId": p.get("uniqueId"),
+            "projectId": p.get("projectId"),
             "domain": p.get("domain"),
             "subdomain": p.get("subdomain"),
             "summary": p.get("summary") or "",
@@ -338,7 +345,7 @@ def build_graph_json(collection, graph_data):
         "meta": {
             "collection": collection["name"],
             "collection_id": collection["id"],
-            "exported_at": datetime.utcnow().isoformat() + "Z",
+            "exported_at": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
             "schema_version": "1.0",
             "generator": "MemoryTonic v4 export_collection.py",
             "stats": {
@@ -463,13 +470,22 @@ def find_project_files(html_path):
         if len(parts) >= 2:
             slug = parts[-2]
 
-        # Try resolving html relative to BASE_DIR
-        candidate = os.path.join(BASE_DIR, html_path.replace("/", os.sep))
-        if os.path.isfile(candidate):
-            html_file = candidate
+        if any(part in ('.', '..') for part in parts) or not slug or '/' in slug or '\\' in slug:
+            return {"html": None, "extraction": None, "slug": None}
+        # Canonical graph artifacts are repo-relative; legacy source paths are
+        # relative to the pipeline. Never choose a different project's document.
+        repository_root = Path(BASE_DIR).resolve().parents[1]
+        root = repository_root if parts[0] == 'graphs' else Path(BASE_DIR).resolve()
+        allowed_root = repository_root / 'graphs' if parts[0] == 'graphs' else Path(SOURCES_DIR).resolve()
+        candidate = (root / html_path.replace('\\', '/')).resolve()
+        if candidate.is_relative_to(allowed_root.resolve()) and candidate.is_file():
+            html_file = str(candidate)
+            extraction_candidate = candidate.parent / '06_extraction.json'
+            if extraction_candidate.is_file():
+                extraction_file = str(extraction_candidate)
 
     # Find extraction dir using slug
-    if slug:
+    if slug and not extraction_file:
         extraction_dir = os.path.join(EXTRACTED_DIR, slug)
         if os.path.isdir(extraction_dir):
             candidate = os.path.join(extraction_dir, "06_extraction.json")
@@ -480,22 +496,6 @@ def find_project_files(html_path):
                 candidate = os.path.join(extraction_dir, "01_html.html")
                 if os.path.isfile(candidate):
                     html_file = candidate
-
-    # If slug not found, try slugifying the name and scanning
-    if not html_file and not extraction_file and not slug:
-        if os.path.isdir(SOURCES_DIR):
-            for date_folder in sorted(os.listdir(SOURCES_DIR), reverse=True):
-                date_path = os.path.join(SOURCES_DIR, date_folder)
-                if not os.path.isdir(date_path):
-                    continue
-                for proj_folder in os.listdir(date_path):
-                    candidate = os.path.join(date_path, proj_folder, "01_html.html")
-                    if os.path.isfile(candidate):
-                        html_file = candidate
-                        slug = proj_folder
-                        break
-                if html_file:
-                    break
 
     return {"html": html_file, "extraction": extraction_file, "slug": slug}
 
@@ -510,9 +510,6 @@ def enrich_causal_chains(graph_json, project_files):
     Neo4j stores chain metadata but not link details.
     The full link data lives in each project's 06_extraction.json.
     """
-    # Build lookup: chain name -> index in graph_json
-    chain_idx = {cc["name"]: i for i, cc in enumerate(graph_json["causal_chains"])}
-
     for slug, files in project_files.items():
         ext_path = files.get("extraction")
         if not ext_path or not os.path.isfile(ext_path):
@@ -526,9 +523,17 @@ def enrich_causal_chains(graph_json, project_files):
         chains = extraction.get("causal_chains", [])
         for cc in chains:
             name = cc.get("name")
-            if name in chain_idx:
+            project = extraction.get('project', {})
+            for exported_chain in graph_json['causal_chains']:
+                if exported_chain['name'] != name:
+                    continue
+                if exported_chain.get('projectUniqueId'):
+                    if exported_chain['projectUniqueId'] != project.get('unique_id'):
+                        continue
+                elif exported_chain.get('project') != project.get('name'):
+                    continue
                 links = cc.get("links", [])
-                graph_json["causal_chains"][chain_idx[name]]["links"] = [
+                exported_chain["links"] = [
                     {
                         "source": l.get("source", ""),
                         "target": l.get("target", ""),
@@ -556,6 +561,7 @@ def write_zip(output_path, graph_json, embeddings_json, readme, project_files):
             "embeddings.json": hashlib.sha256(embed_bytes).hexdigest(),
         },
         "files": ["graph.json", "embeddings.json", "manifest.json", "README.md"],
+        "missing_sources": [slug for slug, files in project_files.items() if not files.get('html')],
     }
 
     with zipfile.ZipFile(output_path, "w", zipfile.ZIP_DEFLATED) as zf:

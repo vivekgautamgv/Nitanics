@@ -44,7 +44,7 @@ export default function ProjectPage({ uniqueId, fromCollection }: { uniqueId: st
   if (!detail) {
     return (
       <div className="empty-state">
-        Project not found.
+        Document not found.
         <button className="btn btn-secondary" style={{ marginLeft: '12px' }}
           onClick={() => navigate({ page: 'home' })}>
           Back to Home
@@ -177,7 +177,7 @@ export default function ProjectPage({ uniqueId, fromCollection }: { uniqueId: st
               <tr>
                 <th>Entity</th>
                 <th>Category</th>
-                <th>Role in This Project</th>
+                <th>Role in this document</th>
                 <th>Bridge</th>
                 <th>Global</th>
               </tr>
@@ -335,14 +335,14 @@ export default function ProjectPage({ uniqueId, fromCollection }: { uniqueId: st
       </CollapsibleSection>
 
       {/* Related Projects Section */}
-      <CollapsibleSection title="Related Projects" count={relatedProjects.length} defaultExpanded={false}>
+      <CollapsibleSection title="Related Documents" count={relatedProjects.length} defaultExpanded={false}>
         {relatedProjects.length === 0 ? (
           <div className="empty-state">No related projects found.</div>
         ) : (
           <table className="data-table">
             <thead>
               <tr>
-                <th>Project</th>
+                <th>Document</th>
                 <th>Domain</th>
                 <th>Shared Entities</th>
                 <th>Count</th>

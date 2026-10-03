@@ -6,6 +6,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import { fileURLToPath } from 'node:url';
+
+// src/, dist/, and bundle/ all sit directly inside the MCP package.
+const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 interface MemoryTonicConfig {
   neo4j_uri: string;
@@ -28,10 +32,10 @@ function loadConfig(): MemoryTonicConfig {
   return {
     neo4j_uri: process.env.NEO4J_URI || fileConfig.neo4j_uri || 'neo4j://127.0.0.1:7687',
     neo4j_user: process.env.NEO4J_USER || fileConfig.neo4j_user || 'neo4j',
-    neo4j_password: process.env.NEO4J_PASSWORD || fileConfig.neo4j_password || 'memorytonic',
+    neo4j_password: process.env.NEO4J_PASSWORD || fileConfig.neo4j_password || '12345678',
     neo4j_database: process.env.NEO4J_DATABASE || fileConfig.neo4j_database || 'memorytonic',
-    c01_dir: process.env.C01_DIR || fileConfig.c01_dir || path.resolve('../../apps/ingestion-pipeline'),
-    skills_dir: process.env.SKILLS_DIR || fileConfig.skills_dir || path.resolve('./skills'),
+    c01_dir: path.resolve(process.env.C01_DIR || fileConfig.c01_dir || path.join(packageDir, '..', 'ingestion-pipeline')),
+    skills_dir: path.resolve(process.env.SKILLS_DIR || fileConfig.skills_dir || path.join(packageDir, 'skills')),
   };
 }
 

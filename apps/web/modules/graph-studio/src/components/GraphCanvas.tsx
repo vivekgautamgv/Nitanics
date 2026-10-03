@@ -26,8 +26,8 @@ export default function GraphCanvas({ width, height }: Props) {
 
   const theme = useThemeActive()
   const isLight = theme === 'light'
-  const accentColor = isLight ? '#d97706' : '#fbbf24'
-  const bgColor = isLight ? '#f5f6fa' : '#090a0f'
+  const accentColor = isLight ? '#2563EB' : '#60A5FA'
+  const bgColor = isLight ? '#FAFAFA' : '#090A0F'
 
   const searchHighlights = useGraphStore(s => s.searchHighlights)
   const highlightedPath = useGraphStore(s => s.highlightedPath)
@@ -96,6 +96,10 @@ export default function GraphCanvas({ width, height }: Props) {
   const registerZoomToNode = useUIStore(s => s.registerZoomToNode)
   const registerUnpinAll = useUIStore(s => s.registerUnpinAll)
   const registerReheat = useUIStore(s => s.registerReheat)
+  useEffect(() => {
+    useUIStore.setState({ fitGraph: () => fgRef.current?.zoomToFit(350, 45) })
+    return () => { useUIStore.setState({ fitGraph: null }) }
+  }, [])
   useEffect(() => {
     const id = requestAnimationFrame(() => {
       registerZoomToNode((nodeId: string) => {

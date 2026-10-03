@@ -1,23 +1,35 @@
 /**
- * SettingsPage — Neo4j connection status + app info.
- * Source of truth: DESIGN-SPEC.md Section 12
+ * SettingsPage — Database, AI extraction, appearance, about.
  */
 import { useState, useEffect } from 'react'
-import { testConnection, closeDriver } from '../adapters/neo4j-service'
+import { testConnection } from '../adapters/neo4j-service'
+import { applyTheme, getStoredTheme, type ThemeMode } from '../utils/theme'
 
 export default function SettingsPage() {
-  const [status, setStatus] = useState<'checking' | 'connected' | 'error'>('checking')
-  const [errorMsg, setErrorMsg] = useState('')
+  const [dbStatus, setDbStatus] = useState<'checking' | 'connected' | 'error'>('checking')
+  const [dbError, setDbError] = useState('')
+
+  const [theme, setTheme] = useState<ThemeMode>(getStoredTheme())
+  const [apiProvider, setApiProvider] = useState<'gemini' | 'openai' | 'anthropic'>('gemini')
+  const [apiKey, setApiKey] = useState('')
+  const [saved, setSaved] = useState(false)
+
+  useEffect(() => {
+    const p = localStorage.getItem('nexari_api_provider') || localStorage.getItem('nitanics_api_provider')
+    const k = localStorage.getItem('nexari_api_key') || localStorage.getItem('nitanics_api_key')
+    if (p === 'gemini' || p === 'openai' || p === 'anthropic') setApiProvider(p)
+    if (k) setApiKey(k)
+  }, [])
 
   const checkConnection = async () => {
-    setStatus('checking')
-    setErrorMsg('')
+    setDbStatus('checking')
+    setDbError('')
     try {
       await testConnection()
-      setStatus('connected')
+      setDbStatus('connected')
     } catch (err) {
-      setStatus('error')
-      setErrorMsg(String(err))
+      setDbStatus('error')
+      setDbError(String(err))
     }
   }
 
@@ -25,98 +37,107 @@ export default function SettingsPage() {
     checkConnection()
   }, [])
 
+  const handleThemeChange = (mode: ThemeMode) => {
+    setTheme(mode)
+    applyTheme(mode)
+  }
+
+  const handleSaveAi = () => {
+    localStorage.setItem('nexari_api_provider', apiProvider)
+    localStorage.setItem('nexari_api_key', apiKey)
+    setSaved(true)
+    setTimeout(() => setSaved(false), 2000)
+  }
+
   const neo4jUri = import.meta.env.VITE_NEO4J_URI || 'bolt://localhost:7687'
   const neo4jDatabase = import.meta.env.VITE_NEO4J_DATABASE || 'memorytonic'
   const neo4jUser = import.meta.env.VITE_NEO4J_USER || 'neo4j'
 
   return (
-    <div className="page-container" style={{ maxWidth: '600px' }}>
-      <h1 style={{ color: 'var(--text-primary)', fontSize: '20px', fontWeight: 600, marginBottom: '24px' }}>
-        Settings
-      </h1>
+    <div className="page-container" style={{ maxWidth: 640 }}>
+      <h1 className="page-title">Settings</h1>
 
-      {/* Neo4j Connection */}
-      <div className="card" style={{ padding: '16px 20px', marginBottom: '16px' }}>
-        <h2 style={{ color: 'var(--text-primary)', fontSize: '14px', fontWeight: 600, marginBottom: '16px' }}>
-          Neo4j Connection
-        </h2>
+      <section className="card settings-section">
+        <h2>Database</h2>
+        <div className="settings-row">
+          <span className="settings-label">URI</span>
+          <span className="settings-value mono">{neo4jUri}</span>
+        </div>
+        <div className="settings-row">
+          <span className="settings-label">Database</span>
+          <span className="settings-value mono">{neo4jDatabase}</span>
+        </div>
+        <div className="settings-row">
+          <span className="settings-label">User</span>
+          <span className="settings-value mono">{neo4jUser}</span>
+        </div>
+        <div className="settings-row" style={{ borderTop: '1px solid var(--border)', paddingTop: 12 }}>
+          <span className="settings-label">Status</span>
+          <span className={`settings-status settings-status-${dbStatus}`}>
+            {dbStatus === 'checking' ? 'Checking...' : dbStatus}
+          </span>
+        </div>
+        {dbStatus === 'error' && dbError && (
+          <div className="form-error" style={{ marginTop: 8 }}>{dbError}</div>
+        )}
+        <div style={{ marginTop: 12, textAlign: 'right' }}>
+          <button type="button" className="btn btn-secondary btn-sm" onClick={checkConnection}>Test connection</button>
+        </div>
+      </section>
 
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center justify-between">
-            <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>URI</span>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '13px', fontFamily: 'var(--font-mono, monospace)' }}>
-              {neo4jUri}
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>Database</span>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '13px', fontFamily: 'var(--font-mono, monospace)' }}>
-              {neo4jDatabase}
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>User</span>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '13px', fontFamily: 'var(--font-mono, monospace)' }}>
-              {neo4jUser}
-            </span>
-          </div>
-          <div className="flex items-center justify-between" style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '12px' }}>
-            <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>Status</span>
-            <div className="flex items-center gap-2">
-              <span style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                background: status === 'connected' ? 'var(--success)'
-                  : status === 'error' ? 'var(--error)'
-                  : 'var(--warning)',
-              }} />
-              <span style={{
-                color: status === 'connected' ? 'var(--success)'
-                  : status === 'error' ? 'var(--error)'
-                  : 'var(--text-muted)',
-                fontSize: '13px',
-                textTransform: 'capitalize',
-              }}>
-                {status === 'checking' ? 'Checking...' : status}
-              </span>
-            </div>
-          </div>
+      <section className="card settings-section">
+        <h2>AI extraction</h2>
+        <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 16 }}>
+          Default provider and API key for document ingestion. Keys are stored locally in your browser.
+        </p>
+        <label className="form-field">
+          <span>Provider</span>
+          <select value={apiProvider} onChange={e => setApiProvider(e.target.value as typeof apiProvider)}>
+            <option value="gemini">Gemini</option>
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic</option>
+          </select>
+        </label>
+        <label className="form-field" style={{ marginTop: 12 }}>
+          <span>API key</span>
+          <input type="password" placeholder="Optional — uses env variable if empty" value={apiKey} onChange={e => setApiKey(e.target.value)} />
+        </label>
+        <div style={{ marginTop: 16, display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end' }}>
+          {saved && <span style={{ fontSize: 13, color: 'var(--success)' }}>Saved</span>}
+          <button type="button" className="btn btn-primary btn-sm" onClick={handleSaveAi}>Save</button>
+        </div>
+      </section>
 
-          {status === 'error' && errorMsg && (
-            <div style={{ color: 'var(--error)', fontSize: '12px', padding: '8px 12px', background: 'rgba(239,68,68,0.08)', borderRadius: 'var(--radius-md)' }}>
-              {errorMsg}
-            </div>
-          )}
-
-          <div className="flex gap-2 justify-end" style={{ marginTop: '4px' }}>
-            <button className="btn btn-secondary" onClick={checkConnection}>
-              Test Connection
+      <section className="card settings-section">
+        <h2>Appearance</h2>
+        <div className="theme-toggle-group">
+          {(['light', 'dark', 'system'] as ThemeMode[]).map(mode => (
+            <button
+              key={mode}
+              type="button"
+              className={`btn btn-secondary btn-sm ${theme === mode ? 'theme-active' : ''}`}
+              onClick={() => handleThemeChange(mode)}
+            >
+              {mode.charAt(0).toUpperCase() + mode.slice(1)}
             </button>
-          </div>
+          ))}
         </div>
-      </div>
+      </section>
 
-      {/* App Info */}
-      <div className="card" style={{ padding: '16px 20px' }}>
-        <h2 style={{ color: 'var(--text-primary)', fontSize: '14px', fontWeight: 600, marginBottom: '16px' }}>
-          About
-        </h2>
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>App</span>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>Nexari Labs</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>Version</span>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>4.0.0</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>Component</span>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>03-frontend</span>
-          </div>
+      <section className="card settings-section">
+        <h2>About</h2>
+        <div className="settings-row">
+          <span className="settings-label">App</span>
+          <span className="settings-value">Nitanics</span>
         </div>
-      </div>
+        <div className="settings-row">
+          <span className="settings-label">Version</span>
+          <span className="settings-value">4.0.0</span>
+        </div>
+        <p style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 16 }}>
+          Open-source local knowledge graph workspace.
+        </p>
+      </section>
     </div>
   )
 }

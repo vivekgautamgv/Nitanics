@@ -88,11 +88,11 @@ export default function PrimaryCard({ node, detail }: Props) {
       <div className="flex items-start gap-2">
         <button
           onClick={() => isLocked ? unlockNode() : lockNode()}
-          className="mt-0.5 text-sm"
-          title={isLocked ? 'Unlock' : 'Lock'}
-          style={{ color: isLocked ? 'var(--accent)' : 'var(--text-muted)' }}
+          className="mt-0.5"
+          title={isLocked ? 'Unpin focus' : 'Pin focus'}
+          style={{ color: isLocked ? 'var(--accent)' : 'var(--text-muted)', display: 'flex' }}
         >
-          {isLocked ? '🔒' : '🔓'}
+          <LockGlyph locked={isLocked} />
         </button>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
@@ -373,5 +373,19 @@ function CausalChainsList({ chains }: { chains: Map<string, Array<{ chainName: s
         </div>
       ))}
     </div>
+  )
+}
+
+export function LockGlyph({ locked }: { locked: boolean }) {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="5" y="11" width="14" height="9" rx="2" />
+      {locked ? (
+        <path d="M8 11V8a4 4 0 0 1 8 0v3" strokeLinecap="round" />
+      ) : (
+        <path d="M8 11V8a4 4 0 0 1 7.5-2" strokeLinecap="round" />
+      )}
+      <circle cx="12" cy="15.5" r="1.4" fill="currentColor" stroke="none" />
+    </svg>
   )
 }

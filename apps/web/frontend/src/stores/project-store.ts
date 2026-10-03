@@ -3,6 +3,7 @@
  * Source of truth: DESIGN-SPEC.md Section 16
  */
 import { create } from 'zustand'
+import { describeDataError } from '../adapters/neo4j-service'
 import {
   fetchProjectDetail, fetchProjectEntities, fetchProjectRelationships,
   fetchRelatedProjects, fetchProjectChains, fetchProjectTimeline,
@@ -39,6 +40,8 @@ interface ProjectStore {
   loadProject: (uniqueId: string) => Promise<void>
 }
 
+let loadVersion = 0
+
 export const useProjectStore = create<ProjectStore>((set) => ({
   detail: null,
   entities: [],
@@ -50,6 +53,7 @@ export const useProjectStore = create<ProjectStore>((set) => ({
   error: null,
 
   loadProject: async (uniqueId: string) => {
+    const version = ++loadVersion
     set({
       isLoading: true, error: null,
       detail: null, entities: [], relationships: [],
@@ -65,6 +69,7 @@ export const useProjectStore = create<ProjectStore>((set) => ({
           fetchProjectChains(uniqueId),
           fetchProjectTimeline(uniqueId),
         ])
+      if (version !== loadVersion) return
       set({
         detail,
         entities,
@@ -73,9 +78,10 @@ export const useProjectStore = create<ProjectStore>((set) => ({
         chains,
         timeline,
         isLoading: false,
+        error: detail ? null : 'This project could not be found. Refresh the workspace and choose another project.',
       })
     } catch (err) {
-      set({ error: String(err), isLoading: false })
+      if (version === loadVersion) set({ error: describeDataError(err), isLoading: false })
     }
   },
 }))

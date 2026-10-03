@@ -14,6 +14,10 @@ import type { GraphNode, EntityDetail, ExplorationCardData, RelationshipToLocked
 import { fetchEntityDetail } from '../services/queries'
 import { useGraphStore } from './graph-store'
 
+let detailRequestId = 0
+let explorationEpoch = 0
+const pendingExplorations = new Set<string>()
+
 interface SelectionStore {
   // Selection state
   selectedNode: GraphNode | null
@@ -28,6 +32,7 @@ interface SelectionStore {
 
   // Loading
   isLoadingDetail: boolean
+  detailError: string | null
 
   // Actions
   selectNode: (node: GraphNode) => void
@@ -42,6 +47,7 @@ interface SelectionStore {
   navigateTo: (entityName: string) => void
   selectProject: (node: GraphNode) => void
   openCollectionCard: () => void
+  retryDetail: () => void
 }
 
 /** Fetch detail with cache */
@@ -53,8 +59,34 @@ async function getOrFetchDetail(
   const cached = cache.get(name)
   if (cached) return cached
   const detail = await fetchEntityDetail(name, collectionName)
-  cache.set(name, detail)
   return detail
+}
+
+function loadNodeDetail(node: GraphNode): void {
+  const requestId = ++detailRequestId
+  const collection = useGraphStore.getState().collection
+  const selection = useSelectionStore.getState()
+  useSelectionStore.setState({ isLoadingDetail: true, detailError: null })
+  getOrFetchDetail(selection.entityDetails, node.name, collection).then(detail => {
+    if (requestId !== detailRequestId || useGraphStore.getState().collection !== collection) return
+    useSelectionStore.setState(state => ({
+      entityDetails: new Map(state.entityDetails).set(node.name, detail),
+      isLoadingDetail: pendingExplorations.size > 0,
+      detailError: null,
+    }))
+  }).catch(error => {
+    if (requestId !== detailRequestId || useGraphStore.getState().collection !== collection) return
+    useSelectionStore.setState({
+      isLoadingDetail: false,
+      detailError: `Could not load ${node.name}: ${error instanceof Error ? error.message : String(error)}`,
+    })
+  })
+}
+
+function cancelDetailRequests(): void {
+  detailRequestId++
+  explorationEpoch++
+  pendingExplorations.clear()
 }
 
 /** Find the relationship between two entities from their detail data */
@@ -121,6 +153,7 @@ export const useSelectionStore = create<SelectionStore>((set, get) => ({
   explorationStack: [],
   entityDetails: new Map(),
   isLoadingDetail: false,
+  detailError: null,
 
   selectNode: (node: GraphNode) => {
     const state = get()
@@ -147,29 +180,20 @@ export const useSelectionStore = create<SelectionStore>((set, get) => ({
       return
     }
 
-    set({ selectedNode: node, isLoadingDetail: true, showCollectionCard: false })
-
-    // Fetch detail
-    getOrFetchDetail(get().entityDetails, node.name, useGraphStore.getState().collection)
-      .then(detail => {
-        set(s => ({
-          entityDetails: new Map(s.entityDetails).set(node.name, detail),
-          isLoadingDetail: false,
-        }))
-      })
-      .catch(err => {
-        console.error('Failed to fetch entity detail:', err)
-        set({ isLoadingDetail: false })
-      })
+    set({ selectedNode: node, showCollectionCard: false })
+    loadNodeDetail(node)
   },
 
   selectProject: (node: GraphNode) => {
+    cancelDetailRequests()
     // Projects are standalone cards, not lockable
     set({
       selectedNode: node,
       lockedNode: null,
       explorationStack: [],
       isLoadingDetail: false,
+      detailError: null,
+      showCollectionCard: false,
     })
   },
 
@@ -177,20 +201,28 @@ export const useSelectionStore = create<SelectionStore>((set, get) => ({
 
   lockNode: () => {
     const state = get()
-    if (state.selectedNode) {
+    if (state.selectedNode?.__type === 'entity') {
       set({ lockedNode: state.selectedNode })
     }
   },
 
   unlockNode: () => {
-    set({ lockedNode: null, explorationStack: [] })
+    explorationEpoch++
+    pendingExplorations.clear()
+    const primary = get().lockedNode ?? get().selectedNode
+    set({ lockedNode: null, selectedNode: primary, explorationStack: [], detailError: null })
+    if (primary?.__type === 'entity' && !get().entityDetails.has(primary.name)) loadNodeDetail(primary)
+    else set({ isLoadingDetail: false })
   },
 
   addExplorationCard: (node: GraphNode) => {
     const state = get()
     if (!state.lockedNode) return
+    if (pendingExplorations.has(node.name) || state.explorationStack.some(card => card.entity.name === node.name)) return
 
-    set({ selectedNode: node, isLoadingDetail: true })
+    const epoch = explorationEpoch
+    pendingExplorations.add(node.name)
+    set({ selectedNode: node, isLoadingDetail: true, detailError: null })
 
     const lockedName = state.lockedNode.name
 
@@ -199,21 +231,26 @@ export const useSelectionStore = create<SelectionStore>((set, get) => ({
       getOrFetchDetail(state.entityDetails, node.name, collection),
       getOrFetchDetail(state.entityDetails, lockedName, collection),
     ]).then(([entityDetail, lockedDetail]) => {
+      if (epoch !== explorationEpoch || !pendingExplorations.has(node.name) || get().lockedNode?.name !== lockedName || useGraphStore.getState().collection !== collection) return
+      pendingExplorations.delete(node.name)
       const card = computeScopedCard(node, entityDetail, lockedDetail)
       set(s => ({
         explorationStack: [...s.explorationStack, card],
         entityDetails: new Map(s.entityDetails)
           .set(node.name, entityDetail)
           .set(lockedName, lockedDetail),
-        isLoadingDetail: false,
+        isLoadingDetail: pendingExplorations.size > 0,
+        detailError: null,
       }))
     }).catch(err => {
-      console.error('Failed to fetch exploration detail:', err)
-      set({ isLoadingDetail: false })
+      if (epoch !== explorationEpoch || !pendingExplorations.has(node.name) || useGraphStore.getState().collection !== collection) return
+      pendingExplorations.delete(node.name)
+      set({ isLoadingDetail: pendingExplorations.size > 0, detailError: `Could not load ${node.name}: ${err instanceof Error ? err.message : String(err)}` })
     })
   },
 
   removeExplorationCard: (entityName: string) => {
+    pendingExplorations.delete(entityName)
     set(s => ({
       explorationStack: s.explorationStack.filter(c => c.entity.name !== entityName),
     }))
@@ -232,22 +269,27 @@ export const useSelectionStore = create<SelectionStore>((set, get) => ({
   },
 
   clearAll: () => {
+    cancelDetailRequests()
     set({
       selectedNode: null,
       lockedNode: null,
       explorationStack: [],
       isLoadingDetail: false,
       showCollectionCard: false,
+      hoveredNode: null,
+      detailError: null,
     })
   },
 
   openCollectionCard: () => {
+    cancelDetailRequests()
     set({
       selectedNode: null,
       lockedNode: null,
       explorationStack: [],
       isLoadingDetail: false,
       showCollectionCard: true,
+      detailError: null,
     })
   },
 
@@ -257,24 +299,27 @@ export const useSelectionStore = create<SelectionStore>((set, get) => ({
     const node = allNodes.find(n => n.name === entityName)
     if (!node) return
 
-    // Unlock, clear stack, select new node as primary
-    set({
-      lockedNode: null,
-      explorationStack: [],
-      selectedNode: node,
-      isLoadingDetail: true,
-    })
+    cancelDetailRequests()
+    set({ lockedNode: null, explorationStack: [] })
+    get().selectNode(node)
+  },
 
-    getOrFetchDetail(get().entityDetails, entityName, useGraphStore.getState().collection)
-      .then(detail => {
-        set(s => ({
-          entityDetails: new Map(s.entityDetails).set(entityName, detail),
-          isLoadingDetail: false,
-        }))
-      })
-      .catch(err => {
-        console.error('Failed to navigate to entity:', err)
-        set({ isLoadingDetail: false })
-      })
+  retryDetail: () => {
+    const state = get()
+    if (state.lockedNode && state.selectedNode?.__type === 'entity' && state.selectedNode.id !== state.lockedNode.id) {
+      get().addExplorationCard(state.selectedNode)
+      return
+    }
+    const node = state.lockedNode ?? state.selectedNode
+    if (node?.__type === 'entity') loadNodeDetail(node)
   },
 }))
+
+// Cached details and pending selections belong to a single loaded scope.
+useGraphStore.subscribe((state, previous) => {
+  if (state.collection !== previous.collection || state.graphMode !== previous.graphMode ||
+      state.selectedProjectId !== previous.selectedProjectId || (state.isLoading && !previous.isLoading)) {
+    useSelectionStore.getState().clearAll()
+    useSelectionStore.setState({ entityDetails: new Map() })
+  }
+})

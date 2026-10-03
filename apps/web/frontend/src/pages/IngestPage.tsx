@@ -1,19 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useDirectoryStore } from '../stores/directory-store'
 import { useNavigationStore } from '../stores/navigation-store'
+import Stepper from '../components/ui/Stepper'
+import AgentIngestionGuide from '../components/AgentIngestionGuide'
+import {
+  INGESTION_API_URL, INGESTION_JOB_KEY, clearIngestionJob, collectUploadDocuments,
+  loadIngestionJob, parseIngestionJob, saveIngestionJob, watchIngestionJob,
+  type IngestionJob, type UploadDocument,
+} from '../services/ingestion'
 
-interface FileToUpload {
-  name: string
-  content: string // text or base64 data url for PDFs
-  size: number
-  type: string
-}
+const STEPS = ['Upload', 'Destination', 'Extraction', 'Progress']
 
 export default function IngestPage() {
   const { allCollections, directories, loadDirectories, loadAllCollections } = useDirectoryStore()
   const navigate = useNavigationStore(s => s.navigate)
 
-  const [files, setFiles] = useState<FileToUpload[]>([])
+  const [initialJob] = useState(loadIngestionJob)
+  const [step, setStep] = useState(initialJob ? 4 : 1)
+  const [method, setMethod] = useState<'api' | 'agent'>('api')
+  const [files, setFiles] = useState<UploadDocument[]>([])
   const [collectionOption, setCollectionOption] = useState<'existing' | 'new'>('existing')
   const [selectedCollection, setSelectedCollection] = useState('')
   const [newCollectionName, setNewCollectionName] = useState('')
@@ -21,117 +26,130 @@ export default function IngestPage() {
   const [apiProvider, setApiProvider] = useState<'gemini' | 'openai' | 'anthropic'>('gemini')
   const [apiKey, setApiKey] = useState('')
 
-  // Ingestion execution state
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [processId, setProcessId] = useState<string | null>(null)
-  const [status, setStatus] = useState<'idle' | 'running' | 'success' | 'failed'>('idle')
+  const [job, setJob] = useState<IngestionJob | null>(initialJob)
+  const [status, setStatus] = useState<'idle' | 'running' | 'success' | 'failed'>(initialJob ? 'running' : 'idle')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isReading, setIsReading] = useState(false)
+  const [uploadErrors, setUploadErrors] = useState<string[]>([])
   const [logs, setLogs] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
+  const [connectionNotice, setConnectionNotice] = useState('')
+  const [storageNotice, setStorageNotice] = useState('')
+  const [pollVersion, setPollVersion] = useState(0)
 
   const logConsoleRef = useRef<HTMLDivElement>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const readingRef = useRef(false)
+  const submittingRef = useRef(false)
+  const mountedRef = useRef(true)
 
-  // Load configuration from local storage
+  useEffect(() => {
+    mountedRef.current = true
+    return () => { mountedRef.current = false }
+  }, [])
+
   useEffect(() => {
     loadDirectories()
     loadAllCollections()
-    const savedProvider = localStorage.getItem('nexari_api_provider') || localStorage.getItem('nitanics_api_provider')
-    const savedKey = localStorage.getItem('nexari_api_key') || localStorage.getItem('nitanics_api_key')
-    if (savedProvider) setApiProvider(savedProvider as any)
-    if (savedKey) setApiKey(savedKey)
+    try {
+      const savedProvider = localStorage.getItem('nexari_api_provider') || localStorage.getItem('nitanics_api_provider')
+      const savedKey = localStorage.getItem('nexari_api_key') || localStorage.getItem('nitanics_api_key')
+      if (savedProvider === 'gemini' || savedProvider === 'openai' || savedProvider === 'anthropic') setApiProvider(savedProvider)
+      if (savedKey) setApiKey(savedKey)
+    } catch { /* Use this session's settings if browser storage is disabled. */ }
   }, [loadDirectories, loadAllCollections])
 
-  // Scroll logs to bottom
+  useEffect(() => {
+    if (directories.length && !directories.some(directory => directory.name === selectedDirectory)) {
+      setSelectedDirectory(directories[0].name)
+    }
+  }, [directories, selectedDirectory])
+
+  useEffect(() => {
+    const resumeJob = (event: StorageEvent) => {
+      if (event.key !== INGESTION_JOB_KEY || status === 'running') return
+      const savedJob = parseIngestionJob(event.newValue)
+      if (savedJob) {
+        setJob(savedJob)
+        setStatus('running')
+        setErrorMsg('')
+        setStep(4)
+      }
+    }
+    window.addEventListener('storage', resumeJob)
+    return () => window.removeEventListener('storage', resumeJob)
+  }, [status])
+
   useEffect(() => {
     if (logConsoleRef.current) {
       logConsoleRef.current.scrollTop = logConsoleRef.current.scrollHeight
     }
   }, [logs])
 
-  // Poll status endpoint
   useEffect(() => {
-    if (!processId || status !== 'running') return
-
-    const timer = setInterval(async () => {
-      try {
-        const res = await fetch(`http://127.0.0.1:5176/api/status?id=${processId}`)
-        if (!res.ok) throw new Error('Failed to query status')
-        const data = await res.json()
-        setLogs(data.logs || '')
-        if (data.status !== 'running') {
-          setStatus(data.status)
-          setIsProcessing(false)
-          if (data.status === 'success') {
-            // Reload metadata in store
-            loadDirectories()
-            loadAllCollections()
-          }
+    if (!job || status !== 'running') return
+    return watchIngestionJob(job, {
+      onUpdate: data => {
+        setLogs(data.logs)
+        setConnectionNotice('')
+        if (data.status === 'running') return
+        setStatus(data.status)
+        if (data.status === 'success') {
+          loadDirectories()
+          loadAllCollections()
+        } else {
+          setErrorMsg(data.error || 'Extraction did not finish. Review the pipeline output below, check the selected provider and API key, then try again.')
         }
-      } catch (err: any) {
-        setLogs(prev => prev + `\n[UI ERROR] Connection to API server lost: ${err.message}\n`)
+      },
+      onRetry: setConnectionNotice,
+      onUnavailable: message => {
+        setErrorMsg(message)
+        setConnectionNotice('')
         setStatus('failed')
-        setIsProcessing(false)
-        clearInterval(timer)
-      }
-    }, 1200)
-
-    return () => clearInterval(timer)
-  }, [processId, status, loadDirectories, loadAllCollections])
-
-  // Handle file drop/select
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return
-    processFiles(e.target.files)
-  }
-
-  const processFiles = (fileList: FileList) => {
-    const loadedFiles: FileToUpload[] = []
-    let processedCount = 0
-
-    Array.from(fileList).forEach(file => {
-      const reader = new FileReader()
-      const isPdf = file.type === 'application/pdf' || file.name.endsWith('.pdf')
-
-      reader.onload = (event) => {
-        if (event.target?.result) {
-          loadedFiles.push({
-            name: file.name,
-            content: event.target.result as string,
-            size: file.size,
-            type: isPdf ? 'pdf' : 'text'
-          })
-        }
-        processedCount++
-        if (processedCount === fileList.length) {
-          setFiles(prev => [...prev, ...loadedFiles])
-        }
-      }
-
-      if (isPdf) {
-        reader.readAsDataURL(file) // read PDF as base64 data url
-      } else {
-        reader.readAsText(file) // read text/markdown as raw string
-      }
+      },
     })
+  }, [job, status, pollVersion, loadDirectories, loadAllCollections])
+
+  const processFiles = async (fileList: FileList) => {
+    if (readingRef.current || status !== 'idle') return
+    readingRef.current = true
+    setIsReading(true)
+    setUploadErrors([])
+    try {
+      const result = await collectUploadDocuments(Array.from(fileList), files)
+      if (!mountedRef.current) return
+      setFiles(previous => [...previous, ...result.documents])
+      setUploadErrors(result.errors)
+    } catch {
+      if (mountedRef.current) setUploadErrors(['Unable to read the selected documents. Select them again.'])
+    } finally {
+      readingRef.current = false
+      if (mountedRef.current) setIsReading(false)
+    }
   }
 
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault()
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.length) void processFiles(e.target.files)
+    e.target.value = ''
   }
+
+  const handleDragOver = (e: React.DragEvent) => e.preventDefault()
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault()
-    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      processFiles(e.dataTransfer.files)
-    }
+    if (e.dataTransfer.files?.length) void processFiles(e.dataTransfer.files)
   }
 
   const handleRemoveFile = (index: number) => {
     setFiles(prev => prev.filter((_, i) => i !== index))
   }
 
+  const activeCollectionName = collectionOption === 'existing' ? selectedCollection : newCollectionName.trim()
+
   const handleStartIngest = async () => {
+    if (submittingRef.current || status === 'running' || readingRef.current) return
     setErrorMsg('')
-    const collection = collectionOption === 'existing' ? selectedCollection : newCollectionName.trim()
+    const collection = activeCollectionName
     if (!collection) {
       setErrorMsg('Please specify or select a target collection.')
       return
@@ -141,460 +159,311 @@ export default function IngestPage() {
       return
     }
 
-    // Save provider & key to localStorage for developer comfort
-    localStorage.setItem('nexari_api_provider', apiProvider)
-    localStorage.setItem('nexari_api_key', apiKey)
-    localStorage.setItem('nitanics_api_provider', apiProvider)
-    localStorage.setItem('nitanics_api_key', apiKey)
+    const savedJob = loadIngestionJob()
+    if (savedJob) {
+      setJob(savedJob)
+      setStatus('running')
+      setStep(4)
+      return
+    }
 
-    setIsProcessing(true)
+    submittingRef.current = true
+    setIsSubmitting(true)
+    try {
+      localStorage.setItem('nexari_api_provider', apiProvider)
+      localStorage.setItem('nexari_api_key', apiKey)
+    } catch { /* Credentials remain available for this request. */ }
+
+    const submittedJob: IngestionJob = {
+      processId: crypto.randomUUID(), collection, directory: selectedDirectory,
+      fileNames: files.map(file => file.name), startedAt: Date.now(),
+    }
+    if (!saveIngestionJob(submittedJob)) {
+      setStorageNotice('Browser storage is unavailable. Keep this tab open to retain access to extraction progress.')
+    }
+
+    setStep(4)
+    setJob(submittedJob)
     setStatus('running')
+    setConnectionNotice('')
     setLogs('[UI] Preparing files for upload...\n')
 
+    const controller = new AbortController()
+    const requestTimeout = setTimeout(() => controller.abort(), 30000)
     try {
-      const res = await fetch('http://127.0.0.1:5176/api/ingest', {
+      const res = await fetch(`${INGESTION_API_URL}/api/ingest`, {
         method: 'POST',
+        signal: controller.signal,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           collection,
           directory: selectedDirectory,
           provider: apiProvider,
           apiKey: apiKey.trim() || undefined,
-          files: files.map(f => ({ name: f.name, content: f.content }))
-        })
+          requestId: submittedJob.processId,
+          files: files.map(f => ({ name: f.name, content: f.content })),
+        }),
       })
 
+      const data = await res.json().catch(() => null)
       if (!res.ok) {
-        const errorData = await res.json()
-        throw new Error(errorData.error || 'Failed to start ingestion process.')
+        clearIngestionJob()
+        if (mountedRef.current) {
+          setJob(null)
+          setErrorMsg(typeof data?.error === 'string' ? data.error : `The ingestion service could not accept the documents (${res.status}). Check that the API server is running, then try again.`)
+          setStatus('failed')
+        }
+        return
       }
-
-      const data = await res.json()
-      setProcessId(data.processId)
-      setLogs(prev => prev + `[UI] Ingestion triggered successfully. Process ID: ${data.processId}\n`)
-    } catch (err: any) {
-      setErrorMsg(err.message)
-      setStatus('failed')
-      setIsProcessing(false)
+      if (data?.processId !== submittedJob.processId) {
+        throw new Error('The ingestion service did not return the submitted job ID. Restart the API server to load the latest version.')
+      }
+    } catch (err: unknown) {
+      // The service may have accepted the request even if its response was lost.
+      // Continue polling the saved request ID instead of starting another job.
+      if (mountedRef.current) {
+        setConnectionNotice(err instanceof Error && err.message.includes('latest version')
+          ? err.message
+          : 'The upload response was interrupted. Checking whether the service accepted this extraction...')
+      }
+    } finally {
+      clearTimeout(requestTimeout)
+      submittingRef.current = false
+      if (mountedRef.current) setIsSubmitting(false)
     }
   }
 
   const resetPipeline = () => {
     setFiles([])
-    setProcessId(null)
+    clearIngestionJob()
+    setJob(null)
     setStatus('idle')
     setLogs('')
     setErrorMsg('')
-    setIsProcessing(false)
+    setConnectionNotice('')
+    setStorageNotice('')
+    setUploadErrors([])
+    setStep(1)
   }
 
-  const activeCollectionName = collectionOption === 'existing' ? selectedCollection : newCollectionName.trim()
+  const reviewSetup = () => {
+    clearIngestionJob()
+    setJob(null)
+    setStatus('idle')
+    setConnectionNotice('')
+    setStep(3)
+  }
+
+  const canAdvanceFromUpload = files.length > 0 && !isReading
+  const canAdvanceFromDestination = activeCollectionName.length > 0
+
+  const displayStep = status !== 'idle' ? 4 : step
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto', overflowX: 'hidden', padding: '24px 28px' }}>
+    <div className="page-container" style={{ maxWidth: 800 }}>
       <header style={{ marginBottom: 24 }}>
-        <h1 style={{ fontSize: 34, lineHeight: 1.1, letterSpacing: '-0.05em', color: 'var(--text-primary)', marginBottom: 8 }}>
-          Ingest Research Documents
-        </h1>
-        <p style={{ fontSize: 14, color: 'var(--text-secondary)', maxWidth: 680 }}>
-          Upload multiple documents, research papers, transcripts, or notes. The system chunks large texts and parses them programmatically using an LLM to build a combined knowledge graph.
+        <h1 style={{ fontSize: 24, fontWeight: 600, marginBottom: 8 }}>Add documents</h1>
+        <p style={{ fontSize: 14, color: 'var(--text-secondary)' }}>
+          Use an API provider here or attach documents in your coding agent's chat. Both routes build the same local knowledge graph.
         </p>
       </header>
 
-      {status === 'idle' ? (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr minmax(320px, 440px)', gap: 26, alignItems: 'start' }}>
-          {/* File Upload Area */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <div
-              onDragOver={handleDragOver}
-              onDrop={handleDrop}
-              style={{
-                border: '2px dashed var(--border)',
-                borderRadius: 24,
-                background: 'var(--surface-raised)',
-                padding: '40px 20px',
-                textAlign: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'var(--accent)'
-                e.currentTarget.style.backgroundColor = 'var(--surface-hover)'
-                e.currentTarget.style.boxShadow = '0 0 16px rgba(56, 189, 248, 0.12)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'var(--border)'
-                e.currentTarget.style.backgroundColor = 'var(--surface-raised)'
-                e.currentTarget.style.boxShadow = 'none'
-              }}
-              onClick={() => document.getElementById('file-upload-input')?.click()}
-            >
-              <input
-                id="file-upload-input"
-                type="file"
-                multiple
-                accept=".txt,.md,.pdf"
-                onChange={handleFileChange}
-                style={{ display: 'none' }}
-              />
-              <svg
-                width="36"
-                height="36"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="var(--text-muted)"
-                strokeWidth="1.8"
-                style={{ marginBottom: 12, opacity: 0.8 }}
-              >
-                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 6 }}>
-                Drag and drop research files
-              </div>
-              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
-                Supports Markdown (.md), Text (.txt), and PDF (.pdf) files
-              </div>
-            </div>
+      {displayStep === 1 && status === 'idle' && <fieldset className="ingestion-methods">
+        <legend>Choose how to create your graph</legend>
+        <label className={`ingestion-method ${method === 'api' ? 'ingestion-method-active' : ''}`}><input type="radio" name="ingestion-method" checked={method === 'api'} onChange={() => setMethod('api')} /><span><strong>Upload with API</strong><span>Upload files here and use a provider API key.</span></span></label>
+        <label className={`ingestion-method ${method === 'agent' ? 'ingestion-method-active' : ''}`}><input type="radio" name="ingestion-method" checked={method === 'agent'} onChange={() => setMethod('agent')} /><span><strong>Use AI agent</strong><span>Attach files in your agent chat with this repo open.</span></span></label>
+      </fieldset>}
 
-            {/* Selected Files List */}
-            {files.length > 0 && (
-              <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 22, padding: 18 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                  <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)' }}>
-                    Files to process ({files.length})
-                  </span>
-                  <button
-                    onClick={() => setFiles([])}
-                    style={{ background: 'none', border: 'none', color: 'var(--error)', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}
-                  >
-                    Clear all
-                  </button>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 300, overflowY: 'auto' }}>
-                  {files.map((file, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '10px 14px',
-                        background: 'var(--surface-raised)',
-                        border: '1px solid var(--border-subtle)',
-                        borderRadius: 14,
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
-                        <span style={{
-                          fontSize: 10,
-                          fontWeight: 700,
-                          padding: '3px 6px',
-                          borderRadius: 6,
-                          background: file.type === 'pdf' ? '#b42318' : '#111827',
-                          color: '#fff',
-                          textTransform: 'uppercase'
-                        }}>
-                          {file.type}
-                        </span>
-                        <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {file.name}
-                        </span>
-                        <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>
-                          ({(file.size / 1024).toFixed(1)} KB)
-                        </span>
-                      </div>
-                      <button
-                        onClick={() => handleRemoveFile(i)}
-                        style={{
-                          background: 'none',
-                          border: 'none',
-                          color: 'var(--text-muted)',
-                          cursor: 'pointer',
-                          fontSize: 14,
-                          padding: '0 4px',
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.color = 'var(--error)'}
-                        onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+      {method === 'agent' && displayStep === 1 && status === 'idle' ? <AgentIngestionGuide /> : <>
+      <Stepper steps={STEPS} current={displayStep} />
 
-          {/* Configuration Sidebar */}
-          <aside style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 24, padding: 22, display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <div>
-              <h2 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>Ingestion Target</h2>
-              <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>Select where to save your knowledge graph data.</p>
-            </div>
-
-            {/* Collection Option Selection */}
-            <div style={{ display: 'flex', gap: 8, background: 'var(--surface-raised)', padding: 4, borderRadius: 12, border: '1px solid var(--border-subtle)' }}>
-              <button
-                onClick={() => setCollectionOption('existing')}
-                style={{
-                  flex: 1,
-                  padding: '8px 10px',
-                  borderRadius: 8,
-                  border: 'none',
-                  fontSize: 12,
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  background: collectionOption === 'existing' ? 'var(--surface)' : 'transparent',
-                  boxShadow: collectionOption === 'existing' ? '0 2px 8px rgba(0,0,0,0.05)' : 'none',
-                  color: 'var(--text-primary)',
-                }}
-              >
-                Existing Collection
-              </button>
-              <button
-                onClick={() => setCollectionOption('new')}
-                style={{
-                  flex: 1,
-                  padding: '8px 10px',
-                  borderRadius: 8,
-                  border: 'none',
-                  fontSize: 12,
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  background: collectionOption === 'new' ? 'var(--surface)' : 'transparent',
-                  boxShadow: collectionOption === 'new' ? '0 2px 8px rgba(0,0,0,0.05)' : 'none',
-                  color: 'var(--text-primary)',
-                }}
-              >
-                New Collection
-              </button>
-            </div>
-
-            {/* Target inputs */}
-            {collectionOption === 'existing' ? (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)' }}>
-                  Select Collection
-                </label>
-                <select
-                  value={selectedCollection}
-                  onChange={e => setSelectedCollection(e.target.value)}
-                  style={{
-                    background: 'var(--surface)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 12,
-                    padding: '10px 12px',
-                    fontSize: 13,
-                    color: 'var(--text-primary)',
-                  }}
-                >
-                  <option value="">-- Choose collection --</option>
-                  {allCollections.map(c => (
-                    <option key={c.name} value={c.name}>{c.name}</option>
-                  ))}
-                </select>
-              </div>
-            ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)' }}>
-                  New Collection Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. AI Research"
-                  value={newCollectionName}
-                  onChange={e => setNewCollectionName(e.target.value)}
-                  style={{
-                    background: 'var(--surface)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 12,
-                    padding: '10px 12px',
-                    fontSize: 13,
-                    color: 'var(--text-primary)',
-                  }}
-                />
-              </div>
-            )}
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)' }}>
-                Directory Category
-              </label>
-              <select
-                value={selectedDirectory}
-                onChange={e => setSelectedDirectory(e.target.value)}
-                style={{
-                  background: 'var(--surface)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 12,
-                  padding: '10px 12px',
-                  fontSize: 13,
-                  color: 'var(--text-primary)',
-                }}
-              >
-                {directories.map(d => (
-                  <option key={d.name} value={d.name}>{d.name}</option>
-                ))}
-              </select>
-            </div>
-
-            <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 12 }}>
-              <h2 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4, marginTop: 12 }}>AI Provider (Optional)</h2>
-              <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 12 }}>Specify a key or use the environment keys on the host.</p>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)' }}>
-                Provider
-              </label>
-              <select
-                value={apiProvider}
-                onChange={e => setApiProvider(e.target.value as any)}
-                style={{
-                  background: 'var(--surface)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 12,
-                  padding: '10px 12px',
-                  fontSize: 13,
-                  color: 'var(--text-primary)',
-                }}
-              >
-                <option value="gemini">Gemini (Recommended)</option>
-                <option value="openai">OpenAI</option>
-                <option value="anthropic">Anthropic</option>
-              </select>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <label style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)' }}>
-                API Key
-              </label>
-              <input
-                type="password"
-                placeholder={apiKey ? "••••••••••••••••" : "Uses env variable if empty"}
-                value={apiKey}
-                onChange={e => setApiKey(e.target.value)}
-                style={{
-                  background: 'var(--surface)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 12,
-                  padding: '10px 12px',
-                  fontSize: 13,
-                  color: 'var(--text-primary)',
-                }}
-              />
-            </div>
-
-            {errorMsg && (
-              <div style={{ padding: 10, borderRadius: 10, background: 'rgba(180,35,24,0.06)', border: '1px solid rgba(180,35,24,0.18)', fontSize: 12, color: 'var(--error)' }}>
-                {errorMsg}
-              </div>
-            )}
-
-            <button
-              onClick={handleStartIngest}
-              disabled={files.length === 0}
-              className="btn btn-primary"
-              style={{ justifyContent: 'center', padding: '14px', borderRadius: 16, fontSize: 14, fontWeight: 700 }}
-            >
-              Start Ingestion Pipeline
-            </button>
-          </aside>
-        </div>
-      ) : (
-        /* Processing / Terminal Status Page */
-        <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 24, padding: 22, display: 'flex', flexDirection: 'column', gap: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              {status === 'running' && (
-                <div style={{ width: 22, height: 22, border: '2px solid var(--border)', borderTopColor: 'var(--accent)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
-              )}
-              {status === 'success' && (
-                <span style={{ fontSize: 18, color: 'var(--success)' }}>✓</span>
-              )}
-              {status === 'failed' && (
-                <span style={{ fontSize: 18, color: 'var(--error)' }}>✕</span>
-              )}
-              <h2 style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-primary)' }}>
-                {status === 'running' && 'Processing documents...'}
-                {status === 'success' && 'Ingestion successful!'}
-                {status === 'failed' && 'Ingestion failed.'}
-              </h2>
-            </div>
-            <div style={{ display: 'flex', gap: 10 }}>
-              {status === 'success' && (
-                <button
-                  className="btn btn-primary"
-                  onClick={() => navigate({ page: 'graph', collectionName: activeCollectionName })}
-                >
-                  Open Graph Studio
-                </button>
-              )}
-              {(status === 'success' || status === 'failed') && (
-                <button className="btn btn-secondary" onClick={resetPipeline}>
-                  Start New Ingest
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Progress Indicators */}
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', fontSize: 12 }}>
-            <span style={{
-              padding: '6px 12px',
-              borderRadius: 8,
-              background: status === 'running' ? 'rgba(56,189,248,0.1)' : status === 'success' ? 'rgba(16,185,129,0.1)' : 'var(--surface-raised)',
-              border: status === 'running' ? '1px solid rgba(56,189,248,0.2)' : status === 'success' ? '1px solid rgba(16,185,129,0.2)' : '1px solid var(--border)',
-              color: status === 'success' ? 'var(--success)' : status === 'running' ? 'var(--accent)' : 'var(--text-primary)',
-              fontWeight: 600
-            }}>
-              1. Document Parsing & Chunking
-            </span>
-            <span style={{
-              padding: '6px 12px',
-              borderRadius: 8,
-              background: status === 'success' ? 'rgba(16,185,129,0.1)' : 'var(--surface-raised)',
-              border: status === 'success' ? '1px solid rgba(16,185,129,0.2)' : '1px solid var(--border)',
-              color: status === 'success' ? 'var(--success)' : 'var(--text-muted)',
-              fontWeight: 600
-            }}>
-              2. Entity Discovery & LLM Extraction
-            </span>
-            <span style={{
-              padding: '6px 12px',
-              borderRadius: 8,
-              background: status === 'success' ? 'rgba(16,185,129,0.1)' : 'var(--surface-raised)',
-              border: status === 'success' ? '1px solid rgba(16,185,129,0.2)' : '1px solid var(--border)',
-              color: status === 'success' ? 'var(--success)' : 'var(--text-muted)',
-              fontWeight: 600
-            }}>
-              3. Vector Embeddings & Neo4j Upload
-            </span>
-          </div>
-
-          {/* Monospace Log Viewer */}
+      {displayStep === 1 && status === 'idle' && (
+        <div className="card" style={{ padding: 24, marginTop: 24 }}>
+          <input ref={fileInputRef} id="file-upload-input" type="file" multiple accept=".txt,.md,.pdf" onChange={handleFileChange} disabled={isReading} style={{ display: 'none' }} />
           <div
-            ref={logConsoleRef}
-            style={{
-              height: 420,
-              background: '#111827',
-              border: '1px solid #1f2937',
-              borderRadius: 18,
-              padding: '16px 20px',
-              fontFamily: 'var(--font-mono, monospace)',
-              fontSize: 12,
-              lineHeight: 1.6,
-              color: '#f3f4f6',
-              overflowY: 'auto',
-              whiteSpace: 'pre-wrap',
-              boxShadow: 'inset 0 4px 18px rgba(0,0,0,0.25)'
+            className="ingest-dropzone"
+            role="button"
+            tabIndex={0}
+            aria-label="Choose documents to upload"
+            aria-busy={isReading}
+            aria-disabled={isReading}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            onClick={() => !isReading && fileInputRef.current?.click()}
+            onKeyDown={event => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                if (!isReading) fileInputRef.current?.click()
+              }
             }}
           >
-            {logs || 'Waiting for pipeline output...'}
+            <div style={{ fontWeight: 600, marginBottom: 6 }}>{isReading ? 'Reading documents...' : 'Drag and drop files or browse'}</div>
+            <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>Markdown (.md), text (.txt), PDF (.pdf)</div>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>Up to 20 documents · 10 MB per file · 25 MB total</div>
           </div>
-          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+
+          {uploadErrors.length > 0 && (
+            <div className="form-error" role="alert" style={{ marginTop: 12 }}>
+              <ul style={{ margin: 0, paddingLeft: 18 }}>{uploadErrors.map(message => <li key={message}>{message}</li>)}</ul>
+            </div>
+          )}
+
+          {files.length > 0 && (
+            <div style={{ marginTop: 16 }}>
+              <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', marginBottom: 8, textTransform: 'uppercase' }}>
+                {files.length} file{files.length !== 1 ? 's' : ''} selected
+              </div>
+              <ul className="ingest-file-list">
+                {files.map((file, i) => (
+                  <li key={file.name} className="ingest-file-item">
+                    <span>{file.name}</span>
+                    <span style={{ color: 'var(--text-muted)', fontSize: 12 }}>{(file.size / 1024).toFixed(1)} KB</span>
+                    <button type="button" className="btn btn-ghost btn-sm" disabled={isReading} aria-label={`Remove ${file.name}`} onClick={() => handleRemoveFile(i)}>Remove</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 20 }}>
+            <button type="button" className="btn btn-primary" disabled={!canAdvanceFromUpload} onClick={() => setStep(2)}>
+              Continue
+            </button>
+          </div>
         </div>
       )}
+
+      {displayStep === 2 && status === 'idle' && (
+        <div className="card" style={{ padding: 24, marginTop: 24 }}>
+          <div className="ingest-segment" style={{ marginBottom: 16 }}>
+            <button type="button" className={collectionOption === 'existing' ? 'active' : ''} onClick={() => setCollectionOption('existing')}>Existing collection</button>
+            <button type="button" className={collectionOption === 'new' ? 'active' : ''} onClick={() => setCollectionOption('new')}>New collection</button>
+          </div>
+
+          {collectionOption === 'existing' ? (
+            <label className="form-field">
+              <span>Collection</span>
+              <select value={selectedCollection} onChange={e => {
+                setSelectedCollection(e.target.value)
+                const directory = allCollections.find(collection => collection.name === e.target.value)?.directory
+                if (directory) setSelectedDirectory(directory)
+              }}>
+                <option value="">Choose collection</option>
+                {allCollections.map(c => (
+                  <option key={c.name} value={c.name}>{c.name}</option>
+                ))}
+              </select>
+            </label>
+          ) : (
+            <label className="form-field">
+              <span>New collection name</span>
+              <input type="text" maxLength={200} placeholder="e.g. Finance Research" value={newCollectionName} onChange={e => setNewCollectionName(e.target.value)} />
+            </label>
+          )}
+
+          <label className="form-field" style={{ marginTop: 12 }}>
+            <span>Workspace folder</span>
+            <select value={selectedDirectory} onChange={e => setSelectedDirectory(e.target.value)}>
+              {directories.length === 0 && <option value="Research">Research</option>}
+              {directories.map(d => (
+                <option key={d.name} value={d.name}>{d.name}</option>
+              ))}
+            </select>
+          </label>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 20 }}>
+            <button type="button" className="btn btn-secondary" onClick={() => setStep(1)}>Back</button>
+            <button type="button" className="btn btn-primary" disabled={!canAdvanceFromDestination} onClick={() => setStep(3)}>Continue</button>
+          </div>
+        </div>
+      )}
+
+      {displayStep === 3 && status === 'idle' && (
+        <div className="card" style={{ padding: 24, marginTop: 24 }}>
+          <div style={{ padding: 14, background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', marginBottom: 16 }}>
+            <div style={{ fontSize: 13, fontWeight: 600 }}>{files.length} document{files.length !== 1 ? 's' : ''} → {activeCollectionName}</div>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>Workspace folder: {selectedDirectory}. Extraction adds projects to your collection.</div>
+          </div>
+          <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 16 }}>
+            Configure AI extraction provider. Keys are stored locally in your browser.
+            {' '}Document text is sent to your selected provider for extraction.
+            {' '}
+            <button type="button" className="data-link" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }} onClick={() => navigate({ page: 'settings' })}>
+              Manage in Settings
+            </button>
+          </p>
+
+          <label className="form-field">
+            <span>Provider</span>
+            <select value={apiProvider} onChange={e => setApiProvider(e.target.value as typeof apiProvider)}>
+              <option value="gemini">Gemini</option>
+              <option value="openai">OpenAI</option>
+              <option value="anthropic">Anthropic</option>
+            </select>
+          </label>
+
+          <label className="form-field" style={{ marginTop: 12 }}>
+            <span>API key (optional)</span>
+            <input type="password" placeholder="Uses environment variable if empty" value={apiKey} onChange={e => setApiKey(e.target.value)} />
+          </label>
+
+          {errorMsg && <div className="form-error" role="alert" style={{ marginTop: 12 }}>{errorMsg}</div>}
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 20 }}>
+            <button type="button" className="btn btn-secondary" onClick={() => setStep(2)}>Back</button>
+            <button type="button" className="btn btn-primary" disabled={isSubmitting || isReading} onClick={handleStartIngest}>{isSubmitting ? 'Starting extraction...' : 'Start extraction'}</button>
+          </div>
+        </div>
+      )}
+
+      {displayStep === 4 && status !== 'idle' && (
+        <div className="card" style={{ padding: 24, marginTop: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 12 }}>
+            <h2 aria-live="polite" style={{ fontSize: 16, fontWeight: 600 }}>
+              {status === 'running' && 'Extracting knowledge graph...'}
+              {status === 'success' && 'Extraction complete'}
+              {status === 'failed' && 'Extraction failed'}
+            </h2>
+            <div style={{ display: 'flex', gap: 8 }}>
+              {status === 'success' && job?.collection && (
+                <button type="button" className="btn btn-primary" onClick={() => navigate({ page: 'collection', name: job.collection, tab: 'graph' })}>
+                  View collection
+                </button>
+              )}
+              {(status === 'success' || status === 'failed') && !isSubmitting && (
+                <button type="button" className="btn btn-secondary" onClick={resetPipeline}>{status === 'failed' ? 'Start a new extraction' : 'Add more documents'}</button>
+              )}
+              {status === 'failed' && files.length > 0 && !isSubmitting && (
+                <button type="button" className="btn btn-primary" onClick={reviewSetup}>Review setup</button>
+              )}
+            </div>
+          </div>
+
+          {job && (
+            <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 12 }}>
+              {job.fileNames.length} document{job.fileNames.length !== 1 ? 's' : ''} · {job.collection} · {job.directory}
+            </p>
+          )}
+          {status === 'running' && (
+            <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 12 }}>
+              You can explore the workspace while extraction runs. Return to Add documents to check progress.
+            </p>
+          )}
+          {errorMsg && <div className="form-error" role="alert" style={{ marginBottom: 12 }}>{errorMsg}</div>}
+          {storageNotice && <p role="status" style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 12 }}>{storageNotice}</p>}
+          {connectionNotice && status === 'running' && (
+            <div role="status" style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 12 }}>
+              {connectionNotice}{' '}
+              <button type="button" className="btn btn-secondary btn-sm" disabled={isSubmitting} onClick={() => setPollVersion(version => version + 1)}>Check again</button>
+            </div>
+          )}
+
+          <div ref={logConsoleRef} className="log-console" role="region" aria-label="Extraction pipeline output" tabIndex={0}>
+            {logs || 'Waiting for pipeline output...'}
+          </div>
+        </div>
+      )}
+      </>}
     </div>
   )
 }

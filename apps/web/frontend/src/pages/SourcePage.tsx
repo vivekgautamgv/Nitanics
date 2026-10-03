@@ -1,118 +1,64 @@
-/**
- * SourcePage â€” Displays source HTML document in an iframe.
- * The Vite plugin serves docs at /source-viewer/ (from C01 ingestion data).
- * Source of truth: DESIGN-SPEC.md Section 11
- */
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { resolveSourceUrl } from '../adapters/source-paths'
 
 export default function SourcePage({ htmlPath }: { htmlPath: string }) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
-
-  // Build the URL via adapter so source document routing stays centralized.
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
+  const [error, setError] = useState('')
+  const [retry, setRetry] = useState(0)
+  const [resolvedPath, setResolvedPath] = useState('')
   const sourceUrl = resolveSourceUrl(htmlPath)
 
-  // Inject dark theme into iframe after load
   useEffect(() => {
-    const iframe = iframeRef.current
-    if (!iframe) return
+    const controller = new AbortController()
+    setStatus('loading')
+    setError('')
+    setResolvedPath('')
+    fetch(sourceUrl, { method: 'HEAD', signal: controller.signal }).then(response => {
+      if (!response.ok) throw new Error(response.status === 404
+        ? 'The source file is missing. Restore its HTML artifact to the graph workspace, then retry.'
+        : 'This source document could not be opened (' + response.status + ').')
+      setResolvedPath(response.headers.get('X-Source-Resolved-Path') || '')
+      setStatus('ready')
+    }).catch(err => {
+      if (!controller.signal.aborted) { setStatus('error'); setError(err instanceof Error ? err.message : String(err)) }
+    })
+    return () => controller.abort()
+  }, [sourceUrl, retry])
 
-    const handleLoad = () => {
-      try {
-        const doc = iframe.contentDocument
-        if (!doc) return
+  const applyDocumentTheme = () => {
+    const doc = iframeRef.current?.contentDocument
+    if (!doc?.head) return
+    const colors = getComputedStyle(document.documentElement)
+    let style = doc.getElementById('workspace-reader-theme') as HTMLStyleElement | null
+    if (!style) { style = doc.createElement('style'); style.id = 'workspace-reader-theme'; doc.head.appendChild(style) }
+    style.textContent = ':root { --bg: ' + colors.getPropertyValue('--surface') +
+      '; --bg-surface: ' + colors.getPropertyValue('--surface-subtle') +
+      '; --text: ' + colors.getPropertyValue('--text-secondary') +
+      '; --text-bright: ' + colors.getPropertyValue('--text-primary') +
+      '; --accent: ' + colors.getPropertyValue('--accent') +
+      '; --divider: ' + colors.getPropertyValue('--border') +
+      '; } html, body { background: ' + colors.getPropertyValue('--surface') +
+      ' !important; color: ' + colors.getPropertyValue('--text-primary') +
+      ' !important; } body { font-family: system-ui, sans-serif; line-height: 1.75; padding: 28px; max-width: 900px; margin: auto; } img { max-width: 100%; } pre { overflow-x: auto; }'
+  }
 
-        // Inject dark theme CSS
-        const style = doc.createElement('style')
-        style.textContent = `
-          html, body {
-            background: #12141f !important;
-            color: #faf9f6 !important;
-            font-family: 'Segoe UI Variable', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.7;
-            padding: 24px 32px;
-            max-width: 800px;
-            margin: 0 auto;
-          }
-          h1, h2, h3, h4, h5, h6 {
-            color: #faf9f6 !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 8px;
-            margin-top: 24px;
-          }
-          a { color: #fbbf24 !important; }
-          pre, code {
-            background: rgba(255, 255, 255, 0.03) !important;
-            color: #faf9f6 !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            border-radius: 6px;
-            padding: 2px 6px;
-          }
-          pre { padding: 12px 16px !important; overflow-x: auto; }
-          blockquote {
-            border-left: 3px solid #fbbf24 !important;
-            padding-left: 16px !important;
-            color: #d1cbd4 !important;
-          }
-          img { max-width: 100%; border-radius: 8px; }
-          table { border-collapse: collapse; width: 100%; }
-          th, td {
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            padding: 8px 12px !important;
-            text-align: left;
-          }
-          th { background: rgba(255, 255, 255, 0.03) !important; color: #f8fafc !important; }
-          hr { border-color: rgba(255, 255, 255, 0.08) !important; }
-        `
-        doc.head.appendChild(style)
-      } catch {
-        // Cross-origin — can't inject styles, will show raw HTML
-      }
-    }
-
-    iframe.addEventListener('load', handleLoad)
-    return () => iframe.removeEventListener('load', handleLoad)
-  }, [sourceUrl])
+  useEffect(() => {
+    const observer = new MutationObserver(applyDocumentTheme)
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      height: 'calc(100vh - 48px)',
-      overflow: 'hidden',
-    }}>
-      {/* Toolbar */}
-      <div className="flex items-center justify-between" style={{
-        padding: '6px 16px',
-        borderBottom: '1px solid var(--border-subtle)',
-        flexShrink: 0,
-      }}>
-        <span style={{ color: 'var(--text-muted)', fontSize: '12px', fontFamily: 'var(--font-mono, monospace)' }}>
-          {htmlPath}
-        </span>
-        <a
-          href={sourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-secondary"
-          style={{ padding: '2px 10px', fontSize: '12px', textDecoration: 'none' }}
-        >
-          Open in New Tab
-        </a>
+    <div className="source-reader">
+      <div className="source-reader-toolbar">
+        <span title={htmlPath}>{htmlPath}</span>
+        <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">Open source ↗</a>
       </div>
-
-      {/* Iframe */}
-      <iframe
-        ref={iframeRef}
-        src={sourceUrl}
-        title="Source Document"
-        style={{
-          flex: 1,
-          width: '100%',
-          border: 'none',
-          background: 'var(--surface)',
-        }}
-      />
+      {resolvedPath && <div className="source-reader-notice">The original source was recovered from its local extraction artifact: <span>{resolvedPath}</span></div>}
+      {status === 'loading' && <div className="loading-state" role="status">Opening source document…</div>}
+      {status === 'error' && <div className="empty-state" role="alert"><h2>Source unavailable</h2><p>{error}</p><button type="button" className="btn btn-secondary" onClick={() => setRetry(n => n + 1)}>Retry</button></div>}
+      {status === 'ready' && <iframe ref={iframeRef} src={sourceUrl} title="Source document" sandbox="allow-same-origin" onLoad={applyDocumentTheme} />}
     </div>
   )
 }

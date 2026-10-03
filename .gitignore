@@ -19,6 +19,7 @@ neo4j-data/
 # Pipeline temp and exports (generated, not source)
 apps/ingestion-pipeline/data/temp/
 apps/ingestion-pipeline/data/exports/
+apps/exports/*.zip
 
 # Local build artifacts
 apps/web/frontend/dist/
@@ -41,6 +42,10 @@ LOCAL_ELECTRON_MCP_PLAN.md
 .agents/
 .serena/
 skills/
+!apps/ingestion-pipeline/skills/
+!apps/ingestion-pipeline/skills/**
+!apps/mcp/skills/
+!apps/mcp/skills/**
 skills-lock.json
 *.swp
 *.swo

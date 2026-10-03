@@ -61,10 +61,10 @@ export default function TopNav() {
           }}
         >
           <span style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.04em', lineHeight: 1 }}>
-            Nexari Labs
+            Nitanics
           </span>
           <span style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.16em', fontWeight: 700 }}>
-            Intelligence Graph Network
+            Knowledge graph workspace
           </span>
         </button>
 

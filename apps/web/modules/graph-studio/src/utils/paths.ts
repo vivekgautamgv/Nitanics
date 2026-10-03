@@ -14,5 +14,6 @@
 export function resolveSourceUrl(htmlPath: string | undefined | null): string {
   if (!htmlPath) return ''
   // In dev: served by the serveSourceDocs Vite plugin
-  return `/source-viewer/${htmlPath}`
+  const encodedPath = htmlPath.replace(/\\/g, '/').replace(/^\/+/, '').split('/').map(encodeURIComponent).join('/')
+  return `/source-viewer/${encodedPath}`
 }
