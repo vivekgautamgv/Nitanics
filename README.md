@@ -54,7 +54,7 @@ bun run neo4j:ensure
 bun run dev
 ```
 
-Open the web UI URL printed by the development server. The default is [http://127.0.0.1:5174](http://127.0.0.1:5174); use the actual address if your host or port differs.
+Open the web UI URL printed by the development server. 
 
 `bun install` also installs the Python dependencies through uv. `nlp:setup` checks the English spaCy model and caches the MiniLM embedding model in the pipeline environment. After setup, NLP and embeddings run locally. Use `bun run nlp:setup --check` to verify local readiness without downloads or dependency changes.
 
