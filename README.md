@@ -1,10 +1,19 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> f139419e918c828d3f1672e97139c2ee542ddeb0
 # Nitanics — Local knowledge graphs for documents and research
 
 An open-source web workspace for turning papers, reports, and notes into connected research. Upload documents in the UI with an extraction API key, or open the cloned repository in an AI coding agent and attach your documents in its chat. Both routes save to the same local Neo4j database and appear in Graph Studio.
 
+<<<<<<< HEAD
 Explore entities, relationships, shared concepts, and source evidence across your documents. Use the original sources to verify generated claims: extraction can miss or misinterpret information.
 
 Compatible AI clients can retrieve relevant graph context through the optional MCP server. This can reduce repeated source reading; the effect on context size and cost depends on the workload.
+=======
+Store massive chat histories or hundreds of research documents in a single, living knowledge graph. When you query an LLM, standard RAG systems force the AI to blindly re-read all 100 documents, burning through tokens and context limits. Nitanics Labs solves the context window problem by fetching only the exact graph entities and relationships relevant to your query. 
+
+>>>>>>> f139419e918c828d3f1672e97139c2ee542ddeb0
 
 ## Two Ways to Create a Graph
 
@@ -71,7 +80,7 @@ bun run neo4j:ensure
 bun run dev
 ```
 
-Open the web UI URL printed by the development server. The default is [http://127.0.0.1:5174](http://127.0.0.1:5174); use the actual address if your host or port differs.
+Open the web UI URL printed by the development server. 
 
 `bun install` also installs the Python dependencies through uv. `nlp:setup` checks the English spaCy model and caches the MiniLM embedding model in the pipeline environment. After setup, NLP and embeddings run locally. Use `bun run nlp:setup --check` to verify local readiness without downloads or dependency changes.
 
@@ -298,6 +307,24 @@ For ingestion code changes, run `uv run python -m unittest discover -s tests` fr
 | [Local API](apps/api/README.md) | Ingestion/export endpoints and job lifecycle |
 | [Optional MCP](apps/mcp/README.md) | Client setup, tools, and integration limits |
 
+<<<<<<< HEAD
+=======
+## Screenshots
+
+<details>
+<summary>Earlier UI screenshots</summary>
+
+These screenshots show an earlier version. The current UI uses Nitanics branding and the research and ingestion workflows described above.
+
+![Main Screen](docs/assets/Main%20Screen.png)
+![Main Info Dashboard](docs/assets/Main%20Info%20dashboard.png)
+![Dashboard Graph](docs/assets/Dashboard%20View%20-%20Graph.png)
+![Graph Inspector](docs/assets/Graph%20View%20-%20Side%20bar%20details.png)
+
+</details>
+
+
+>>>>>>> f139419e918c828d3f1672e97139c2ee542ddeb0
 ## License
 
 MIT — see [LICENSE](LICENSE).
