@@ -1,19 +1,12 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> f139419e918c828d3f1672e97139c2ee542ddeb0
 # Nitanics — Local knowledge graphs for documents and research
 
 An open-source web workspace for turning papers, reports, and notes into connected research. Upload documents in the UI with an extraction API key, or open the cloned repository in an AI coding agent and attach your documents in its chat. Both routes save to the same local Neo4j database and appear in Graph Studio.
 
-<<<<<<< HEAD
 Explore entities, relationships, shared concepts, and source evidence across your documents. Use the original sources to verify generated claims: extraction can miss or misinterpret information.
 
-Compatible AI clients can retrieve relevant graph context through the optional MCP server. This can reduce repeated source reading; the effect on context size and cost depends on the workload.
-=======
 Store massive chat histories or hundreds of research documents in a single, living knowledge graph. When you query an LLM, standard RAG systems force the AI to blindly re-read all 100 documents, burning through tokens and context limits. Nitanics Labs solves the context window problem by fetching only the exact graph entities and relationships relevant to your query. 
 
->>>>>>> f139419e918c828d3f1672e97139c2ee542ddeb0
 
 ## Two Ways to Create a Graph
 
