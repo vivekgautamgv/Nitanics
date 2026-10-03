@@ -300,24 +300,8 @@ For ingestion code changes, run `uv run python -m unittest discover -s tests` fr
 | [Local API](apps/api/README.md) | Ingestion/export endpoints and job lifecycle |
 | [Optional MCP](apps/mcp/README.md) | Client setup, tools, and integration limits |
 
-<<<<<<< HEAD
-=======
-## Screenshots
 
-<details>
-<summary>Earlier UI screenshots</summary>
-
-These screenshots show an earlier version. The current UI uses Nitanics branding and the research and ingestion workflows described above.
-
-![Main Screen](docs/assets/Main%20Screen.png)
-![Main Info Dashboard](docs/assets/Main%20Info%20dashboard.png)
-![Dashboard Graph](docs/assets/Dashboard%20View%20-%20Graph.png)
-![Graph Inspector](docs/assets/Graph%20View%20-%20Side%20bar%20details.png)
 
 </details>
 
 
->>>>>>> f139419e918c828d3f1672e97139c2ee542ddeb0
-## License
-
-MIT — see [LICENSE](LICENSE).
